@@ -1,0 +1,17 @@
+<table class="layout" style="width: 100%; margin: 3px;" cellspacing="0" cellpadding="0">
+	<tr><td class="layout">&nbsp;</td></tr>
+	<tr><td class="layout">
+		<table class="portal" border="0" cellspacing="0" cellpadding="0">
+			<tr><th class="portal">Current&nbsp;Releases</th></tr>
+			<tr><td class="layout">
+				<table class="layout" style="width: 100%; padding: 2px;" border="0" cellspacing="0" cellpadding="0">
+					<tr><td><b>Stable</b><br/><div class="quote"><a href="/download/clearcadd-1.0-install.jar">ClearCadd&nbsp;1.0</a></div></td></tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+</table>
+
+<!--
+<a href="/webstart/clearcadd/clearcadd.jnlp"><img alt="Web Start Clearcadd" src="images/clearcadd.webstart.button.png" /></a>
+-->

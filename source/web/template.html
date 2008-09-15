@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<!-- Start Head -->
+		<@head@>
+		<!-- End Head -->
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		
+		<link rel="icon" type="image/ico" href="images/favicon.ico"/>
+		<link rel="shortcut icon" href="images/favicon.ico"/>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+	</head>
+
+	<body>
+
+		<table class="layout" style="width: 100%;" border="0" cellspacing="0" cellpadding="0">
+
+			<colgroup>
+				<col style="width: 0%; "/>
+				<col style="width: 100%"/>
+				<col style="width: 0%"/>
+			</colgroup>
+
+			<tr>
+				<td class="layout" colspan="3">
+					<!-- Start Header -->
+					<@header@>
+					<!-- End Header -->
+				</td>
+			</tr>
+
+			<tr>
+				<td class="menu" style="height: 0px; vertical-align:top;">
+					<@menu@>
+				</td>
+
+				<td class="layout" style="height: 0px; vertical-align:top;">
+					<!-- Start Body -->
+					<@body@>
+					<!-- End Body-->
+				</td>
+
+				<td class="layout" style="height: 0px; vertical-align:top;">
+					<!-- Start Info -->
+					<@news root-only="true"@>
+					<!-- End Info -->
+				</td>
+
+			</tr>
+
+			<tr>
+				<td class="layout" colspan="3">
+					<!-- Start Footer -->
+					<@footer@>
+					<!-- End Footer -->
+				</td>
+			</tr>
+
+		</table>
+
+	</body>
+
+</html>
