@@ -22,9 +22,9 @@
 	</colgroup>
 
 	<tr>
-		<td style="vertical-align: top;"><a href="clearcadd/index.jsp"><img style="width: 64px; height: 64px;" alt="Clearcadd Icon" src="../images/clearcadd.64.png" /></a</td>
-		<td style="vertical-align: top;"><a href="clearcadd/index.jsp"><h1>ClearCadd</h1></a></td>
-		<td>Java-based 3D computer aided modeling application.</td>
+		<td style="vertical-align: top;"></a</td>
+		<td style="vertical-align: top;"><a href="vanguard/index.jsp"><h1>Vanguard</h1></a></td>
+		<td>Java application framework.</td>
 	</tr>
 </table>
 </body>

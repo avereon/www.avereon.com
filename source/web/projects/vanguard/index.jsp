@@ -10,20 +10,16 @@
 
 <html>
 <head>
-<title>ClearCadd</title>
+<title>Vanguard CAE</title>
 <meta name="keywords"
 	content="java, CAD, 3D, computer aided, design, modeling, engineering, opengl" />
 </head>
 
 <body>
-<h1>ClearCadd</h1>
-<p>ClearCadd is a Java based 2D/3D computer aided design application
+<h1>Vanguard Computer Aided Engineering Module</h1>
+<p>Vanguard CAE is a Vanguard module for computer aided design 
 intended for general engineering needs. It features common 2D/3D
 entities and editing tools.</p>
-<br />
-<!-- 
-<p><a href="/webstart/clearcadd/clearcadd.jnlp"><img alt="Web Start Clearcadd" src="../../images/clearcadd.webstart.button.png" /></a> <a href="/download/clearcadd-1.0-install.jar"><img alt="Download Installer" src="../../images/clearcadd.download.button.png" /></a></p>
--->
 </body>
 
 </html>
