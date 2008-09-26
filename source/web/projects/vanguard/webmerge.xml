@@ -8,7 +8,7 @@
 	</order>
 
 	<exemptions>
-		<exemption pattern="clearform" actions="menu merge"/>
+		<!-- exemption pattern="clearform" actions="menu merge"/-->
 	</exemptions>
 
 </webmerge>
