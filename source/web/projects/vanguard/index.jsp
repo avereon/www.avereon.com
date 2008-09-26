@@ -10,16 +10,14 @@
 
 <html>
 <head>
-<title>Vanguard CAE</title>
+<title>Vanguard</title>
 <meta name="keywords"
-	content="java, CAD, 3D, computer aided, design, modeling, engineering, opengl" />
+	content="java, application, framework" />
 </head>
 
 <body>
-<h1>Vanguard Computer Aided Engineering Module</h1>
-<p>Vanguard CAE is a Vanguard module for computer aided design 
-intended for general engineering needs. It features common 2D/3D
-entities and editing tools.</p>
+<h1>Vanguard Application Framework</h1>
+<p>Vanguard is a lightweight Java based application framework.</p>
 </body>
 
 </html>

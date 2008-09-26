@@ -26,6 +26,12 @@
 		<td style="vertical-align: top;"><a href="vanguard/index.jsp"><h1>Vanguard</h1></a></td>
 		<td>Java application framework.</td>
 	</tr>
+
+	<tr>
+		<td style="vertical-align: top;"></a</td>
+		<td style="vertical-align: top; white-space: nowrap;"><a href="vanguardcae/index.jsp"><h1>Vanguard CAE</h1></a></td>
+		<td>3D engineering module for Vanguard.</td>
+	</tr>
 </table>
 </body>
 
