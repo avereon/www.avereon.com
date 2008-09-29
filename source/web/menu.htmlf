@@ -8,8 +8,8 @@
 		<td valign="top" style="padding: 0px;">
 			<table style="margin: 0px;" width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr><td style="padding: 0px;"><a class="menuitem" href="projects/index.jsp">Projects</a></td></tr>
-				<tr><td style="padding: 0px;"><a class="menuitem" href="download/index.jsp">Download</a></td></tr>
 				<!--
+				<tr><td style="padding: 0px;"><a class="menuitem" href="download/index.jsp">Download</a></td></tr>
 				<tr><td style="padding: 0px;"><a class="menuitem" href="documents/index.html">Documents</a></td></tr>
 				<tr><td style="padding: 0px;"><a class="menuitem" href="community/index.html">Community</a></td></tr>
 				<tr><td style="padding: 0px;"><a class="menuitem" href="developers/index.html">Developers</a></td></tr>
