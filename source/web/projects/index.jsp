@@ -17,20 +17,17 @@
 <table class="layout" style="width: 100%;" border="0" cellspacing="0" cellpadding="0">
 	<colgroup>
 		<col style="width: 0%" />
-		<col style="width: 0%" />
 		<col style="width: 100%" />
 	</colgroup>
 
 	<tr>
 		<td style="vertical-align: top;"></a</td>
-		<td style="vertical-align: top;"><a href="vanguard/index.jsp"><h1>Vanguard</h1></a></td>
-		<td>Java application framework.</td>
+		<td style="vertical-align: top;"><a style="font-size: x-large;" href="vanguard/index.jsp">Vanguard</a></td>
 	</tr>
 
 	<tr>
 		<td style="vertical-align: top;"></a</td>
-		<td style="vertical-align: top; white-space: nowrap;"><a href="vanguardcae/index.jsp"><h1>Vanguard CAE</h1></a></td>
-		<td>3D engineering module for Vanguard.</td>
+		<td style="vertical-align: top; white-space: nowrap;"><a style="font-size: x-large;" href="vanguardcae/index.jsp">Vanguard CAE</a></td>
 	</tr>
 </table>
 </body>

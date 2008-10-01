@@ -17,7 +17,7 @@
 
 <body>
 <h1>Vanguard Application Framework</h1>
-<p>Vanguard is a lightweight Java based application framework.</p>
+<p>Vanguard is an open, lightweight application framework for the development of cross-platform applications.</p>
 </body>
 
 </html>
