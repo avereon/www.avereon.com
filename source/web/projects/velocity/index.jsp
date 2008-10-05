@@ -10,14 +10,14 @@
 
 <html>
 <head>
-<title>Vanguard</title>
+<title>Velocity</title>
 <meta name="keywords"
 	content="java, application, framework" />
 </head>
 
 <body>
-<h1>Vanguard Application Framework</h1>
-<p>Vanguard is an open, lightweight application framework for the development of cross-platform applications.</p>
+<h1>Velocity Application Framework</h1>
+<p>Velocity is an open, lightweight application framework for the development of cross-platform applications.</p>
 </body>
 
 </html>

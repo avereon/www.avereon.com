@@ -22,7 +22,7 @@
 
 	<tr>
 		<td style="vertical-align: top;"></a</td>
-		<td style="vertical-align: top;"><a style="font-size: x-large;" href="vanguard/index.jsp">Vanguard</a></td>
+		<td style="vertical-align: top;"><a style="font-size: x-large;" href="velocity/index.jsp">Velocity</a></td>
 	</tr>
 
 	<tr>
