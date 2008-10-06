@@ -5,6 +5,8 @@
 <webmerge>
 
 	<order>
+		<resource name="velocity"/>
+		<resource name="elements"/>
 	</order>
 
 	<exemptions>

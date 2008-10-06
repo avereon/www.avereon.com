@@ -27,7 +27,7 @@
 
 	<tr>
 		<td style="vertical-align: top;"></a</td>
-		<td style="vertical-align: top; white-space: nowrap;"><a style="font-size: x-large;" href="elelments/index.jsp">Elements</a></td>
+		<td style="vertical-align: top; white-space: nowrap;"><a style="font-size: x-large;" href="elements/index.jsp">Elements</a></td>
 	</tr>
 </table>
 </body>

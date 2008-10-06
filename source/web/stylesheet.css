@@ -81,7 +81,7 @@ quot {
 	margin-left: 1em;
 }
 
-/* Anchors */
+/* Anchors
 a {
 	text-decoration: none;
 }
@@ -93,7 +93,7 @@ a:link, a:visited {
 a:hover, a:active {
 	color: #000000;
 }
-
+ */
 /* Menu Header Links */
 a.menuhead, a.menuhead:link, a.menuhead:visited {
 	width: 180px;
