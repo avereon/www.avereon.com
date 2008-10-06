@@ -10,19 +10,19 @@
 
 <html>
 <head>
-<title>Vanguard CAE</title>
+<title>Elements</title>
 <meta name="keywords"
 	content="java, CAD, 3D, computer aided, design, modeling, engineering, opengl" />
 </head>
 
 <body>
-<h1>Vanguard Computer Aided Engineering Module</h1>
-<p>Vanguard CAE is a Vanguard module for computer aided design 
+<h1>Velocity Elements Module</h1>
+<p>Elements is a Velocity module for computer aided design 
 intended for general engineering needs. It features common 2D/3D
 entities and editing tools.</p>
 <h2>Install</h2>
-<p>In order to install Vanguard CAE add the following module location in Vanguard:</p>
-<p>http://www.parallelsymmetry.com/projects/vanguardcae/update</p>
+<p>In order to install Elements add the following module location in Velocity:</p>
+<p>http://www.parallelsymmetry.com/projects/elements/update</p>
 </body>
 
 </html>
