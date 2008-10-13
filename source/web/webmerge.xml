@@ -18,7 +18,9 @@
 		<exemption pattern="copyright.html" actions="menu"/>
 		<exemption pattern="results.html" actions="menu"/>
 		<exemption pattern="upgrade.html" actions="menu merge"/>
-		<exemption pattern="*.htmlf" actions="menu merge copy"/>
+		<exemption pattern="menu.jsp" actions="menu merge copy"/>
+		<exemption pattern="info.jsp" actions="menu merge copy"/>
+		<exemption pattern="news.jsp" actions="menu merge copy"/>
 		<exemption pattern="*.jsp" actions="menu copy"/>
 		<exemption pattern="*.jnlp" actions="menu merge"/>
 		<exemption pattern="*.css" actions="menu merge"/>
@@ -44,11 +46,11 @@
 	menu-item-anchor-class - The stylesheet class for menu item anchors.
 	-->
 	<template path="template.html">
-		<parameter key="menu-base" path="menu.htmlf"/>
+		<parameter key="menu-base" path="menu.jsp"/>
 		<parameter key="header" path="header.jsp"/>
 		<parameter key="footer" path="footer.jsp"/>
-		<parameter key="news" path="news.htmlf"/>
-		<parameter key="info" path="info.htmlf"/>
+		<parameter key="news" path="news.jsp"/>
+		<parameter key="info" path="info.jsp"/>
 
 		<parameter key="menu-width" value="200px"/>
 		<parameter key="menu-show-with-base" value="false"/>

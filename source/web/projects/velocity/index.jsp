@@ -1,9 +1,5 @@
 <%@ page language="java"%>
 
-<%@ page import="java.util.Date"%>
-<%@ page import="java.text.DateFormat"%>
-<%@ page import="java.text.SimpleDateFormat"%>
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -11,13 +7,31 @@
 <html>
 <head>
 <title>Velocity</title>
-<meta name="keywords"
-	content="java, application, framework" />
+<meta name="keywords" content="java, application, framework" />
 </head>
 
 <body>
 <h1>Velocity Application Framework</h1>
-<p>Velocity is an open, lightweight application framework for the development of cross-platform applications.</p>
+<p>Velocity is an open, lightweight application framework for the
+development of cross-platform applications. The following features are included
+in the framework:</p>
+<ul>
+	<li>Workarea Management - Velocity provides a powerful workarea user
+	interface that is easily customized by the user. The workarea manages the menu
+	bar, the tool bar and the view areas.</li>
+	<li>Action Management - Velocity has many predefined actions that are
+	simple to use and allows for custom implementations for predefined actions.
+	Velocity also allows for custom actions to be added.</li>
+	<li>Resource Management - Velocity provides a powerful API for managing
+	resources. Velocity uses the URI class to define a resource so anything that
+	can be defined by a URI (e.g. files, archives, database connections, web
+	resources, etc.) can be used as a resource in Velocity.</li>
+	<li>Module Management - Velocity provides an interface to add extensive
+	functionality through downloadable modules. Modules can be developed
+	independently of Velocity and be provided for download on a web site.</li>
+	<li>Application Updates - Velocity can automatically detect updates to the
+	application and modules then download and install the updates.</li>
+</ul>
 </body>
 
 </html>
