@@ -17,7 +17,7 @@
 					</tr>
 					<tr>
 						<td>
-						<div class="quote" style="white-space: nowrap;"><a href="projects/velocity/update/velocity-install.jar">Velocity 1.0 Alpha</a></div>
+						<div class="quote" style="white-space: nowrap;"><a href="projects/velocity/update/velocity-install.jar">Velocity 0.0.1 Alpha</a></div>
 						</td>
 					</tr>
 				</table>
