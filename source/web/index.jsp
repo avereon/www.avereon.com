@@ -42,7 +42,7 @@ like mathematics, geometry, and physics.</p>
 <p><a href="projects/velocity/index.jsp">Velocity</a> is an open,
 lightweight application framework for the development of cross-platform
 applications. As a framework Velocity has no specific capabilities. It relies on
-modules to provide specific functionality. Several modules are available from
+modules to provide functionality. Several modules are available from
 this web site.</p>
 
 <table class="layout">
