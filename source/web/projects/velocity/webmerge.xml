@@ -5,13 +5,13 @@
 <webmerge>
 
 	<order>
-		<resource name="download.jsp"/>
 		<resource name="install.jsp"/>
 	</order>
 
 	<exemptions>
 		<!-- exemption pattern="" actions="menu merge"/ -->
 		<exemption pattern="*.htmlf" actions="menu"/>
+		<exemption pattern="info.jsp" actions="menu"/>
 	</exemptions>
 
 	<template path="../../template.html">

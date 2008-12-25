@@ -21,13 +21,13 @@
 	</colgroup>
 
 	<tr>
-		<td style="vertical-align: top;"></a</td>
-		<td style="vertical-align: top;"><a style="font-size: x-large;" href="velocity/index.jsp">Velocity</a></td>
+		<td style="vertical-align: top;"></td>
+		<td style="vertical-align: top; white-space: nowrap;"><a style="font-size: x-large;" href="velocity/index.jsp"><img style="vertical-align: middle;" src="../images/velocity.64.png" width="64" height="64" />Velocity</a></td>
 	</tr>
 
 	<tr>
-		<td style="vertical-align: top;"></a</td>
-		<td style="vertical-align: top; white-space: nowrap;"><a style="font-size: x-large;" href="elements/index.jsp">Elements</a></td>
+		<td style="vertical-align: top;"></td>
+		<td style="vertical-align: top; white-space: nowrap;"><a style="font-size: x-large;" href="elements/index.jsp"><img style="vertical-align: middle;" src="../images/elements.64.png" width="64" height="64" />Elements</a></td>
 	</tr>
 </table>
 </body>

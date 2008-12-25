@@ -16,19 +16,14 @@
 </head>
 
 <body>
-<h1>Velocity Elements Module</h1>
-<p>Elements is a Velocity module for computer aided design 
-intended for general engineering needs. It features common 2D/3D
-entities and editing tools.</p>
-<p>The origin of the name for the Elements module comes from the
-treatise <a href="http://en.wikipedia.org/wiki/Euclid%27s_Elements">Elements</a>
-written by Euclid circa 300 BC. Euclid is often referred to as the
-"Father of Geometry" and therefore seemed fitting as a first endeavor
-for a 3D geometry modeling package.</p>
-<h2>Install</h2>
-<p>In order to install Elements add the following module location in Velocity:</p>
-<p>http://www.parallelsymmetry.com/projects/elements/update</p>
+<h1>Elements Module</h1>
+<p>Elements is a 3D computer aided engineering module for Velocity. It is
+intended for general engineering needs and features common 2D/3D entities and
+editing tools.</p>
+<p>The origin of the name for the Elements module comes from the treatise <a
+	href="http://en.wikipedia.org/wiki/Euclid%27s_Elements">Elements</a> written by
+Euclid circa 300 BC. Euclid is often referred to as the "Father of Geometry" and
+therefore seemed fitting as a first endeavor for a 3D engineering package.</p>
 </body>
 
 </html>
-

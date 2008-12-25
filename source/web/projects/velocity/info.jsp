@@ -5,7 +5,7 @@
 
 				<tr><td style="padding: 0px;">&nbsp;</td></tr>
 				<tr><td style="padding: 0px;"><a class="menuhead" href="projects/velocity">Downloads</a></td></tr>
-				<tr><td style="padding: 0px;"><a class="menuitem" href="projects/velocity/update/velocity-install.jar">Velocity 0.0.1 Alpha</a></td></tr>
+				<tr><td style="padding: 0px;"><a class="menuitem" href="projects/velocity/update/velocity-install.jar">Velocity Installer</a></td></tr>
 
 			</table>
 		</td>
