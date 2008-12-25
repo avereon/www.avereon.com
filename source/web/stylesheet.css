@@ -66,6 +66,13 @@ h4 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
 h5 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
 h6 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
 
+td h1 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+td h2 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+td h3 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+td h4 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+td h5 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+td h6 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+
 dl { 
 	margin-left: 10px; 
 	font-weight: bold;

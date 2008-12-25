@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<h1>Elements Module</h1>
+<h1>Elements</h1>
 <p>Elements is a 3D computer aided engineering module for Velocity. It is
 intended for general engineering needs and features common 2D/3D entities and
 editing tools.</p>

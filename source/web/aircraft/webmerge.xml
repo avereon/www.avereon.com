@@ -5,12 +5,14 @@
 <webmerge>
 
 	<order>
-		<resource name="install.jsp"/>
+		<!-- 
+		<resource name="velocity"/>
+		<resource name="elements"/>
+		-->
 	</order>
 
 	<exemptions>
-		<exemption pattern="*.htmlf" actions="menu"/>
+		<!-- exemption pattern="" actions="menu merge"/ -->
 	</exemptions>
 
 </webmerge>
-

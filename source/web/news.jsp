@@ -1,7 +1,4 @@
 <!-- 
-<a href="/webstart/clearcadd/clearcadd.jnlp"><img alt="Web Start Clearcadd" src="images/clearcadd.webstart.button.png" /></a>
--->
-
 <table style="width: 200px; margin: 0px 10px 0px 0px;" cellspacing="0" cellpadding="0">
 	<tr>
 		<td class="layout">
@@ -27,3 +24,4 @@
 		</td>
 	</tr>
 </table>
+-->
