@@ -24,6 +24,18 @@ editing tools.</p>
 	href="http://en.wikipedia.org/wiki/Euclid%27s_Elements">Elements</a> written by
 Euclid circa 300 BC. Euclid is often referred to as the "Father of Geometry" and
 therefore seemed fitting as a first endeavor for a 3D engineering package.</p>
+<h2>System Requirements</h2>
+<ul>
+	<li>Java 6+ (<a href="http://www.java.com">www.java.com</a>)</li>
+	<li>10MB Disk Space</li>
+	<li>Automatic Updates Require Internet Connection</li>
+	<li>Video Acceleration Requires OpenGL Capable Video Card
+		<ul>
+			<li>nVidia (<a href="http://www.nvidia.com">http://www.nvidia.com</a>)</li>
+			<li>ATI (<a href="http://ati.amd.com/products/index.html">http://ati.amd.com/products/index.html</a>)</li>
+		</ul>
+	</li>
+</ul>
 </body>
 
 </html>

@@ -32,6 +32,12 @@ in the framework:</p>
 	<li>Application Updates - Velocity can automatically detect updates to the
 	application and modules then download and install the updates.</li>
 </ul>
+<h2>System Requirements</h2>
+<ul>
+	<li>Java 6+ (<a href="http://www.java.com">www.java.com</a>)</li>
+	<li>5MB Disk Space</li>
+	<li>Automatic Updates Require Internet Connection</li>
+</ul>
 </body>
 
 </html>
