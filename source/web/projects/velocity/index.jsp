@@ -12,9 +12,10 @@
 
 <body>
 <h1>Velocity Application Framework</h1>
-<p>Velocity is an open, lightweight application framework for the
-development of cross-platform applications. The following features are included
-in the framework:</p>
+<p>Velocity is a lightweight application framework for the development of
+cross-platform applications based on <a
+	href="http://java.com/java/download/index.jsp?cid=jdp138566">Java
+technology</a>. The following features are included in the framework:</p>
 <ul>
 	<li>Workarea Management - Velocity provides a powerful workarea user
 	interface that is easily customized by the user. The workarea manages the menu
@@ -34,7 +35,8 @@ in the framework:</p>
 </ul>
 <h2>System Requirements</h2>
 <ul>
-	<li>Java 6+ (<a href="http://www.java.com">www.java.com</a>)</li>
+	<li>Java 6+ (<a
+		href="http://www.java.com/java/download/index.jsp?cid=jdp138566">www.java.com</a>)</li>
 	<li>5MB Disk Space</li>
 	<li>Automatic Updates Require Internet Connection</li>
 </ul>

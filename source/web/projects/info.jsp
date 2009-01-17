@@ -9,11 +9,11 @@
 				<td style="padding: 0px;">&nbsp;</td>
 			</tr>
 			<tr>
-				<td style="padding: 0px;"><a class="menuhead" href="projects/velocity">Downloads</a></td>
-			</tr>
-			<tr>
-				<td style="padding: 0px;"><a class="menuitem"
-					href="projects/velocity/update/velocity-install.jar">Velocity Installer</a></td>
+				<td><a href="http://java.com/java/download/index.jsp?cid=jdp138566"
+					target="_blank"> <img width="100" height="43" border="0"
+					style="margin: 8px;" alt="GetJava Download Button" title="GetJava"
+					src="http://java.com/en/img/everywhere/getjava_med.gif?cid=jdp138566">
+				</a></td>
 			</tr>
 		</table>
 		</td>
