@@ -9,11 +9,11 @@
 				<td style="padding: 0px;">&nbsp;</td>
 			</tr>
 			<tr>
-				<td style="padding: 0px;"><a class="menuhead" href="projects/velocity">Downloads</a></td>
+				<td style="padding: 0px;">Downloads</td>
 			</tr>
 			<tr>
 				<td style="padding: 0px;"><a class="menuitem"
-					href="projects/velocity/update/velocity-install.jar">Velocity Installer</a></td>
+					href="software/velocity/update/velocity-install.jar">Velocity Installer</a></td>
 			</tr>
 		</table>
 		</td>

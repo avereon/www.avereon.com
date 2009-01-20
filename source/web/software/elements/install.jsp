@@ -24,7 +24,7 @@ Elements.
 	<li>In the Guide tab select "Available Modules".</li>
 	<li>In the Modules tab click on the "Add Location" button.</li>
 	<li>In the New Module Location dialog enter the following:"<br />
-	<b>http://www.parallelsymmetry.com/projects/elements/update</b></li>
+	<b>http://www.parallelsymmetry.com/software/elements/update</b></li>
 	<li>In the New Module Location dialog click the "OK" button.</li>
 </ol>
 </body>

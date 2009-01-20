@@ -14,7 +14,7 @@
 					</tr>
 					<tr>
 						<td>
-						<div class="quote" style="white-space: nowrap;"><a href="projects/velocity/update/velocity-install.jar">Velocity Installer</a></div>
+						<div class="quote" style="white-space: nowrap;"><a href="software/velocity/update/velocity-install.jar">Velocity Installer</a></div>
 						</td>
 					</tr>
 				</table>

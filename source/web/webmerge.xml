@@ -5,7 +5,7 @@
 <webmerge>
 
 	<order>
-		<resource name="projects"/>
+		<resource name="software"/>
 		<resource name="download"/>
 		<resource name="documents"/>
 		<resource name="developers"/>

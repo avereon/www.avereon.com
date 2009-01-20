@@ -11,6 +11,7 @@
 
 	<exemptions>
 		<!-- exemption pattern="" actions="menu merge"/ -->
+		<exemption pattern="info.jsp" actions="menu merge"/>
 	</exemptions>
 
 	<template path="../template.html">

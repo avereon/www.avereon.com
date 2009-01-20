@@ -31,15 +31,15 @@ like mathematics, geometry, and physics.</p>
 
 <table class="layout">
 	<tr>
-		<td><a href="projects/velocity/index.jsp"><img
+		<td><a href="software/velocity/index.jsp"><img
 			style="vertical-align: middle;" src="images/velocity.64.png" width="64"
 			height="64" /></a></td>
 		<td>
 		<h2>Velocity</h2>
-		<a href="projects/velocity/install.jsp">Install</a></td>
+		<a href="software/velocity/install.jsp">Install</a></td>
 	</tr>
 </table>
-<p><a href="projects/velocity/index.jsp">Velocity</a> is an open,
+<p><a href="software/velocity/index.jsp">Velocity</a> is an open,
 lightweight application framework for the development of cross-platform
 applications. As a framework Velocity has no specific capabilities. It relies on
 modules to provide functionality. Several modules are available from
@@ -47,15 +47,15 @@ this web site.</p>
 
 <table class="layout">
 	<tr>
-		<td><a href="projects/elements/index.jsp"><img
+		<td><a href="software/elements/index.jsp"><img
 			style="vertical-align: middle;" src="images/elements.64.png" width="64"
 			height="64" /></a></td>
 		<td>
 		<h2>Elements</h2>
-		<a href="projects/elements/install.jsp">Install</a></td>
+		<a href="software/elements/install.jsp">Install</a></td>
 	</tr>
 </table>
-<p><a href="projects/elements/index.jsp">Elements</a> is a 3D computer aided
+<p><a href="software/elements/index.jsp">Elements</a> is a 3D computer aided
 engineering module for Velocity.It is intended for general engineering needs and
 features common 2D/3D entities and editing tools.</p>
 
