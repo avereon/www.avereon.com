@@ -10,13 +10,13 @@
 
 <html>
 <head>
-<title>Aircraft</title>
+<title>Model Aircraft</title>
 <meta name="keywords"
 	content="model airplanes, model aircraft" />
 </head>
 
 <body>
-<h1>Aircraft</h1>
+<h1>Model Aircraft</h1>
 </body>
 
 </html>

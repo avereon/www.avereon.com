@@ -9,7 +9,7 @@
 				<td style="padding: 0px;">&nbsp;</td>
 			</tr>
 			<tr>
-				<td style="padding: 0px;">Downloads</td>
+				<td class="menuhead">Downloads</td>
 			</tr>
 			<tr>
 				<td style="padding: 0px;"><a class="menuitem"
