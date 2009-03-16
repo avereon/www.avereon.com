@@ -36,7 +36,6 @@ like mathematics, geometry, and physics.</p>
 			height="64" /></a></td>
 		<td>
 		<h2>Velocity</h2>
-		<a href="software/velocity/install.jsp">Install</a></td>
 	</tr>
 </table>
 <p><a href="software/velocity/index.jsp">Velocity</a> is an open,
@@ -52,7 +51,6 @@ this web site.</p>
 			height="64" /></a></td>
 		<td>
 		<h2>Elements</h2>
-		<a href="software/elements/install.jsp">Install</a></td>
 	</tr>
 </table>
 <p><a href="software/elements/index.jsp">Elements</a> is a 3D computer aided
