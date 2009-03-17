@@ -18,12 +18,13 @@
 this software you must <a
 	href="http://java.com/java/download/index.jsp?cid=jdp138566">install Java
 on your computer</a>. If you have questions about Java or any related technologies
-please visit <a href="http://www.java.com">http://www.java.com</a>.
+please visit <a href="http://www.java.com">http://www.java.com</a>.</p>
+
 <table class="layout" width="100%">
 	<colgroup>
-		<col width="0%"/>
-		<col width="0%"/>
-		<col width="100%"/>
+		<col width="0%" />
+		<col width="0%" />
+		<col width="100%" />
 	</colgroup>
 	<tr>
 		<td><a href="velocity/index.jsp"><img style="vertical-align: middle;"
@@ -31,7 +32,9 @@ please visit <a href="http://www.java.com">http://www.java.com</a>.
 		<td>
 		<h2>Velocity</h2>
 		<a href="velocity/install.jsp">Install</a></td>
-		<td style="text-align: center;"><a href="velocity/update/velocity-install.jar"><img src="../images/velocity.download.png"/></a></td>
+		<td style="text-align: center;"><a
+			href="velocity/update/velocity-install.jar"><img
+			src="../images/velocity.download.png" /></a></td>
 	</tr>
 </table>
 <p><a href="velocity/index.jsp">Velocity</a> is an open, lightweight

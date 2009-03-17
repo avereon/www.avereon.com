@@ -11,7 +11,10 @@
 </head>
 
 <body>
-<a href="velocity/update/velocity-install.jar"><img src="../../images/velocity.download.png"/>Free Download</a>
+<p><a href="velocity/update/velocity-install.jar"> <img
+	src="../../images/velocity.download.png" /></a>
+</p>
+<div class="velocity-download">Free Download</div>
 
 <h1>Velocity Application Framework</h1>
 <p>Velocity is a lightweight application framework for the development of

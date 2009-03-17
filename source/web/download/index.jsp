@@ -16,12 +16,12 @@
 	<body>
 		<h1>Download</h1>
 		<table class="embedded" border="0" cellspacing="0" cellpadding="0" style="width: 80%">
-			<tr><th class="portal" style="text-align: left;" colspan="2">ClearCadd</td></tr>
+			<tr><th class="portal" style="text-align: left;" colspan="2">ClearCadd</th></tr>
 			<tr><td>ClearCadd Installer</td><td style="text-align: right;"><a href="/download/clearcadd-1.0-install.jar">Download</a></td></tr>
 		</table>
 		<p>&nbsp;</p>
 		<table class="embedded" border="0" cellspacing="0" cellpadding="0" style="width: 80%">
-			<tr><th class="portal" style="text-align: left;" colspan="2">ClearCadd Sample Models</td></tr>
+			<tr><th class="portal" style="text-align: left;" colspan="2">ClearCadd Sample Models</th></tr>
 			<tr><td>Cube (Compressed XML)</td><td style="text-align: right;"><a href="/download/cube.cmz">Download</a></td></tr>
 			<tr><td>Cube (Uncompressed XML)</td><td style="text-align: right;"><a href="/download/cube.cmx">Download</a></td></tr>
 		</table>

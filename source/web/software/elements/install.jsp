@@ -15,8 +15,8 @@
 <h1>Installing Elements</h1>
 <p>Elements is a module for the Velocity application. <a
 	href="../velocity/install.jsp">Please install Velocity</a> before installing
-Elements.
-<p>
+Elements.</p>
+
 <ol>
 	<li>Start Velocity if it is not already running.</li>
 	<li>On the menu bar select the Help menu.</li>
