@@ -240,9 +240,16 @@ div.quote {
 	margin: 0em 0em 0em 1em;
 }
 
-div.velocity-download {
+div.download {
 	position: relative;
-	top: 0px;
-	left: 0px;
-	color: #808080;
+	top: -86px;
+	left: 100px;
+	color: #FFFFFF;
+}
+
+span.download {
+	position: relative;
+	top: -64px;
+	left: -178px;
+	color: #C00000;
 }
