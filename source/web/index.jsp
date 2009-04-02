@@ -29,9 +29,13 @@
 model aircraft engineering and software development as well as related topics
 like mathematics, geometry, and physics.</p>
 
-<a href="velocity/update/velocity-install.jar"> <img
-	src="images/velocity.download.png" />
-	<div class="download"><span style="font-size: 200%;">Velocity</span><br/>Download Now</div></a>
+<ul class="download">
+	<li>
+	<a class="download-velocity" href="velocity/update/velocity-install.jar">
+	<span><strong>Velocity</strong><br/><em>Download Now</em></span>
+	</a>
+	</li>
+</ul>
 
 <!-- 
 <table class="layout">
@@ -46,16 +50,17 @@ like mathematics, geometry, and physics.</p>
 	</tr>
 </table>
  -->
- 
+
 <p><a href="software/velocity/index.jsp">Velocity</a> is an open,
 lightweight application framework for the development of cross-platform
 applications. As a framework Velocity has no specific capabilities. It relies on
-modules to provide functionality. Several modules are available from
-this web site.</p>
+modules to provide functionality. Several modules are available from this web
+site.</p>
 
 <a href="software/elements/index.jsp"> <img
-	src="images/elements.download.png" />
-	<span class="download"><span style="font-size: 200%;">Elements</span><br/>Install Now</span></a>
+	src="images/elements.download.png" /> <span class="download"><span
+	style="font-size: 200%;">Elements</span><br />
+Install Now</span></a>
 
 <!-- 
 <table class="layout">

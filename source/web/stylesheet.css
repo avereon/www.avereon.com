@@ -1,6 +1,4 @@
-/* Cascading Style Sheet for ParallelSymmetry Website */
-
-/* Colors
+/* Cascading Style Sheet for ParallelSymmetry Website */ /* Colors
 #000000
 #050B15
 #0B152B
@@ -14,9 +12,7 @@
 #B5BFD5
 #DADFEA
 #000000
-*/
-
-/* Greys
+*/ /* Greys
 #000000
 #202020
 #404040
@@ -27,7 +23,6 @@
 #E0E0E0
 #000000
 */
-
 html {
 	color: #202020;
 	background: #FFFFFF;
@@ -40,46 +35,104 @@ body {
 }
 
 /* Paragraphs */
-p { 
+p {
 	margin: 0px 20px 10px 20px;
 	text-align: justify;
 }
 
 /* Indented Areas */
-div.preformat { 
+div.preformat {
 	margin: 10px 20px 10px 40px;
 	font-size: 100%;
 	font-family: "Courier New", monospace;
 	white-space: nowrap;
 }
 
-ul { 
+ul {
 	margin: 10px 20px 10px 0px;
 	text-align: justify;
 }
 
 /* Headers */
-h1 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
-h2 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
-h3 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
-h4 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
-h5 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
-h6 { margin: 10px 10px; padding: 0px 5px; color: #202020 }
+h1 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
 
-td h1 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
-td h2 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
-td h3 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
-td h4 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
-td h5 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
-td h6 { margin: 0px 0px; padding: 0px 0px; color: #202020 }
+h2 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
 
-dl { 
-	margin-left: 10px; 
+h3 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+h4 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+h5 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+h6 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+td h1 {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	color: #202020
+}
+
+td h2 {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	color: #202020
+}
+
+td h3 {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	color: #202020
+}
+
+td h4 {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	color: #202020
+}
+
+td h5 {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	color: #202020
+}
+
+td h6 {
+	margin: 0px 0px;
+	padding: 0px 0px;
+	color: #202020
+}
+
+dl {
+	margin-left: 10px;
 	font-weight: bold;
 }
 
-dd { 
-	margin-left: 20px; 
+dd {
+	margin-left: 20px;
 	font-weight: normal;
 }
 
@@ -100,9 +153,8 @@ a:link, a:visited {
 a:hover, a:active {
 	color: #000000;
 }
- */
-/* Menu Header Links */
-a.menuhead, a.menuhead:link, a.menuhead:visited {
+ */ /* Menu Header Links */
+a.menuhead,a.menuhead:link,a.menuhead:visited {
 	width: 180px;
 	font-weight: bold;
 	color: #000000;
@@ -111,7 +163,7 @@ a.menuhead, a.menuhead:link, a.menuhead:visited {
 	display: block;
 }
 
-a.menuhead:hover, a.menuhead:active {
+a.menuhead:hover,a.menuhead:active {
 	width: 180px;
 	font-weight: bold;
 	color: #000000;
@@ -122,7 +174,7 @@ a.menuhead:hover, a.menuhead:active {
 }
 
 /* Menu Items */
-a.menuitem, a.menuitem:link, a.menuitem:visited {
+a.menuitem,a.menuitem:link,a.menuitem:visited {
 	width: 180px;
 	color: #000000;
 	padding: 1px 1px 1px 1px;
@@ -130,7 +182,7 @@ a.menuitem, a.menuitem:link, a.menuitem:visited {
 	display: block;
 }
 
-a.menuitem:hover, a.menuitem:active {
+a.menuitem:hover,a.menuitem:active {
 	width: 180px;
 	color: #000000;
 	padding: 0px 0px 0px 0px;
@@ -140,13 +192,13 @@ a.menuitem:hover, a.menuitem:active {
 }
 
 /* Footer Anchors*/
-a.footer:link, a.footer:visited {
+a.footer:link,a.footer:visited {
 	font-size: 70%;
 	font-weight: normal;
 	color: #202020;
 }
 
-a.footer:hover, a.footer:active {
+a.footer:hover,a.footer:active {
 	font-size: 70%;
 	font-weight: normal;
 	color: #202020;
@@ -173,7 +225,7 @@ img.vdivider {
 }
 
 /* Tables */
-table { 
+table {
 	margin: 10px 20px;
 }
 
@@ -182,7 +234,7 @@ th {
 }
 
 tr.header {
-	background: url(images/web.banner.background.png) repeat-x; 
+	background: url(images/web.banner.background.png) repeat-x;
 	vertical-align: top;
 }
 
@@ -192,7 +244,7 @@ td {
 
 td.menu {
 	padding: 0px;
-	background-image: url(images/web.menu.png); 
+	background-image: url(images/web.menu.png);
 	background-repeat: no-repeat;
 }
 
@@ -205,7 +257,7 @@ td.menuhead {
 	display: block;
 }
 
-table.layout { 
+table.layout {
 	margin: 0px;
 }
 
@@ -221,11 +273,11 @@ table.embedded {
 
 table.portal {
 	margin: 0px;
-	width: 100%; 
+	width: 100%;
 	border: 1px solid #204080;
 }
 
-th.portal { 
+th.portal {
 	background: #90A0C0;
 	border-bottom: 1px solid #204080;
 }
@@ -240,16 +292,24 @@ div.quote {
 	margin: 0em 0em 0em 1em;
 }
 
-div.download {
-	position: relative;
-	top: -86px;
-	left: 100px;
-	color: #FFFFFF;
+/* Downloads */
+ul.download {
+	
 }
 
-span.download {
-	position: relative;
-	top: -64px;
-	left: -178px;
-	color: #C00000;
+ul.download li {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+a.download-velocity {
+	background: transparent url(images/velocity.download.png) no-repeat;
+	display: block;
+	width: 288px;
+	height: 96px;
+}
+
+ul.download li a.download-velocity span {
+	padding: 0px 0px 0px 96px;
 }
