@@ -12,6 +12,8 @@
 </head>
 
 <body>
+<h1>Update Address</h1>
+<p><strong>http://www.parallelsymmetry.com/software/elements/update</strong></p>
 <h1>Installing Elements</h1>
 <p>Elements is a module for the Velocity application. <a
 	href="../velocity/install.jsp">Please install Velocity</a> before installing

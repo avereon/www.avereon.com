@@ -11,21 +11,7 @@
 
 	<exemptions>
 		<!-- exemption pattern="" actions="menu merge"/ -->
-		<exemption pattern="info.jsp" actions="menu merge"/>
 	</exemptions>
-
-	<template path="../template.html">
-		<parameter key="menu-base" path="../menu.jsp"/>
-		<parameter key="header" path="../header.jsp"/>
-		<parameter key="footer" path="../footer.jsp"/>
-		<parameter key="news" path="../news.jsp"/>
-		<parameter key="info" path="info.jsp"/>
-
-		<parameter key="menu-width" value="200px"/>
-		<parameter key="menu-show-with-base" value="false"/>
-		<parameter key="menu-head-anchor-class" value="menuhead"/>
-		<parameter key="menu-item-anchor-class" value="menuitem"/>
-	</template>
 
 </webmerge>
 

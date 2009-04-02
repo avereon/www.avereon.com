@@ -36,56 +36,56 @@ body {
 
 /* Paragraphs */
 p {
-	margin: 0px 20px 10px 20px;
+	margin: 0px 10px 5px 10px;
 	text-align: justify;
 }
 
 /* Indented Areas */
 div.preformat {
-	margin: 10px 20px 10px 40px;
+	margin: 5px 10px 5px 20px;
 	font-size: 100%;
 	font-family: "Courier New", monospace;
 	white-space: nowrap;
 }
 
 ul {
-	margin: 10px 20px 10px 0px;
+	margin: 5px 10px 5px 0px;
 	text-align: justify;
 }
 
 /* Headers */
 h1 {
-	margin: 10px 10px;
+	margin: 5px 5px;
 	padding: 0px 5px;
 	color: #202020
 }
 
 h2 {
-	margin: 10px 10px;
+	margin: 5px 5px;
 	padding: 0px 5px;
 	color: #202020
 }
 
 h3 {
-	margin: 10px 10px;
+	margin: 5px 5px;
 	padding: 0px 5px;
 	color: #202020
 }
 
 h4 {
-	margin: 10px 10px;
+	margin: 5px 5px;
 	padding: 0px 5px;
 	color: #202020
 }
 
 h5 {
-	margin: 10px 10px;
+	margin: 5px 5px;
 	padding: 0px 5px;
 	color: #202020
 }
 
 h6 {
-	margin: 10px 10px;
+	margin: 5px 5px;
 	padding: 0px 5px;
 	color: #202020
 }
@@ -294,7 +294,8 @@ div.quote {
 
 /* Downloads */
 ul.download {
-	
+	margin: 0px 0px 0px -50px;
+	text-align: left;
 }
 
 ul.download li {
@@ -303,13 +304,22 @@ ul.download li {
 	padding: 0;
 }
 
-a.download-velocity {
-	background: transparent url(images/velocity.download.png) no-repeat;
+a.download {
+	color: #FFFFFF;
 	display: block;
 	width: 288px;
 	height: 96px;
 }
 
-ul.download li a.download-velocity span {
-	padding: 0px 0px 0px 96px;
+a.download span {
+	display: block;
+	padding: 20px 0px 0px 96px;
+}
+
+a.velocity {
+	background: transparent url(images/velocity.download.png) no-repeat;
+}
+
+a.elements {
+	background: transparent url(images/elements.download.png) no-repeat;
 }
