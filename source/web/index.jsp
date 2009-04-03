@@ -23,14 +23,12 @@
 </head>
 
 <body>
-<h1>Wondering Where to Start?</h1>
-
-<p>How about right here!</p>
+<h1>The Place to Start</h1>
 
 <ul class="download">
 	<li>
 	<a class="download velocity" href="software/velocity/update/velocity-install.jar">
-	<span><strong>Velocity</strong><br/><em>Download Now</em></span>
+	<span class="download"><span>Velocity</span><em>Download Now</em></span>
 	</a>
 	</li>
 </ul>
@@ -44,7 +42,7 @@ site.</p>
 <ul class="download">
 	<li>
 	<a class="download elements" href="software/elements/install.jsp">
-	<span><strong>Elements</strong><br/><em>Install Now</em></span>
+	<span class="download"><span>Elements</span><em>Install Now</em></span>
 	</a>
 	</li>
 </ul>

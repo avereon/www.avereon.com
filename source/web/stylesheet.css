@@ -248,15 +248,6 @@ td.menu {
 	background-repeat: no-repeat;
 }
 
-td.menuhead {
-	width: 180px;
-	font-weight: bold;
-	color: #000000;
-	padding: 1px 1px 1px 1px;
-	margin: 0px 0px 0px 10px;
-	display: block;
-}
-
 table.layout {
 	margin: 0px;
 }
@@ -294,14 +285,10 @@ div.quote {
 
 /* Downloads */
 ul.download {
-	margin: 0px 0px 0px 0px;
-	text-align: left;
-}
-
-ul.download li {
-	list-style-type: none;
 	margin: 0;
 	padding: 0;
+	text-align: left;
+	list-style-type: none;
 }
 
 a.download {
@@ -313,7 +300,14 @@ a.download {
 
 a.download span {
 	display: block;
+}
+
+a span.download {
 	padding: 20px 0px 0px 96px;
+}
+
+a span.download span {
+	font-size: 1.5em;
 }
 
 a.velocity {
@@ -323,3 +317,12 @@ a.velocity {
 a.elements {
 	background: transparent url(images/elements.download.png) no-repeat;
 }
+
+a.velocity span {
+	color: #FFFFFF;
+}
+
+a.elements span {
+	color: #FFFFFF;
+}
+

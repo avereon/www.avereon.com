@@ -29,19 +29,18 @@ commonly called a coordinate system, to locate and orient shapes relative to one
 another. There are several coordinate system options. The one most commonly used
 is the <a href="http://en.wikipedia.org/wiki/Cartesian_coordinate_system">Cartesian
 coordinate system</a>, named after the mathematician <a
-	href="http://en.wikipedia.org/wiki/Ren%C3%A9_Descartes">René Descartes</a>.
+	href="http://en.wikipedia.org/wiki/Ren%C3%A9_Descartes">Ren%C3%A9 Descartes</a>.
 This system chooses a point in space to use as an origin and three perpendicular
 axes for measurement relative to the origin. This way any location in space can
 be described by three numbers, referred to as the x, y, and z coordinates.</p>
-
-
-
 <h2>Shapes</h2>
 <p>Shapes can be categorized into four simple groups: points, curves,
 surfaces, and solids. Curves include lines, circles, ellipses, arcs, and other
 curves like splines including Bezier curves and NURBs. Surfaces include planar
 shapes like planes, discs, patches, and even surfaces of solid objects like
 spheres. Solids include solid objects like spheres, cones, blocks, and anything
-that is solid inside.</p>
+that is solid inside. All shapes can generally be described with parametric equations. Curves
+are described with single parameter equation, surfaces with a two parameter
+equation, and solids with a three parameter equation.</p>
 </body>
 </html>

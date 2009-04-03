@@ -18,10 +18,8 @@ the complexity or non-existence of generalized equations to calculate these
 intersections. Calculating intersections is therefore more easily done
 numerically, using <a href="http://en.wikipedia.org/wiki/Parametric_equation">parametric
 equations</a>, instead of analytically.</p>
-<p>All forms can generally be described with parametric equations. Curves
-are describe with single parameter equation, surfaces with a two parameter
-equation, and solids with a three parameter equation.</p>
-
+<h2>Line Intersections</h2>
+<p></p>
 
 </body>
 </html>

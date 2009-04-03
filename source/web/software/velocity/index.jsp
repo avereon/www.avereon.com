@@ -16,7 +16,7 @@
 <ul class="download">
 	<li>
 	<a class="download velocity" href="update/velocity-install.jar">
-	<span><strong>Velocity</strong><br/><em>Download Now</em></span>
+	<span class="download"><span>Velocity</span><em>Download Now</em></span>
 	</a>
 	</li>
 </ul>

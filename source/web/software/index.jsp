@@ -17,7 +17,7 @@
 <h1>Use Parallel Symmetry Software</h1>
 <ul class="download">
 	<li><a class="download velocity"
-		href="velocity/update/velocity-install.jar"> <span><strong>Velocity</strong><br />
+		href="velocity/update/velocity-install.jar"> <span class="download"><span>Velocity</span>
 	<em>Download Now</em></span> </a></li>
 </ul>
 
@@ -27,7 +27,7 @@ framework Velocity has no specific capabilities. It relies on modules to provide
 functionality. Several modules are available from this web site.</p>
 
 <ul class="download">
-	<li><a class="download elements" href="elements/install.jsp"> <span><strong>Elements</strong><br />
+	<li><a class="download elements" href="elements/install.jsp"> <span class="download"><span>Elements</span>
 	<em>Install Now</em></span> </a></li>
 </ul>
 
@@ -39,7 +39,8 @@ features common 2D/3D entities and editing tools.</p>
 <a href="http://java.com/java/download/index.jsp?cid=jdp138566" target="_blank">
 <img width="100" height="43" border="0" style="margin: 8px;"
 	alt="GetJava Download Button" title="GetJava"
-	src="http://java.com/en/img/everywhere/getjava_med.gif?cid=jdp138566"></a>
+	src="http://java.com/en/img/everywhere/getjava_med.gif?cid=jdp138566"/>
+</a>
 </p>
 
 <p>The software on this site is built using Java technology. In order to use
