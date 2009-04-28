@@ -18,8 +18,5 @@ the complexity or non-existence of generalized equations to calculate these
 intersections. Calculating intersections is therefore more easily done
 numerically, using <a href="http://en.wikipedia.org/wiki/Parametric_equation">parametric
 equations</a>, instead of analytically.</p>
-<h2>Line Intersections</h2>
-<p></p>
-
 </body>
 </html>

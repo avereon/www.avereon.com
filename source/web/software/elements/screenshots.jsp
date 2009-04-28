@@ -22,12 +22,13 @@
 	<tr>
 		<td><a href="../../images/screenshots/elements.png"><img
 			src="../../images/screenshots/elements.thumb.png" /></a></td>
-		<td />
+		<td><a href="../../images/screenshots/elements.plane.png"><img
+			src="../../images/screenshots/elements.plane.thumb.png" /></a></td>
 		<td />
 	</tr>
 	<tr>
 		<td>The elements module showing a simple hyper-cube model.</td>
-		<td />
+		<td>The elements module showing a model airplane.</td>
 		<td />
 	</tr>
 </table>
