@@ -5,9 +5,10 @@
 <webmerge>
 
 	<order>
-		<resource name="design"/>
-		<resource name="build"/>
-		<resource name="fly"/>
+		<!-- 
+		<resource name="velocity"/>
+		<resource name="elements"/>
+		-->
 	</order>
 
 	<exemptions>

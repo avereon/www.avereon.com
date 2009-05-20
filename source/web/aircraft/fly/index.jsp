@@ -10,8 +10,8 @@
 
 <html>
 <head>
-<title>Model Aircraft</title>
-<meta name="keywords" content="model, airplane, aircraft" />
+<title>Model Aircraft Flying</title>
+<meta name="keywords" content="model, airplane, aircraft, flying" />
 </head>
 
 <body>
