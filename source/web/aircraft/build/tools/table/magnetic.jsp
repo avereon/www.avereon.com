@@ -25,8 +25,8 @@ powder coated steel. It comes complete with four electrical outlets for
 convenience when working with power tools.</p>
 <table style="text-align: center;">
 	<tr>
-		<td><a href="images/frame.jpg"><img src="images/frame.thumb.jpg" /></a></td>
-		<td><a href="images/table.jpg"><img src="images/table.thumb.jpg" /></a></td>
+		<td><a href="../../../../images/frame.jpg"><img src="../../../../images/frame.thumb.jpg" /></a></td>
+		<td><a href="../../../../images/table.jpg"><img src="../../../../images/table.thumb.jpg" /></a></td>
 	</tr>
 	<tr>
 		<td>The table frame without the top.</td>
