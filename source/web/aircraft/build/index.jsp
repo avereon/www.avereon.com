@@ -10,13 +10,20 @@
 
 <html>
 <head>
-<title>Tools</title>
+<title>Building</title>
 <meta name="keywords" content="model, airplane, aircraft, construction" />
 </head>
 
 <body>
-<h1>Model Aircraft Construction Tools</h1>
+<h1>Model Aircraft Construction</h1>
 <p></p>
+<h2>General Tools</h2>
+<ul>
+	<li>Tools</li>
+	<li>Technique</li>
+	<li>Materials</li>
+</ul>
+
 </body>
 
 </html>

@@ -23,8 +23,8 @@ finishing assembly required. Some people enjoy the craft of building model
 aircraft and will purchase kits that need to be completely assembled. There is
 great satisfaction in completing and flying a model you have constructed. There
 are even fewer people that take on the challenge of designing their own
-aircraft. The chance of first-time success designing, building, and flying your
-own model is quite small. But don't let that discourage you. There is a great 
+aircraft. The chance of first-time success, designing, building, and flying your
+own model, is quite small. But don't let that discourage you. There is a great 
 sense of accomplishment successfully flying your own aircraft designs.</p>
 </body>
 
