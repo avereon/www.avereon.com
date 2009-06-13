@@ -28,6 +28,7 @@
 <ul>
 	<li>Sanding Disc</li>
 	<li>Sanding Belt</li>
+	<li>Sticker Machine</li>
 </ul>
 
 </body>

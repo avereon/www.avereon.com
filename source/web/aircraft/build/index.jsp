@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<h1>Model Aircraft Construction</h1>
+<h1>Building Model Aircraft</h1>
 <p></p>
 <h2>General Tools</h2>
 <ul>
