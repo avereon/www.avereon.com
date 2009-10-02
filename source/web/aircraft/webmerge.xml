@@ -12,6 +12,7 @@
 
 	<exemptions>
 		<!-- exemption pattern="" actions="menu merge"/ -->
+		<exemption pattern="vortex" actions="menu"/>
 	</exemptions>
 
 </webmerge>
