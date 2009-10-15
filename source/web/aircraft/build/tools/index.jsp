@@ -17,18 +17,23 @@
 <body>
 <h1>Model Aircraft Construction Tools</h1>
 <p></p>
-<h2>General Tools</h2>
+<h2>Basic Tools</h2>
 <ul>
 	<li>Table</li>
 	<li>Sand Paper</li>
 	<li>Hobby Knife</li>
 </ul>
 
-<h2>Advanced Tools</h2>
+<h2>Power Tools</h2>
 <ul>
 	<li>Sanding Disc</li>
 	<li>Sanding Belt</li>
 	<li>Sticker Machine</li>
+</ul>
+
+<h2>Specialty Tools</h2>
+<ul>
+	<li>Plank Strip Cutter</li>
 </ul>
 
 </body>
