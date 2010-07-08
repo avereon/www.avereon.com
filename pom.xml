@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.parallelsymmetry</groupId>
+		<artifactId>pom-parent-signed</artifactId>
+		<version>1.0.2-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.parallelsymmetry</groupId>
+	<artifactId>website</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>Parallel Symmetry Website</name>
+	<description>The Parallel Symmetry website.</description>
+	<url>http://www.parallelsymmetry.com/</url>
+	<inceptionYear>2008</inceptionYear>
+
+	<scm>
+		<url>http://svn.parallelsymmetry.com/websites/www.parallelsymmetry.com</url>
+		<connection>scm:svn:http://svn.parallelsymmetry.com/websites/www.parallelsymmetry.com</connection>
+	</scm>
+
+	<repositories>
+		<repository>
+			<id>parallelsymmetry</id>
+			<name>ParallelSymmetry</name>
+			<url>http://mvn.parallelsymmetry.com/release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>parallelsymmetry-snapshot</id>
+			<name>ParallelSymmetry Snapshot</name>
+			<url>http://mvn.parallelsymmetry.com/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.parallelsymmetry</groupId>
+			<artifactId>utility</artifactId>
+			<version>1.0.4-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<distributionManagement />
+	
+	<organization>
+		<name>Parallel Symmetry</name>
+		<url>http://www.parallelsymmetry.com/</url>
+	</organization>
+
+	<build>
+
+		<finalName>parallelsymmetry</finalName>
+
+		<resources>
+			<resource>
+				<directory>source/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<configuration>
+					<url>http://www.parallelsymmetry.com/manager</url>
+					<server>parallelsymmetry</server>
+					<path>/</path>
+					<warFile>target/${project.build.finalName}.war</warFile>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>
+
