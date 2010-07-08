@@ -78,7 +78,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<url>http://www.parallelsymmetry.com/manager</url>
-					<server>parallelsymmetry</server>
+					<server>parallelsymmetry-tomcat</server>
 					<path>/</path>
 					<warFile>target/${project.build.finalName}.war</warFile>
 				</configuration>

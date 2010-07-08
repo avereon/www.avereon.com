@@ -23,7 +23,7 @@
 </head>
 
 <body>
-<h1>The Place to Start</h1>
+<h1>Enjoy Life</h1>
 
 <ul class="download">
 	<li>
