@@ -19,7 +19,7 @@
 </ul>
 
 <p>Escape is a lightweight application framework for the development of cross-platform applications based on <a
-	href="http://java.com/java/download/index.jsp?cid=jdp138566">Java technology</a>. The following features are included
+	href="http://java.com/java/download/index.jsp?cid=jdp138566">Java</a> technology. The following features are included
 in the framework:</p>
 <ul>
 	<li>Workarea Management - Provides a powerful workarea user interface that is easily customized by the user. The
