@@ -5,6 +5,7 @@
 <webmerge>
 
 	<order>
+		<resource name="escape"/>
 		<resource name="velocity"/>
 		<resource name="elements"/>
 	</order>

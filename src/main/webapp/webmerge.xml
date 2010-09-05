@@ -6,11 +6,8 @@
 
 	<order>
 		<resource name="software"/>
-		<resource name="download"/>
-		<resource name="documents"/>
-		<resource name="developers"/>
-		<resource name="support.html"/>
-		<resource name="search.html"/>
+		<resource name="geometry"/>
+		<resource name="aircraft"/>
 	</order>
 
 	<exemptions>
