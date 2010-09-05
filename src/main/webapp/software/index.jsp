@@ -16,6 +16,17 @@
 <body>
 <h1>Use Parallel Symmetry Software</h1>
 <ul class="download">
+	<li><a class="download escape"
+		href="escape/index.jsp"> <span class="download"><span>Escape</span>
+	<em>View Project</em></span> </a></li>
+</ul>
+
+<p><a href="escape/index.jsp">Escape</a> is an open, lightweight application 
+framework for the development of cross-platform applications. As a framework, 
+Escape relies on modules to provide specific functionality. Several modules are 
+available from this web site.</p>
+
+<ul class="download">
 	<li><a class="download velocity"
 		href="velocity/update/velocity-install.jar"> <span class="download"><span>Velocity</span>
 	<em>Download Now</em></span> </a></li>
@@ -23,7 +34,7 @@
 
 <p><a href="velocity/index.jsp">Velocity</a> is an open, lightweight
 application framework for the development of cross-platform applications. As a
-framework Velocity has no specific capabilities. It relies on modules to provide
+framework, Velocity has no specific capabilities. It relies on modules to provide
 functionality. Several modules are available from this web site.</p>
 
 <ul class="download">

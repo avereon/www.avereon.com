@@ -251,18 +251,27 @@ a span.download span {
 	font-size: 1.5em;
 }
 
+a.elements {
+	background: transparent url(images/elements.download.png) no-repeat;
+}
+
+a.escape {
+	background: transparent url(images/escape.download.png) no-repeat;
+}
+
 a.velocity {
 	background: transparent url(images/velocity.download.png) no-repeat;
 }
 
-a.elements {
-	background: transparent url(images/elements.download.png) no-repeat;
+a.elements span {
+	color: #FFFFFF;
+}
+
+a.escape span {
+	color: #FFFFFF;
 }
 
 a.velocity span {
 	color: #FFFFFF;
 }
 
-a.elements span {
-	color: #FFFFFF;
-}
