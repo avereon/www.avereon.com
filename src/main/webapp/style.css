@@ -98,7 +98,6 @@ a:hover, a:active {
 /* Menus */
 div.menu {
 	width: 180px;
-	border: 1px solid #204080;
 	margin: 0px 0px 10px 10px;
 }
 
@@ -113,7 +112,6 @@ div.menuitem {
 
 a.menulink {
 	color: #000000;
-	padding: 1px 1px 1px 6px;
 	padding: 0px 0px 0px 5px;
 	border: 1px solid transparent;
 	display: block;
