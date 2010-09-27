@@ -1,6 +1,6 @@
 <!-- After updating the docBase to the right location add this file to $TOMCAT_HOME/conf/Catalina/localhost -->
-<Context path="/parallelsymmetry" docBase="/home/mvsoder/Projects/parasymm/websites/www.parallelsymmetry.com/trunk/src/main/webapp" debug="0" reloadable="true" cachingAllowed="false"/>
+<Context path="/parallelsymmetry" docBase="/home/mvsoder/Projects/parasymm/websites/www.parallelsymmetry.com/trunk/target/parallelsymmetry" debug="1" reloadable="true" cachingAllowed="false"/>
 
 <!-- 
-<Context path="/parasymm" docBase="C:/Users/soderquistmv/Projects/parasymm/websites/www.parallelsymmetry.com/trunk/target/parallelsymmetry/" debug="1" reloadable="true" cachingAllowed="false" antiJARLocking="true" antiResourceLocking="true"/>
+<Context path="/parasymm" docBase="C:/Users/soderquistmv/Projects/parasymm/websites/www.parallelsymmetry.com/trunk/target/parallelsymmetry" debug="1" reloadable="true" cachingAllowed="false" antiJARLocking="true" antiResourceLocking="true"/>
 -->

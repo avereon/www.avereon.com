@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE webmerge PUBLIC "//WebMerge/WebMerge Configuration 1.1/EN" "webmerge.dtd">
+<!DOCTYPE terrace PUBLIC "//Parallel Symmetry Terrace/Terrace Configuration 1.1/EN" "terrace.dtd">
 
-<webmerge>
+<terrace>
 
 	<order>
 		<item name="software"/>
@@ -18,6 +18,7 @@
 		<exemption pattern="menu.jsp" actions="all"/>
 		<exemption pattern="info.jsp" actions="all"/>
 		<exemption pattern="news.jsp" actions="all"/>
+		<exemption pattern="*.jsp" actions="menu"/>
 		<exemption pattern="*.jnlp" actions="menu merge"/>
 		<exemption pattern="*.css" actions="menu merge"/>
 		<exemption pattern="*.js" actions="menu merge"/>
@@ -42,7 +43,7 @@
 	menu-item-anchor-class - The stylesheet class for menu item anchors.
 	-->
 	<template path="template.html">
-		<parameter key="menu.dynamic.root" value="false"/>
+		<parameter key="menu.dynamic.root" value="true"/>
 
 		<parameter key="menu" path="menu.jsp"/>
 		<parameter key="header" path="header.jsp"/>
@@ -51,4 +52,4 @@
 		<parameter key="info" path="info.jsp"/>
 	</template>
 
-</webmerge>
+</terrace>

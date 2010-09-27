@@ -94,42 +94,46 @@ a:link, a:visited {
 a:hover, a:active {
 	color: #000000;
 }
- */ /* Menu Header Links */
-a.menuhead,a.menuhead:link,a.menuhead:visited {
+ */
+/* Menus */
+div.menu {
 	width: 180px;
+	border: 1px solid #204080;
+	margin: 0px 0px 10px 10px;
+}
+
+div.menuhead {
 	font-weight: bold;
+	margin: 2px;
+}
+
+div.menuitem {
+	margin: 2px;
+}
+
+a.menulink {
 	color: #000000;
-	padding: 1px 1px 1px 1px;
-	margin: 0px 0px 0px 10px;
+	padding: 1px 1px 1px 6px;
+	padding: 0px 0px 0px 5px;
+	border: 1px solid transparent;
 	display: block;
 }
 
-a.menuhead:hover,a.menuhead:active {
-	width: 180px;
-	font-weight: bold;
-	color: #000000;
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 0px 10px;
-	border: 1px solid #202020;
-	display: block;
+a.menulink:hover,a.menulink:active {
+	padding: 0px 0px 0px 5px;
+	border: 1px solid #C0C0C0;
 }
 
-/* Menu Items */
-a.menuitem,a.menuitem:link,a.menuitem:visited {
-	width: 180px;
-	color: #000000;
-	padding: 1px 1px 1px 1px;
-	margin: 0px 0px 0px 10px;
-	display: block;
+a.menufold {
+	background-image: url(images/folder.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 
-a.menuitem:hover,a.menuitem:active {
-	width: 180px;
-	color: #000000;
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 0px 10px;
-	border: 1px solid #202020;
-	display: block;
+a.menufold:hover,a.menuhead:active {
+	background-image: url(images/folder.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 
 /* Footer Anchors*/
