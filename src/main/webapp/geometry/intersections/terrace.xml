@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE terrace PUBLIC "//Parallel Symmetry Terrace/Terrace Configuration 1.1/EN" "terrace.dtd">
+
+<terrace>
+
+	<order>
+		<item name="line.line.jsp"/>
+	</order>
+
+</terrace>

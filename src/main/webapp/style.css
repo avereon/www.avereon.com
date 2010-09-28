@@ -12,7 +12,8 @@
 #B5BFD5
 #DADFEA
 #000000
-*/ /* Greys
+
+Greys
 #000000
 #202020
 #404040
@@ -36,7 +37,7 @@ body {
 
 /* Paragraphs */
 p {
-	margin: 0px 10px 5px 10px;
+	margin: 10px 20px;
 	text-align: justify;
 }
 
@@ -54,15 +55,39 @@ ul {
 }
 
 /* Headers */
-h1,h2,h3,h4,h5,h6 {
-	margin: 5px 5px;
+h1 {
+	margin: 0px 10px 10px 10px;
+	padding: 0px 5px;
+	color: #202020;
+}
+
+h2 {
+	margin: 10px 10px;
 	padding: 0px 5px;
 	color: #202020
 }
 
-td h1,h2,h2,h3,h4,h5,h6 {
-	margin: 0px 0px;
-	padding: 0px 0px;
+h3 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+h4 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+h5 {
+	margin: 10px 10px;
+	padding: 0px 5px;
+	color: #202020
+}
+
+h6 {
+	margin: 10px 10px;
+	padding: 0px 5px;
 	color: #202020
 }
 
@@ -86,15 +111,6 @@ a {
 	text-decoration: none;
 }
 
-/*
-a:link, a:visited {
-	color: #202020;
-}
-
-a:hover, a:active {
-	color: #000000;
-}
- */
 /* Menus */
 div.menu {
 	width: 180px;

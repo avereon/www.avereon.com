@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE webmerge PUBLIC "//WebMerge/WebMerge Configuration 1.1/EN" "webmerge.dtd">
+<!DOCTYPE terrace PUBLIC "//Parallel Symmetry Terrace/Terrace Configuration 1.1/EN" "terrace.dtd">
 
-<webmerge>
+<terrace>
 
 	<order>
 	</order>
@@ -11,5 +11,5 @@
 		<exemption pattern="clearform" actions="menu merge"/>
 	</exemptions>
 
-</webmerge>
+</terrace>
 

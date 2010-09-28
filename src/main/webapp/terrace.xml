@@ -15,6 +15,9 @@
 		<exemption pattern="copyright.html" actions="menu"/>
 		<exemption pattern="results.html" actions="menu"/>
 		<exemption pattern="upgrade.html" actions="menu merge"/>
+		<exemption pattern="download" actions="all"/>
+		<exemption pattern="search.html" actions="all"/>
+		<exemption pattern="support.html" actions="all"/>
 		<exemption pattern="menu.jsp" actions="all"/>
 		<exemption pattern="info.jsp" actions="all"/>
 		<exemption pattern="news.jsp" actions="all"/>
