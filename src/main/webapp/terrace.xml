@@ -4,11 +4,11 @@
 
 <terrace>
 
-	<order>
-		<item name="software"/>
-		<item name="geometry"/>
-		<item name="aircraft"/>
-	</order>
+	<links>
+		<link name="software"/>
+		<link name="geometry"/>
+		<link name="aircraft"/>
+	</links>
 
 	<exemptions>
 		<exemption pattern="images" actions="menu"/>

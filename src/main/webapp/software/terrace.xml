@@ -4,11 +4,11 @@
 
 <terrace>
 
-	<order>
-		<item name="escape"/>
-		<item name="velocity"/>
-		<item name="elements"/>
-	</order>
+	<links>
+		<link name="escape"/>
+		<link name="velocity"/>
+		<link name="elements"/>
+	</links>
 
 </terrace>
 

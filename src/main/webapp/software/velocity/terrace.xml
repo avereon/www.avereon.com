@@ -4,8 +4,12 @@
 
 <terrace>
 
+	<links>
+		<link name="install.jsp"/>
+	</links>
+
 	<exemptions>
-		<exemption pattern="clearform" actions="menu merge"/>
+		<exemption pattern="*.htmlf" actions="menu"/>
 	</exemptions>
 
 </terrace>

@@ -4,9 +4,9 @@
 
 <terrace>
 
-	<order>
-		<item name="modeling.jsp"/>
-		<item name="intersections.jsp"/>
-	</order>
+	<links>
+		<link name="modeling.jsp"/>
+		<link name="intersections.jsp"/>
+	</links>
 
 </terrace>

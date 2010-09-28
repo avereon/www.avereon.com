@@ -4,10 +4,10 @@
 
 <terrace>
 
-	<order>
-		<item name="design" />
-		<item name="build" />
-		<item name="fly" />
-	</order>
+	<links>
+		<link name="design" />
+		<link name="build" />
+		<link name="fly" />
+	</links>
 
 </terrace>

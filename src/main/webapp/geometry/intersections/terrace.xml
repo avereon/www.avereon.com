@@ -4,8 +4,8 @@
 
 <terrace>
 
-	<order>
-		<item name="line.line.jsp"/>
-	</order>
+	<links>
+		<link name="line.line.jsp"/>
+	</links>
 
 </terrace>
