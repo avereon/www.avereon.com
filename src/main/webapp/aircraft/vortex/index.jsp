@@ -50,6 +50,19 @@ been formed and <a href="../../images/vortex/CIMG3617.1.JPG">construction
 began</a>. By Friday, 11 Sep 2009 the major parts of the aircraft had been assembled
 and the detail work was started. (Note: I took the week, 7 Sep to 12 Sep, off
 from work.)</p>
+<p>The planking work took much longer than anticipated. It took two more
+months to complete the planking. I finally completed the aircraft on Saturday,
+21 Nov 2009. But by this time the temperatures had dropped and the snow had set
+in. I would have to wait until spring for the maiden flight.</p>
+<p>In early April the temperatures finally warmed up enough to melt off the
+snow and dry out the flying field enough for a maiden flight. On Thursday, 8
+April 2010, the Vortex flew for the first time. The maiden flight was rough for
+two reasons. First, the elevator trim was way off and it took me a while to get
+it settled out. The other reason was I had programmed the control to use full
+exponential movement on the control surfaces. That was a mistake since I had
+never flown that way before and had no idea what it would be like. Fortunately,
+I landed the plane safely and even had the courage for a second flight that also
+ended successfully.</p>
 </body>
 
 </html>
