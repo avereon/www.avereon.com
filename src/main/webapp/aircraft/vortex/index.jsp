@@ -63,6 +63,10 @@ exponential movement on the control surfaces. That was a mistake since I had
 never flown that way before and had no idea what it would be like. Fortunately,
 I landed the plane safely and even had the courage for a second flight that also
 ended successfully.</p>
+<p>Crashed on Saturday, 10 Apr 2010.</p>
+<p>Rebuild the plane the week of 30 Aug - 4 Sep 2010.</p>
+<p>Reflight on Monday, 6 Sep 2010. Destroyed plane afternoon of same day on
+third flight.</p>
 </body>
 
 </html>
