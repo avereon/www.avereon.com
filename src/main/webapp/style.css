@@ -111,6 +111,35 @@ a {
 	text-decoration: none;
 }
 
+/* Bread Crumbs */
+div.bread {
+	margin: 0px 10px 5px 10px;
+	font-size: 75%;
+}
+
+span.crumb {
+	margin: 0px 0px 0px 0px;
+}
+
+span.crumb>a {
+	color: #000000;
+	background-image: url(images/folder.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding: 0px 16px 0px 5px;
+	border: 1px solid transparent;
+}
+
+span.crumb>a:hover {
+	background-color: #FFFFFF;
+	border: 1px solid #C0C0C0;
+}
+
+div.bread>span.crumb:first-child {
+	font-size: normal;
+	font-weight: bold;
+}
+
 /* Menus */
 div.menu {
 	width: 180px;
@@ -119,11 +148,10 @@ div.menu {
 
 div.menuhead {
 	font-weight: bold;
-	margin: 2px;
 }
 
 div.menuitem {
-	margin: 2px;
+	
 }
 
 a.menulink {
