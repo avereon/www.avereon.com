@@ -21,7 +21,8 @@
 
 <body>
 
-<table class="layout" style="width: 100%;" border="0" cellspacing="0" cellpadding="0">
+<table class="layout" style="width: 100%;" border="0" cellspacing="0"
+	cellpadding="0">
 
 	<colgroup>
 		<col style="width: 0%;" />
@@ -33,16 +34,15 @@
 		<td class="layout" colspan="3"><!-- Start Header --> <@header@> <!-- End Header --></td>
 	</tr>
 
-	<tr>
-		<td class="layout" colspan="3"><!-- Start Bread Crumb --> <@bread@> <!-- End Bread Crumb --></td>
-	</tr>
-
 	<tr style="height: 200px;">
-		<td class="menu" style="height: 0px; vertical-align: top;"><@menu@> <@info@></td>
+		<td class="menu" style="height: 0px; vertical-align: top;"><@menu@>
+		<@info@></td>
 
-		<td class="layout" style="height: 0px; vertical-align: top;"><!-- Start Body --> <@body@> <!-- End Body--></td>
+		<td class="layout" style="height: 0px; vertical-align: top;"><!-- Start Bread Crumbs -->
+		<@breadcrumbs@> <!-- End Bread Crumbs --><!-- Start Body --> <@body@> <!-- End Body--></td>
 
-		<td class="layout" style="height: 0px; vertical-align: top;"><!-- Start Info --> <@news root-only="true"@> <!-- End Info --></td>
+		<td class="layout" style="height: 0px; vertical-align: top;"><!-- Start Info -->
+		<@news root-only="true"@> <!-- End Info --></td>
 
 	</tr>
 

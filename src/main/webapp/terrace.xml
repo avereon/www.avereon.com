@@ -27,31 +27,11 @@
 		<exemption pattern="*.js" actions="menu merge"/>
 	</exemptions>
 	
-	<!-- 
-	The following keys are reserved for internal use by WebMerge. If you specify 
-	values for these keys here they will be overridden:
-	
-	head - The head information of the requested page.
-	body - The body information of the requested page.
-	menu - The generated menu.
-	
-	The following keys are for special use by WebMerge. Use these keys to change
-	the default behavior:
-	
-	menu-base - The base menu to use on all pages.
-	menu-width - The width of the menu table. (default: 200px );
-	menu-table-style - The value of the style attribute for the menu table tags.
-	menu-td-style - The value of the style attribute for the menu td tags.
-	menu-head-anchor-class - The stylesheet class for menu head anchors.
-	menu-item-anchor-class - The stylesheet class for menu item anchors.
-	-->
 	<template path="template.html">
-		<parameter key="menu.dynamic.root" value="false"/>
-
-		<parameter key="header" path="header.jsp"/>
-		<parameter key="footer" path="footer.jsp"/>
-		<parameter key="news" path="news.jsp"/>
-		<parameter key="info" path="info.jsp"/>
+		<tag key="header" path="header.jsp"/>
+		<tag key="footer" path="footer.jsp"/>
+		<tag key="news" path="news.jsp"/>
+		<tag key="info" path="info.jsp"/>
 	</template>
 
 </terrace>

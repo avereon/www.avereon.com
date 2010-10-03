@@ -112,13 +112,13 @@ a {
 }
 
 /* Bread Crumbs */
-div.bread {
-	margin: 0px 10px 5px 10px;
+div.breadcrumbs {
+	margin: 0px 10px 0px 10px;
 	font-size: 75%;
 }
 
 span.crumb {
-	margin: 0px 0px 0px 0px;
+	margin: 0px 0px 5px 0px;
 }
 
 span.crumb>a {
@@ -135,9 +135,8 @@ span.crumb>a:hover {
 	border: 1px solid #C0C0C0;
 }
 
-div.bread>span.crumb:first-child {
-	font-size: normal;
-	font-weight: bold;
+span.crumb:first-child {
+	display: none;
 }
 
 /* Menus */
@@ -146,36 +145,26 @@ div.menu {
 	margin: 0px 0px 10px 10px;
 }
 
-div.menuhead {
-	font-weight: bold;
+div.folder>a {
+	background-image: url(images/folder.png);
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 
-div.menuitem {
-	
-}
-
-a.menulink {
+div.menuitem>a {
 	color: #000000;
 	padding: 0px 0px 0px 5px;
 	border: 1px solid transparent;
 	display: block;
 }
 
-a.menulink:hover,a.menulink:active {
+div.menuitem>a:hover,div.menuitem>a:active {
 	padding: 0px 0px 0px 5px;
 	border: 1px solid #C0C0C0;
 }
 
-a.menufold {
-	background-image: url(images/folder.png);
-	background-repeat: no-repeat;
-	background-position: right center;
-}
-
-a.menufold:hover,a.menuhead:active {
-	background-image: url(images/folder.png);
-	background-repeat: no-repeat;
-	background-position: right center;
+div.menuitem:first-child {
+	font-weight: bold;
 }
 
 /* Footer Anchors*/
@@ -247,6 +236,10 @@ td.layout {
 table.embedded {
 	margin: 0px 10px 0px 20px;
 	border: 1px solid #204080;
+}
+
+table.embedded tr:nth-child(odd) {
+	background: #E8E8E8;
 }
 
 table.portal {
