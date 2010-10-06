@@ -228,7 +228,8 @@ table.layout {
 	margin: 0px;
 }
 
-td.layout {
+table.layout td {
+	vertical-align: top;
 	padding: 0px;
 	border: 0px solid green;
 }
@@ -296,6 +297,10 @@ a.elements {
 
 a.escape {
 	background: transparent url(images/escape.download.png) no-repeat;
+}
+
+a.terrace {
+	background: transparent url(images/terrace.download.png) no-repeat;
 }
 
 a.velocity {
