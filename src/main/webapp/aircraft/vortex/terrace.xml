@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE terrace PUBLIC "//Parallel Symmetry Terrace/Terrace Configuration 1.1/EN" "terrace.dtd">
+
+<terrace>
+
+	<links>
+		<link name="index.jsp" />
+		<link name="design.jsp" />
+		<link name="construction.jsp" />
+		<link name="maiden.jsp" />
+		<link name="rebuild.jsp" />
+		<link name="final.jsp" />
+	</links>
+
+</terrace>
