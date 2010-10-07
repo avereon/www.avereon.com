@@ -25,32 +25,53 @@
 <body>
 <h1>Get Something Done</h1>
 
-<ul class="download">
-	<li>
-	<a class="download velocity" href="software/velocity/update/velocity-install.jar">
-	<span class="download"><span>Velocity</span><em>Download Now</em></span>
-	</a>
-	</li>
-</ul>
+<table class="layout">
+	<tr>
+		<td>
+		<ul class="download">
+			<li><a class="download escape" href="software/escape/index.jsp"> <span
+				class="download"><span>Escape</span> <em>View Project</em></span> </a></li>
+		</ul>
 
-<p><a href="software/velocity/index.jsp">Velocity</a> is an open,
-lightweight application framework for the development of cross-platform
-applications. As a framework Velocity has no specific capabilities. It relies on
-modules to provide functionality. Several modules are available from this web
-site.</p>
+		<p><a href="software/escape/index.jsp">Escape</a> is an open, lightweight
+		application framework for the development of cross-platform applications. As a
+		framework, Escape relies on modules to provide specific functionality. Several
+		modules are available from this web site.</p>
 
-<ul class="download">
-	<li>
-	<a class="download elements" href="software/elements/install.jsp">
-	<span class="download"><span>Elements</span><em>Install Now</em></span>
-	</a>
-	</li>
-</ul>
+		<ul class="download">
+			<li><a class="download terrace" href="software/terrace/index.jsp"> <span
+				class="download"><span>Terrace</span> <em>Coming Soon</em></span> </a></li>
+		</ul>
 
-<p><a href="software/elements/index.jsp">Elements</a> is a 3D computer aided
-engineering module for Velocity.It is intended for general engineering needs and
-features common 2D/3D entities and editing tools.</p>
+		<p><a href="software/terrace/index.jsp">Terrace</a> is a lightweight web content
+		generation tool. Web content is created using simple HTML or JSP files
+		and merged with a template and navigation tools are dynamically generated.</p>
+		</td>
 
+		<td>
+		<ul class="download">
+			<li><a class="download velocity"
+				href="software/velocity/update/velocity-install.jar"> <span
+				class="download"><span>Velocity</span><em>Download Now</em></span> </a></li>
+		</ul>
+
+		<p><a href="software/velocity/index.jsp">Velocity</a> is an open,
+		lightweight application framework for the development of cross-platform
+		applications. As a framework Velocity has no specific capabilities. It relies
+		on modules to provide functionality. Several modules are available from this
+		web site.</p>
+
+		<ul class="download">
+			<li><a class="download elements" href="software/elements/install.jsp">
+			<span class="download"><span>Elements</span><em>Install Now</em></span> </a></li>
+		</ul>
+
+		<p><a href="software/elements/index.jsp">Elements</a> is a 3D computer
+		aided engineering module for Velocity.It is intended for general engineering
+		needs and features common 2D/3D entities and editing tools.</p>
+		</td>
+	</tr>
+</table>
 </body>
 
 </html>

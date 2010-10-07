@@ -31,11 +31,11 @@
 
 		<ul class="download">
 			<li><a class="download terrace" href="terrace/index.jsp"> <span
-				class="download"><span>Terrace</span> <em>View Project</em></span> </a></li>
+				class="download"><span>Terrace</span> <em>Coming Soon</em></span> </a></li>
 		</ul>
 
 		<p><a href="terrace/index.jsp">Terrace</a> is a lightweight web content
-		generation application. Web content is created using simple HTML or JSP files
+		generation tool. Web content is created using simple HTML or JSP files
 		and merged with a template and navigation tools are dynamically generated.</p>
 		</td>
 		<td>
