@@ -5,7 +5,7 @@
 <terrace>
 
 	<links>
-		<link title="Manual" href="manual"/>
+		<link title="Manual" href="manual" url="manual/index.html"/>
 	</links>
 
 </terrace>
