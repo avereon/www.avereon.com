@@ -31,23 +31,24 @@
 	</colgroup>
 
 	<tr>
-		<td class="layout" colspan="3"><!-- Start Header --> <@header@> <!-- End Header --></td>
-	</tr>
-
-	<tr style="height: 200px;">
-		<td class="menu" style="height: 0px; vertical-align: top;"><@menu@>
-		<@info@></td>
-
-		<td class="layout" style="height: 0px; vertical-align: top;"><!-- Start Bread Crumbs -->
-		<@breadcrumbs@> <!-- End Bread Crumbs --><!-- Start Body --> <@body@> <!-- End Body--></td>
-
-		<td class="layout" style="height: 0px; vertical-align: top;"><!-- Start Info -->
-		<@news root-only="true"@> <!-- End Info --></td>
-
+		<td class="layout" colspan="3"><@header@></td>
 	</tr>
 
 	<tr>
-		<td class="layout" colspan="3"><!-- Start Footer --> <@footer@> <!-- End Footer --></td>
+		<td class="layout" colspan="3"><@breadcrumbs@></td>
+	</tr>
+
+	<tr style="height: 200px;">
+		<td class="menu" style="height: 0px; vertical-align: top;"><@menu@><@info@></td>
+
+		<td class="layout" style="height: 0px; vertical-align: top;"><@body@></td>
+
+		<td class="layout" style="height: 0px; vertical-align: top;"><@news
+		root-only="true"@></td>
+	</tr>
+
+	<tr>
+		<td class="layout" colspan="3"><@footer@></td>
 	</tr>
 
 </table>
