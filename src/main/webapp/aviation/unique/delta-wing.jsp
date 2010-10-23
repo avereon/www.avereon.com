@@ -11,12 +11,21 @@
 <html>
 <head>
 
-<title>Tandem Surface</title>
+<title>Delta Wing</title>
 <meta name="keywords" content="model, airplane, aircraft" />
 </head>
 
 <body>
-<h1>Tandem Surface Aircraft</h1>
+<h1>Delta Wing</h1>
+
+<p><a href="http://en.wikipedia.org/wiki/Delta_wing">Delta wing aircraft</a>
+have a triangular shaped main wing generally with no horizontal control
+surfaces.</p>
+
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/F-16XL">General Dynamics
+	F-16XL</a> - 1980</li>
+</ul>
 </body>
 
 </html>

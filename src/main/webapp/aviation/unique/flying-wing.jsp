@@ -17,6 +17,15 @@
 
 <body>
 <h1>Flying Wing</h1>
+
+<p><a href="http://en.wikipedia.org/wiki/Flying_wing">Flying wing
+aircraft</a> have no distinguishable fuselage or horizontal control surfaces.</p>
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Northrop_YB-49">Northrop
+	YB-49</a> - 1947</li>
+	<li><a href="http://en.wikipedia.org/wiki/B-2_Spirit">Northrop Grumman B-2 Spirit</a> - 1989</li>
+	<li><a href="http://en.wikipedia.org/wiki/X-48B">Boing X-48B</a> - 2007</li>
+</ul>
 </body>
 
 </html>

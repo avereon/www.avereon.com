@@ -16,25 +16,34 @@
 </head>
 
 <body>
-<h1>Wing in Ground Effect</h1>
-<p><a href="http://www.aerospaceweb.org/question/aerodynamics/q0130.shtml">Wings
-in ground effect</a> are much more efficient than a wing at higher altitude.</p>
+<h1>Ground Effect Vehicle</h1>
+<p><a href="http://en.wikipedia.org/wiki/Ground_effect_vehicle">Ground
+effect vehicles</a> are much more efficient than aircraft at higher altitude.</p>
 
 <ul>
 	<li><a
 		href="http://news.blogs.cnn.com/2010/09/28/iran-unveils-squadrons-of-flying-boats/">Bavar
 	2</a></li>
 	<li><a href="http://www.wigetworks.com/products.html">AirFish 8</a></li>
+	<li><a href="http://www.youtube.com/watch?v=NjHEjwZldak&feature=related">Sea
+	Eagle 7</a></li>
 </ul>
 
 <h2>Advantages</h2>
 <ul>
-	<li></li>
+	<li>May have better fuel efficiency</li>
+	<li>Safety benefits for the occupants</li>
 </ul>
 
 <h2>Disadvantages</h2>
 <ul>
-	<li></li>
+	<li>Difficult to fly even with computer assistance</li>
+	<li>Dangerous if the craft banks too far to one side</li>
+</ul>
+
+<h2>Challenges</h2>
+<ul>
+	<li>Takeoff must be into the wind, into the waves</li>
 </ul>
 
 </body>

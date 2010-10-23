@@ -20,9 +20,9 @@
 <p>Most of us are familiar with &quot;standard&quot; aircraft that we have
 been around for years. Standard aircraft follow some basic rules that most do
 not deviate from. A standard aircraft has a fuselage, a main wing, and tail
-surfaces. These aircraft are standard because it is simple to make reliable
-aircraft in this manner. The structures are simple and the aerodynamics are
-simple.</p>
+surfaces. These aircraft are standard because it is straightforward to make
+reliable aircraft in this manner. The structures are simple and the aerodynamics
+are simple.</p>
 <p>These pages are dedicated to non-standard, fixed wing, aircraft.
 Non-standard aircraft are those that have non-standard structure or non-standard
 aerodynamics.</p>
