@@ -20,7 +20,7 @@
 <p>By late summer 2009 I had completed enough of the CAD program and Vortex
 design that it was time to get to building the aircraft. Work commenced
 seriously on Wednesday, 2 Sep 2009. By Saturday, 5 Sep 2009 the basic parts had
-been formed and <a href="../../images/vortex/CIMG3617.1.JPG">construction
+been formed and <a href="../../../images/vortex/CIMG3617.1.JPG">construction
 began</a>. By Friday, 11 Sep 2009 the major parts of the aircraft had been assembled
 and the detail work was started. (Note: I took the week, 7 Sep to 12 Sep, off
 from work.)</p>

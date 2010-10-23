@@ -25,13 +25,13 @@ of sketching the initial outline for the Vortex was complete.</p>
 <table width="100%">
 	<tr>
 		<td style="text-align: center;"><img title="Ernie the Lizard"
-			src="../../images/vortex/CIMG3536.2.JPG" /><br />
+			src="../../../images/vortex/CIMG3536.2.JPG" /><br />
 		Ernie the Lizard</td>
 		<td style="text-align: center;"><img title="Concept Sketch"
-			src="../../images/vortex/vortex.concept.1.png" /><br />
+			src="../../../images/vortex/vortex.concept.1.png" /><br />
 		Concept Sketch</td>
 		<td style="text-align: center;"><img title="Original Sketch"
-			src="../../images/vortex/vortex.sketch.1.png" /><br />
+			src="../../../images/vortex/vortex.sketch.1.png" /><br />
 		Original Sketch</td>
 	</tr>
 </table>
