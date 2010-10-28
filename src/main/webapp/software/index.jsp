@@ -20,7 +20,7 @@
 	<tr>
 		<td>
 		<ul class="download">
-			<li><a class="download escape" href="escape/index.jsp"> <span
+			<li><a class="download escape" href="escape/"> <span
 				class="download"><span>Escape</span> <em>View Project</em></span> </a></li>
 		</ul>
 
