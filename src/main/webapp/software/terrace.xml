@@ -5,7 +5,8 @@
 <terrace>
 
 	<links>
-		<link name="escape"/>
+		<link name="escape" url="escape/"/>
+		<link name="terrace"/>
 		<link name="velocity"/>
 		<link name="elements"/>
 	</links>

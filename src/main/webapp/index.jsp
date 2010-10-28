@@ -33,7 +33,7 @@
 				class="download"><span>Escape</span> <em>View Project</em></span> </a></li>
 		</ul>
 
-		<p><a href="software/escape/index.jsp">Escape</a> is an open, lightweight
+		<p><a href="software/escape/">Escape</a> is an open, lightweight
 		application framework for the development of cross-platform applications. As a
 		framework, Escape relies on modules to provide specific functionality. Several
 		modules are available from this web site.</p>
