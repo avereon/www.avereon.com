@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE terrace PUBLIC "//Parallel Symmetry Terrace/Terrace Configuration 1.1/EN" "terrace.dtd">
+<terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-<terrace>
-
-	<links>
-		<link name="software"/>
-		<link name="geometry"/>
-		<link name="aviation"/>
-	</links>
-
-	<exemptions>
-		<exemption pattern="images" actions="menu"/>
-		<exemption pattern="copyright.html" actions="menu"/>
-		<exemption pattern="results.html" actions="menu"/>
-		<exemption pattern="upgrade.html" actions="menu merge"/>
-		<exemption pattern="download" actions="all"/>
-		<exemption pattern="search.html" actions="all"/>
-		<exemption pattern="support.html" actions="all"/>
-		<exemption pattern="menu.jsp" actions="all"/>
-		<exemption pattern="info.jsp" actions="all"/>
-		<exemption pattern="news.jsp" actions="all"/>
-		<exemption pattern="*.jsp" actions="menu"/>
-		<exemption pattern="*.jnlp" actions="menu merge"/>
-		<exemption pattern="*.css" actions="menu merge"/>
-		<exemption pattern="*.js" actions="menu merge"/>
-	</exemptions>
-	
 	<template path="template.html">
-		<tag key="header" path="header.jsp"/>
-		<tag key="footer" path="footer.jsp"/>
-		<tag key="news" path="news.jsp"/>
-		<tag key="info" path="info.jsp"/>
+		<tag name="header" path="header.jsp"/>
+		<tag name="footer" path="footer.jsp"/>
+		<tag name="news" path="news.jsp"/>
+		<tag name="info" path="info.jsp"/>
 	</template>
+
+	<link name="software"/>
+	<link name="geometry"/>
+	<link name="aviation"/>
+
+	<exemption pattern="images" actions="menu"/>
+	<exemption pattern="copyright.html" actions="menu"/>
+	<exemption pattern="results.html" actions="menu"/>
+	<exemption pattern="upgrade.html" actions="menu merge"/>
+	<exemption pattern="download" actions="all"/>
+	<exemption pattern="search.html" actions="all"/>
+	<exemption pattern="support.html" actions="all"/>
+	<exemption pattern="menu.jsp" actions="all"/>
+	<exemption pattern="info.jsp" actions="all"/>
+	<exemption pattern="news.jsp" actions="all"/>
+	<exemption pattern="*.jsp" actions="menu"/>
+	<exemption pattern="*.jnlp" actions="menu merge"/>
+	<exemption pattern="*.css" actions="menu merge"/>
+	<exemption pattern="*.js" actions="menu merge"/>
 
 </terrace>

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE terrace PUBLIC "//Parallel Symmetry Terrace/Terrace Configuration 1.1/EN" "terrace.dtd">
+<terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-<terrace>
-
-	<links>
-		<link name="modeling.jsp"/>
-	</links>
+	<link name="modeling.jsp"/>
 
 </terrace>
