@@ -4,7 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<link name="escape" url="escape/"/>
-	<link name="terrace" url="terrace"/>
+	<link name="terrace"/>
 	<link name="velocity"/>
 	<link name="elements"/>
 
