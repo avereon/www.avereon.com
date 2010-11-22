@@ -18,14 +18,14 @@
 		class="download"><span>Terrace</span><em>Coming Soon</em></span> </a></li>
 </ul>
 
-<p>Terrace is a lightweight web content generation tool. Web content is
-created using simple HTML or JSP files and merged with a template and navigation
-tools are dynamically generated. It has two general modes of operation, one as a
-<a href="http://www.java.com/java/download/index.jsp?cid=jdp138566">Java</a>
-servlet filter and the other as a static content generator. It dynamically
-merges content with a template file and generates navigation tools like menus
-and <a href="http://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29">breadcrumbs</a>.
-For example, the Parallel Symmetry web site is generated with Terrace.</p>
+<p>Terrace is a simple, lightweight web content generation tool. Web content
+is created by merging simple HTML or JSP files with a template and dynamically
+generating navigation tools such as menus and <a
+	href="http://en.wikipedia.org/wiki/Breadcrumb_%28navigation%29">breadcrumbs</a>.
+It has two general modes of operation, one as a <a
+	href="http://www.java.com/java/download/index.jsp?cid=jdp138566">Java</a>
+servlet filter and the other as a static content generator. For example, the
+Parallel Symmetry web site uses Terrace for content generation.</p>
 
 <h2>System Requirements</h2>
 <ul>
