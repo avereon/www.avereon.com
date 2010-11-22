@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.parallelsymmetry</groupId>
 		<artifactId>pom-parent-signed</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.4-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.parallelsymmetry</groupId>
@@ -71,8 +71,6 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement />
-
 	<profiles>
 
 		<profile>
@@ -85,8 +83,8 @@
 						<artifactId>tomcat-maven-plugin</artifactId>
 						<version>1.0</version>
 						<configuration>
-							<url>http://www.parallelsymmetry.com/manager</url>
-							<server>parallelsymmetry-local</server>
+							<url>http://localhost:8080/manager</url>
+							<server>localhost-tomcat</server>
 							<path>/parasymm</path>
 							<warFile>target/${project.build.finalName}.war</warFile>
 						</configuration>
@@ -98,11 +96,11 @@
 
 		<profile>
 			<id>production</id>
-			
+
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
-			
+
 			<build>
 				<plugins>
 
