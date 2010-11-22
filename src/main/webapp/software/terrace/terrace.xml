@@ -4,6 +4,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<link name="download"/>
-	<link name="manual" title="Manual" url="manual/index.html"/>
+	<link name="manual" title="Manual" url="manual/"/>
 
 </terrace>
