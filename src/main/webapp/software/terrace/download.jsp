@@ -1,14 +1,15 @@
 <%@ page language="java"%>
-<%@ page import="com.parallelsymmetry.site.Descriptor"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.parallelsymmetry.site.Download"%>
 
 <%
 	long timestamp = System.currentTimeMillis();
 
-	String mavenRelease = "http://mvn.parallelsymmetry.com/release/com/parallelsymmetry/terrace";
-	String mavenSnapshot = "http://mvn.parallelsymmetry.com/snapshot/com/parallelsymmetry/terrace";
+	String mavenRelease = "http://mvn.parallelsymmetry.com/release";
+	String mavenSnapshot = "http://mvn.parallelsymmetry.com/snapshot";
 
-	Descriptor descriptor = new Descriptor( mavenRelease + "/maven-metadata.xml" );
-	String version = descriptor.getValue( "metadata/versioning/release" );
+	List<Download> releaseVersions = Download.getVersions( mavenRelease + "/com/parallelsymmetry/terrace" );
+	List<Download> snapshotVersions = Download.getVersions( mavenSnapshot + "/com/parallelsymmetry/terrace" );
 %>
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -18,14 +19,34 @@
 <html>
 <head>
 <title>Download</title>
-<meta name="keywords" content="java, application, terrace" />
 </head>
 
 <body>
 
 <h1>Download</h1>
 
-<p>Version found: <%=version%></p>
+<h2>Released Versions</h2>
+
+<p>
+<%
+	for( Download download : releaseVersions ) {
+%><a href="<%=download.getLink()%>"><%=download.getName()%> <%=download.getVersion()%></a><br />
+<%
+	}
+%>
+</p>
+
+<h2>Development Versions</h2>
+
+<p>
+<%
+	for( Download download : snapshotVersions ) {
+%><a href="<%=download.getLink()%>"><%=download.getName()%> <%=download.getVersion()%></a><br />
+<%
+	}
+%>
+</p>
+
 
 </body>
 

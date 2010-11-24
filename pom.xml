@@ -69,6 +69,11 @@
 			<artifactId>terrace</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.parallelsymmetry</groupId>
+			<artifactId>utility</artifactId>
+			<version>1.0.4-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<profiles>
