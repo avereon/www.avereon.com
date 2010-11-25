@@ -8,8 +8,8 @@
 	String mavenRelease = "http://mvn.parallelsymmetry.com/release";
 	String mavenSnapshot = "http://mvn.parallelsymmetry.com/snapshot";
 
-	List<Download> releaseVersions = Download.getVersions( mavenRelease + "/com/parallelsymmetry/terrace" );
-	List<Download> snapshotVersions = Download.getVersions( mavenSnapshot + "/com/parallelsymmetry/terrace" );
+	List<Download> releaseVersions = Download.getDownloads( mavenRelease + "/com/parallelsymmetry/terrace", Download.RELEASE );
+	List<Download> snapshotVersions = Download.getDownloads( mavenSnapshot + "/com/parallelsymmetry/terrace", Download.SNAPSHOT );
 %>
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -25,7 +25,7 @@
 
 <h1>Download</h1>
 
-<h2>Released Versions</h2>
+<h2>Production Releases</h2>
 
 <p>
 <%
@@ -36,7 +36,7 @@
 %>
 </p>
 
-<h2>Development Versions</h2>
+<h2>Development Releases</h2>
 
 <p>
 <%
