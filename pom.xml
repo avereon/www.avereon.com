@@ -24,6 +24,28 @@
 		<connection>scm:svn:http://svn.parallelsymmetry.com/websites/www.parallelsymmetry.com</connection>
 	</scm>
 
+	<organization>
+		<name>Parallel Symmetry</name>
+		<url>http://www.parallelsymmetry.com/</url>
+	</organization>
+
+	<build>
+		<finalName>parallelsymmetry</finalName>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.parallelsymmetry</groupId>
+			<artifactId>terrace</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.parallelsymmetry</groupId>
+			<artifactId>utility</artifactId>
+			<version>1.0.4-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
 	<repositories>
 		<repository>
 			<id>parallelsymmetry</id>
@@ -40,41 +62,8 @@
 			<releases>
 				<enabled>false</enabled>
 			</releases>
-			<snapshots>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
 		</repository>
 	</repositories>
-
-	<organization>
-		<name>Parallel Symmetry</name>
-		<url>http://www.parallelsymmetry.com/</url>
-	</organization>
-
-	<build>
-
-		<finalName>parallelsymmetry</finalName>
-
-		<resources>
-			<resource>
-				<directory>source/main/resources</directory>
-			</resource>
-		</resources>
-
-	</build>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.parallelsymmetry</groupId>
-			<artifactId>terrace</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.parallelsymmetry</groupId>
-			<artifactId>utility</artifactId>
-			<version>1.0.4-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
 
 	<profiles>
 
