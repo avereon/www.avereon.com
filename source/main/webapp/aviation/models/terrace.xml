@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<link name="design"/>
+	<link name="build"/>
+	<link name="fly"/>
+
+</terrace>

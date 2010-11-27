@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<!-- Start Head -->
+<@head@>
+<!-- End Head -->
+
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="no-cache" />
+
+<link rel="icon" type="image/ico" href="images/favicon.ico" />
+<link rel="shortcut icon" href="images/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+<table class="layout" style="width: 100%;" border="0" cellspacing="0"
+	cellpadding="0">
+
+	<colgroup>
+		<col style="width: 0%;" />
+		<col style="width: 100%" />
+		<col style="width: 0%" />
+	</colgroup>
+
+	<tr>
+		<td class="layout" colspan="3"><@header@></td>
+	</tr>
+
+	<tr>
+		<td class="layout" colspan="3"><@breadcrumbs@></td>
+	</tr>
+
+	<tr style="height: 200px;">
+		<td class="menu" style="height: 0px; vertical-align: top;"><@menu@><@info@></td>
+
+		<td class="layout" style="height: 0px; vertical-align: top;"><@body@></td>
+
+		<td class="layout" style="height: 0px; vertical-align: top;"><@news
+		root-only="true"@></td>
+	</tr>
+
+	<tr>
+		<td class="layout" colspan="3"><@footer@></td>
+	</tr>
+
+</table>
+
+</body>
+
+</html>
