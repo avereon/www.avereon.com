@@ -138,7 +138,8 @@ span.crumb>a:hover {
 }
 
 span.crumb:first-child {
-	display: none;
+	font-size: medium;
+	font-weight: bold;
 }
 
 /* Menus */
@@ -163,6 +164,10 @@ div.menuitem>a {
 div.menuitem>a:hover,div.menuitem>a:active {
 	padding: 0px 0px 0px 5px;
 	border: 1px solid #C0C0C0;
+}
+
+div#rootmenu div.menuitem:first-child {
+	display: none;
 }
 
 div.menuitem:first-child {
