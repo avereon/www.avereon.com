@@ -27,16 +27,26 @@
 
 <h1>Download</h1>
 
+<%
+	if( resource == null ) {
+%>
+<p>Please select a product to download...</p>
+<ul>
+	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
+</ul>
+<%
+	} else {
+%>
 <h2>Production Releases</h2>
 
 <p>
 <%
 	for( MavenDownload download : releases ) {
-		if( !download.getVersion().isSnapshot() ) {
+			if( !download.getVersion().isSnapshot() ) {
 %><a href="<%=download.getLink()%>"><%=download.getName()%> <%=download.getVersion().getFullVersion()%></a><br />
 <%
 	}
-	}
+		}
 %>
 </p>
 
@@ -45,14 +55,16 @@
 <p>
 <%
 	for( MavenDownload download : releases ) {
-		if( download.getVersion().isSnapshot() ) {
+			if( download.getVersion().isSnapshot() ) {
 %><a href="<%=download.getLink()%>"><%=download.getName()%> <%=download.getVersion().getFullVersion()%></a><br />
 <%
 	}
-	}
+		}
 %>
 </p>
-
+<%
+	}
+%>
 
 </body>
 

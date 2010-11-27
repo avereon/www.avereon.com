@@ -89,6 +89,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			// Load the release descriptors.
 			futures.clear();
 			for( Context context : contexts ) {
+				if( !context.isValid() ) continue;
 				List<ReleaseContext> releaseContexts = getReleaseContexts( context );
 				for( ReleaseContext releaseContext : releaseContexts ) {
 					context.addReleaseContext( releaseContext );
@@ -101,6 +102,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 			List<MavenDownload> downloads = new ArrayList<MavenDownload>();
 			for( Context context : contexts ) {
+				if( !context.isValid() ) continue;
 				for( ReleaseContext releaseContext : context.getReleaseContexts() ) {
 					if( !releaseContext.isValid() ) continue;
 					String name = releaseContext.getPom().getValue( "project/name" );
@@ -193,6 +195,10 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		public void addReleaseContext( ReleaseContext context ) {
 			releaseContexts.add( context );
+		}
+
+		public boolean isValid() {
+			return rootDescriptor != null;
 		}
 
 	}

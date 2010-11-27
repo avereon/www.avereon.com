@@ -30,8 +30,8 @@
 		modules are available from this web site.</p>
 
 		<ul class="download">
-			<li><a class="download terrace" href="terrace/index.jsp"> <span
-				class="download"><span>Terrace</span> <em>Coming Soon</em></span> </a></li>
+			<li><a class="download terrace" href="../download/index.jsp?resource=/com/parallelsymmetry/terrace"> <span
+				class="download"><span>Terrace</span> <em>Download Now</em></span> </a></li>
 		</ul>
 
 		<p><a href="terrace/index.jsp">Terrace</a> is a lightweight web content
