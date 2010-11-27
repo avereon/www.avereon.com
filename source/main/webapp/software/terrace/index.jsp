@@ -14,8 +14,8 @@
 <h1>Terrace</h1>
 
 <ul class="download">
-	<li><a class="download terrace" href="index.jsp"> <span
-		class="download"><span>Terrace</span><em>Coming Soon</em></span> </a></li>
+	<li><a class="download terrace" href="../../download/index.jsp?resource=/com/parallelsymmetry/terrace"> <span
+		class="download"><span>Terrace</span><em>Download Now</em></span> </a></li>
 </ul>
 
 <p>Terrace is a simple, lightweight web content generation tool. Web content
