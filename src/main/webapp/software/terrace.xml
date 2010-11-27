@@ -5,11 +5,9 @@
 
 	<link name="download" title="Download" url="../download/index.jsp" />
 
-	<link name="escape" url="escape/" />
+	<link name="escape" />
 	<link name="terrace" />
 	<link name="velocity" />
 	<link name="elements" />
-
-	<exemption pattern="download.jsp" actions="menu" />
 
 </terrace>

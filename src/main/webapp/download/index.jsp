@@ -5,7 +5,6 @@
 
 <%
 	String resource = request.getParameter( "resource" );
-	String snapshot = request.getParameter( "snapshot" );
 	String redirect = request.getParameter( "redirect" );
 
 	String mavenRelease = "http://mvn.parallelsymmetry.com/release";
@@ -62,6 +61,9 @@
 		}
 %>
 </p>
+
+<!-- Give instructions how to add the latest release to a Maven project. -->
+
 <%
 	}
 %>
