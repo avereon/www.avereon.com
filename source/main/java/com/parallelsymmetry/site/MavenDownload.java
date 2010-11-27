@@ -108,8 +108,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 					String name = releaseContext.getPom().getValue( "project/name" );
 					Version version = releaseContext.getVersion();
 					String link = releaseContext.getPath() + "." + extension;
-					String md5Link = releaseContext.getPath() + "." + extension;
-					String sha1Link = releaseContext.getPath() + "." + extension;
+					String md5Link = releaseContext.getPath() + "." + extension + ".md5";
+					String sha1Link = releaseContext.getPath() + "." + extension + ".sha1";
 					downloads.add( new MavenDownload( name, version, link, md5Link, sha1Link ) );
 				}
 			}
