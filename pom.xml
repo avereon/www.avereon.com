@@ -39,7 +39,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.1.1</version>
 				<configuration>
-					<warSourceDirectory>/source/main/webapp</warSourceDirectory>
+					<warSourceDirectory>source/main/webapp</warSourceDirectory>
 				</configuration>
 			</plugin>
 			
