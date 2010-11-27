@@ -250,6 +250,15 @@ table.embedded tr:nth-child(odd) {
 	background: #E8E8E8;
 }
 
+table.download {
+	margin: 0px 10px 0px 20px;
+	border: 0px solid #204080;
+}
+
+table.download tr:nth-child(odd) {
+	background: #F8F8F8;
+}
+
 table.portal {
 	margin: 0px;
 	width: 100%;

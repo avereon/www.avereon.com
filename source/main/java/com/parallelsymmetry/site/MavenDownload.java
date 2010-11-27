@@ -114,6 +114,10 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				}
 			}
 
+			// Reverse sort the versions.
+			Collections.sort( downloads );
+			Collections.reverse( downloads );
+
 			return downloads;
 		} finally {
 			executor.shutdown();
@@ -152,10 +156,6 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		for( String versionString : versionStrings ) {
 			versions.add( Version.parse( versionString ) );
 		}
-
-		// Reverse sort the versions.
-		Collections.sort( versions );
-		Collections.reverse( versions );
 
 		for( Version version : versions ) {
 			contexts.add( new ReleaseContext( uri + "/" + version.getFullVersion(), artifact, version ) );
