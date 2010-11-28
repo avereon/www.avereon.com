@@ -113,9 +113,8 @@ a {
 
 /* Bread Crumbs */
 div.breadcrumbs {
-	margin: 0px 10px 0px 10px;
-	padding: 1px;
-	font-size: 75%;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 11px 0px 11px;
 	background-color: #F4F4F4;
 }
 
@@ -124,7 +123,7 @@ span.crumb {
 }
 
 span.crumb>a {
-	color: #000000;
+	color: #cc4400;
 	background-image: url(images/folder.png);
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -138,8 +137,13 @@ span.crumb>a:hover {
 }
 
 span.crumb:first-child {
-	font-size: medium;
 	font-weight: bold;
+}
+
+span.crumb:first-child a {
+	color: #000000;
+	width: 156px;
+	display: inline-block;
 }
 
 /* Menus */

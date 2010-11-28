@@ -6,6 +6,6 @@
 	</colgroup>
 	
 	<tr style="background: url(images/web.banner.background.png) repeat-x; vertical-align: top;">
-		<td class="layout"><a href="."><img style="width: 500px; height: 75px; display: block;" src="images/web.banner.png" alt="ParallelSymmetry" /></a></td>
+		<td class="layout"><a href="."><img style="width: 768px; height: 96px; display: block;" src="images/web.banner.png" alt="ParallelSymmetry" /></a></td>
 	</tr>
 </table>
