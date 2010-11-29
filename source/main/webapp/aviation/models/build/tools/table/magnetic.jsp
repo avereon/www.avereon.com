@@ -25,15 +25,15 @@ powder coated steel. It comes complete with four electrical outlets for
 convenience when working with power tools.</p>
 <table style="text-align: center;">
 	<tr>
-		<td><a href="../../../../images/table/frame.jpg"><img src="../../../../images/table/frame.thumb.jpg" /></a></td>
-		<td><a href="../../../../images/table/table.jpg"><img src="../../../../images/table/table.thumb.jpg" /></a></td>
+		<td><a href="../../../../../images/table/frame.jpg"><img src="../../../../../images/table/frame.thumb.jpg" /></a></td>
+		<td><a href="../../../../../images/table/table.jpg"><img src="../../../../../images/table/table.thumb.jpg" /></a></td>
 	</tr>
 	<tr>
 		<td>The table frame without the top.</td>
 		<td>The complete table with the steel top.</td>
 	</tr>
 	<tr>
-		<td><a href="../../../../images/table/magnets.jpg"><img src="../../../../images/table/magnets.thumb.jpg" /></a></td>
+		<td><a href="../../../../../images/table/magnets.jpg"><img src="../../../../../images/table/magnets.thumb.jpg" /></a></td>
 	</tr>
 	<tr>
 		<td>Assembling a small wing panel.</td>
