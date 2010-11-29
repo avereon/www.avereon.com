@@ -15,7 +15,7 @@
 
 <ul class="download">
 	<li>
-	<a class="download velocity" href="update/velocity-install.jar">
+	<a class="download velocity" href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">
 	<span class="download"><span>Velocity</span><em>Download Now</em></span>
 	</a>
 	</li>

@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<td style="padding: 0px;"><a class="menuitem"
-					href="software/velocity/update/velocity-install.jar">Velocity Installer</a></td>
+					href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">Velocity Installer</a></td>
 			</tr>
 		</table>
 		</td>
