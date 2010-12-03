@@ -266,6 +266,10 @@ table.download {
 	white-space: nowrap;
 }
 
+table.download caption {
+	background: #E0E0E0;
+}
+
 table.download tr:nth-child(odd) {
 	background: #F0F0F0;
 }

@@ -63,11 +63,6 @@
 	} else {
 %>
 
-<%
-	if( prod.size() > 0 ) {
-			MavenDownload download = prod.get( 0 );
-%>
-<h2>Current Release</h2>
 <table class="download" width="80%">
 	<colgroup>
 		<col width="30%" />
@@ -77,6 +72,16 @@
 		<col width="5%" />
 		<col width="5%" />
 	</colgroup>
+
+	<%
+		if( prod.size() > 0 ) {
+				MavenDownload download = prod.get( 0 );
+	%>
+	<tr>
+		<td>
+		<h2>Current Release</h2>
+		</td>
+	</tr>
 	<tr>
 		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
 		<td><%=download.getVersion().getFullVersion()%></td>
@@ -85,27 +90,20 @@
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
 	</tr>
-</table>
 
-<%
-	}
-%>
+	<%
+		}
+	%>
 
-<%
-	if( snapshot.size() > 0 ) {
-			MavenDownload download = snapshot.get( 0 );
-%>
-<h2>Development Release</h2>
-
-<table class="download" width="80%">
-	<colgroup>
-		<col width="30%" />
-		<col width="15%" />
-		<col width="15%" />
-		<col width="30%" />
-		<col width="5%" />
-		<col width="5%" />
-	</colgroup>
+	<%
+		if( snapshot.size() > 0 ) {
+				MavenDownload download = snapshot.get( 0 );
+	%>
+	<tr>
+		<td>
+		<h2>Development Release</h2>
+		</td>
+	</tr>
 	<tr>
 		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
 		<td><%=download.getVersion().getFullVersion()%></td>
@@ -114,25 +112,19 @@
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
 	</tr>
-</table>
-<%
-	}
-%>
+	<%
+		}
+	%>
 
-<%
-	if( prod.size() > 1 ) {
-%>
-<h2>Previous Releases</h2>
+	<%
+		if( prod.size() > 1 ) {
+	%>
+	<tr>
+		<td>
+		<h2>Previous Releases</h2>
+		</td>
+	</tr>
 
-<table class="download" width="80%">
-	<colgroup>
-		<col width="30%" />
-		<col width="15%" />
-		<col width="15%" />
-		<col width="30%" />
-		<col width="5%" />
-		<col width="5%" />
-	</colgroup>
 	<%
 		int count = prod.size();
 				for( int index = 1; index < count; index++ ) {
