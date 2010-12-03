@@ -8,8 +8,22 @@
 <%@ page import="com.parallelsymmetry.site.*"%>
 
 <%
-	String resource = request.getParameter( "resource" );
+	String unknown = "Unknown";
+
 	String redirect = request.getParameter( "redirect" );
+	String resource = request.getParameter( "resource" );
+
+	int index = resource.lastIndexOf( "/" );
+	String group = null;
+	String artifact = resource;
+	if( index > -1 ) {
+		group = resource.substring( 0, index ).replace( '/', '.' );
+		artifact = resource.substring( index + 1 );
+	}
+
+	char[] chars = artifact.toCharArray();
+	chars[0] = Character.toUpperCase( chars[0] );
+	String name = new String( chars );
 
 	String mavenRelease = "http://mvn.parallelsymmetry.com/release";
 	String mavenSnapshot = "http://mvn.parallelsymmetry.com/snapshot";
@@ -18,7 +32,16 @@
 	SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm a" );
 	dateFormat.setCalendar( calendar );
 
+	// Get the entire list of downloads for an artifact.
 	List<MavenDownload> downloads = MavenDownload.getDownloads( mavenRelease + resource, mavenSnapshot + resource );
+
+	// Get the metadata from the most recent download.
+	if( downloads.size() > 0 ) {
+		MavenDownload download = downloads.get( 0 );
+		name = download.getName();
+		group = download.getGroupId();
+		artifact = download.getArtifactId();
+	}
 
 	// Split the downloads into groups.
 	List<MavenDownload> prod = new ArrayList<MavenDownload>();
@@ -50,7 +73,7 @@
 
 <body>
 
-<h1>Download</h1>
+<h1><%=name%> Downloads</h1>
 
 <%
 	if( resource == null ) {
@@ -59,6 +82,12 @@
 <ul>
 	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
 </ul>
+<%
+	} else if( downloads.size() == 0 ) {
+%>
+
+<p>No downloads available.</p>
+
 <%
 	} else {
 %>
@@ -78,15 +107,13 @@
 				MavenDownload download = prod.get( 0 );
 	%>
 	<tr>
-		<td colspan="100">
-		<h2>Current Release</h2>
-		</td>
+		<th colspan="100">Current Release</th>
 	</tr>
 	<tr>
 		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
 		<td><%=download.getVersion().getFullVersion()%></td>
 		<td><%=download.getLength()%></td>
-		<td><%=dateFormat.format( download.getDate() )%></td>
+		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
 	</tr>
@@ -100,15 +127,13 @@
 				MavenDownload download = snapshot.get( 0 );
 	%>
 	<tr>
-		<td colspan="100">
-		<h2>Development Release</h2>
-		</td>
+		<th colspan="100">Development Release</th>
 	</tr>
 	<tr>
 		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
 		<td><%=download.getVersion().getFullVersion()%></td>
 		<td><%=download.getLength()%></td>
-		<td><%=dateFormat.format( download.getDate() )%></td>
+		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
 	</tr>
@@ -120,21 +145,19 @@
 		if( prod.size() > 1 ) {
 	%>
 	<tr>
-		<td colspan="100">
-		<h2>Previous Releases</h2>
-		</td>
+		<th colspan="100">Previous Releases</th>
 	</tr>
 
 	<%
 		int count = prod.size();
-				for( int index = 1; index < count; index++ ) {
-					MavenDownload download = prod.get( index );
+				for( int downloadIndex = 1; downloadIndex < count; downloadIndex++ ) {
+					MavenDownload download = prod.get( downloadIndex );
 	%>
 	<tr>
 		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
 		<td><%=download.getVersion().getFullVersion()%></td>
 		<td><%=download.getLength()%></td>
-		<td><%=dateFormat.format( download.getDate() )%></td>
+		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
 	</tr>
@@ -142,9 +165,9 @@
 		}
 	%>
 
-<%
-	}
-%>
+	<%
+		}
+	%>
 
 </table>
 

@@ -266,13 +266,17 @@ table.download {
 	white-space: nowrap;
 }
 
-table.download caption {
+table.download th {
 	background: #E0E0E0;
+	text-align: left;
+	font-size: 150%;
 }
 
+/*
 table.download tr:nth-child(odd) {
 	background: #F0F0F0;
 }
+*/
 
 table.portal {
 	margin: 0px;

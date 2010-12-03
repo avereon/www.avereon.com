@@ -2,6 +2,7 @@ package com.parallelsymmetry.site;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -83,6 +84,14 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	public Date getDate() {
 		return date;
+	}
+
+	public String formatDate( DateFormat format, String unknownText ) {
+		if( date == null ) {
+			return unknownText;
+		} else {
+			return format.format( date );
+		}
 	}
 
 	@Override
