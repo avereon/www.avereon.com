@@ -78,7 +78,7 @@
 				MavenDownload download = prod.get( 0 );
 	%>
 	<tr>
-		<td>
+		<td colspan="100">
 		<h2>Current Release</h2>
 		</td>
 	</tr>
@@ -100,7 +100,7 @@
 				MavenDownload download = snapshot.get( 0 );
 	%>
 	<tr>
-		<td>
+		<td colspan="100">
 		<h2>Development Release</h2>
 		</td>
 	</tr>
@@ -120,7 +120,7 @@
 		if( prod.size() > 1 ) {
 	%>
 	<tr>
-		<td>
+		<td colspan="100">
 		<h2>Previous Releases</h2>
 		</td>
 	</tr>
@@ -142,11 +142,11 @@
 		}
 	%>
 
-</table>
-
 <%
 	}
 %>
+
+</table>
 
 <%
 	}
