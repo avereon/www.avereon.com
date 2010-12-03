@@ -1,7 +1,10 @@
 <%@ page language="java"%>
 
-<%@ page import="java.util.List"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Calendar"%>
+<%@ page import="java.util.List"%>
+
 <%@ page import="com.parallelsymmetry.site.*"%>
 
 <%
@@ -10,6 +13,10 @@
 
 	String mavenRelease = "http://mvn.parallelsymmetry.com/release";
 	String mavenSnapshot = "http://mvn.parallelsymmetry.com/snapshot";
+
+	Calendar calendar = Calendar.getInstance( request.getLocale() );
+	SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm a" );
+	dateFormat.setCalendar( calendar );
 
 	List<MavenDownload> downloads = MavenDownload.getDownloads( mavenRelease + resource, mavenSnapshot + resource );
 
@@ -55,57 +62,99 @@
 <%
 	} else {
 %>
-<h2>Production Releases</h2>
+
+<%
+	if( prod.size() > 0 ) {
+			MavenDownload download = prod.get( 0 );
+%>
+<h2>Current Release</h2>
+<table class="download" width="80%">
+	<colgroup>
+		<col width="30%" />
+		<col width="15%" />
+		<col width="15%" />
+		<col width="30%" />
+		<col width="5%" />
+		<col width="5%" />
+	</colgroup>
+	<tr>
+		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
+		<td><%=download.getVersion().getFullVersion()%></td>
+		<td><%=download.getLength()%></td>
+		<td><%=dateFormat.format( download.getDate() )%></td>
+		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
+		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
+	</tr>
+</table>
+
+<%
+	}
+%>
+
+<%
+	if( snapshot.size() > 0 ) {
+			MavenDownload download = snapshot.get( 0 );
+%>
+<h2>Development Release</h2>
 
 <table class="download" width="80%">
 	<colgroup>
 		<col width="30%" />
+		<col width="15%" />
+		<col width="15%" />
 		<col width="30%" />
-		<col width="20%" />
-		<col width="10%" />
-		<col width="10%" />
+		<col width="5%" />
+		<col width="5%" />
+	</colgroup>
+	<tr>
+		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
+		<td><%=download.getVersion().getFullVersion()%></td>
+		<td><%=download.getLength()%></td>
+		<td><%=dateFormat.format( download.getDate() )%></td>
+		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
+		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
+	</tr>
+</table>
+<%
+	}
+%>
+
+<%
+	if( prod.size() > 1 ) {
+%>
+<h2>Previous Releases</h2>
+
+<table class="download" width="80%">
+	<colgroup>
+		<col width="30%" />
+		<col width="15%" />
+		<col width="15%" />
+		<col width="30%" />
+		<col width="5%" />
+		<col width="5%" />
 	</colgroup>
 	<%
-		for( MavenDownload download : prod ) {
+		int count = prod.size();
+				for( int index = 1; index < count; index++ ) {
+					MavenDownload download = prod.get( index );
 	%>
 	<tr>
-		<td><%=download.getName()%></td>
+		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
 		<td><%=download.getVersion().getFullVersion()%></td>
-		<td><a href="<%=download.getLink()%>">Download</a></td>
+		<td><%=download.getLength()%></td>
+		<td><%=dateFormat.format( download.getDate() )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
 	</tr>
 	<%
 		}
 	%>
+
 </table>
 
-<h2>Development Releases</h2>
-
-<table class="download" width="80%">
-	<colgroup>
-		<col width="30%" />
-		<col width="30%" />
-		<col width="20%" />
-		<col width="10%" />
-		<col width="10%" />
-	</colgroup>
-	<%
-		for( MavenDownload download : snapshot ) {
-	%>
-	<tr>
-		<td><%=download.getName()%></td>
-		<td><%=download.getVersion().getFullVersion()%></td>
-		<td><a href="<%=download.getLink()%>">Download</a></td>
-		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
-		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
-	</tr>
-	<%
-		}
-	%>
-</table>
-
-<!-- Give instructions how to add the latest release to a Maven project. -->
+<%
+	}
+%>
 
 <%
 	}

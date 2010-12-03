@@ -41,6 +41,12 @@ p {
 	text-align: justify;
 }
 
+pre {
+	margin: 5px 10px 5px 20px;
+	font-size: 100%;
+	font-family: "Courier New", monospace;
+}
+
 /* Indented Areas */
 div.preformat {
 	margin: 5px 10px 5px 20px;
@@ -257,10 +263,11 @@ table.embedded tr:nth-child(odd) {
 table.download {
 	margin: 0px 10px 0px 20px;
 	border: 0px solid #204080;
+	white-space: nowrap;
 }
 
 table.download tr:nth-child(odd) {
-	background: #F8F8F8;
+	background: #F0F0F0;
 }
 
 table.portal {

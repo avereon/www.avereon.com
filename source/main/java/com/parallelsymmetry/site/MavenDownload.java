@@ -1,7 +1,10 @@
 package com.parallelsymmetry.site;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,6 +20,10 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private static final String DEFAULT_EXTENSION = "jar";
 
+	private String groupId;
+
+	private String artifactId;
+
 	private String name;
 
 	private Version version;
@@ -27,13 +34,27 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private String sha1Link;
 
-	public MavenDownload( String name, Version version, String link, String md5Link, String sha1Link ) {
-		this.name = name;
+	private int length;
+
+	private Date date;
+
+	public MavenDownload( String groupId, String artifactId, Version version, String name, String link, String md5Link, String sha1Link ) {
+		this.groupId = groupId;
+		this.artifactId = artifactId;
 		this.version = version;
 
+		this.name = name;
 		this.link = link;
 		this.md5Link = md5Link;
 		this.sha1Link = sha1Link;
+	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public String getArtifactId() {
+		return artifactId;
 	}
 
 	public String getName() {
@@ -56,6 +77,14 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return sha1Link;
 	}
 
+	public int getLength() {
+		return length;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
 	@Override
 	public int compareTo( MavenDownload that ) {
 		return this.getVersion().compareTo( that.getVersion() );
@@ -67,7 +96,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private static final List<MavenDownload> getDownloads( String extension, String... uris ) throws Exception {
 		ExecutorService executor = Executors.newCachedThreadPool();
-		List<Future<Context>> futures = new ArrayList<Future<Context>>();
+		List<Future<?>> futures = new ArrayList<Future<?>>();
 
 		try {
 			// Construct context object map.
@@ -79,8 +108,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			// Load the root metadata descriptors.
 			futures.clear();
 			for( Context context : contexts ) {
-				Future<Context> future = executor.submit( new LoadRootDescriptor( context ) );
-				futures.add( future );
+				futures.add( executor.submit( new LoadRootDescriptor( context ) ) );
 			}
 
 			// Wait for the futures to return.
@@ -105,14 +133,26 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				if( !context.isValid() ) continue;
 				for( ReleaseContext releaseContext : context.getReleaseContexts() ) {
 					if( !releaseContext.isValid() ) continue;
-					String name = releaseContext.getPom().getValue( "project/name" );
+					String groupId = releaseContext.getPom().getValue( "project/groupId" );
+					String artifactId = releaseContext.getPom().getValue( "project/artifactId" );
 					Version version = releaseContext.getVersion();
+
+					String name = releaseContext.getPom().getValue( "project/name" );
 					String link = releaseContext.getPath() + "." + extension;
 					String md5Link = releaseContext.getPath() + "." + extension + ".md5";
 					String sha1Link = releaseContext.getPath() + "." + extension + ".sha1";
-					downloads.add( new MavenDownload( name, version, link, md5Link, sha1Link ) );
+					downloads.add( new MavenDownload( groupId, artifactId, version, name, link, md5Link, sha1Link ) );
 				}
 			}
+
+			// Load the artifact metadata.
+			futures.clear();
+			for( MavenDownload download : downloads ) {
+				futures.add( executor.submit( new LoadArtifactData( download ) ) );
+			}
+
+			// Wait for the futures to return.
+			waitFor( futures );
 
 			// Reverse sort the versions.
 			Collections.sort( downloads );
@@ -124,8 +164,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		}
 	}
 
-	private static final void waitFor( List<Future<Context>> futures ) {
-		for( Future<Context> future : futures ) {
+	private static final void waitFor( List<Future<?>> futures ) {
+		for( Future<?> future : futures ) {
 			try {
 				future.get();
 			} catch( InterruptedException exception ) {
@@ -316,6 +356,32 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			releaseContext.setPom( new Descriptor( pomPath ) );
 
 			return context;
+		}
+
+	}
+
+	private static final class LoadArtifactData implements Callable<MavenDownload> {
+
+		private MavenDownload download;
+
+		public LoadArtifactData( MavenDownload download ) {
+			this.download = download;
+		}
+
+		@Override
+		public MavenDownload call() throws Exception {
+			String link = download.getLink();
+
+			URL url = new URL( link );
+
+			HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+			int length = connection.getContentLength();
+			long date = connection.getLastModified();
+
+			if( length > -1 ) download.length = length;
+			if( date != 0 ) download.date = new Date( date );
+
+			return download;
 		}
 
 	}
