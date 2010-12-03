@@ -95,11 +95,10 @@
 <table class="download" width="80%">
 	<colgroup>
 		<col width="30%" />
-		<col width="15%" />
-		<col width="15%" />
+		<col width="20%" />
 		<col width="30%" />
-		<col width="5%" />
-		<col width="5%" />
+		<col width="10%" />
+		<col width="10%" />
 	</colgroup>
 
 	<%
@@ -110,9 +109,8 @@
 		<th colspan="100">Current Release</th>
 	</tr>
 	<tr>
-		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
-		<td><%=download.getVersion().getFullVersion()%></td>
-		<td><%=download.getLength()%></td>
+		<td><a href="<%=download.getLink()%>"><%=download.getVersion().getFullVersion()%></a></td>
+		<td><%=download.getHumanReadableLength()%></td>
 		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
@@ -130,9 +128,8 @@
 		<th colspan="100">Development Release</th>
 	</tr>
 	<tr>
-		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
-		<td><%=download.getVersion().getFullVersion()%></td>
-		<td><%=download.getLength()%></td>
+		<td><a href="<%=download.getLink()%>"><%=download.getVersion().getFullVersion()%></a></td>
+		<td><%=download.getHumanReadableLength()%></td>
 		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
@@ -154,9 +151,8 @@
 					MavenDownload download = prod.get( downloadIndex );
 	%>
 	<tr>
-		<td><a href="<%=download.getLink()%>"><%=download.getName()%></a></td>
-		<td><%=download.getVersion().getFullVersion()%></td>
-		<td><%=download.getLength()%></td>
+		<td><a href="<%=download.getLink()%>"><%=download.getVersion().getFullVersion()%></a></td>
+		<td><%=download.getHumanReadableLength()%></td>
 		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
 		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>

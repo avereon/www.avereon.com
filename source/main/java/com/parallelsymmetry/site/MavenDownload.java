@@ -82,6 +82,36 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return length;
 	}
 
+	public String getHumanReadableLength() {
+		int order = 0;
+		int value = length;
+		int magnitude = 1;
+		while( value > 1000 ) {
+			order++;
+			value /= 1000;
+			magnitude *= 1000;
+		}
+
+		String m = "";
+
+		switch( magnitude ) {
+			case 1000: {
+				m = "K";
+				break;
+			}
+			case 1000000: {
+				m = "M";
+				break;
+			}
+			case 1000000000: {
+				m = "G";
+				break;
+			}
+		}
+
+		return value + m;
+	}
+
 	public Date getDate() {
 		return date;
 	}

@@ -267,6 +267,7 @@ table.download {
 }
 
 table.download th {
+	border-top: 20px solid transparent;
 	background: #E0E0E0;
 	text-align: left;
 	font-size: 150%;
