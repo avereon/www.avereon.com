@@ -19,7 +19,7 @@
 <p>In the summer of 2008 I was ready to start on another aircraft project.
 Wanting to build an enhance Typhoon class aircraft I started designing. I was
 soon sidetracked by the long tail of our pet lizard, Ernie, and started thinking
-of something with slim lines an a long thin fuselage. After a couple of nights
+of something with slim lines and a long thin fuselage. After a couple of nights
 of sketching the initial outline for the Vortex was complete.</p>
 <p>
 <table width="100%">

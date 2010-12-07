@@ -5,7 +5,7 @@
 
 	<item name="download" title="Download" url="../download/index.jsp" />
 
-	<item name="escape" />
+	<item name="escape" url="escape/" />
 	<item name="terrace" />
 	<item name="velocity" />
 	<item name="elements" />
