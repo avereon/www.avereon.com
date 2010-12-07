@@ -3,11 +3,11 @@
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<link name="index.jsp"/>
-	<link name="design.jsp"/>
-	<link name="construction.jsp"/>
-	<link name="maiden.jsp"/>
-	<link name="rebuild.jsp"/>
-	<link name="final.jsp"/>
+	<item name="index.jsp"/>
+	<item name="design.jsp"/>
+	<item name="construction.jsp"/>
+	<item name="maiden.jsp"/>
+	<item name="rebuild.jsp"/>
+	<item name="final.jsp"/>
 
 </terrace>

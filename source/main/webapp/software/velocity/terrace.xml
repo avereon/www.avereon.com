@@ -3,7 +3,7 @@
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<link name="install.jsp"/>
+	<item name="install.jsp"/>
 
 	<exemption pattern="*.htmlf" actions="menu"/>
 

@@ -3,7 +3,7 @@
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<link name="download" title="Download" url="../../download/index.jsp?resource=/com/parallelsymmetry/terrace"/>
-	<link name="manual" title="Manual" url="manual/index.html"/>
+	<item name="download" title="Download" url="../../download/index.jsp?resource=/com/parallelsymmetry/terrace"/>
+	<item name="manual" title="Manual" url="manual/index.html"/>
 
 </terrace>

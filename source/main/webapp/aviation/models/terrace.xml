@@ -3,8 +3,8 @@
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<link name="design"/>
-	<link name="build"/>
-	<link name="fly"/>
+	<item name="design"/>
+	<item name="build"/>
+	<item name="fly"/>
 
 </terrace>

@@ -10,9 +10,9 @@
 		<tag name="info" path="info.jsp"/>
 	</template>
 
-	<link name="software"/>
-	<link name="geometry"/>
-	<link name="aviation"/>
+	<item name="software"/>
+	<item name="geometry"/>
+	<item name="aviation"/>
 
 	<exemption pattern="images" actions="menu"/>
 	<exemption pattern="copyright.html" actions="menu"/>

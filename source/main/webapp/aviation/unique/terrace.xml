@@ -3,14 +3,14 @@
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<link name="delta-wing.jsp"/>
-	<link name="flying-wing.jsp"/>
+	<item name="delta-wing.jsp"/>
+	<item name="flying-wing.jsp"/>
 
-	<link name="canard.jsp"/>
-	<link name="tandem.jsp"/>
-	<link name="triple.jsp"/>
+	<item name="canard.jsp"/>
+	<item name="tandem.jsp"/>
+	<item name="triple.jsp"/>
 
-	<link name="multi-fuse.jsp"/>
-	<link name="wig.jsp"/>
+	<item name="multi-fuse.jsp"/>
+	<item name="wig.jsp"/>
 
 </terrace>

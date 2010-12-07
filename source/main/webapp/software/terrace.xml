@@ -3,11 +3,11 @@
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<link name="download" title="Download" url="../download/index.jsp" />
+	<item name="download" title="Download" url="../download/index.jsp" />
 
-	<link name="escape" />
-	<link name="terrace" />
-	<link name="velocity" />
-	<link name="elements" />
+	<item name="escape" />
+	<item name="terrace" />
+	<item name="velocity" />
+	<item name="elements" />
 
 </terrace>
