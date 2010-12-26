@@ -25,14 +25,14 @@
 	chars[0] = Character.toUpperCase( chars[0] );
 	String name = new String( chars );
 
-	String parasymmPublic = "http://mvn.parallelsymmetry.com/content/groups/public/";
+	String repository = "http://mvn.parallelsymmetry.com/content/groups/psm/";
 
 	Calendar calendar = Calendar.getInstance( request.getLocale() );
 	SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm a" );
 	dateFormat.setCalendar( calendar );
 
 	// Get the entire list of downloads for an artifact.
-	List<MavenDownload> downloads = MavenDownload.getDownloads( parasymmPublic + resource );
+	List<MavenDownload> downloads = MavenDownload.getDownloads( repository + resource );
 
 	// Get the metadata from the most recent download.
 	if( downloads.size() > 0 ) {
