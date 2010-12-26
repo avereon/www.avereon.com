@@ -13,23 +13,27 @@
 	String redirect = request.getParameter( "redirect" );
 	String resource = request.getParameter( "resource" );
 
-	int index = resource.lastIndexOf( "/" );
+	String name = "";
 	String group = null;
 	String artifact = resource;
-	if( index > -1 ) {
-		group = resource.substring( 0, index ).replace( '/', '.' );
-		artifact = resource.substring( index + 1 );
-	}
-
-	char[] chars = artifact.toCharArray();
-	chars[0] = Character.toUpperCase( chars[0] );
-	String name = new String( chars );
-
 	String repository = "http://mvn.parallelsymmetry.com/content/groups/psm/";
 
 	Calendar calendar = Calendar.getInstance( request.getLocale() );
 	SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm a" );
 	dateFormat.setCalendar( calendar );
+	
+	// If there is a resource get an initial name.
+	if( resource != null ) {
+		int index = resource.lastIndexOf( "/" );
+		if( index > -1 ) {
+			group = resource.substring( 0, index ).replace( '/', '.' );
+			artifact = resource.substring( index + 1 );
+		}
+
+		char[] chars = artifact.toCharArray();
+		chars[0] = Character.toUpperCase( chars[0] );
+		name = new String( chars );
+	}
 
 	// Get the entire list of downloads for an artifact.
 	List<MavenDownload> downloads = MavenDownload.getDownloads( repository + resource );
@@ -84,13 +88,10 @@
 <%
 	} else if( downloads.size() == 0 ) {
 %>
-
 <p>No downloads available.</p>
-
 <%
 	} else {
 %>
-
 <table class="download" width="80%">
 	<colgroup>
 		<col width="30%" />
