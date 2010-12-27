@@ -3,7 +3,9 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Calendar"%>
+<%@ page import="java.util.Date"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.TimeZone"%>
 
 <%@ page import="com.parallelsymmetry.site.*"%>
 
@@ -19,9 +21,10 @@
 	String repository = "http://mvn.parallelsymmetry.com/content/groups/psm/";
 
 	Calendar calendar = Calendar.getInstance( request.getLocale() );
-	SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd hh:mm a" );
+	calendar.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
+	SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
 	dateFormat.setCalendar( calendar );
-	
+
 	// If there is a resource get an initial name.
 	if( resource != null ) {
 		int index = resource.lastIndexOf( "/" );
