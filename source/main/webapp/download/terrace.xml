@@ -2,7 +2,8 @@
 
 <terrace xmlns="http://www.parallelsymmetry.com/software/terrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
-	<!-- item name="escape" title="Escape" url="index.jsp?resource=/com/parallelsymmetry/escape/pack" / -->
+	<item name="escape-service" title="Escape Service" url="index.jsp?resource=/com/parallelsymmetry/escape/service" />
+	<item name="escape-utility" title="Escape Utility" url="index.jsp?resource=/com/parallelsymmetry/escape/utility" />
 	<item name="terrace" title="Terrace" url="index.jsp?resource=/com/parallelsymmetry/terrace" />
 
 </terrace>
