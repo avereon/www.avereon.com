@@ -93,8 +93,8 @@
 
 <h2>Libraries</h2>
 <ul>
-	<li><a href="?resource=/com/parallelsymmetry/escape/service">Escape Service Library</a></li>
-	<li><a href="?resource=/com/parallelsymmetry/escape/utility">Escape Utility Library</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape/service">Escape Service</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape/utility">Escape Utility</a></li>
 </ul>
 <%
 	} else if( downloads.size() == 0 ) {
