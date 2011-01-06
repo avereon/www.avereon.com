@@ -88,6 +88,7 @@
 
 <h2>Programs</h2>
 <ul>
+	<li><a href="?resource=/com/parallelsymmetry/escape/updater">Escape Updater</a></li>
 	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
 </ul>
 
