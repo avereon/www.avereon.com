@@ -18,7 +18,7 @@
 	String name = "";
 	String group = null;
 	String artifact = resource;
-	String repository = "http://mvn.parallelsymmetry.com/content/groups/psm/";
+	String repository = "http://mvn.parallelsymmetry.com/content/groups/psm";
 
 	Calendar calendar = Calendar.getInstance( request.getLocale() );
 	calendar.setTimeZone( TimeZone.getTimeZone( "UTC" ) );
