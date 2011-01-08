@@ -69,6 +69,11 @@
 
 		<profile>
 			<id>local</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
 			<build>
 				<plugins>
 
@@ -90,10 +95,6 @@
 
 		<profile>
 			<id>production</id>
-
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 
 			<build>
 				<plugins>

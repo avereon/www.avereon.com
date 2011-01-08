@@ -184,6 +184,12 @@ div.menuitem:first-child {
 	font-weight: bold;
 }
 
+div.separator {
+	border-top: 1px solid #204080;
+	padding: 0px 0px 0px 5px;
+	font-weight: bold;
+}
+
 /* Footer Anchors*/
 a.footer:link,a.footer:visited {
 	font-size: 70%;
