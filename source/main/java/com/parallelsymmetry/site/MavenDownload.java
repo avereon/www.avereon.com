@@ -26,6 +26,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	private String artifactId;
 
 	private String name;
+	
+	private String classifier;
 
 	private Version version;
 
@@ -39,7 +41,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private Date date;
 
-	public MavenDownload( String groupId, String artifactId, Version version, String name, String link, String md5Link, String sha1Link ) {
+	public MavenDownload( String groupId, String artifactId, Version version, String classfier, String name, String link, String md5Link, String sha1Link ) {
 		this.groupId = groupId;
 		this.artifactId = artifactId;
 		this.version = version;
@@ -129,11 +131,11 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return this.getVersion().compareTo( that.getVersion() );
 	}
 
-	public static final List<MavenDownload> getDownloads( String... uris ) throws Exception {
-		return getDownloads( DEFAULT_EXTENSION, uris );
+	public static final List<MavenDownload> getDownloads( String classifier, String... uris ) throws Exception {
+		return getDownloads( classifier, DEFAULT_EXTENSION, uris );
 	}
 
-	private static final List<MavenDownload> getDownloads( String extension, String... uris ) throws Exception {
+	private static final List<MavenDownload> getDownloads( String classifier, String extension, String... uris ) throws Exception {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		List<Future<?>> futures = new ArrayList<Future<?>>();
 
@@ -177,10 +179,10 @@ public class MavenDownload implements Comparable<MavenDownload> {
 					Version version = releaseContext.getVersion();
 
 					String name = releaseContext.getPom().getValue( "project/name" );
-					String link = releaseContext.getPath() + "." + extension;
-					String md5Link = releaseContext.getPath() + "." + extension + ".md5";
-					String sha1Link = releaseContext.getPath() + "." + extension + ".sha1";
-					downloads.add( new MavenDownload( groupId, artifactId, version, name, link, md5Link, sha1Link ) );
+					String link = releaseContext.getPath() + (classifier == null ? "" : "-" + classifier) + "." + extension;
+					String md5Link = link + ".md5";
+					String sha1Link = link + ".sha1";
+					downloads.add( new MavenDownload( groupId, artifactId, version, classifier, name, link, md5Link, sha1Link ) );
 				}
 			}
 

@@ -12,8 +12,9 @@
 <%
 	String unknown = "Unknown";
 
-	String redirect = request.getParameter( "redirect" );
 	String resource = request.getParameter( "resource" );
+	String classifier = request.getParameter( "classifier" );
+	String redirect = request.getParameter( "redirect" );
 
 	String name = "";
 	String group = null;
@@ -39,7 +40,7 @@
 	}
 
 	// Get the entire list of downloads for an artifact.
-	List<MavenDownload> downloads = MavenDownload.getDownloads( repository + resource );
+	List<MavenDownload> downloads = MavenDownload.getDownloads( classifier, repository + resource );
 
 	// Get the metadata from the most recent download.
 	if( downloads.size() > 0 ) {
@@ -88,7 +89,7 @@
 
 <h2>Programs</h2>
 <ul>
-	<li><a href="?resource=/com/parallelsymmetry/escape/updater">Escape Updater</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape/updater&classifier=standalone">Escape Updater</a></li>
 	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
 </ul>
 
