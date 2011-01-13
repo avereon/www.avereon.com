@@ -5,8 +5,8 @@ Colors
 Palette URL: http://colorschemedesigner.com/#3J61TqEo67bJX
 */
 html {
-	color: replace(color-B);
-	background: replace(color-W);
+	color: value(color-B);
+	background: value(color-W);
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -42,40 +42,40 @@ ul {
 
 /* Headers */
 h1 {
-	margin: 0px 10px 10px 10px;
-	padding: 0px 5px;
-	color: replace(color-Sb3);
-	background-color: replace(color-Sb5);
+	margin: 0px 0px 10px 0px;
+	padding: 0px 15px;
+	color: value(color-Sb3);
+	/*background-color: value(color-Sb5);*/
 }
 
 h2 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: replace(color-Sb3);
+	color: value(color-Sb3);
 }
 
 h3 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: replace(color-Sb3);
+	color: value(color-Sb3);
 }
 
 h4 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: replace(color-Sb3);
+	color: value(color-Sb3);
 }
 
 h5 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: replace(color-Sb3);
+	color: value(color-Sb3);
 }
 
 h6 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: replace(color-Sb3);
+	color: value(color-Sb3);
 }
 
 dl {
@@ -96,16 +96,16 @@ quot {
 /* Anchors*/
 a {
 	text-decoration: none;
-	color: replace(color-Sb3);
+	color: value(color-Sb3);
 }
 
 a:hover {
-	color: replace(color-C3);
+	color: value(color-C3);
 }
 
 /* Header */
 div#header {
-	background: replace(color-P1) url(images/web.banner.background.png)
+	background: value(color-P1) url(images/web.banner.background.png)
 		repeat-x;
 }
 
@@ -113,22 +113,22 @@ div#header {
 div#footer {
 	font-size: 70%;
 	padding: 0px 5px 0px 5px;
-	color: replace(color-Sa3);
-	background: replace(color-Sa5);
-	border-top: 1px solid replace(color-Sa4);
-	border-bottom: 1px solid replace(color-Sa4);
+	color: value(color-Sa3);
+	/*background: value(color-Sa5);*/
+	border-top: 1px solid value(color-Sa4);
+	/*border-bottom: 1px solid value(color-Sa4);*/
 }
 
 div#footer a {
-	color: replace(color-Sa3);
+	color: value(color-Sa3);
 }
 
 /* Bread Crumbs */
 div.breadcrumbs {
 	margin: 0px 0px 0px 0px;
 	padding: 2px 11px 1px 11px;
-	background-color: replace(color-Sa5);
-	border-bottom: 1px solid replace(color-Sa4);
+	background-color: value(color-Sa5);
+	border-bottom: 1px solid value(color-Sa4);
 }
 
 span.crumb {
@@ -136,7 +136,7 @@ span.crumb {
 }
 
 span.crumb>a {
-	color: replace(color-Sa3);
+	color: value(color-Sa3);
 	background-image: url(images/folder.png);
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -146,9 +146,9 @@ span.crumb>a {
 }
 
 span.crumb>a:hover {
-	color: replace(color-Sa5);
-	background-color: replace(color-Sa3);
-	border: 1px solid replace(color-Sa1);
+	color: value(color-Sa5);
+	background-color: value(color-Sa3);
+	border: 1px solid value(color-Sa1);
 }
 
 span.crumb:first-child {
@@ -156,15 +156,15 @@ span.crumb:first-child {
 }
 
 span.crumb:first-child a {
-	color: replace(color-Sa3);
+	color: value(color-Sa3);
 	width: 156px;
 	display: inline-block;
 }
 
 span.crumb:first-child>a:hover {
-	color: replace(color-Sa5);
-	background-color: replace(color-Sa3);
-	border: 1px solid replace(color-Sa1);
+	color: value(color-Sa5);
+	background-color: value(color-Sa3);
+	border: 1px solid value(color-Sa1);
 }
 
 /* Menus */
@@ -180,7 +180,7 @@ div.folder>a {
 }
 
 div.menuitem>a {
-	color: replace(color-P3);
+	color: value(color-Sb3);
 	padding: 0px 0px 0px 5px;
 	border: 1px solid transparent;
 	display: block;
@@ -188,7 +188,8 @@ div.menuitem>a {
 
 div.menuitem>a:hover,div.menuitem>a:active {
 	padding: 0px 0px 0px 5px;
-	border: 1px solid replace(color-P1);
+	border: 1px solid value(color-Sb1);
+	background-color: value(color-Sb5);
 }
 
 div#rootmenu div.menuitem:first-child {
@@ -200,10 +201,13 @@ div.menuitem:first-child {
 }
 
 div.separator {
-	margin-top: 1px;
-	border-top: 1px solid replace(color-P4);
+	color: value(color-Sb2);
+	margin: 10px 0px 1px 0px;
+	padding: 0px 0px 0px 5px;
+	border-bottom: 1px solid value(color-Sb1);
 	padding-top: 1px;
 	font-weight: bold;
+	font-size: small;
 }
 
 /* Images */
@@ -220,11 +224,6 @@ th {
 	text-align: center;
 }
 
-tr.header {
-	background: url(images/web.banner.background.png) repeat-x;
-	vertical-align: top;
-}
-
 td {
 	padding: 0px 2px 0px 2px;
 }
@@ -233,6 +232,7 @@ td.menu {
 	padding: 0px;
 	background-image: url(images/web.menu.png);
 	background-repeat: no-repeat;
+	background-image: url(images/web.menu.png);
 }
 
 table.layout {
@@ -247,16 +247,16 @@ table.layout td {
 
 table.embedded {
 	margin: 0px 10px 0px 20px;
-	border: 1px solid #204080;
+	border: 1px solid value(color-Sb1);
 }
 
 table.embedded tr:nth-child(odd) {
-	background: #E8E8E8;
+	background: value(color-Sb5);
 }
 
 table.download {
 	margin: 0px 10px 0px 20px;
-	border: 0px solid #204080;
+	border: 0px solid value(color-Sb1);
 	white-space: nowrap;
 }
 
@@ -269,17 +269,49 @@ table.download th {
 table.portal {
 	margin: 0px;
 	width: 100%;
-	border: 1px solid #204080;
+	border: 1px solid value(color-Sb1);
 }
 
 th.portal {
 	background: #90A0C0;
-	border-bottom: 1px solid #204080;
+	border-bottom: 1px solid value(color-Sb1);
 }
 
 /* Divs */
 div.quote {
 	margin: 0em 0em 0em 1em;
+}
+
+/* Tickets */
+span.ticket {
+	width: 250px;
+	height: 72px;
+	margin: 10px 10px 10px 50px;
+	border: 1px solid value(color-Sb1);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	background: value(color-Sb3) url(images/ticket.background.png) repeat-x;
+	position: relative;
+	display: inline-block;
+}
+
+span.ticket>img {
+	border: 0px;
+	float: left;
+	position: absolute;
+	top: -12px;
+	left: -48px;
+}
+
+span.ticket>span {
+	position: absolute;
+	top: 8px;
+	left: 48px;
+}
+
+span.title {
+	font-size: 1.5em;
+	display: block;
 }
 
 /* Downloads */
@@ -291,7 +323,7 @@ ul.download {
 }
 
 a.download {
-	color: replace(color-W);
+	color: value(color-W);
 	display: block;
 	width: 288px;
 	height: 96px;
@@ -326,13 +358,13 @@ a.velocity {
 }
 
 a.elements span {
-	color: replace(color-W);
+	color: value(color-W);
 }
 
 a.escape span {
-	color: replace(color-W);
+	color: value(color-W);
 }
 
 a.velocity span {
-	color: replace(color-W);
+	color: value(color-W);
 }

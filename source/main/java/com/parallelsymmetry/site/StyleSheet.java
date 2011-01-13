@@ -18,26 +18,25 @@ public class StyleSheet extends HttpServlet {
 
 	private static final long serialVersionUID = -7395157863360880610L;
 
-	private static final String TAG_PREFIX = "replace(";
+	private static final String TAG_PREFIX = "value(";
 
 	private static final String TAG_SUFFIX = ")";
 
 	private Map<String, String> replacements;
 
-	static {}
+	private String content;
 
-	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		//if( replacements == null ) {
-		loadReplacements();
-		//}
-
-		String content = loadResource( request.getServletPath() );
+	public synchronized void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+		if( content == null ) {
+			loadReplacements();
+			content = process( getServletContext(), loadResource( request.getServletPath() ) );
+		}
 
 		response.setContentType( "text/css" );
-		response.getWriter().println( process( getServletContext(), content ) );
+		response.getWriter().println( content );
 	}
 
-	private synchronized void loadReplacements() throws IOException {
+	private void loadReplacements() throws IOException {
 		ColorScheme scheme = null;
 		try {
 			scheme = new ColorScheme( getServletContext().getResource( "/colorscheme.xml" ).toURI().toString() );
@@ -87,7 +86,6 @@ public class StyleSheet extends HttpServlet {
 
 	private String getReplacement( String key ) {
 		String replacement = replacements.get( key );
-		//if( replacement == null ) replacement = "-" + key + "-";
 		return replacement == null ? "" : replacement;
 	}
 

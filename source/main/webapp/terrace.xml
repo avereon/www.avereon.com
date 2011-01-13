@@ -18,7 +18,6 @@
 	<exemption pattern="copyright.html" actions="menu"/>
 	<exemption pattern="results.html" actions="menu"/>
 	<exemption pattern="upgrade.html" actions="menu merge"/>
-	<exemption pattern="download" actions="menu"/>
 	<exemption pattern="search.html" actions="all"/>
 	<exemption pattern="support.html" actions="all"/>
 	<exemption pattern="menu.jsp" actions="all"/>
@@ -28,5 +27,6 @@
 	<exemption pattern="*.jnlp" actions="menu merge"/>
 	<exemption pattern="*.css" actions="menu merge"/>
 	<exemption pattern="*.js" actions="menu merge"/>
+	<exemption pattern="*.xml" actions="menu merge"/>
 
 </terrace>

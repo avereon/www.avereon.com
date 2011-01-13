@@ -28,16 +28,18 @@
 <table class="layout">
 	<tr>
 		<td>
-		<ul class="download">
-			<li><a class="download escape" href="software/escape/"> <span
-				class="download"><span>Escape</span> <em>View Project</em></span> </a></li>
-		</ul>
-
+		
+		<!-- Escape download ticket -->
+		<a href="software/escape/">
+			<span class="ticket"><img src="images/badges/escape.png" /><span><span class="title">Escape</span>View Project</span></span>
+		</a>
+		
 		<p><a href="software/escape/">Escape</a> is an open, lightweight
 		application framework for the development of cross-platform applications. As a
 		framework, Escape relies on modules to provide specific functionality. Several
 		modules are available from this web site.</p>
 
+		<!--  Terrace download ticket -->
 		<ul class="download">
 			<li><a class="download terrace" href="download/index.jsp?resource=/com/parallelsymmetry/terrace"> <span
 				class="download"><span>Terrace</span> <em>Download Now</em></span> </a></li>
