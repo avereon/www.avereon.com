@@ -1,32 +1,12 @@
-/* Cascading Style Sheet for ParallelSymmetry Website */ /* Colors
-#000000
-#050B15
-#0B152B
-#102040
-#152B55
-#1B356B
-#204080
-#456095
-#6A80AA
-#90A0C0
-#B5BFD5
-#DADFEA
-#FFFFFF
-
-Greys
-#000000
-#202020
-#404040
-#606060
-#808080
-#A0A0A0
-#202020
-#E0E0E0
-#000000
+/* Cascading Style Sheet for ParallelSymmetry Website
+ 
+Colors
+------
+Palette URL: http://colorschemedesigner.com/#3J61TqEo67bJX
 */
 html {
-	color: #202020;
-	background: #FFFFFF;
+	color: replace(color-B);
+	background: replace(color-W);
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -64,37 +44,38 @@ ul {
 h1 {
 	margin: 0px 10px 10px 10px;
 	padding: 0px 5px;
-	color: #202020;
+	color: replace(color-Sb3);
+	background-color: replace(color-Sb5);
 }
 
 h2 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: #202020
+	color: replace(color-Sb3);
 }
 
 h3 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: #202020
+	color: replace(color-Sb3);
 }
 
 h4 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: #202020
+	color: replace(color-Sb3);
 }
 
 h5 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: #202020
+	color: replace(color-Sb3);
 }
 
 h6 {
 	margin: 10px 10px;
 	padding: 0px 5px;
-	color: #202020
+	color: replace(color-Sb3);
 }
 
 dl {
@@ -115,13 +96,39 @@ quot {
 /* Anchors*/
 a {
 	text-decoration: none;
+	color: replace(color-Sb3);
+}
+
+a:hover {
+	color: replace(color-C3);
+}
+
+/* Header */
+div#header {
+	background: replace(color-P1) url(images/web.banner.background.png)
+		repeat-x;
+}
+
+/* Footer */
+div#footer {
+	font-size: 70%;
+	padding: 0px 5px 0px 5px;
+	color: replace(color-Sa3);
+	background: replace(color-Sa5);
+	border-top: 1px solid replace(color-Sa4);
+	border-bottom: 1px solid replace(color-Sa4);
+}
+
+div#footer a {
+	color: replace(color-Sa3);
 }
 
 /* Bread Crumbs */
 div.breadcrumbs {
 	margin: 0px 0px 0px 0px;
-	padding: 0px 11px 0px 11px;
-	background-color: #F4F4F4;
+	padding: 2px 11px 1px 11px;
+	background-color: replace(color-Sa5);
+	border-bottom: 1px solid replace(color-Sa4);
 }
 
 span.crumb {
@@ -129,17 +136,19 @@ span.crumb {
 }
 
 span.crumb>a {
-	color: #cc4400;
+	color: replace(color-Sa3);
 	background-image: url(images/folder.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 	padding: 0px 16px 0px 5px;
 	border: 1px solid transparent;
+	display: inline-block;
 }
 
 span.crumb>a:hover {
-	background-color: #FFFFFF;
-	border: 1px solid #C0C0C0;
+	color: replace(color-Sa5);
+	background-color: replace(color-Sa3);
+	border: 1px solid replace(color-Sa1);
 }
 
 span.crumb:first-child {
@@ -147,9 +156,15 @@ span.crumb:first-child {
 }
 
 span.crumb:first-child a {
-	color: #000000;
+	color: replace(color-Sa3);
 	width: 156px;
 	display: inline-block;
+}
+
+span.crumb:first-child>a:hover {
+	color: replace(color-Sa5);
+	background-color: replace(color-Sa3);
+	border: 1px solid replace(color-Sa1);
 }
 
 /* Menus */
@@ -165,7 +180,7 @@ div.folder>a {
 }
 
 div.menuitem>a {
-	color: #000000;
+	color: replace(color-P3);
 	padding: 0px 0px 0px 5px;
 	border: 1px solid transparent;
 	display: block;
@@ -173,7 +188,7 @@ div.menuitem>a {
 
 div.menuitem>a:hover,div.menuitem>a:active {
 	padding: 0px 0px 0px 5px;
-	border: 1px solid #C0C0C0;
+	border: 1px solid replace(color-P1);
 }
 
 div#rootmenu div.menuitem:first-child {
@@ -185,42 +200,15 @@ div.menuitem:first-child {
 }
 
 div.separator {
-	border-top: 1px solid #204080;
-	padding: 0px 0px 0px 5px;
+	margin-top: 1px;
+	border-top: 1px solid replace(color-P4);
+	padding-top: 1px;
 	font-weight: bold;
-}
-
-/* Footer Anchors*/
-a.footer:link,a.footer:visited {
-	font-size: 70%;
-	font-weight: normal;
-	color: #202020;
-}
-
-a.footer:hover,a.footer:active {
-	font-size: 70%;
-	font-weight: normal;
-	color: #202020;
 }
 
 /* Images */
 img {
 	border: 0px solid yellow;
-}
-
-/* Dividers */
-img.hdivider {
-	background: #3563B2;
-	width: 100%;
-	height: 1px;
-	display: block;
-}
-
-img.vdivider {
-	background: #3563B2;
-	width: 1px;
-	height: 100%;
-	display: inline;
 }
 
 /* Tables */
@@ -278,12 +266,6 @@ table.download th {
 	font-size: 150%;
 }
 
-/*
-table.download tr:nth-child(odd) {
-	background: #F0F0F0;
-}
-*/
-
 table.portal {
 	margin: 0px;
 	width: 100%;
@@ -296,11 +278,6 @@ th.portal {
 }
 
 /* Divs */
-div.footer {
-	font-size: 70%;
-	padding: 0px 5px 0px 5px;
-}
-
 div.quote {
 	margin: 0em 0em 0em 1em;
 }
@@ -314,7 +291,7 @@ ul.download {
 }
 
 a.download {
-	color: #FFFFFF;
+	color: replace(color-W);
 	display: block;
 	width: 288px;
 	height: 96px;
@@ -349,13 +326,13 @@ a.velocity {
 }
 
 a.elements span {
-	color: #FFFFFF;
+	color: replace(color-W);
 }
 
 a.escape span {
-	color: #FFFFFF;
+	color: replace(color-W);
 }
 
 a.velocity span {
-	color: #FFFFFF;
+	color: replace(color-W);
 }
