@@ -42,8 +42,8 @@ ul {
 
 /* Headers */
 h1 {
-	margin: 0px 0px 10px 0px;
-	padding: 0px 15px;
+	margin: 10px 10px 10px 10px;
+	padding: 0px 5px 0px 5px;
 	color: value(color-Sb3);
 	/*background-color: value(color-Sb5);*/
 }
@@ -261,7 +261,7 @@ table.download {
 }
 
 table.download th {
-	background: #F2F4F8;
+	background: value(color-Sb5);
 	text-align: left;
 	font-size: 150%;
 }
@@ -273,7 +273,7 @@ table.portal {
 }
 
 th.portal {
-	background: #90A0C0;
+	background: value(color-Sb5);
 	border-bottom: 1px solid value(color-Sb1);
 }
 
@@ -283,6 +283,14 @@ div.quote {
 }
 
 /* Tickets */
+a.ticket {
+	color: value(color-Sb4);
+}
+
+a.ticket:hover {
+	color: value(color-W);
+}
+
 span.ticket {
 	width: 250px;
 	height: 72px;
@@ -309,62 +317,7 @@ span.ticket>span {
 	left: 48px;
 }
 
-span.title {
+span.ticket span.title {
 	font-size: 1.5em;
 	display: block;
-}
-
-/* Downloads */
-ul.download {
-	margin: 0;
-	padding: 0;
-	text-align: left;
-	list-style-type: none;
-}
-
-a.download {
-	color: value(color-W);
-	display: block;
-	width: 288px;
-	height: 96px;
-}
-
-a.download span {
-	display: block;
-}
-
-a span.download {
-	padding: 20px 0px 0px 96px;
-}
-
-a span.download span {
-	font-size: 1.5em;
-}
-
-a.elements {
-	background: transparent url(images/elements.download.png) no-repeat;
-}
-
-a.escape {
-	background: transparent url(images/escape.download.png) no-repeat;
-}
-
-a.terrace {
-	background: transparent url(images/terrace.download.png) no-repeat;
-}
-
-a.velocity {
-	background: transparent url(images/velocity.download.png) no-repeat;
-}
-
-a.elements span {
-	color: value(color-W);
-}
-
-a.escape span {
-	color: value(color-W);
-}
-
-a.velocity span {
-	color: value(color-W);
 }

@@ -30,7 +30,7 @@
 		<td>
 		
 		<!-- Escape download ticket -->
-		<a href="software/escape/">
+		<a class="ticket" href="software/escape/">
 			<span class="ticket"><img src="images/badges/escape.png" /><span><span class="title">Escape</span>View Project</span></span>
 		</a>
 		
@@ -40,10 +40,9 @@
 		modules are available from this web site.</p>
 
 		<!--  Terrace download ticket -->
-		<ul class="download">
-			<li><a class="download terrace" href="download/index.jsp?resource=/com/parallelsymmetry/terrace"> <span
-				class="download"><span>Terrace</span> <em>Download Now</em></span> </a></li>
-		</ul>
+		<a class="ticket" href="download/index.jsp?resource=/com/parallelsymmetry/terrace">
+			<span class="ticket"><img src="images/badges/terrace.png" /><span><span class="title">Terrace</span>Download Now</span></span>
+		</a>
 
 		<p><a href="software/terrace/index.jsp">Terrace</a> is a lightweight web content
 		generation tool. Web content is created using simple HTML or JSP files
@@ -51,11 +50,11 @@
 		</td>
 
 		<td>
-		<ul class="download">
-			<li><a class="download velocity"
-				href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar"> <span
-				class="download"><span>Velocity</span><em>Download Now</em></span> </a></li>
-		</ul>
+
+		<!--  Velocity download ticket -->
+		<a class="ticket" href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">
+			<span class="ticket"><img src="images/badges/terrace.png" /><span><span class="title">Velocity</span>Download Now</span></span>
+		</a>
 
 		<p><a href="software/velocity/index.jsp">Velocity</a> is an open,
 		lightweight application framework for the development of cross-platform
@@ -63,10 +62,10 @@
 		on modules to provide functionality. Several modules are available from this
 		web site.</p>
 
-		<ul class="download">
-			<li><a class="download elements" href="http://www.parallelsymmetry.com/software/elements/install.jsp">
-			<span class="download"><span>Elements</span><em>Install Now</em></span> </a></li>
-		</ul>
+		<!--  Elements download ticket -->
+		<a class="ticket" href="http://www.parallelsymmetry.com/software/elements/install.jsp">
+			<span class="ticket"><img src="images/badges/terrace.png" /><span><span class="title">Elements</span>Install Now</span></span>
+		</a>
 
 		<p><a href="software/elements/index.jsp">Elements</a> is a 3D computer
 		aided engineering module for Velocity.It is intended for general engineering

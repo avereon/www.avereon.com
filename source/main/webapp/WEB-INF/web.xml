@@ -16,7 +16,6 @@
 		<url-pattern>*.css</url-pattern>
 	</servlet-mapping>
 
-
 	<filter>
 		<filter-name>terrace</filter-name>
 		<filter-class>com.parallelsymmetry.terrace.servlet.ServletProcessor

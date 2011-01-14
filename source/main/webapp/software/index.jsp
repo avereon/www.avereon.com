@@ -19,41 +19,43 @@
 <table class="layout">
 	<tr>
 		<td>
-		<ul class="download">
-			<li><a class="download escape" href="escape/"> <span
-				class="download"><span>Escape</span> <em>View Project</em></span> </a></li>
-		</ul>
 
+		<!-- Escape download ticket -->
+		<a class="ticket" href="escape/">
+			<span class="ticket"><img src="../images/badges/escape.png" /><span><span class="title">Escape</span>View Project</span></span>
+		</a>
+		
 		<p><a href="escape/">Escape</a> is an open, lightweight
 		application framework for the development of cross-platform applications. As a
 		framework, Escape relies on modules to provide specific functionality. Several
 		modules are available from this web site.</p>
 
-		<ul class="download">
-			<li><a class="download terrace" href="../download/index.jsp?resource=/com/parallelsymmetry/terrace"> <span
-				class="download"><span>Terrace</span> <em>Download Now</em></span> </a></li>
-		</ul>
+		<!--  Terrace download ticket -->
+		<a class="ticket" href="../download/index.jsp?resource=/com/parallelsymmetry/terrace">
+			<span class="ticket"><img src="../images/badges/terrace.png" /><span><span class="title">Terrace</span>Download Now</span></span>
+		</a>
 
 		<p><a href="terrace/index.jsp">Terrace</a> is a lightweight web content
 		generation tool. Web content is created using simple HTML or JSP files
 		and merged with a template and navigation tools are dynamically generated.</p>
+
 		</td>
 		<td>
-		<ul class="download">
-			<li><a class="download velocity"
-				href="http://www.parallelsymmetry.com/velocity/update/velocity-install.jar"> <span class="download"><span>Velocity</span>
-			<em>Download Now</em></span> </a></li>
-		</ul>
+
+		<!--  Velocity download ticket -->
+		<a class="ticket" href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">
+			<span class="ticket"><img src="../images/badges/terrace.png" /><span><span class="title">Velocity</span>Download Now</span></span>
+		</a>
 
 		<p><a href="velocity/index.jsp">Velocity</a> is an open, lightweight
 		application framework for the development of cross-platform applications. As a
 		framework, Velocity has no specific capabilities. It relies on modules to
 		provide functionality. Several modules are available from this web site.</p>
 
-		<ul class="download">
-			<li><a class="download elements" href="elements/install.jsp"> <span
-				class="download"><span>Elements</span> <em>Install Now</em></span> </a></li>
-		</ul>
+		<!--  Elements download ticket -->
+		<a class="ticket" href="http://www.parallelsymmetry.com/software/elements/install.jsp">
+			<span class="ticket"><img src="../images/badges/terrace.png" /><span><span class="title">Elements</span>Install Now</span></span>
+		</a>
 
 		<p><a href="elements/index.jsp">Elements</a> is a 3D computer aided
 		engineering module for Velocity.It is intended for general engineering needs
