@@ -28,7 +28,7 @@ public class StyleSheet extends HttpServlet {
 
 	public synchronized void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		if( content == null ) {
-			loadReplacements();
+			loadReplacements( true );
 			content = process( getServletContext(), loadResource( request.getServletPath() ) );
 		}
 
@@ -36,10 +36,10 @@ public class StyleSheet extends HttpServlet {
 		response.getWriter().println( content );
 	}
 
-	private void loadReplacements() throws IOException {
+	private void loadReplacements( boolean flipSecondary ) throws IOException {
 		ColorScheme scheme = null;
 		try {
-			scheme = new ColorScheme( getServletContext().getResource( "/colorscheme.xml" ).toURI().toString() );
+			scheme = new ColorScheme( getServletContext().getResource( "/colorscheme.xml" ).toURI().toString(), flipSecondary );
 		} catch( Exception exception ) {
 			throw new IOException( exception );
 		}

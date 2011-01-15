@@ -53,7 +53,7 @@
 
 		<!--  Velocity download ticket -->
 		<a class="ticket" href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">
-			<span class="ticket"><img src="images/badges/terrace.png" /><span><span class="title">Velocity</span>Download Now</span></span>
+			<span class="ticket"><img src="images/badges/velocity.png" /><span><span class="title">Velocity</span>Download Now</span></span>
 		</a>
 
 		<p><a href="software/velocity/index.jsp">Velocity</a> is an open,
@@ -64,7 +64,7 @@
 
 		<!--  Elements download ticket -->
 		<a class="ticket" href="http://www.parallelsymmetry.com/software/elements/install.jsp">
-			<span class="ticket"><img src="images/badges/terrace.png" /><span><span class="title">Elements</span>Install Now</span></span>
+			<span class="ticket"><img src="images/badges/elements.png" /><span><span class="title">Elements</span>Install Now</span></span>
 		</a>
 
 		<p><a href="software/elements/index.jsp">Elements</a> is a 3D computer

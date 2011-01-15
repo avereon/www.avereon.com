@@ -113,22 +113,22 @@ div#header {
 div#footer {
 	font-size: 70%;
 	padding: 0px 5px 0px 5px;
-	color: value(color-Sa3);
-	/*background: value(color-Sa5);*/
-	border-top: 1px solid value(color-Sa4);
-	/*border-bottom: 1px solid value(color-Sa4);*/
+	color: value(color-C3);
+	background: value(color-C5);
+	border-top: 1px solid value(color-C4);
+	/*border-bottom: 1px solid value(color-C4);*/
 }
 
 div#footer a {
-	color: value(color-Sa3);
+	color: value(color-C3);
 }
 
 /* Bread Crumbs */
 div.breadcrumbs {
 	margin: 0px 0px 0px 0px;
 	padding: 2px 11px 1px 11px;
-	background-color: value(color-Sa5);
-	border-bottom: 1px solid value(color-Sa4);
+	background-color: value(color-C5);
+	border-bottom: 1px solid value(color-C4);
 }
 
 span.crumb {
@@ -136,7 +136,7 @@ span.crumb {
 }
 
 span.crumb>a {
-	color: value(color-Sa3);
+	color: value(color-C3);
 	background-image: url(images/folder.png);
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -146,9 +146,9 @@ span.crumb>a {
 }
 
 span.crumb>a:hover {
-	color: value(color-Sa5);
-	background-color: value(color-Sa3);
-	border: 1px solid value(color-Sa1);
+	color: value(color-C5);
+	background-color: value(color-C3);
+	border: 1px solid value(color-C1);
 }
 
 span.crumb:first-child {
@@ -156,15 +156,15 @@ span.crumb:first-child {
 }
 
 span.crumb:first-child a {
-	color: value(color-Sa3);
+	color: value(color-C3);
 	width: 156px;
 	display: inline-block;
 }
 
 span.crumb:first-child>a:hover {
-	color: value(color-Sa5);
-	background-color: value(color-Sa3);
-	border: 1px solid value(color-Sa1);
+	color: value(color-C5);
+	background-color: value(color-C3);
+	border: 1px solid value(color-C1);
 }
 
 /* Menus */
@@ -203,7 +203,7 @@ div.menuitem:first-child {
 div.separator {
 	color: value(color-Sb2);
 	margin: 10px 0px 1px 0px;
-	padding: 0px 0px 0px 5px;
+	padding: 0px 0px 0px 6px;
 	border-bottom: 1px solid value(color-Sb1);
 	padding-top: 1px;
 	font-weight: bold;
@@ -284,7 +284,7 @@ div.quote {
 
 /* Tickets */
 a.ticket {
-	color: value(color-Sb4);
+	color: value(color-Sb5);
 }
 
 a.ticket:hover {
