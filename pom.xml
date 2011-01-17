@@ -45,31 +45,7 @@
 			<artifactId>terrace</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>com.parallelsymmetry</groupId>
-			<artifactId>utility</artifactId>
-			<version>1.0.4-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>parallelsymmetry</id>
-			<name>ParallelSymmetry</name>
-			<url>http://mvn.parallelsymmetry.com/release</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>parallelsymmetry-snapshot</id>
-			<name>ParallelSymmetry Snapshot</name>
-			<url>http://mvn.parallelsymmetry.com/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</repository>
-	</repositories>
 
 	<profiles>
 
