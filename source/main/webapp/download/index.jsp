@@ -60,14 +60,12 @@
 		if( download.getVersion().isSnapshot() ) {
 			snapshot.add( download );
 		} else {
-			String qualifier = null;
-			//String qualifier = download.getVersion().getQualifier();
-			if( qualifier == null ) {
-				prod.add( download );
-			} else if( "beta".equals( qualifier ) ) {
-				beta.add( download );
-			} else if( "alpha".equals( qualifier ) ) {
+			if( download.getVersion().isAlpha()) {
 				alpha.add( download );
+			} else if( download.getVersion().isBeta() ) {
+				beta.add( download );
+			} else {
+				prod.add( download );
 			}
 		}
 	}

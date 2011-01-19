@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import com.parallelsymmetry.escape.utility.Descriptor;
-import com.parallelsymmetry.escape.utility.MavenVersion;
+import com.parallelsymmetry.escape.utility.Version;
 
 public class MavenDownload implements Comparable<MavenDownload> {
 
@@ -31,7 +31,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private String type;
 
-	private MavenVersion version;
+	private Version version;
 
 	private String link;
 
@@ -43,7 +43,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private Date date;
 
-	public MavenDownload( String groupId, String artifactId, MavenVersion version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
+	public MavenDownload( String groupId, String artifactId, Version version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
 		this.groupId = groupId;
 		this.artifactId = artifactId;
 		this.version = version;
@@ -68,7 +68,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return name;
 	}
 
-	public MavenVersion getVersion() {
+	public Version getVersion() {
 		return version;
 	}
 
@@ -188,7 +188,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 					if( !releaseContext.isValid() ) continue;
 					String groupId = releaseContext.getPom().getValue( "project/groupId" );
 					String artifactId = releaseContext.getPom().getValue( "project/artifactId" );
-					MavenVersion version = releaseContext.getVersion();
+					Version version = releaseContext.getVersion();
 
 					String name = releaseContext.getPom().getValue( "project/name" );
 					String link = releaseContext.getPath() + ( classifier == null ? "" : "-" + classifier ) + "." + type;
@@ -245,12 +245,12 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		String[] versionStrings = metadata.getValues( "metadata/versioning/versions/version" );
 
 		// Convert the version strings to version objects.
-		List<MavenVersion> versions = new ArrayList<MavenVersion>();
+		List<Version> versions = new ArrayList<Version>();
 		for( String versionString : versionStrings ) {
-			versions.add( new MavenVersion( versionString ) );
+			versions.add( new Version( versionString ) );
 		}
 
-		for( MavenVersion version : versions ) {
+		for( Version version : versions ) {
 			contexts.add( new ReleaseContext( uri + "/" + version.toString(), artifact, version ) );
 		}
 
@@ -302,13 +302,13 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		private String artifact;
 
-		private MavenVersion version;
+		private Version version;
 
 		private String unique;
 
 		private Descriptor pom;
 
-		public ReleaseContext( String base, String artifact, MavenVersion version ) {
+		public ReleaseContext( String base, String artifact, Version version ) {
 			this.base = base;
 			this.artifact = artifact;
 			this.version = version;
@@ -322,7 +322,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			return artifact;
 		}
 
-		public MavenVersion getVersion() {
+		public Version getVersion() {
 			return version;
 		}
 
