@@ -60,9 +60,9 @@
 		if( download.getVersion().isSnapshot() ) {
 			snapshot.add( download );
 		} else {
-			if( download.getVersion().isAlpha()) {
+			if( download.getVersion().hasQualifier( "alpha" )) {
 				alpha.add( download );
-			} else if( download.getVersion().isBeta() ) {
+			} else if( download.getVersion().hasQualifier( "beta" ) ) {
 				beta.add( download );
 			} else {
 				prod.add( download );
