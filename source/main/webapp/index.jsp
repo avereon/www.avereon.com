@@ -40,7 +40,7 @@
 		modules are available from this web site.</p>
 
 		<!--  Terrace download ticket -->
-		<a class="ticket" href="download/index.jsp?resource=/com/parallelsymmetry/terrace">
+		<a class="ticket" href="software/download.jsp?resource=/com/parallelsymmetry/terrace">
 			<span class="ticket"><img src="images/badges/terrace.png" /><span><span class="title">Terrace</span>Download Now</span></span>
 		</a>
 
@@ -52,7 +52,7 @@
 		<td>
 
 		<!--  Velocity download ticket -->
-		<a class="ticket" href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">
+		<a class="ticket" href="software/download.jsp?resource=/com/parallelsymmetry/velocity&classifier=install">
 			<span class="ticket"><img src="images/badges/velocity.png" /><span><span class="title">Velocity</span>Download Now</span></span>
 		</a>
 
@@ -63,7 +63,7 @@
 		web site.</p>
 
 		<!--  Elements download ticket -->
-		<a class="ticket" href="http://www.parallelsymmetry.com/software/elements/install.jsp">
+		<a class="ticket" href="software/elements/install.jsp">
 			<span class="ticket"><img src="images/badges/elements.png" /><span><span class="title">Elements</span>Install Now</span></span>
 		</a>
 
