@@ -11,9 +11,19 @@
 		<servlet-class>com.parallelsymmetry.site.StyleSheet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>download</servlet-name>
+		<servlet-class>com.parallelsymmetry.site.Download</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>stylesheet</servlet-name>
 		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>download</servlet-name>
+		<url-pattern>/download/*</url-pattern>
 	</servlet-mapping>
 
 	<filter>

@@ -92,6 +92,18 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return sha1Link;
 	}
 
+	public String getDownloadLink( String contextPath ) {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append( contextPath );
+		builder.append( "/download/" + getArtifactId() );
+		if( classifier != null ) builder.append( "-" + classifier );
+		if( type != null ) builder.append( "." + type );
+		builder.append( "?source=" + link );
+
+		return builder.toString();
+	}
+
 	public int getLength() {
 		return length;
 	}

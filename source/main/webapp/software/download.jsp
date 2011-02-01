@@ -1,5 +1,6 @@
 <%@ page language="java"%>
 
+<%@ page import="java.net.URL"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.Calendar"%>
@@ -15,6 +16,8 @@
 	String resource = request.getParameter( "resource" );
 	String classifier = request.getParameter( "classifier" );
 	String redirect = request.getParameter( "redirect" );
+
+	String contextPath = request.getContextPath();
 
 	String name = "";
 	String group = null;
@@ -44,10 +47,11 @@
 
 	// Get the metadata from the most recent download.
 	if( downloads.size() > 0 ) {
-		MavenDownload download = downloads.get( downloads.size() - 1 );
+		MavenDownload download = downloads.get( 0 );
 		String downloadName = download.getName();
 		group = download.getGroupId();
 		artifact = download.getArtifactId();
+		if( downloadName != null ) name = downloadName;
 	}
 
 	// Split the downloads into groups.
@@ -89,17 +93,10 @@
 %>
 <p>Please select a product to download...</p>
 
-<h2>Programs</h2>
 <ul>
-	<li><a href="?resource=/com/parallelsymmetry/escape/updater">Escape Updater</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape&classifier=install">Escape</a></li>
 	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
 	<li><a href="?resource=/com/parallelsymmetry/velocity&classifier=install">Velocity</a></li>
-</ul>
-
-<h2>Libraries</h2>
-<ul>
-	<li><a href="?resource=/com/parallelsymmetry/escape/service">Escape Service</a></li>
-	<li><a href="?resource=/com/parallelsymmetry/escape/utility">Escape Utility</a></li>
 </ul>
 <%
 	} else if( downloads.size() == 0 ) {
@@ -125,7 +122,7 @@
 		<th colspan="100">Current Release</th>
 	</tr>
 	<tr>
-		<td><a href="<%=download.getLink()%>"><%=name%> <%=download.getVersion().toString()%></a></td>
+		<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
 		<td><%=download.getHumanReadableLength()%></td>
 		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
@@ -144,7 +141,8 @@
 		<th colspan="100">Development Release</th>
 	</tr>
 	<tr>
-		<td><a href="<%=download.getLink()%>"><%=name%> <%=download.getVersion().toString()%></a></td>
+		<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%>
+		<%=download.getVersion().toString()%></a></td>
 		<td><%=download.getHumanReadableLength()%></td>
 		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
@@ -167,7 +165,7 @@
 					MavenDownload download = prod.get( downloadIndex );
 	%>
 	<tr>
-		<td><a href="<%=download.getLink()%>"><%=name%> <%=download.getVersion().toString()%></a></td>
+		<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
 		<td><%=download.getHumanReadableLength()%></td>
 		<td><%=download.formatDate( dateFormat, unknown )%></td>
 		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
