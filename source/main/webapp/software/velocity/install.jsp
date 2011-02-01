@@ -15,7 +15,7 @@
 <p>Velocity is a Java application and therefore <a href="http://java.com/java/download/index.jsp?cid=jdp138566">Java
 must be installed</a> before installing Velocity.</p>
 <p>To install Velocity on most platforms simply download and run the <a
-	href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">Velocity installer</a> as a Java
+	href="../../software/download.jsp?resource=/com/parallelsymmetry/velocity&classifier=install">Velocity installer</a> as a Java
 application by double-clicking on the file or running 'java -jar velocity-install.jar' from the command line. Follow the
 instructions in the installer.</p>
 
