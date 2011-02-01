@@ -44,8 +44,8 @@
 
 	// Get the metadata from the most recent download.
 	if( downloads.size() > 0 ) {
-		MavenDownload download = downloads.get( 0 );
-		name = download.getName();
+		MavenDownload download = downloads.get( downloads.size() - 1 );
+		String downloadName = download.getName();
 		group = download.getGroupId();
 		artifact = download.getArtifactId();
 	}
@@ -91,18 +91,15 @@
 
 <h2>Programs</h2>
 <ul>
-	<li><a
-		href="?resource=/com/parallelsymmetry/escape/updater&classifier=standalone">Escape
-	Updater</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape/updater">Escape Updater</a></li>
 	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/velocity&classifier=install">Velocity</a></li>
 </ul>
 
 <h2>Libraries</h2>
 <ul>
-	<li><a href="?resource=/com/parallelsymmetry/escape/service">Escape
-	Service</a></li>
-	<li><a href="?resource=/com/parallelsymmetry/escape/utility">Escape
-	Utility</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape/service">Escape Service</a></li>
+	<li><a href="?resource=/com/parallelsymmetry/escape/utility">Escape Utility</a></li>
 </ul>
 <%
 	} else if( downloads.size() == 0 ) {
