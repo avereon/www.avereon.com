@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import com.parallelsymmetry.escape.utility.Descriptor;
+import com.parallelsymmetry.escape.utility.FileUtil;
 import com.parallelsymmetry.escape.utility.Version;
 
 public class MavenDownload implements Comparable<MavenDownload> {
@@ -109,33 +110,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	}
 
 	public String getHumanReadableLength() {
-		int order = 0;
-		int value = length;
-		int magnitude = 1;
-		while( value > 1000 ) {
-			order++;
-			value /= 1000;
-			magnitude *= 1000;
-		}
-
-		String m = "";
-
-		switch( magnitude ) {
-			case 1000: {
-				m = "K";
-				break;
-			}
-			case 1000000: {
-				m = "M";
-				break;
-			}
-			case 1000000000: {
-				m = "G";
-				break;
-			}
-		}
-
-		return value + m;
+		return FileUtil.getHumanBinSize( length );
 	}
 
 	public Date getDate() {

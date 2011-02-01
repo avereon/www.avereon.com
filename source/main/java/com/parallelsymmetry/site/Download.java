@@ -21,7 +21,7 @@ public class Download extends HttpServlet {
 		String source = request.getParameter( "source" );
 
 		if( source == null ) {
-			response.sendError( HttpServletResponse.SC_NOT_FOUND );
+			response.sendError( HttpServletResponse.SC_BAD_REQUEST );
 			return;
 		}
 
