@@ -13,13 +13,9 @@
 <body>
 <h1>Velocity Application Framework</h1>
 
-<ul class="download">
-	<li>
-	<a class="download velocity" href="http://www.parallelsymmetry.com/software/velocity/update/velocity-install.jar">
-	<span class="download"><span>Velocity</span><em>Download Now</em></span>
-	</a>
-	</li>
-</ul>
+<p><a class="ticket" href="../../software/download.jsp?resource=/com/parallelsymmetry/velocity&classifier=install">
+<span class="ticket"><img src="../../images/badges/velocity.png" /><span><span class="title">Velocity</span>Download
+Now</span></span> </a></p>
 
 <p>Velocity is a lightweight application framework for the development of
 cross-platform applications based on <a
