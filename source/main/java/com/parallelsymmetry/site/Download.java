@@ -3,6 +3,7 @@ package com.parallelsymmetry.site;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -18,13 +19,33 @@ public class Download extends HttpServlet {
 	private static final long serialVersionUID = 549372381756415485L;
 
 	public synchronized void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+		String url = null;
 		String source = request.getParameter( "source" );
+		String direct = request.getParameter( "direct" );
 
-		if( source == null ) {
+		if( source != null ) {
+			url = source;
+		} else if( direct != null ) {
+			String classifier = request.getParameter( "classifier" );
+			String type = request.getParameter( "type" );
+			List<MavenDownload> downloads;
+			try {
+				downloads = MavenDownload.getDownloads( classifier, type, direct );
+				if( downloads.size() > 0 ) url = downloads.get( 0 ).getLink();
+			} catch( Exception e ) {
+				getServletContext().log( null, e );
+			}
+		}
+
+		if( url == null ) {
 			response.sendError( HttpServletResponse.SC_BAD_REQUEST );
 			return;
 		}
 
+		stream( response, url );
+	}
+
+	private void stream( HttpServletResponse response, String source ) throws MalformedURLException, IOException {
 		// Establish the URL connection.
 		URL url = new URL( source );
 		URLConnection connection = url.openConnection();
