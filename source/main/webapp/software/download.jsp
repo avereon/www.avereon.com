@@ -15,6 +15,7 @@
 
 	String resource = request.getParameter( "resource" );
 	String classifier = request.getParameter( "classifier" );
+	String type = request.getParameter( "type" );
 	String redirect = request.getParameter( "redirect" );
 
 	String contextPath = request.getContextPath();
@@ -43,7 +44,7 @@
 	}
 
 	// Get the entire list of downloads for an artifact.
-	List<MavenDownload> downloads = MavenDownload.getDownloads( classifier, repository + resource );
+	List<MavenDownload> downloads = MavenDownload.getDownloads( classifier, type, repository + resource );
 
 	// Get the metadata from the most recent download.
 	if( downloads.size() > 0 ) {

@@ -130,14 +130,12 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return this.getVersion().compareTo( that.getVersion() );
 	}
 
-	public static final List<MavenDownload> getDownloads( String classifier, String... uris ) throws Exception {
-		return getDownloads( classifier, DEFAULT_EXTENSION, uris );
-	}
-
-	private static final List<MavenDownload> getDownloads( String classifier, String type, String... uris ) throws Exception {
+	public static final List<MavenDownload> getDownloads( String classifier, String type, String... uris ) throws Exception {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		List<Future<?>> futures = new ArrayList<Future<?>>();
 
+		if( type == null ) type = DEFAULT_EXTENSION;
+		
 		try {
 			// Construct context object map.
 			List<Context> contexts = new ArrayList<Context>();
