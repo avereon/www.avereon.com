@@ -21,16 +21,16 @@ public class Download extends HttpServlet {
 	public synchronized void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		String url = null;
 		String source = request.getParameter( "source" );
-		String direct = request.getParameter( "direct" );
+		String maven = request.getParameter( "maven" );
 
 		if( source != null ) {
 			url = source;
-		} else if( direct != null ) {
+		} else if( maven != null ) {
 			String classifier = request.getParameter( "classifier" );
 			String type = request.getParameter( "type" );
 			List<MavenDownload> downloads;
 			try {
-				downloads = MavenDownload.getDownloads( classifier, type, direct );
+				downloads = MavenDownload.getDownloads( classifier, type, maven );
 				if( downloads.size() > 0 ) url = downloads.get( 0 ).getLink();
 			} catch( Exception e ) {
 				getServletContext().log( null, e );
