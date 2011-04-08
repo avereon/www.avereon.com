@@ -23,8 +23,10 @@ p {
 
 pre {
 	margin: 5px 10px 5px 20px;
+	border: 1px solid #A0A0A0;
+	padding: 2px 4px;
+	background: value(color-C5);
 	font-size: 100%;
-	font-family: "Courier New", monospace;
 }
 
 /* Indented Areas */
@@ -113,22 +115,22 @@ div#header {
 div#footer {
 	font-size: 70%;
 	padding: 0px 5px 0px 5px;
-	color: value(color-C3);
-	background: value(color-C5);
-	border-top: 1px solid value(color-C4);
-	/*border-bottom: 1px solid value(color-C4);*/
+	color: value(color-Sa3);
+	background: value(color-Sa5);
+	border-top: 1px solid value(color-Sa4);
+	/*border-bottom: 1px solid value(color-Sa4);*/
 }
 
 div#footer a {
-	color: value(color-C3);
+	color: value(color-Sa3);
 }
 
 /* Bread Crumbs */
 div.breadcrumbs {
 	margin: 0px 0px 0px 0px;
 	padding: 2px 11px 1px 11px;
-	background-color: value(color-C5);
-	border-bottom: 1px solid value(color-C4);
+	background-color: value(color-Sa5);
+	border-bottom: 1px solid value(color-Sa4);
 }
 
 span.crumb {
@@ -136,7 +138,7 @@ span.crumb {
 }
 
 span.crumb>a {
-	color: value(color-C3);
+	color: value(color-Sa3);
 	background-image: url(images/folder.png);
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -146,9 +148,9 @@ span.crumb>a {
 }
 
 span.crumb>a:hover {
-	color: value(color-C5);
-	background-color: value(color-C3);
-	border: 1px solid value(color-C1);
+	color: value(color-Sa5);
+	background-color: value(color-Sa3);
+	border: 1px solid value(color-Sa1);
 }
 
 span.crumb:first-child {
@@ -156,15 +158,15 @@ span.crumb:first-child {
 }
 
 span.crumb:first-child a {
-	color: value(color-C3);
+	color: value(color-Sa3);
 	width: 156px;
 	display: inline-block;
 }
 
 span.crumb:first-child>a:hover {
-	color: value(color-C5);
-	background-color: value(color-C3);
-	border: 1px solid value(color-C1);
+	color: value(color-Sa5);
+	background-color: value(color-Sa3);
+	border: 1px solid value(color-Sa1);
 }
 
 /* Menus */
