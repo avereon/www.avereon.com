@@ -17,6 +17,7 @@ import java.util.concurrent.Future;
 import com.parallelsymmetry.escape.utility.Descriptor;
 import com.parallelsymmetry.escape.utility.FileUtil;
 import com.parallelsymmetry.escape.utility.Version;
+import com.parallelsymmetry.escape.utility.log.Log;
 
 public class MavenDownload implements Comparable<MavenDownload> {
 
@@ -135,11 +136,12 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		List<Future<?>> futures = new ArrayList<Future<?>>();
 
 		if( type == null ) type = DEFAULT_EXTENSION;
-		
+
 		try {
 			// Construct context object map.
 			List<Context> contexts = new ArrayList<Context>();
 			for( String uri : uris ) {
+				Log.write( "URI: " + uri );
 				contexts.add( new Context( uri ) );
 			}
 
