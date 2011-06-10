@@ -181,6 +181,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				cache.remove( cacheKey );
 			}
 		}
+		
+		// TODO Start the background refresh thread.
 	}
 
 	public static final List<MavenDownload> getDownloads( String uri, String classifier, String type ) throws Exception {
