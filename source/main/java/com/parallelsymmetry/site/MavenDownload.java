@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -166,6 +167,22 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return this.identifier.equals( that.identifier );
 	}
 
+	public static final void clearCache() {
+		cache.clear();
+	}
+
+	public static final void clearCache( String uri, String classifier, String type ) {
+		String key = getDownloadKey( uri, classifier, type );
+
+		if( type == null ) type = DEFAULT_EXTENSION;
+
+		for( String cacheKey : new HashSet<String>( cache.keySet() ) ) {
+			if( cacheKey.startsWith( key ) ) {
+				cache.remove( cacheKey );
+			}
+		}
+	}
+
 	public static final List<MavenDownload> getDownloads( String uri, String classifier, String type ) throws Exception {
 		List<String> uris = new ArrayList<String>();
 		uris.add( uri );
@@ -180,7 +197,6 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		for( String uri : uris ) {
 			String key = getDownloadKey( uri, classifier, type );
 
-			System.err.println( "Key: " + key );
 			List<MavenDownload> cachedDownloads = cache.get( key );
 
 			if( cachedDownloads == null ) {
@@ -197,7 +213,6 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			for( MavenDownload download : directDownloads ) {
 				String key = download.key;
 
-				System.err.println( "Key: " + key );
 				// Add download to cache.
 				List<MavenDownload> cachedDownloads = cache.get( key );
 				if( cachedDownloads == null ) {

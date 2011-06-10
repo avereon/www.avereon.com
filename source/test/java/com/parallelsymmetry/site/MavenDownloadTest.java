@@ -32,4 +32,15 @@ public class MavenDownloadTest extends TestCase {
 		assertTrue( terraceDownloads.size() > 0 );
 	}
 
+	public void testMavenDownloadCache() throws Exception {
+		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/updater", "standalone", null );
+		assertTrue( escapeServiceDownloads.size() > 0 );
+		
+		Map<String, List<MavenDownload>> cache = Accessor.getField( MavenDownload.class, "cache" );
+		assertTrue( cache.get("http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/updater-standalone-jar").size() > 0 );
+		
+		MavenDownload.clearCache();
+		assertTrue( cache.size() == 0 );
+	}
+
 }
