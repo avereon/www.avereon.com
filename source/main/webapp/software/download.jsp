@@ -44,7 +44,7 @@
 	}
 
 	// Get the entire list of downloads for an artifact.
-	List<MavenDownload> downloads = MavenDownload.getDownloads( classifier, type, repository + resource );
+	List<MavenDownload> downloads = MavenDownload.getDownloads( repository + resource, classifier, type );
 
 	// Get the metadata from the most recent download.
 	if( downloads.size() > 0 ) {

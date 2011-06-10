@@ -30,7 +30,7 @@ public class Download extends HttpServlet {
 			String type = request.getParameter( "type" );
 			List<MavenDownload> downloads;
 			try {
-				downloads = MavenDownload.getDownloads( classifier, type, maven );
+				downloads = MavenDownload.getDownloads( maven, classifier, type  );
 				if( downloads.size() > 0 ) url = downloads.get( 0 ).getLink();
 			} catch( Exception e ) {
 				getServletContext().log( null, e );

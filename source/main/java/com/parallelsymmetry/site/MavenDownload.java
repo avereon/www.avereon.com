@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -23,6 +25,10 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private static final String DEFAULT_EXTENSION = "jar";
 
+	private static final Map<String, List<MavenDownload>> cache = new ConcurrentHashMap<String, List<MavenDownload>>();
+
+	private String key;
+
 	private String groupId;
 
 	private String artifactId;
@@ -32,6 +38,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	private String classifier;
 
 	private String type;
+
+	private String identifier;
 
 	private Version version;
 
@@ -45,7 +53,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private Date date;
 
-	public MavenDownload( String groupId, String artifactId, Version version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
+	private MavenDownload( String key, String groupId, String artifactId, Version version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
+		this.key = key;
 		this.groupId = groupId;
 		this.artifactId = artifactId;
 		this.version = version;
@@ -56,6 +65,23 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		this.link = link;
 		this.md5Link = md5Link;
 		this.sha1Link = sha1Link;
+
+		StringBuilder builder = new StringBuilder();
+		builder.append( groupId );
+		builder.append( "-" );
+		builder.append( artifactId );
+		builder.append( "-" );
+		builder.append( version );
+		builder.append( "-" );
+		builder.append( classifier );
+		builder.append( "-" );
+		builder.append( type );
+		identifier = builder.toString();
+
+	}
+
+	public String getKey() {
+		return key;
 	}
 
 	public String getGroupId() {
@@ -131,7 +157,85 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return this.getVersion().compareTo( that.getVersion() );
 	}
 
-	public static final List<MavenDownload> getDownloads( String classifier, String type, String... uris ) throws Exception {
+	@Override
+	public boolean equals( Object object ) {
+		if( !( object instanceof MavenDownload ) ) return false;
+
+		MavenDownload that = (MavenDownload)object;
+
+		return this.identifier.equals( that.identifier );
+	}
+
+	public static final List<MavenDownload> getDownloads( String uri, String classifier, String type ) throws Exception {
+		List<String> uris = new ArrayList<String>();
+		uris.add( uri );
+		return getDownloads( uris, classifier, type );
+	}
+
+	public static final List<MavenDownload> getDownloads( List<String> uris, String classifier, String type ) throws Exception {
+		List<MavenDownload> downloads = new ArrayList<MavenDownload>();
+
+		// Check the cache.
+		List<String> neededUris = new ArrayList<String>();
+		for( String uri : uris ) {
+			String key = getDownloadKey( uri, classifier, type );
+
+			System.err.println( "Key: " + key );
+			List<MavenDownload> cachedDownloads = cache.get( key );
+
+			if( cachedDownloads == null ) {
+				neededUris.add( uri );
+			} else {
+				downloads.addAll( cachedDownloads );
+			}
+		}
+
+		// Get direct downloads.
+		if( neededUris.size() > 0 ) {
+			List<MavenDownload> directDownloads = getDownloadsDirect( neededUris, classifier, type );
+
+			for( MavenDownload download : directDownloads ) {
+				String key = download.key;
+
+				System.err.println( "Key: " + key );
+				// Add download to cache.
+				List<MavenDownload> cachedDownloads = cache.get( key );
+				if( cachedDownloads == null ) {
+					cachedDownloads = new CopyOnWriteArrayList<MavenDownload>();
+					cache.put( key, cachedDownloads );
+				}
+				cachedDownloads.add( download );
+			}
+			downloads.addAll( directDownloads );
+		}
+
+		return downloads;
+	}
+
+	private static final String getDownloadKey( String uri, String classifier, String type ) {
+		StringBuilder builder = new StringBuilder( uri );
+
+		if( classifier != null ) {
+			builder.append( "-" );
+			builder.append( classifier );
+		}
+
+		builder.append( "-" );
+		builder.append( type == null ? DEFAULT_EXTENSION : type );
+
+		return builder.toString();
+	}
+
+	/**
+	 * Retrieves all the applicable downloads for the specified URI's and
+	 * 
+	 * @param classifier
+	 * @param type
+	 * @param uris
+	 * @return
+	 * @throws Exception
+	 */
+	private static final List<MavenDownload> getDownloadsDirect( List<String> uris, String classifier, String type ) throws Exception {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		List<Future<?>> futures = new ArrayList<Future<?>>();
 
@@ -171,6 +275,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			List<MavenDownload> downloads = new ArrayList<MavenDownload>();
 			for( Context context : contexts ) {
 				if( !context.isValid() ) continue;
+				String key = getDownloadKey( context.getUri(), classifier, type );
 				for( ReleaseContext releaseContext : context.getReleaseContexts() ) {
 					if( !releaseContext.isValid() ) continue;
 					String groupId = releaseContext.getPom().getValue( "project/groupId" );
@@ -181,7 +286,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 					String link = releaseContext.getPath() + ( classifier == null ? "" : "-" + classifier ) + "." + type;
 					String md5Link = link + ".md5";
 					String sha1Link = link + ".sha1";
-					downloads.add( new MavenDownload( groupId, artifactId, version, classifier, type, name, link, md5Link, sha1Link ) );
+
+					downloads.add( new MavenDownload( key, groupId, artifactId, version, classifier, type, name, link, md5Link, sha1Link ) );
 				}
 			}
 
