@@ -13,6 +13,7 @@
 <%
 	String unknown = "Unknown";
 
+	boolean refresh = "true".equals( request.getParameter("refresh") );
 	String resource = request.getParameter( "resource" );
 	String classifier = request.getParameter( "classifier" );
 	String type = request.getParameter( "type" );
@@ -90,7 +91,12 @@
 <h1><%=name%> Downloads</h1>
 
 <%
-	if( resource == null ) {
+	if( refresh ) {
+		MavenDownload.clearCache();
+%>
+	<p>Download cache refreshed.</p>
+<%
+	} else if( resource == null ) {
 %>
 <p>Please select a product to download...</p>
 
