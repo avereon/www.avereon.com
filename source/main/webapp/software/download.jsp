@@ -13,7 +13,7 @@
 <%
 	String unknown = "Unknown";
 
-	boolean refresh = "true".equals( request.getParameter("refresh") );
+	boolean refresh = "true".equals( request.getParameter( "refresh" ) );
 	String resource = request.getParameter( "resource" );
 	String classifier = request.getParameter( "classifier" );
 	String type = request.getParameter( "type" );
@@ -88,109 +88,164 @@
 
 <body>
 
-<h1><%=name%> Downloads</h1>
+	<h1><%=name%>
+		Downloads
+	</h1>
 
-<%
-	if( refresh ) {
-		MavenDownload.clearCache();
-%>
+	<%
+		if( refresh ) {
+			MavenDownload.clearCache();
+	%>
 	<p>Download cache refreshed.</p>
-<%
-	} else if( resource == null ) {
-%>
-<p>Please select a product to download...</p>
-
-<ul>
-	<li><a href="?resource=/com/parallelsymmetry/escape&classifier=install">Escape</a></li>
-	<li><a href="?resource=/com/parallelsymmetry/terrace">Terrace</a></li>
-	<li><a href="?resource=/com/parallelsymmetry/velocity&classifier=install">Velocity</a></li>
-</ul>
-<%
-	} else if( downloads.size() == 0 ) {
-%>
-<p>No downloads available.</p>
-<%
-	} else {
-%>
-<table class="download" width="80%">
-	<colgroup>
-		<col width="30%" />
-		<col width="20%" />
-		<col width="30%" />
-		<col width="10%" />
-		<col width="10%" />
-	</colgroup>
-
 	<%
-		if( prod.size() > 0 ) {
-				MavenDownload download = prod.get( 0 );
+		} else if( resource == null ) {
 	%>
-	<tr>
-		<th colspan="100">Current Release</th>
-	</tr>
-	<tr>
-		<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
-		<td><%=download.getHumanReadableLength()%></td>
-		<td><%=download.formatDate( dateFormat, unknown )%></td>
-		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
-		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
-	</tr>
+	<p>Please select a product to download...</p>
+
+	<table class="layout">
+		<tr>
+			<td>
+				<!-- Escape download ticket --> <a class="ticket" href="?resource=/com/parallelsymmetry/escape&classifier=install">
+					<span class="ticket"><img src="../images/badges/escape.png" /><span><span class="title">Escape</span>Download
+							Now</span> </span> </a>
+			</td>
+			<td>
+				<p>
+					<a href="escape/">Escape</a> is an open, lightweight application framework for the development of cross-platform
+					applications. As a framework, Escape relies on modules to provide specific functionality. Several modules are
+					available from this web site.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<!--  Terrace download ticket --> <a class="ticket" href="?resource=/com/parallelsymmetry/terrace"> <span
+					class="ticket"><img src="../images/badges/terrace.png" /><span><span class="title">Terrace</span>Download
+							Now</span> </span> </a>
+			</td>
+			<td>
+
+				<p>
+					<a href="terrace/">Terrace</a> is a lightweight web content generation tool. Web content is created using simple
+					HTML or JSP files and merged with a template and navigation tools are dynamically generated.
+				</p>
+			</td>
+		</tr>
+		<tr>
+
+			<td>
+				<!--  Velocity download ticket --> <a class="ticket"
+				href="?resource=/com/parallelsymmetry/velocity&classifier=install"> <span class="ticket"><img
+						src="../images/badges/velocity.png" /><span><span class="title">Velocity</span>Download Now</span> </span> </a>
+			</td>
+			<td>
+
+				<p>
+					<a href="velocity/">Velocity</a> is an open, lightweight application framework for the development of
+					cross-platform applications. As a framework Velocity has no specific capabilities. It relies on modules to provide
+					functionality. Several modules are available from this web site.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<!--  Elements download ticket --> <a class="ticket" href="elements/install.jsp"> <span class="ticket"><img
+						src="../images/badges/elements.png" /><span><span class="title">Elements</span>Install Now</span> </span> </a>
+			</td>
+			<td>
+
+				<p>
+					<a href="elements/">Elements</a> is a 3D computer aided engineering module for Velocity.It is intended for general
+					engineering needs and features common 2D/3D entities and editing tools.
+				</p>
+			</td>
+		</tr>
+	</table>
+	<%
+		} else if( downloads.size() == 0 ) {
+	%>
+	<p>No downloads available.</p>
+	<%
+		} else {
+	%>
+	<table class="download" width="80%">
+		<colgroup>
+			<col width="30%" />
+			<col width="20%" />
+			<col width="30%" />
+			<col width="10%" />
+			<col width="10%" />
+		</colgroup>
+
+		<%
+			if( prod.size() > 0 ) {
+					MavenDownload download = prod.get( 0 );
+		%>
+		<tr>
+			<th colspan="100">Current Release</th>
+		</tr>
+		<tr>
+			<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
+			<td><%=download.getHumanReadableLength()%></td>
+			<td><%=download.formatDate( dateFormat, unknown )%></td>
+			<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
+			<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
+		</tr>
+
+		<%
+			}
+		%>
+
+		<%
+			if( snapshot.size() > 0 ) {
+					MavenDownload download = snapshot.get( 0 );
+		%>
+		<tr>
+			<th colspan="100">Development Release</th>
+		</tr>
+		<tr>
+			<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
+			<td><%=download.getHumanReadableLength()%></td>
+			<td><%=download.formatDate( dateFormat, unknown )%></td>
+			<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
+			<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
+		</tr>
+		<%
+			}
+		%>
+
+		<%
+			if( prod.size() > 1 ) {
+		%>
+		<tr>
+			<th colspan="100">Previous Releases</th>
+		</tr>
+
+		<%
+			int count = prod.size();
+					for( int downloadIndex = 1; downloadIndex < count; downloadIndex++ ) {
+						MavenDownload download = prod.get( downloadIndex );
+		%>
+		<tr>
+			<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
+			<td><%=download.getHumanReadableLength()%></td>
+			<td><%=download.formatDate( dateFormat, unknown )%></td>
+			<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
+			<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
+		</tr>
+		<%
+			}
+		%>
+
+		<%
+			}
+		%>
+
+	</table>
 
 	<%
 		}
 	%>
-
-	<%
-		if( snapshot.size() > 0 ) {
-				MavenDownload download = snapshot.get( 0 );
-	%>
-	<tr>
-		<th colspan="100">Development Release</th>
-	</tr>
-	<tr>
-		<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%>
-		<%=download.getVersion().toString()%></a></td>
-		<td><%=download.getHumanReadableLength()%></td>
-		<td><%=download.formatDate( dateFormat, unknown )%></td>
-		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
-		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
-	</tr>
-	<%
-		}
-	%>
-
-	<%
-		if( prod.size() > 1 ) {
-	%>
-	<tr>
-		<th colspan="100">Previous Releases</th>
-	</tr>
-
-	<%
-		int count = prod.size();
-				for( int downloadIndex = 1; downloadIndex < count; downloadIndex++ ) {
-					MavenDownload download = prod.get( downloadIndex );
-	%>
-	<tr>
-		<td><a href="<%=download.getDownloadLink( contextPath )%>"><%=name%> <%=download.getVersion().toString()%></a></td>
-		<td><%=download.getHumanReadableLength()%></td>
-		<td><%=download.formatDate( dateFormat, unknown )%></td>
-		<td><a href="<%=download.getMd5Link()%>">MD5</a></td>
-		<td><a href="<%=download.getSha1Link()%>">SHA1</a></td>
-	</tr>
-	<%
-		}
-	%>
-
-	<%
-		}
-	%>
-
-</table>
-
-<%
-	}
-%>
 
 </body>
 

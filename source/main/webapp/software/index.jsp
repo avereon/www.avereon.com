@@ -21,8 +21,8 @@
 		<td>
 
 		<!-- Escape download ticket -->
-		<a class="ticket" href="escape/">
-			<span class="ticket"><img src="../images/badges/escape.png" /><span><span class="title">Escape</span>View Project</span></span>
+		<a class="ticket" href="../software/download.jsp?resource=/com/parallelsymmetry/escape&classifier=install">
+			<span class="ticket"><img src="../images/badges/escape.png" /><span><span class="title">Escape</span>Download Now</span></span>
 		</a>
 		
 		<p><a href="escape/">Escape</a> is an open, lightweight
