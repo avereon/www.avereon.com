@@ -284,6 +284,21 @@ div.quote {
 	margin: 0em 0em 0em 1em;
 }
 
+div.example {
+	margin: 0em 0em 0em 1em;
+}
+
+/* Spans */
+span.note {
+	color: value(color-Sb3);
+	font-weight: bold;
+}
+
+span.warning {
+	color: orange;
+	font-weight: bold;
+}
+
 /* Tickets */
 a.ticket {
 	color: value(color-Sb5);
