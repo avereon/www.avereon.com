@@ -99,6 +99,12 @@ git config http.receivepack true</pre>
 		.
 	</p>
 	<p>
+		<span class="note">Note:</span> The following error usually indicates the
+		<code>http.receivepack</code>
+		setting is not set correctly.
+	</p>
+	<pre>error: Cannot access URL http://www.example.com/git/projects/example/, return code 22</pre>
+	<p>
 		<span class="note">Note:</span> Once testing is complete this should be disabled by changing the
 		<code>http.receivepack</code>
 		value back to
