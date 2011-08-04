@@ -109,7 +109,7 @@ git config http.receivepack true</pre>
 		<code>http.receivepack</code>
 		value back to
 		<code>false</code>
-		.
+		or <a href="authenticated-access">authenticated access</a> should be configured.
 	</p>
 
 
