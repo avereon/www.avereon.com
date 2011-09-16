@@ -26,6 +26,8 @@ never flown that way before and had no idea what it would be like. Fortunately,
 I landed the plane safely and even had the courage for a second flight that also
 ended successfully.</p>
 
+<p><a href="http://www.dterryphotography.com/Airplanes/Vortex-Maiden-Flight/11775872_4gBt2">Photos of the Maiden Flight</a></p>
+
 <p>On Saturday, 10 Apr 2010, I went out for another flight. This time I was
 more confident and after taking off started testing out the performance of the
 plane. After several sharp turns and a couple of rolls I lost reference on the

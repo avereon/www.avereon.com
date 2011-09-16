@@ -22,6 +22,19 @@ have always liked the look of canard style aircraft I was excited to design,
 build, and fly my own design. These pages are a summary of the experience I had
 with this model.</p>
 
+<p>
+<table class="embedded">
+<tr>
+<td>
+<img width="400" height="300" src="../../../images/vortex/CIMG3629.1.JPG"/>
+</td>
+<td>
+<img width="400" height="300" src="../../../images/vortex/CIMG3786.JPG"/>
+</td>
+</tr>
+</table>
+<p>
+
 </body>
 
 </html>
