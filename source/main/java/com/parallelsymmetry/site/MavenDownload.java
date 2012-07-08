@@ -1,6 +1,7 @@
 package com.parallelsymmetry.site;
 
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -181,7 +182,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				cache.remove( cacheKey );
 			}
 		}
-		
+
 		// TODO Start the background refresh thread.
 	}
 
@@ -472,7 +473,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		@Override
 		public Context call() throws Exception {
-			context.setRootDescriptor( new Descriptor( context.getUri() + "/maven-metadata.xml" ) );
+			context.setRootDescriptor( new Descriptor( URI.create( context.getUri() + "/maven-metadata.xml" ) ) );
 			return context;
 		}
 
@@ -503,7 +504,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 			String pomPath = null;
 			if( releaseContext.getVersion().isSnapshot() ) {
-				Descriptor descriptor = new Descriptor( releaseContext.getBase() + "/maven-metadata.xml" );
+				Descriptor descriptor = new Descriptor( URI.create( releaseContext.getBase() + "/maven-metadata.xml" ) );
 
 				String timestamp = descriptor.getValue( "/metadata/versioning/snapshot/timestamp" );
 				if( timestamp != null ) {
@@ -516,7 +517,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				pomPath = releaseContext.getBase() + "/" + releaseContext.getArtifact() + "-" + releaseContext.getVersion().toString() + ".pom";
 			}
 
-			releaseContext.setPom( new Descriptor( pomPath ) );
+			releaseContext.setPom( new Descriptor( URI.create( pomPath ) ) );
 
 			return context;
 		}

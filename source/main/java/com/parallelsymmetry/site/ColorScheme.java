@@ -1,6 +1,8 @@
 package com.parallelsymmetry.site;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -14,12 +16,12 @@ public class ColorScheme {
 
 	private boolean flipSecondary;
 
-	public ColorScheme( String uri ) throws SAXException, IOException, ParserConfigurationException {
+	public ColorScheme( String uri ) throws URISyntaxException, SAXException, IOException, ParserConfigurationException {
 		this( uri, false );
 	}
 
-	public ColorScheme( String uri, boolean flipSecondary ) throws SAXException, IOException, ParserConfigurationException {
-		descriptor = new Descriptor( uri );
+	public ColorScheme( String uri, boolean flipSecondary ) throws URISyntaxException, SAXException, IOException, ParserConfigurationException {
+		descriptor = new Descriptor( new URI( uri ) );
 		this.flipSecondary = flipSecondary;
 	}
 
