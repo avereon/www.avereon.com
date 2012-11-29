@@ -3,9 +3,9 @@ package com.parallelsymmetry.site;
 import java.util.List;
 import java.util.Map;
 
-import com.parallelsymmetry.escape.utility.Accessor;
-
 import junit.framework.TestCase;
+
+import com.parallelsymmetry.utility.Accessor;
 
 public class MavenDownloadTest extends TestCase {
 

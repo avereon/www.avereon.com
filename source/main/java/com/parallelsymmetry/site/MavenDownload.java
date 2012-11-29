@@ -18,10 +18,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import com.parallelsymmetry.escape.utility.Descriptor;
-import com.parallelsymmetry.escape.utility.FileUtil;
-import com.parallelsymmetry.escape.utility.Version;
-import com.parallelsymmetry.escape.utility.log.Log;
+import com.parallelsymmetry.utility.Descriptor;
+import com.parallelsymmetry.utility.FileUtil;
+import com.parallelsymmetry.utility.Version;
+import com.parallelsymmetry.utility.log.Log;
 
 public class MavenDownload implements Comparable<MavenDownload> {
 

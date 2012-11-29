@@ -8,7 +8,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import com.parallelsymmetry.escape.utility.Descriptor;
+import com.parallelsymmetry.utility.Descriptor;
 
 public class ColorScheme {
 
