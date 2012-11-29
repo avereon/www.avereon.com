@@ -9,35 +9,35 @@ import junit.framework.TestCase;
 
 public class MavenDownloadTest extends TestCase {
 
-	public void testGetEscapeUpdaterDownloads() throws Exception {
-		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/updater", "standalone", null );
+	public void testGetUpdaterDownloads() throws Exception {
+		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/updater", "standalone", null );
 		assertTrue( escapeServiceDownloads.size() > 0 );
 		
 		Map<String, List<MavenDownload>> cache = Accessor.getField( MavenDownload.class, "cache" );
-		assertTrue( cache.get("http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/updater-standalone-jar").size() > 0 );
+		assertTrue( cache.get("http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/updater-standalone-jar").size() > 0 );
 	}
 
-	public void testGetEscapeServiceDownloads() throws Exception {
-		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/service", null, null );
+	public void testGetServiceDownloads() throws Exception {
+		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/service", null, null );
 		assertTrue( escapeServiceDownloads.size() > 0 );
 	}
 
-	public void testGetEscapeUtilityDownloads() throws Exception {
-		List<MavenDownload> escapeUtilityDownloads = MavenDownload.getDownloads( "http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/utility", null, null );
+	public void testGetUtilityDownloads() throws Exception {
+		List<MavenDownload> escapeUtilityDownloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/utility", null, null );
 		assertTrue( escapeUtilityDownloads.size() > 0 );
 	}
 
 	public void testGetTerraceDownloads() throws Exception {
-		List<MavenDownload> terraceDownloads = MavenDownload.getDownloads( "http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/terrace", null, null );
+		List<MavenDownload> terraceDownloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/terrace", null, null );
 		assertTrue( terraceDownloads.size() > 0 );
 	}
 
 	public void testMavenDownloadCache() throws Exception {
-		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/updater", "standalone", null );
+		List<MavenDownload> escapeServiceDownloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/updater", "standalone", null );
 		assertTrue( escapeServiceDownloads.size() > 0 );
 		
 		Map<String, List<MavenDownload>> cache = Accessor.getField( MavenDownload.class, "cache" );
-		assertTrue( cache.get("http://mvn.parallelsymmetry.com/content/groups/psm/com/parallelsymmetry/escape/updater-standalone-jar").size() > 0 );
+		assertTrue( cache.get("http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/updater-standalone-jar").size() > 0 );
 		
 		MavenDownload.clearCache();
 		assertTrue( cache.size() == 0 );

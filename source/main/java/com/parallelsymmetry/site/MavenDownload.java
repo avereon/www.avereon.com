@@ -494,11 +494,11 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		public Context call() throws Exception {
 			// The following example paths will help in debugging.
 			// Release:
-			// http://mvn.parallelsymmetry.com/release/com/parallelsymmetry/utility/1.0.3/utility-1.0.3.pom
+			// http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/utility/1.0.3/utility-1.0.3.pom
 			// <uri>/<version>/<artifact>-<version>.pom
 			// <url>/<version>/<artifact>-<version>.<extension>
 			// Snapshot:
-			// http://mvn.parallelsymmetry.com/snapshot/com/parallelsymmetry/terrace/1.0.0-SNAPSHOT/maven-metadata.xml
+			// http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/terrace/1.0.0-SNAPSHOT/maven-metadata.xml
 			// <uri>/<version>/maven-metadata.xml
 			// <url>/<version>/<artifact>-<version with SNAPSHOT replaced>.<extension>
 
