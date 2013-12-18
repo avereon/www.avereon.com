@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<terrace xmlns="http://www.parallelsymmetry.com/software/terrace"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<terrace xmlns="http://www.parallelsymmetry.com/software/terrace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<template path="template.html">
 		<tag name="header" path="header.jsp"/>
@@ -13,6 +12,7 @@
 	<item name="software"/>
 	<item name="geometry"/>
 	<item name="aviation"/>
+	<item name="howto"/>
 
 	<exemption pattern="images" actions="menu"/>
 	<exemption pattern="copyright.html" actions="menu"/>

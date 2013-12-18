@@ -1,3 +1,10 @@
+<div class="menu">
+<div class="separator">Common Downloads</div>
+<div class="menuitem"><a href="/software/download.jsp?resource=/com/parallelsymmetry/escape&classifier=install">Escape</a></div>
+<div class="menuitem"><a href="/software/download.jsp?resource=/com/parallelsymmetry/terrace">Terrace</a></div>
+<div class="menuitem"><a href="/software/download.jsp?resource=/com/parallelsymmetry/velocity&classifier=install">Velocity</a></div>
+</div>
+
 <!-- 
 <table style="margin: 0px;" width="100%" border="0" cellspacing="0"
 	cellpadding="0">

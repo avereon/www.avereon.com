@@ -8,9 +8,5 @@
 	<item name="terrace" />
 	<item name="velocity" />
 	<item name="elements" />
-	<separator title="Common Downloads"/>
-	<item name="download-escpae" title="Escape" url="download.jsp?resource=/com/parallelsymmetry/escape&amp;classifier=install" />
-	<item name="download-terrace" title="Terrace" url="download.jsp?resource=/com/parallelsymmetry/terrace" />
-	<item name="download-velocity" title="Velocity" url="download.jsp?resource=/com/parallelsymmetry/velocity&amp;classifier=install" />
 
 </terrace>
