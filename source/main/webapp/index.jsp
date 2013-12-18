@@ -30,14 +30,26 @@
 		<td>
 		
 		<!-- Escape download ticket -->
-		<a class="ticket" href="software/escape/">
-			<span class="ticket"><img src="images/badges/escape.png" /><span><span class="title">Escape</span>View Project</span></span>
+		<a class="ticket" href="software/download.jsp?resource=/com/parallelsymmetry/escape&classifier=install">
+			<span class="ticket"><img src="images/badges/escape.png" /><span><span class="title">Escape</span>Download Now</span></span>
 		</a>
 		
 		<p><a href="software/escape/">Escape</a> is an open, lightweight
 		application framework for the development of cross-platform applications. As a
 		framework, Escape relies on modules to provide specific functionality. Several
 		modules are available from this web site.</p>
+
+		<!--  Elements download ticket
+		<a class="ticket" href="software/elements/install.jsp">
+			<span class="ticket"><img src="images/badges/elements.png" /><span><span class="title">Elements</span>Install Now</span></span>
+		</a>
+
+		<p><a href="software/elements/index.jsp">Elements</a> is a 3D wireframe
+		module for Escape. It is intended for simple engineering needs and features 
+		common 2D/3D entities and editing tools.</p>
+		-->
+
+		<td>
 
 		<!--  Terrace download ticket -->
 		<a class="ticket" href="software/download.jsp?resource=/com/parallelsymmetry/terrace">
@@ -49,27 +61,6 @@
 		and merged with a template and navigation tools are dynamically generated.</p>
 		</td>
 
-		<td>
-
-		<!--  Velocity download ticket -->
-		<a class="ticket" href="software/download.jsp?resource=/com/parallelsymmetry/velocity&classifier=install">
-			<span class="ticket"><img src="images/badges/velocity.png" /><span><span class="title">Velocity</span>Download Now</span></span>
-		</a>
-
-		<p><a href="software/velocity/index.jsp">Velocity</a> is an open,
-		lightweight application framework for the development of cross-platform
-		applications. As a framework Velocity has no specific capabilities. It relies
-		on modules to provide functionality. Several modules are available from this
-		web site.</p>
-
-		<!--  Elements download ticket -->
-		<a class="ticket" href="software/elements/install.jsp">
-			<span class="ticket"><img src="images/badges/elements.png" /><span><span class="title">Elements</span>Install Now</span></span>
-		</a>
-
-		<p><a href="software/elements/index.jsp">Elements</a> is a 3D computer
-		aided engineering module for Velocity.It is intended for general engineering
-		needs and features common 2D/3D entities and editing tools.</p>
 		</td>
 	</tr>
 </table>
