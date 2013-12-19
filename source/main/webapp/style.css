@@ -113,12 +113,18 @@ div#header {
 
 /* Footer */
 div#footer {
+	position:fixed;
+	bottom:0px;
+	width:100%;
 	font-size: 70%;
-	padding: 0px 5px 0px 5px;
 	color: value(color-Sa3);
 	background: value(color-Sa5);
 	border-top: 1px solid value(color-Sa4);
 	/*border-bottom: 1px solid value(color-Sa4);*/
+}
+
+div#footer>div {
+	padding: 0px 5px 0px 5px;
 }
 
 div#footer a {
