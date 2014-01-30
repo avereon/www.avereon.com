@@ -18,7 +18,7 @@ public class Download extends HttpServlet {
 
 	private static final long serialVersionUID = 549372381756415485L;
 
-	public synchronized void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		String url = null;
 		String source = request.getParameter( "source" );
 		String maven = request.getParameter( "maven" );
@@ -42,7 +42,8 @@ public class Download extends HttpServlet {
 			return;
 		}
 
-		stream( response, url );
+		//stream( response, url );
+		response.sendRedirect( url );
 	}
 
 	private void stream( HttpServletResponse response, String source ) throws MalformedURLException, IOException {
