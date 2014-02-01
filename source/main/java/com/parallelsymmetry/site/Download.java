@@ -30,7 +30,7 @@ public class Download extends HttpServlet {
 			String type = request.getParameter( "type" );
 			List<MavenDownload> downloads;
 			try {
-				downloads = MavenDownload.getDownloads( maven, classifier, type  );
+				downloads = MavenDownload.getDownloads( maven, classifier, type );
 				if( downloads.size() > 0 ) url = downloads.get( 0 ).getLink();
 			} catch( Exception e ) {
 				getServletContext().log( null, e );
@@ -42,11 +42,14 @@ public class Download extends HttpServlet {
 			return;
 		}
 
-		//stream( response, url );
-		response.sendRedirect( url );
+		URL requestUrl = new URL( request.getRequestURL().toString() );
+		String path = requestUrl.getPath();
+		String filename = path.substring( path.lastIndexOf( "/" ) + 1 );
+		
+		stream( response, url, filename );
 	}
 
-	private void stream( HttpServletResponse response, String source ) throws MalformedURLException, IOException {
+	private void stream( HttpServletResponse response, String source, String filename ) throws MalformedURLException, IOException {
 		// Establish the URL connection.
 		URL url = new URL( source );
 		URLConnection connection = url.openConnection();
@@ -66,6 +69,9 @@ public class Download extends HttpServlet {
 			if( key != null ) {
 				for( String value : fields.get( key ) ) {
 					response.addHeader( key, value );
+				}
+				if( "Content-Disposition".equals( key ) ) {
+					response.setHeader( "Content-Disposition", "inline; filename=\"" + filename + "\"" );
 				}
 			}
 		}
