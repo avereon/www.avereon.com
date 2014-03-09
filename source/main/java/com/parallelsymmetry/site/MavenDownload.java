@@ -20,6 +20,7 @@ import java.util.concurrent.Future;
 
 import com.parallelsymmetry.utility.Descriptor;
 import com.parallelsymmetry.utility.FileUtil;
+import com.parallelsymmetry.utility.TextUtil;
 import com.parallelsymmetry.utility.Version;
 import com.parallelsymmetry.utility.log.Log;
 
@@ -263,14 +264,15 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			// Construct context object map.
 			List<Context> contexts = new ArrayList<Context>();
 			for( String uri : uris ) {
-				Log.write( "URI: " + uri );
 				contexts.add( new Context( uri ) );
 			}
 
-			// Load the root metadata descriptors.
+			// FIXME If the URI is a release location there is not a metadata file.
+
+			// Load the metadata descriptor.
 			futures.clear();
 			for( Context context : contexts ) {
-				futures.add( executor.submit( new LoadRootDescriptor( context ) ) );
+				futures.add( executor.submit( new LoadMavenMetadata( context ) ) );
 			}
 
 			// Wait for the futures to return.
@@ -278,9 +280,19 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 			// Load the release descriptors.
 			futures.clear();
+
+			// It is possible at this point that the metadata is already in a release context.
 			for( Context context : contexts ) {
 				if( !context.isValid() ) continue;
-				List<ReleaseContext> releaseContexts = getReleaseContexts( context );
+
+				List<ReleaseContext> releaseContexts = null;
+				String metadataVersion = context.getRootDescriptor().getValue( "metadata/version" );
+				if( TextUtil.isEmpty( metadataVersion ) ) {
+					releaseContexts = getReleaseContexts( context );
+				} else {
+					releaseContexts = new ArrayList<ReleaseContext>();
+					releaseContexts.add( getReleaseContext( context ) );
+				}
 				for( ReleaseContext releaseContext : releaseContexts ) {
 					context.addReleaseContext( releaseContext );
 					futures.add( executor.submit( new LoadReleasePom( context, releaseContext ) ) );
@@ -294,6 +306,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			for( Context context : contexts ) {
 				if( !context.isValid() ) continue;
 				String key = getDownloadKey( context.getUri(), classifier, type );
+
 				for( ReleaseContext releaseContext : context.getReleaseContexts() ) {
 					if( !releaseContext.isValid() ) continue;
 					String groupId = releaseContext.getPom().getValue( "project/groupId" );
@@ -323,6 +336,9 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			Collections.reverse( downloads );
 
 			return downloads;
+		} catch( Exception exception ) {
+			Log.write( exception );
+			throw ( exception );
 		} finally {
 			executor.shutdown();
 		}
@@ -341,15 +357,13 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	}
 
 	/**
-	 * Get the release context objects.
+	 * Get the release contexts list.
 	 * 
 	 * @param context
-	 * @return Returns a list of release context objects reverse sorted according
-	 *         to the version number.
+	 * @return Returns a list of release contexts reverse sorted according to the
+	 *         version number.
 	 */
 	private static final List<ReleaseContext> getReleaseContexts( Context context ) {
-		List<ReleaseContext> contexts = new ArrayList<ReleaseContext>();
-
 		String uri = context.getUri();
 		Descriptor metadata = context.getRootDescriptor();
 		String artifact = metadata.getValue( "metadata/artifactId" );
@@ -361,11 +375,26 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			versions.add( new Version( versionString ) );
 		}
 
+		List<ReleaseContext> contexts = new ArrayList<ReleaseContext>();
+
 		for( Version version : versions ) {
 			contexts.add( new ReleaseContext( uri + "/" + version.toString(), artifact, version ) );
 		}
 
 		return contexts;
+	}
+
+	private static final ReleaseContext getReleaseContext( Context context ) {
+		String uri = context.getUri();
+		Descriptor metadata = context.getRootDescriptor();
+		String artifact = metadata.getValue( "metadata/artifactId" );
+
+		String uriPath = URI.create( uri ).getPath();
+		String uriVersion = uriPath.substring( uriPath.lastIndexOf( "/" ) + 1 );
+
+		Version version = new Version( uriVersion);
+
+		return new ReleaseContext( uri, artifact, version );
 	}
 
 	private static final class Context {
@@ -463,16 +492,17 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	}
 
-	private static final class LoadRootDescriptor implements Callable<Context> {
+	private static final class LoadMavenMetadata implements Callable<Context> {
 
 		private Context context;
 
-		public LoadRootDescriptor( Context context ) {
+		public LoadMavenMetadata( Context context ) {
 			this.context = context;
 		}
 
 		@Override
 		public Context call() throws Exception {
+			Log.write( "Loading: ", URI.create( context.getUri() + "/maven-metadata.xml" ) );
 			context.setRootDescriptor( new Descriptor( URI.create( context.getUri() + "/maven-metadata.xml" ) ) );
 			return context;
 		}
@@ -516,6 +546,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			} else {
 				pomPath = releaseContext.getBase() + "/" + releaseContext.getArtifact() + "-" + releaseContext.getVersion().toString() + ".pom";
 			}
+
+			Log.write( "Loading: ", pomPath );
 
 			releaseContext.setPom( new Descriptor( URI.create( pomPath ) ) );
 
