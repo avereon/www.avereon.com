@@ -53,7 +53,7 @@ public class Download extends HttpServlet {
 		// Establish the URL connection.
 		URL url = new URL( source );
 		URLConnection connection = url.openConnection();
-		connection.setConnectTimeout( 1000 );
+		connection.setConnectTimeout( 2000 );
 		connection.setReadTimeout( 1000 );
 
 		// Obtain the input stream.
