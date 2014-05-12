@@ -18,6 +18,10 @@ public class Download extends HttpServlet {
 
 	private static final long serialVersionUID = 549372381756415485L;
 
+	private static final int CONNECT_TIMEOUT = 5000;
+
+	private static final int READ_TIMEOUT = 1000;
+
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		String url = null;
 		String source = request.getParameter( "source" );
@@ -45,7 +49,7 @@ public class Download extends HttpServlet {
 		URL requestUrl = new URL( request.getRequestURL().toString() );
 		String path = requestUrl.getPath();
 		String filename = path.substring( path.lastIndexOf( "/" ) + 1 );
-		
+
 		stream( response, url, filename );
 	}
 
@@ -53,8 +57,8 @@ public class Download extends HttpServlet {
 		// Establish the URL connection.
 		URL url = new URL( source );
 		URLConnection connection = url.openConnection();
-		connection.setConnectTimeout( 2000 );
-		connection.setReadTimeout( 1000 );
+		connection.setConnectTimeout( CONNECT_TIMEOUT );
+		connection.setReadTimeout( READ_TIMEOUT );
 
 		// Obtain the input stream.
 		InputStream input = connection.getInputStream();
