@@ -351,7 +351,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			} catch( InterruptedException exception ) {
 				return;
 			} catch( ExecutionException exception ) {
-				// Intentionally ignore exception.
+				Log.write( Log.ERROR, exception.getMessage() );
 			}
 		}
 	}
@@ -392,7 +392,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		String uriPath = URI.create( uri ).getPath();
 		String uriVersion = uriPath.substring( uriPath.lastIndexOf( "/" ) + 1 );
 
-		Version version = new Version( uriVersion);
+		Version version = new Version( uriVersion );
 
 		return new ReleaseContext( uri, artifact, version );
 	}
@@ -544,7 +544,12 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 				pomPath = releaseContext.getPath() + ".pom";
 			} else {
-				pomPath = releaseContext.getBase() + "/" + releaseContext.getArtifact() + "-" + releaseContext.getVersion().toString() + ".pom";
+				pomPath = releaseContext.getBase()
+					+ "/"
+					+ releaseContext.getArtifact()
+					+ "-"
+					+ releaseContext.getVersion().toString()
+					+ ".pom";
 			}
 
 			Log.write( "Loading: ", pomPath );

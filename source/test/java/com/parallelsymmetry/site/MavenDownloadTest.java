@@ -11,7 +11,6 @@ import com.parallelsymmetry.utility.log.Log;
 public class MavenDownloadTest extends TestCase {
 	
 	public void testGetElementsByVersionDownloads() throws Exception {
-		Log.setLevel( Log.DEBUG );
 		List<MavenDownload> downloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/elements/0.0.1-SNAPSHOT", "module", "jnlp" );
 		assertTrue( downloads.size() > 0 );
 	}
