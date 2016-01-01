@@ -199,6 +199,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		// Check the cache.
 		List<String> neededUris = new ArrayList<String>();
 		for( String uri : uris ) {
+			Log.write( Log.INFO, "Downloading:  " + uri );
 			String key = getDownloadKey( uri, classifier, type );
 
 			List<MavenDownload> cachedDownloads = cache.get( key );
@@ -291,7 +292,11 @@ public class MavenDownload implements Comparable<MavenDownload> {
 					releaseContexts = getReleaseContexts( context );
 				} else {
 					releaseContexts = new ArrayList<ReleaseContext>();
-					releaseContexts.add( getReleaseContext( context ) );
+					if( context.uri.endsWith( metadataVersion ) ) {
+						releaseContexts.add( getReleaseContext( context ) );
+					} else {
+						releaseContexts.add( getReleaseContext( context, metadataVersion ) );
+					}
 				}
 				for( ReleaseContext releaseContext : releaseContexts ) {
 					context.addReleaseContext( releaseContext );
@@ -388,13 +393,20 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		String uri = context.getUri();
 		Descriptor metadata = context.getRootDescriptor();
 		String artifact = metadata.getValue( "metadata/artifactId" );
-
+	
 		String uriPath = URI.create( uri ).getPath();
 		String uriVersion = uriPath.substring( uriPath.lastIndexOf( "/" ) + 1 );
-
 		Version version = new Version( uriVersion );
-
+	
 		return new ReleaseContext( uri, artifact, version );
+	}
+
+	private static final ReleaseContext getReleaseContext( Context context, String version ) {
+		String uri = context.getUri();
+		Descriptor metadata = context.getRootDescriptor();
+		String artifact = metadata.getValue( "metadata/artifactId" );
+		Version versionObject = new Version( version );
+		return new ReleaseContext( uri + "/" + version, artifact, versionObject );
 	}
 
 	private static final class Context {
@@ -502,7 +514,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		@Override
 		public Context call() throws Exception {
-			Log.write( "Loading: ", URI.create( context.getUri() + "/maven-metadata.xml" ) );
+			Log.write( "Loading META: ", URI.create( context.getUri() + "/maven-metadata.xml" ) );
 			context.setRootDescriptor( new Descriptor( URI.create( context.getUri() + "/maven-metadata.xml" ) ) );
 			return context;
 		}
@@ -544,15 +556,10 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 				pomPath = releaseContext.getPath() + ".pom";
 			} else {
-				pomPath = releaseContext.getBase()
-					+ "/"
-					+ releaseContext.getArtifact()
-					+ "-"
-					+ releaseContext.getVersion().toString()
-					+ ".pom";
+				pomPath = releaseContext.getBase() + "/" + releaseContext.getArtifact() + "-" + releaseContext.getVersion().toString() + ".pom";
 			}
 
-			Log.write( "Loading: ", pomPath );
+			Log.write( "Loading POM:  ", pomPath );
 
 			releaseContext.setPom( new Descriptor( URI.create( pomPath ) ) );
 
