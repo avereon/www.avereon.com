@@ -33,6 +33,11 @@ public class MavenDownloadTest extends TestCase {
 		assertTrue( downloads.size() > 0 );
 	}
 
+	public void testGetFitfoilDownloads() throws Exception {
+		List<MavenDownload> downloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/fitfoil", null, null );
+		assertTrue( downloads.size() > 0 );
+	}
+
 	public void testGetTerraceDownloads() throws Exception {
 		List<MavenDownload> downloads = MavenDownload.getDownloads( "http://code.parallelsymmetry.com/repo/psm/com/parallelsymmetry/terrace", null, null );
 		assertTrue( downloads.size() > 0 );
