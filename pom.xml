@@ -20,6 +20,13 @@
 	<url>http://www.xeomar.com/</url>
 	<inceptionYear>2017</inceptionYear>
 
+	<repositories>
+		<repository>
+			<id>xeo</id>
+			<url>https://code.xeomar.com/repo/xeo</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.xeomar</groupId>
