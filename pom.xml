@@ -5,50 +5,75 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.parallelsymmetry.pom</groupId>
-		<artifactId>top</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.8.RELEASE</version>
 	</parent>
 
-	<groupId>com.parallelsymmetry</groupId>
+	<groupId>com.xeomar</groupId>
 	<artifactId>website</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>Parallel Symmetry Website</name>
-	<description>The Parallel Symmetry website.</description>
-	<url>http://www.parallelsymmetry.com/</url>
-	<inceptionYear>2008</inceptionYear>
+	<name>Xeomar Website</name>
+	<description>The Xeomar website</description>
+	<url>http://www.xeomar.com/</url>
+	<inceptionYear>2017</inceptionYear>
+
+	<organization>
+		<name>Xeomar</name>
+		<url>http://www.xeomar.com/</url>
+	</organization>
 
 	<repositories>
 		<repository>
-			<id>psm</id>
-			<url>http://code.parallelsymmetry.com/repo/psm</url>
+			<id>xeo</id>
+			<url>https://code.xeomar.com/repo/xeo</url>
 		</repository>
 	</repositories>
 
-	<organization>
-		<name>Parallel Symmetry</name>
-		<url>http://www.parallelsymmetry.com/</url>
-	</organization>
-
-	<build>
-		<finalName>parallelsymmetry</finalName>
-	</build>
+	<properties>
+		<java.version>8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<groupId>com.xeomar</groupId>
+			<artifactId>razor</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.parallelsymmetry</groupId>
-			<artifactId>terrace</artifactId>
-			<version>2.0.0-SNAPSHOT</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>xeomar</finalName>
+
+		<sourceDirectory>source/main/java</sourceDirectory>
+		<outputDirectory>target/main/java</outputDirectory>
+		<testSourceDirectory>source/test/java</testSourceDirectory>
+		<testOutputDirectory>target/test/java</testOutputDirectory>
+
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 	<profiles>
 
@@ -65,14 +90,14 @@
 					<plugin>
 						<groupId>org.apache.tomcat.maven</groupId>
 						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
 						<configuration>
-							<url>http://localhost:8080/manager/html</url>
+							<url>http://localhost:8080/manager/text</url>
 							<server>local-tomcat</server>
-							<path>/parasymm</path>
+							<path>/xeomar</path>
 							<warFile>target/${project.build.finalName}.war</warFile>
 						</configuration>
 					</plugin>
-
 				</plugins>
 			</build>
 		</profile>
@@ -86,8 +111,9 @@
 					<plugin>
 						<groupId>org.apache.tomcat.maven</groupId>
 						<artifactId>tomcat7-maven-plugin</artifactId>
+						<version>2.2</version>
 						<configuration>
-							<url>http://www.parallelsymmetry.com/manager/text</url>
+							<url>http://www.xeomar.com/manager/text</url>
 							<server>psm-tomcat</server>
 							<path>/</path>
 							<warFile>target/${project.build.finalName}.war</warFile>
