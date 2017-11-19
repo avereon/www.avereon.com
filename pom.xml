@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
+		<groupId>com.xeomar.pom</groupId>
+		<artifactId>web</artifactId>
+		<version>3.0.0-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.xeomar</groupId>
@@ -20,110 +20,16 @@
 	<url>http://www.xeomar.com/</url>
 	<inceptionYear>2017</inceptionYear>
 
-	<organization>
-		<name>Xeomar</name>
-		<url>http://www.xeomar.com/</url>
-	</organization>
-
-	<repositories>
-		<repository>
-			<id>xeo</id>
-			<url>https://code.xeomar.com/repo/xeo</url>
-		</repository>
-	</repositories>
-
-	<properties>
-		<java.version>8</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.xeomar</groupId>
 			<artifactId>razor</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>xeomar</finalName>
-
-		<sourceDirectory>source/main/java</sourceDirectory>
-		<outputDirectory>target/main/java</outputDirectory>
-		<testSourceDirectory>source/test/java</testSourceDirectory>
-		<testOutputDirectory>target/test/java</testOutputDirectory>
-
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
 	</build>
-
-	<profiles>
-
-		<profile>
-			<id>local</id>
-
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-
-			<build>
-				<plugins>
-
-					<plugin>
-						<groupId>org.apache.tomcat.maven</groupId>
-						<artifactId>tomcat7-maven-plugin</artifactId>
-						<version>2.2</version>
-						<configuration>
-							<url>http://localhost:8080/manager/text</url>
-							<server>local-tomcat</server>
-							<path>/xeomar</path>
-							<warFile>target/${project.build.finalName}.war</warFile>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<profile>
-			<id>production</id>
-
-			<build>
-				<plugins>
-
-					<plugin>
-						<groupId>org.apache.tomcat.maven</groupId>
-						<artifactId>tomcat7-maven-plugin</artifactId>
-						<version>2.2</version>
-						<configuration>
-							<url>http://www.xeomar.com/manager/text</url>
-							<server>psm-tomcat</server>
-							<path>/</path>
-							<warFile>target/${project.build.finalName}.war</warFile>
-						</configuration>
-					</plugin>
-
-				</plugins>
-			</build>
-		</profile>
-
-	</profiles>
 
 </project>
