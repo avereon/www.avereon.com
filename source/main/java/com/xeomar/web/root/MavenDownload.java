@@ -149,7 +149,8 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	@Override
 	public int compareTo( MavenDownload that ) {
-		return this.getVersion().compareTo( that.getVersion() );
+		//return this.getVersion().compareTo( that.getVersion() );
+		return 0;
 	}
 
 	@Override
@@ -240,7 +241,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	/**
 	 * Retrieves all the applicable downloads for the specified URI's and
-	 * 
+	 *
 	 * @param classifier
 	 * @param type
 	 * @param uris
@@ -355,7 +356,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	/**
 	 * Get the release contexts list.
-	 * 
+	 *
 	 * @param context
 	 * @return Returns a list of release contexts reverse sorted according to the
 	 *         version number.
@@ -385,11 +386,11 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		String uri = context.getUri();
 		XmlDescriptor metadata = context.getRootDescriptor();
 		String artifact = metadata.getValue( "metadata/artifactId" );
-	
+
 		String uriPath = URI.create( uri ).getPath();
 		String uriVersion = uriPath.substring( uriPath.lastIndexOf( "/" ) + 1 );
 		Version version = new Version( uriVersion );
-	
+
 		return new ReleaseContext( uri, artifact, version );
 	}
 
