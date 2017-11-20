@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class RootController {
+public class DownloadController {
 
-	private static Logger log = LoggerFactory.getLogger( RootController.class );
+	private static Logger log = LoggerFactory.getLogger( DownloadController.class );
 
 	private static String REPO = "https://code.xeomar.com/repo/xeo/";
 
@@ -27,11 +27,6 @@ public class RootController {
 	private static final int CONNECT_RETRY = 3;
 
 	private static final int READ_TIMEOUT = 1000;
-
-	//	@RequestMapping( "/" )
-	//	public String index() {
-	//		return "Greetings from Spring Boot!";
-	//	}
 
 	@RequestMapping( "/download/**" )
 	public void download( HttpServletRequest request, HttpServletResponse response ) {
