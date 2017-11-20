@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 
 public class MavenDownload implements Comparable<MavenDownload> {
 
-	private static final Logger log = LoggerFactory.getLogger( MavenDownload.class);
+	private static final Logger log = LoggerFactory.getLogger( MavenDownload.class );
 
 	private static final String DEFAULT_EXTENSION = "jar";
 
@@ -155,7 +155,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	@Override
 	public boolean equals( Object object ) {
-		if( !( object instanceof MavenDownload ) ) return false;
+		if( !(object instanceof MavenDownload) ) return false;
 
 		MavenDownload that = (MavenDownload)object;
 
@@ -171,7 +171,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		if( type == null ) type = DEFAULT_EXTENSION;
 
-		for( String cacheKey : new HashSet<String>( cache.keySet() ) ) {
+		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
 				cache.remove( cacheKey );
 			}
@@ -180,17 +180,17 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		// TODO Start the background refresh thread.
 	}
 
-	public static final List<MavenDownload> getDownloads( String uri, String classifier, String type ) throws Exception {
-		List<String> uris = new ArrayList<String>();
+	public static List<MavenDownload> getDownloads( String uri, String classifier, String type ) throws Exception {
+		List<String> uris = new ArrayList<>();
 		uris.add( uri );
 		return getDownloads( uris, classifier, type );
 	}
 
-	public static final List<MavenDownload> getDownloads( List<String> uris, String classifier, String type ) throws Exception {
-		List<MavenDownload> downloads = new ArrayList<MavenDownload>();
+	public static List<MavenDownload> getDownloads( List<String> uris, String classifier, String type ) throws Exception {
+		List<MavenDownload> downloads = new ArrayList<>();
 
 		// Check the cache.
-		List<String> neededUris = new ArrayList<String>();
+		List<String> neededUris = new ArrayList<>();
 		for( String uri : uris ) {
 			log.info( "Downloading:  " + uri );
 			String key = getDownloadKey( uri, classifier, type );
@@ -214,7 +214,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				// Add download to cache.
 				List<MavenDownload> cachedDownloads = cache.get( key );
 				if( cachedDownloads == null ) {
-					cachedDownloads = new CopyOnWriteArrayList<MavenDownload>();
+					cachedDownloads = new CopyOnWriteArrayList<>();
 					cache.put( key, cachedDownloads );
 				}
 				cachedDownloads.add( download );
@@ -225,7 +225,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return downloads;
 	}
 
-	private static final String getDownloadKey( String uri, String classifier, String type ) {
+	private static String getDownloadKey( String uri, String classifier, String type ) {
 		StringBuilder builder = new StringBuilder( uri );
 
 		if( classifier != null ) {
@@ -248,7 +248,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	 * @return
 	 * @throws Exception
 	 */
-	private static final List<MavenDownload> getDownloadsDirect( List<String> uris, String classifier, String type ) throws Exception {
+	private static List<MavenDownload> getDownloadsDirect( List<String> uris, String classifier, String type ) throws Exception {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		List<Future<?>> futures = new ArrayList<Future<?>>();
 
@@ -312,7 +312,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 					Version version = releaseContext.getVersion();
 
 					String name = releaseContext.getPom().getValue( "project/name" );
-					String link = releaseContext.getPath() + ( classifier == null ? "" : "-" + classifier ) + "." + type;
+					String link = releaseContext.getPath() + (classifier == null ? "" : "-" + classifier) + "." + type;
 					String md5Link = link + ".md5";
 					String sha1Link = link + ".sha1";
 
@@ -336,7 +336,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			return downloads;
 		} catch( Exception exception ) {
 			log.error( "Error getting download list", exception );
-			throw ( exception );
+			throw (exception);
 		} finally {
 			executor.shutdown();
 		}
@@ -349,7 +349,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 			} catch( InterruptedException exception ) {
 				return;
 			} catch( ExecutionException exception ) {
-				log.error( "Error executing future", exception.getMessage() );
+				log.error( "Error executing future", exception );
 			}
 		}
 	}
@@ -359,7 +359,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	 *
 	 * @param context
 	 * @return Returns a list of release contexts reverse sorted according to the
-	 *         version number.
+	 * version number.
 	 */
 	private static final List<ReleaseContext> getReleaseContexts( Context context ) {
 		String uri = context.getUri();
@@ -507,7 +507,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		@Override
 		public Context call() throws Exception {
-			log.info( "Loading META: ", URI.create( context.getUri() + "/maven-metadata.xml" ) );
+			log.info( "Loading META: "+ URI.create( context.getUri() + "/maven-metadata.xml" ) );
 			context.setRootDescriptor( new XmlDescriptor( URI.create( context.getUri() + "/maven-metadata.xml" ) ) );
 			return context;
 		}
@@ -552,7 +552,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				pomPath = releaseContext.getBase() + "/" + releaseContext.getArtifact() + "-" + releaseContext.getVersion().toString() + ".pom";
 			}
 
-			log.info( "Loading POM:  ", pomPath );
+			log.info( "Loading POM:  "+ pomPath );
 
 			releaseContext.setPom( new XmlDescriptor( URI.create( pomPath ) ) );
 
