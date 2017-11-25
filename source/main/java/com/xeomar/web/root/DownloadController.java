@@ -72,11 +72,13 @@ public class DownloadController {
 
 	private static final int READ_TIMEOUT = 1000;
 
+	@SuppressWarnings( "unused" )
 	@RequestMapping( "/download" )
 	public String download( HttpServletRequest request, HttpServletResponse response ) {
 		return "<h1>Xeomar Download Page</h1>";
 	}
 
+	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download/catalog/{product}/{version:.+}" )
 	private void downloadCatalog( HttpServletRequest request, HttpServletResponse response, @PathVariable( "product" ) String product, @PathVariable( "version" ) String version ) throws IOException {
 		log.info( "Requested: catalog > " + product + " > " + version );
@@ -87,9 +89,29 @@ public class DownloadController {
 		if( link == null ) {
 			response.getOutputStream().close();
 		} else {
-			log.info("Returned: " + link );
+			log.info( "Returned: " + link );
 			try {
 				stream( response, new URL( link ), product + "-catalog.card" );
+			} catch( FileNotFoundException exception ) {
+				throw new FileNotFoundException( request.getRequestURI() );
+			}
+		}
+	}
+
+	@SuppressWarnings( "unused" )
+	@RequestMapping( method = RequestMethod.GET, value = "/download/product/{product}/{type}/{version:.+}" )
+	private void downloadProduct( HttpServletRequest request, HttpServletResponse response, @PathVariable( "product" ) String product, @PathVariable( "version" ) String version, @PathVariable( "type" ) String type ) throws IOException {
+		log.info( "Requested: product > " + product + " > " + version + " > " + type );
+
+		String path = REPO + GROUP + product;
+		MavenDownload download = getVersion( MavenDownload.getDownloads( path, "product", type ), version );
+		String link = download == null ? null : download.getLink();
+		if( link == null ) {
+			response.getOutputStream().close();
+		} else {
+			log.info( "Returned: " + link );
+			try {
+				stream( response, new URL( link ), product + "-product." + type );
 			} catch( FileNotFoundException exception ) {
 				throw new FileNotFoundException( request.getRequestURI() );
 			}
