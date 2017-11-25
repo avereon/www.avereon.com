@@ -66,11 +66,13 @@ public class DownloadController {
 
 	private static String GROUP = "com/xeomar/";
 
-	private static final int CONNECT_TIMEOUT = 4500;
+	private static final int IO_BUFFER_SIZE = 256 * 1024;
 
-	private static final int CONNECT_RETRY = 3;
+	private static final int READ_TIMEOUT = 200;
 
-	private static final int READ_TIMEOUT = 1000;
+	private static final int CONNECT_RETRY = 10;
+
+	private static final int CONNECT_TIMEOUT = CONNECT_RETRY * READ_TIMEOUT;
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( "/download" )
@@ -189,7 +191,7 @@ public class DownloadController {
 		}
 
 		// Stream the data.
-		byte[] buffer = new byte[ 4096 ];
+		byte[] buffer = new byte[ IO_BUFFER_SIZE ];
 		OutputStream output = response.getOutputStream();
 		int count;
 		while( (count = input.read( buffer )) >= 0 ) {
