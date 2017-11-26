@@ -1,6 +1,5 @@
 package com.xeomar.web.root;
 
-import com.xeomar.util.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,14 +30,21 @@ import java.util.Map;
  * hide the complexity of artifact resolution internally instead of
  * interpreting the complex query parameters from before.
  * <h2>Mapping Rules</h2>
- * - All requests start with the prefix /download
- * - The second parameter determines the type of download
- * - catalog - A product catalog for a program
- * - product - A product artifact like a jar file
- * - The third parameter determines the product name
- * - The fourth parameter is artifact dependent
- * - For catalogs, this parameter defines the distribution channel
- * - For products, this parameter defines the file type to return
+ * <ul>
+ * <li>All requests start with the prefix /download</li>
+ * <li>The second parameter determines the type of download
+ * <ul>
+ * <li>catalog - A product catalog for a program</li>
+ * <li>product - A product artifact like a jar file</li>
+ * </ul>
+ * </li>
+ * <li>The third parameter determines the artifact name</li>
+ * <li>The fourth parameter is artifact dependent
+ * <ul>
+ * <li>For catalogs, this parameter defines the distribution channel</li>
+ * <li>For products, this parameter defines the file type to return</li>
+ * </ul></li>
+ * </ul>
  * <h2>Media Types</h2>
  * The resource to media type map:
  * Pack > application/zip
@@ -62,17 +68,17 @@ public class DownloadController {
 
 	private static Logger log = LoggerFactory.getLogger( DownloadController.class );
 
-	private static String REPO = "https://code.xeomar.com/repo/xeo/";
+	private static final String REPO = "https://code.xeomar.com/repo/xeo/";
 
-	private static String GROUP = "com/xeomar/";
+	private static final String GROUP = "com/xeomar/";
 
 	private static final int IO_BUFFER_SIZE = 256 * 1024;
 
-	private static final int READ_TIMEOUT = 200;
+	private static final int CONNECT_TIMEOUT = 1000;
 
-	private static final int CONNECT_RETRY = 10;
+	private static final int CONNECT_RETRY = 5;
 
-	private static final int CONNECT_TIMEOUT = CONNECT_RETRY * READ_TIMEOUT;
+	private static final int READ_TIMEOUT = 500;
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( "/download" )
@@ -81,69 +87,67 @@ public class DownloadController {
 	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/catalog/{product}/{version:.+}" )
-	private void downloadCatalog( HttpServletRequest request, HttpServletResponse response, @PathVariable( "product" ) String product, @PathVariable( "version" ) String version ) throws IOException {
-		log.info( "Requested: catalog > " + product + " > " + version );
-
-		String path = REPO + GROUP + product;
-		MavenDownload download = getVersion( MavenDownload.getDownloads( path, "catalog", "card" ), version );
-		String link = download == null ? null : download.getLink();
-		if( link == null ) {
-			response.getOutputStream().close();
-		} else {
-			log.info( "Returned: " + link );
-			try {
-				stream( response, new URL( link ), product + "-catalog.card" );
-			} catch( FileNotFoundException exception ) {
-				throw new FileNotFoundException( request.getRequestURI() );
-			}
-		}
+	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}" )
+	public void clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
+		MavenDownload.clearCache( createUri( artifact ), null, null, null );
 	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/product/{product}/{type}/{version:.+}" )
-	private void downloadProduct( HttpServletRequest request, HttpServletResponse response, @PathVariable( "product" ) String product, @PathVariable( "version" ) String version, @PathVariable( "type" ) String type ) throws IOException {
-		log.info( "Requested: product > " + product + " > " + version + " > " + type );
+	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}/{category}" )
+	public void clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
+		MavenDownload.clearCache( createUri( artifact ), category, null, null );
+	}
 
-		String path = REPO + GROUP + product;
-		MavenDownload download = getVersion( MavenDownload.getDownloads( path, "product", type ), version );
+	@SuppressWarnings( "unused" )
+	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}/{category}/{type}" )
+	public void clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
+		MavenDownload.clearCache( createUri( artifact ), category, type, null );
+	}
+
+	@SuppressWarnings( "unused" )
+	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}/{category}/{type}/{version:.+}" )
+	public void clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+		MavenDownload.clearCache( createUri( artifact ), category, type, version );
+	}
+
+	/**
+	 * Examples:
+	 * <ul>
+	 * <li>http://xeomar.com/download/xenon/catalog/card/latest</li>
+	 * <li>http://xeomar.com/download/xenon/product/card/latest</li>
+	 * <li>http://xeomar.com/download/xenon/product/pack/release</li>
+	 * <li>http://xeomar.com/download/xenon/product/card/snapshot</li>
+	 * </ul>
+	 *
+	 * @param request The HTTP request object
+	 * @param response The HTTP response object
+	 * @param artifact The artifact id
+	 * @param category The category (e.g. catalog, product, etc.)
+	 * @param type The artifact type (e.g. card, pack, jar, etc.)
+	 * @param version The artifact version (e.g. latest, release, snapshot, 2.0, etc.)
+	 * @throws IOException If an IO error occurs
+	 */
+	@SuppressWarnings( "unused" )
+	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}/{category}/{type}/{version:.+}" )
+	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+		log.info( "Requested: " + artifact + "-" + category + "-" + type + "-" + version );
+
+		MavenDownload download = MavenDownload.getDownloads( createUri( artifact ), category, type, version ).get( 0 );
 		String link = download == null ? null : download.getLink();
 		if( link == null ) {
 			response.getOutputStream().close();
 		} else {
 			log.info( "Returned: " + link );
 			try {
-				stream( response, new URL( link ), product + "-product." + type );
+				stream( response, new URL( link ), artifact + "-" + category + "." + type );
 			} catch( FileNotFoundException exception ) {
 				throw new FileNotFoundException( request.getRequestURI() );
 			}
 		}
 	}
 
-	/**
-	 * Get a Maven download from a list of downloads by matching on a version.
-	 *
-	 * @param downloads The list of downloads obtained from MavenDownload.getDownloads()
-	 * @param version The version string to match. Can be "latest", "release", "snapshot" or a version number.
-	 * @return The matching download
-	 */
-	private MavenDownload getVersion( List<MavenDownload> downloads, String version ) {
-		// Version can be release, snapshot or a version number
-
-		boolean latest = "latest".equalsIgnoreCase( version );
-		boolean release = "release".equalsIgnoreCase( version );
-		boolean snapshot = "snapshot".equalsIgnoreCase( version );
-
-		for( MavenDownload download : downloads ) {
-			Version downloadVersion = download.getVersion();
-
-			if( latest ) return download;
-			if( release && !downloadVersion.isSnapshot() ) return download;
-			if( snapshot && downloadVersion.isSnapshot() ) return download;
-			if( downloadVersion.toString().startsWith( version ) ) return download;
-		}
-
-		return null;
+	private String createUri( String artifact ) {
+		return REPO + GROUP + artifact;
 	}
 
 	/**
@@ -157,15 +161,13 @@ public class DownloadController {
 		InputStream input = null;
 		URLConnection connection = null;
 
-		int connectTimeout = CONNECT_TIMEOUT / CONNECT_RETRY;
-
 		while( attempt < CONNECT_RETRY && input == null ) {
 			// Increment the attempt count.
 			attempt++;
 
 			// Establish the connection.
 			connection = source.openConnection();
-			connection.setConnectTimeout( connectTimeout );
+			connection.setConnectTimeout( CONNECT_TIMEOUT );
 			connection.setReadTimeout( READ_TIMEOUT );
 
 			// Obtain the input stream.
