@@ -197,7 +197,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
-				log.info( "Clear cache: " + cacheKey );
+				log.info( "Evict cache for: " + cacheKey );
 				cache.remove( cacheKey );
 			}
 		}
