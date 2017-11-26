@@ -87,27 +87,27 @@ public class DownloadController {
 	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}" )
-	public void clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
-		MavenDownload.clearCache( createUri( artifact ), null, null, null );
+	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
+	public String clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
+		return MavenDownload.clearCache( createUri( artifact ), null, null, null );
 	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}/{category}" )
-	public void clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
-		MavenDownload.clearCache( createUri( artifact ), category, null, null );
+	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}" )
+	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
+		return MavenDownload.clearCache( createUri( artifact ), category, null, null );
 	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}/{category}/{type}" )
-	public void clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
-		MavenDownload.clearCache( createUri( artifact ), category, type, null );
+	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}" )
+	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
+		return MavenDownload.clearCache( createUri( artifact ), category, type, null );
 	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/reset/{artifact}/{category}/{type}/{version:.+}" )
-	public void clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
-		MavenDownload.clearCache( createUri( artifact ), category, type, version );
+	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
+	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+		return MavenDownload.clearCache( createUri( artifact ), category, type, version );
 	}
 
 	/**

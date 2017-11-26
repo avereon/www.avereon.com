@@ -185,11 +185,14 @@ public class MavenDownload implements Comparable<MavenDownload> {
 		return downloads;
 	}
 
-	public static void clearCache() {
+	public static String clearCache() {
 		cache.clear();
+
+		log.info( "Cache cleared for all" );
+		return "Cache cleared for all";
 	}
 
-	public static void clearCache( String uri, String classifier, String type, String version ) {
+	public static String clearCache( String uri, String classifier, String type, String version ) {
 		String key = getDownloadKey( uri, classifier, type, version );
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
@@ -198,6 +201,9 @@ public class MavenDownload implements Comparable<MavenDownload> {
 				cache.remove( cacheKey );
 			}
 		}
+
+		log.info( "Cache cleared for " + key );
+		return "Cache cleared for " + key;
 	}
 
 	private static String getDownloadKey( String uri, String classifier, String type ) {
