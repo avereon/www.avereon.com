@@ -132,7 +132,10 @@ public class DownloadController {
 	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
 		log.info( "Requested: " + artifact + "-" + category + "-" + type + "-" + version );
 
-		MavenDownload download = MavenDownload.getDownloads( createUri( artifact ), category, type, version ).get( 0 );
+		List<MavenDownload> downloads = MavenDownload.getDownloads( createUri( artifact ), category, type, version );
+		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + version );
+
+		MavenDownload download = downloads.get( 0 );
 		String link = download == null ? null : download.getLink();
 		if( link == null ) {
 			response.getOutputStream().close();
