@@ -13,7 +13,7 @@
 	<groupId>com.xeomar</groupId>
 	<artifactId>website</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>Xeomar Website</name>
 	<description>The Xeomar website</description>
@@ -37,6 +37,30 @@
 
 	<build>
 		<finalName>xeomar</finalName>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+					<addResources>true</addResources>
+				</configuration>
+			</plugin>
+
+		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>xeo-release</id>
+			<url>https://code.xeomar.com/repo/xeo-release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>xeo-snapshot</id>
+			<url>https://code.xeomar.com/repo/xeo-snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
