@@ -68,7 +68,7 @@ public class DownloadController {
 
 	private static Logger log = LoggerFactory.getLogger( DownloadController.class );
 
-	private static final String REPO = "https://code.xeomar.com/repo/xeo/";
+	private static final String REPO = "https://repo.xeomar.com/xeo/";
 
 	private static final String GROUP = "com/xeomar/";
 
