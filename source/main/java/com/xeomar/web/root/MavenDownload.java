@@ -109,7 +109,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	}
 
 	public String getHumanReadableLength() {
-		return FileUtil.getHumanBinSize( length );
+		return FileUtil.getHumanSizeBase2( length );
 	}
 
 	public Date getDate() {
