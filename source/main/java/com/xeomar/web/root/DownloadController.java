@@ -80,6 +80,12 @@ public class DownloadController {
 
 	private static final int READ_TIMEOUT = 500;
 
+	private MavenDownloadFactory mavenDownloadFactory;
+
+	public DownloadController( MavenDownloadFactory factory ) {
+		this.mavenDownloadFactory = factory;
+	}
+
 	@SuppressWarnings( "unused" )
 	@RequestMapping( "/download" )
 	public String download( HttpServletRequest request, HttpServletResponse response ) {
@@ -89,25 +95,25 @@ public class DownloadController {
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
-		return MavenDownload.clearCache( createUri( artifact ), null, null, null );
+		return mavenDownloadFactory.clearCache( createUri( artifact ), null, null, null );
 	}
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
-		return MavenDownload.clearCache( createUri( artifact ), category, null, null );
+		return mavenDownloadFactory.clearCache( createUri( artifact ), category, null, null );
 	}
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
-		return MavenDownload.clearCache( createUri( artifact ), category, type, null );
+		return mavenDownloadFactory.clearCache( createUri( artifact ), category, type, null );
 	}
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
-		return MavenDownload.clearCache( createUri( artifact ), category, type, version );
+		return mavenDownloadFactory.clearCache( createUri( artifact ), category, type, version );
 	}
 
 	/**
@@ -132,7 +138,7 @@ public class DownloadController {
 	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
 		log.info( "Requested: " + artifact + "-" + category + "-" + type + "-" + version );
 
-		List<MavenDownload> downloads = MavenDownload.getDownloads( createUri( artifact ), category, type, version );
+		List<MavenDownload> downloads = mavenDownloadFactory.getDownloads( createUri( artifact ), category, type, version );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + version );
 
 		MavenDownload download = downloads.get( 0 );

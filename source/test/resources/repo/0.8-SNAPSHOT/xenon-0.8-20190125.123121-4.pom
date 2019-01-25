@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.xeomar.pom</groupId>
+		<artifactId>jar</artifactId>
+		<version>3.0.0-SNAPSHOT</version>
+		<relativePath />
+	</parent>
+
+	<!-- Update the product roadmap when the version changes -->
+	<groupId>com.xeomar</groupId>
+	<artifactId>xenon</artifactId>
+	<version>0.8-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Xenon</name>
+	<description>A Java application platform for developing modular cross-platform applications.</description>
+	<inceptionYear>2017</inceptionYear>
+
+	<developers>
+		<developer>
+			<name>Mark Soderquist</name>
+			<email>mark@soderquist.net</email>
+			<roles>
+				<role>Architect</role>
+			</roles>
+		</developer>
+	</developers>
+
+	
+
+	
+
+	<properties>
+		<!-- The folder used to set up the installer files -->
+		<product-pack-folder>pack/program</product-pack-folder>
+
+		<!-- Runtime dependencies -->
+		<!--java.version defined in parent pom -->
+		<javafx.version>11.0.2</javafx.version>
+		<controlsfx.version>9.0.0</controlsfx.version>
+		<undofx.version>2.1.0</undofx.version>
+		<slf4j.version>1.8.0-beta2</slf4j.version>
+		<miglayout.version>5.1</miglayout.version>
+
+		<!-- Test dependencies -->
+		<surefire.version>3.0.0-M3</surefire.version>
+		<testfx.version>4.0.15-alpha</testfx.version>
+		<monocle.version>jdk-11+26</monocle.version>
+
+		<!-- Build dependencies -->
+		<izpack.version>5.1.3-SNAPSHOT</izpack.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.xeomar</groupId>
+			<artifactId>zenna</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.xeomar</groupId>
+			<artifactId>xevra</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<exclusions>
+				<!-- Let Xenon provide it's own version -->
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-controls</artifactId>
+				</exclusion>
+				<!-- Let Xenon provide it's own version -->
+				<exclusion>
+					<groupId>org.controlsfx</groupId>
+					<artifactId>controlsfx</artifactId>
+				</exclusion>
+				<!-- Let Xenon provide it's own version -->
+				<exclusion>
+					<groupId>com.xeomar</groupId>
+					<artifactId>zenna</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.controlsfx</groupId>
+			<artifactId>controlsfx</artifactId>
+			<version>${controlsfx.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout-javafx</artifactId>
+			<version>${miglayout.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-core</artifactId>
+			<version>${testfx.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-junit</artifactId>
+			<version>${testfx.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Apparently this causes duplicate modules to be loaded -->
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>openjfx-monocle</artifactId>
+			<version>${monocle.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-base</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-controls</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-graphics</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-swing</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-fxml</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-web</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+
+		<resources>
+			<resource>
+				<directory>source/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<!-- Works with Java 9.0.4 and Surefire 2.20.1 -->
+				<!-- Does not work with Java 10 and Surefire 2.21.0 -->
+				<!-- Does not work with Java 10 and Surefire 2.22.0 -->
+				<version>${surefire.version}</version>
+				<configuration>
+					<skip>true</skip>
+					<forkCount>1</forkCount>
+					<reuseForks>false</reuseForks>
+					<runOrder>alphabetical</runOrder>
+					<argLine>
+						-Xmx128m
+						--add-opens=java.base/java.util=ALL-UNNAMED
+						--add-opens=javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
+						--add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+						--add-exports=javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
+					</argLine>
+					<systemPropertyVariables>
+						<!-- Set testfx.setup.timeout to a reasonable time -->
+						<!-- This might be as low as 1000 for a fast computer -->
+						<!-- This might be as high as 5000 for a slow computer -->
+						<testfx.setup.timeout>5000</testfx.setup.timeout>
+						<!-- Set testfx.headless to true to run FX tests in headless mode -->
+						<testfx.headless>true</testfx.headless>
+						<!-- Set testfx.robot to glass when running tests in headless mode -->
+						<testfx.robot>glass</testfx.robot>
+						<!-- Set prism.order to sw when running tests in headless mode -->
+						<!-- https://wiki.openjdk.java.net/display/OpenJFX/Monocle -->
+						<prism.order>sw</prism.order>
+						<!-- Not sure what this setting does but it's in all the examples found -->
+						<prism.text>t2k</prism.text>
+
+						<!-- Set java.awt.headless to true when running tests in headless mode -->
+						<java.awt.headless>true</java.awt.headless>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeScope>compile</includeScope>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.xeomar</groupId>
+				<artifactId>snare</artifactId>
+				<version>1.0-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>patch-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>patch</goal>
+						</goals>
+						<configuration>
+							<modulePath>${project.build.directory}/dependency</modulePath>
+							<jars>
+								<jar>
+									<name>commons-io.jar</name>
+								</jar>
+								<jar>
+									<name>jackson-core.jar</name>
+								</jar>
+								<jar>
+									<name>jackson-annotations.jar</name>
+								</jar>
+								<jar>
+									<name>jackson-databind.jar</name>
+									<modules>
+										<module>com.fasterxml.jackson.core</module>
+										<module>com.fasterxml.jackson.annotation</module>
+									</modules>
+								</jar>
+								<jar>
+									<name>miglayout-core.jar</name>
+								</jar>
+								<jar>
+									<name>miglayout-javafx.jar</name>
+									<modules>
+										<module>miglayout.core</module>
+										<module>javafx.base</module>
+										<module>javafx.graphics</module>
+										<module>javafx.controls</module>
+									</modules>
+								</jar>
+							</jars>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<id>jlink</id>
+						<phase>package</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${java.home}/bin/jlink</executable>
+							<arguments>
+								<argument>--module-path</argument>
+								<argument>${jlink.module.path}</argument>
+								<argument>--add-modules</argument>
+								<argument>com.xeomar.xenon,org.slf4j.jul</argument>
+								<argument>--output</argument>
+								<argument>${basedir}/target/jlink</argument>
+								<argument>--launcher</argument>
+								<argument>xenon=com.xeomar.xenon/com.xeomar.xenon.Program</argument>
+								<!--<argument>&#45;&#45;strip-debug</argument>-->
+								<argument>--no-header-files</argument>
+								<argument>--no-man-pages</argument>
+								<!-- Valid value: 0, 1, 2 -->
+								<argument>--compress</argument>
+								<argument>2</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<!-- Generate the package resource -->
+					<execution>
+						<id>assembly-product</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<attach>false</attach>
+							<descriptors>
+								<descriptor>source/main/assembly/product.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+
+					<!-- Generate the installer resources -->
+					<execution>
+						<id>assembly-install</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<attach>false</attach>
+							<descriptors>
+								<descriptor>source/main/assembly/install.xml</descriptor>
+							</descriptors>
+							<finalName>${product-pack-folder}</finalName>
+							<appendAssemblyId>false</appendAssemblyId>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Copy extra installer resources. -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-izpack-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<resources>
+								<resource>
+									<directory>${basedir}/source/main/izpack</directory>
+								</resource>
+							</resources>
+							<outputDirectory>${basedir}/target/main/izpack</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-izpack-resources-filter</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<resources>
+								<resource>
+									<directory>${basedir}/source/main/izpack</directory>
+									<filtering>true</filtering>
+									<excludes>
+										<exclude>bin</exclude>
+									</excludes>
+								</resource>
+							</resources>
+							<outputDirectory>${basedir}/target/main/izpack</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-windows-resources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<encoding>UTF-8</encoding>
+							<resources>
+								<resource>
+									<directory>${basedir}/source/main/pack/windows</directory>
+									<excludes>
+										<exclude>bin</exclude>
+									</excludes>
+								</resource>
+							</resources>
+							<outputDirectory>${basedir}/target/pack/windows</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Generate the installer -->
+			<plugin>
+				<groupId>org.codehaus.izpack</groupId>
+				<artifactId>izpack-maven-plugin</artifactId>
+				<version>${izpack.version}</version>
+				<executions>
+					<execution>
+						<id>izpack.deploy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>izpack</goal>
+						</goals>
+						<configuration>
+							<installFile>${basedir}/target/main/izpack/installer.xml</installFile>
+							<baseDir>${project.build.directory}</baseDir>
+							<classifier>install</classifier>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<!-- Add the catalog card -->
+								<artifact>
+									<file>target/main/java/META-INF/catalog.card</file>
+									<classifier>catalog</classifier>
+									<type>card</type>
+								</artifact>
+								<!-- Add the product card -->
+								<artifact>
+									<file>target/main/java/META-INF/product.card</file>
+									<classifier>product</classifier>
+									<type>card</type>
+								</artifact>
+								<!-- Add the product pack -->
+								<artifact>
+									<file>target/${project.artifactId}-${project.version}-product.zip</file>
+									<classifier>product</classifier>
+									<type>pack</type>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
