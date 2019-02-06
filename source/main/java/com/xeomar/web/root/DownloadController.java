@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -111,6 +112,12 @@ public class DownloadController {
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
 		return mavenDownloadFactory.clearCache( createUri( artifact ), category, type, version );
+	}
+
+	@SuppressWarnings( "unused" )
+	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}/{category}/{type}/{version:.+}" )
+	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+		downloadArtifact( request, response, artifact, "linux", version, category, type );
 	}
 
 	/**
