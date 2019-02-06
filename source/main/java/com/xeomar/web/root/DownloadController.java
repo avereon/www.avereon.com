@@ -113,47 +113,6 @@ public class DownloadController {
 		return mavenDownloadFactory.clearCache( createUri( artifact ), category, type, version );
 	}
 
-	//	/**
-	//	 * Examples:
-	//	 * <ul>
-	//	 * <li>http://xeomar.com/download/xenon/catalog/card/latest</li>
-	//	 * <li>http://xeomar.com/download/xenon/product/card/latest</li>
-	//	 * <li>http://xeomar.com/download/xenon/product/pack/release</li>
-	//	 * <li>http://xeomar.com/download/xenon/product/card/snapshot</li>
-	//	 * </ul>
-	//	 *
-	//	 * @param request The HTTP request object
-	//	 * @param response The HTTP response object
-	//	 * @param artifact The artifact id
-	//	 * @param category The category (e.g. catalog, product, etc.)
-	//	 * @param type The artifact type (e.g. card, pack, jar, etc.)
-	//	 * @param version The artifact version (e.g. latest, release, snapshot, 2.0, etc.)
-	//	 * @throws IOException If an IO error occurs
-	//	 */
-	//	@SuppressWarnings( "unused" )
-	//	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}/{category}/{type}/{version:.+}" )
-	//	private void downloadArtifact(
-	//			HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version
-	//	) throws IOException {
-	//		log.info( "Requested: " + artifact + "-" + category + "-" + type + "-" + version );
-	//
-	//		List<MavenDownload> downloads = mavenDownloadFactory.getDownloads( createUri( artifact ), category, type, version );
-	//		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + version );
-	//
-	//		MavenDownload download = downloads.get( 0 );
-	//		String link = download == null ? null : download.getLink();
-	//		if( link == null ) {
-	//			response.getOutputStream().close();
-	//		} else {
-	//			log.info( "Returned: " + link );
-	//			try {
-	//				stream( response, new URL( link ), artifact + "-" + category + "." + type );
-	//			} catch( FileNotFoundException exception ) {
-	//				throw new FileNotFoundException( request.getRequestURI() );
-	//			}
-	//		}
-	//	}
-
 	/**
 	 * Examples:
 	 * <ul>
@@ -185,11 +144,10 @@ public class DownloadController {
 	) throws IOException {
 		log.info( "Requested: " + artifact + "-" + platform + "-" + channel + "-" + category + "-" + type );
 
-		// TODO Do platform and category combine to make the Maven classifier???
-		// Category -> classifier
-		// Type -> type
-		// Channel -> version
-		List<MavenDownload> downloads = mavenDownloadFactory.getDownloads( createUri( artifact ), category, type, convertChannel( channel ) );
+		String classifier = (platform == null ? category : platform + "-" + category);
+		String version = convertToVersion( channel );
+
+		List<MavenDownload> downloads = mavenDownloadFactory.getDownloads( createUri( artifact ), classifier, type, convertToVersion( channel ) );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
 
 		MavenDownload download = downloads.get( 0 );
@@ -210,7 +168,7 @@ public class DownloadController {
 		return REPO + GROUP + artifact;
 	}
 
-	private String convertChannel( String channel ) {
+	private String convertToVersion( String channel ) {
 		switch( channel ) {
 			case "stable" : return "release";
 			case "beta" : return "release";
