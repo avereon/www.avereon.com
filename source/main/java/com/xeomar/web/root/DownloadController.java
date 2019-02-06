@@ -83,11 +83,11 @@ public class DownloadController {
 		this.mavenDownloadFactory = factory;
 	}
 
-	@SuppressWarnings( "unused" )
-	@RequestMapping( "/download" )
-	public String download( HttpServletRequest request, HttpServletResponse response ) {
-		return "<h1>Xeomar Download Page</h1>";
-	}
+//	@SuppressWarnings( "unused" )
+//	@RequestMapping( "/download" )
+//	public String download( HttpServletRequest request, HttpServletResponse response ) {
+//		return "<h1>Xeomar Download Page</h1>";
+//	}
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
@@ -174,7 +174,7 @@ public class DownloadController {
 	 */
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download" )
-	private void downloadArtifact2(
+	private void downloadArtifact(
 			HttpServletRequest request,
 			HttpServletResponse response,
 			@RequestParam( value = "artifact" ) String artifact,
