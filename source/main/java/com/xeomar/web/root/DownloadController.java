@@ -173,7 +173,7 @@ public class DownloadController {
 	 * @throws IOException If an IO error occurs
 	 */
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}" )
+	@RequestMapping( method = RequestMethod.GET, value = "/download" )
 	private void downloadArtifact2(
 			HttpServletRequest request,
 			HttpServletResponse response,
