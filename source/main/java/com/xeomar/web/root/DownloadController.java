@@ -83,11 +83,11 @@ public class DownloadController {
 		this.mavenDownloadFactory = factory;
 	}
 
-//	@SuppressWarnings( "unused" )
-//	@RequestMapping( "/download" )
-//	public String download( HttpServletRequest request, HttpServletResponse response ) {
-//		return "<h1>Xeomar Download Page</h1>";
-//	}
+	//	@SuppressWarnings( "unused" )
+	//	@RequestMapping( "/download" )
+	//	public String download( HttpServletRequest request, HttpServletResponse response ) {
+	//		return "<h1>Xeomar Download Page</h1>";
+	//	}
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
@@ -122,33 +122,27 @@ public class DownloadController {
 	 * <li>http://xeomar.com/download/xenon?category=product&type=card&version=snapshot</li>
 	 * </ul>
 	 *
-	 * @param request The HTTP request object
+	 * @param request  The HTTP request object
 	 * @param response The HTTP response object
 	 * @param artifact The artifact id
 	 * @param platform The platform (e.g. linux, mac, windows, etc.)
 	 * @param category The category (e.g. catalog, product, etc.)
-	 * @param type The artifact type (e.g. card, pack, jar, etc.)
-	 * @param channel The artifact channel (e.g. stable, beta, nightly, latest, etc.)
+	 * @param type     The artifact type (e.g. card, pack, jar, etc.)
+	 * @param channel  The artifact channel (e.g. stable, beta, nightly, latest, etc.)
 	 * @throws IOException If an IO error occurs
 	 */
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download" )
-	private void downloadArtifact(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestParam( value = "artifact" ) String artifact,
-			@RequestParam( value = "platform", required = false ) String platform,
-			@RequestParam( value = "channel", required = false, defaultValue="stable" ) String channel,
-			@RequestParam( value = "category", required = false, defaultValue="catalog" ) String category,
-			@RequestParam( value = "type", required = false, defaultValue="card" ) String type
-	) throws IOException {
+	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "catalog" ) String category, @RequestParam( value = "type", required = false, defaultValue = "card" ) String type ) throws IOException {
 		log.info( "Requested: " + artifact + "-" + platform + "-" + channel + "-" + category + "-" + type );
 
+		if( "card".equals( type ) ) platform = null;
 		String classifier = (platform == null ? category : platform + "-" + category);
 		String version = convertToVersion( channel );
 
 		List<MavenDownload> downloads = mavenDownloadFactory.getDownloads( createUri( artifact ), classifier, type, convertToVersion( channel ) );
-		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
+		if( downloads.size() == 0 )
+			throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
 
 		MavenDownload download = downloads.get( 0 );
 		String link = download == null ? null : download.getLink();
@@ -170,18 +164,22 @@ public class DownloadController {
 
 	private String convertToVersion( String channel ) {
 		switch( channel ) {
-			case "stable" : return "release";
-			case "beta" : return "release";
-			case "nightly" : return "release";
-			case "latest" : return "latest";
+			case "stable":
+				return "release";
+			case "beta":
+				return "release";
+			case "nightly":
+				return "release";
+			case "latest":
+				return "latest";
 		}
 		return "release";
 	}
 
 	/**
 	 * @param response The HttpServletResponse object to use
-	 * @param source The URL from which to get the data
-	 * @param name The name to use for the resource
+	 * @param source   The URL from which to get the data
+	 * @param name     The name to use for the resource
 	 * @throws IOException If an IO error occurs
 	 */
 	private void stream( HttpServletResponse response, URL source, String name ) throws IOException {
