@@ -15,32 +15,35 @@ import java.util.*;
 import java.util.concurrent.*;
 
 @Component
-public class MavenDownloadFactory {
+public class MavenDownloadFactory implements DownloadFactory {
 
 	private static final Logger log = LoggerFactory.getLogger( MavenDownloadFactory.class );
+
+	private static final String REPO = "https://repo.xeomar.com/xeo/";
+
+	private static final String GROUP = "com/xeomar/";
+
+	private static String ROOT = REPO + GROUP;
 
 	private static final String DEFAULT_EXTENSION = "jar";
 
 	private static final Map<String, List<MavenDownload>> cache = new ConcurrentHashMap<>();
 
-	public List<MavenDownload> getDownloads( String uri, String classifier, String type ) {
-		List<String> uris = new ArrayList<>();
-		uris.add( uri );
-		return getDownloads( uris, classifier, type, null );
+	public List<MavenDownload> getDownloads( String artifact, String classifier, String type ) {
+		return getDownloads( List.of( createUri( artifact ) ), classifier, type, null );
 	}
 
-	public List<MavenDownload> getDownloads( String uri, String classifier, String type, String version ) {
-		List<String> uris = new ArrayList<>();
-		uris.add( uri );
-		return getDownloads( uris, classifier, type, version );
+	public List<MavenDownload> getDownloads( String artifact, String classifier, String type, String version ) {
+		return getDownloads( List.of( createUri( artifact ) ), classifier, type, version );
 	}
 
-	public List<MavenDownload> getDownloads( List<String> uris, String classifier, String type, String version ) {
+	public List<MavenDownload> getDownloads( List<String> artifacts, String classifier, String type, String version ) {
 		List<MavenDownload> downloads = new ArrayList<>();
 
 		// Check the cache.
 		List<String> neededUris = new ArrayList<>();
-		for( String uri : uris ) {
+		for( String artifact : artifacts ) {
+			String uri = createUri( artifact );
 			List<MavenDownload> cachedDownloads = cache.get( getDownloadKey( uri, classifier, type, version ) );
 			if( cachedDownloads == null ) {
 				neededUris.add( uri );
@@ -77,8 +80,8 @@ public class MavenDownloadFactory {
 		return "Cache cleared for all";
 	}
 
-	public String clearCache( String uri, String classifier, String type, String version ) {
-		String key = getDownloadKey( uri, classifier, type, version );
+	public String clearCache( String artifact, String classifier, String type, String channel ) {
+		String key = getDownloadKey( createUri( artifact ), classifier, type, channel );
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
@@ -96,11 +99,15 @@ public class MavenDownloadFactory {
 		return new XmlDescriptor( URI.create( uri ) );
 	}
 
+	private String createUri( String artifact ) {
+		return ROOT + artifact;
+	}
+
 	private String getDownloadKey( String uri, String classifier, String type ) {
 		return getDownloadKey( uri, classifier, type, null );
 	}
 
-	private String getDownloadKey( String uri, String classifier, String type, String version ) {
+	private String getDownloadKey( String uri, String classifier, String type, String channel ) {
 		StringBuilder builder = new StringBuilder( uri );
 
 		if( classifier != null ) {
@@ -113,9 +120,9 @@ public class MavenDownloadFactory {
 			builder.append( type );
 		}
 
-		if( version != null ) {
+		if( channel != null ) {
 			builder.append( "-" );
-			builder.append( version );
+			builder.append( channel );
 		}
 
 		return builder.toString();
@@ -278,17 +285,17 @@ public class MavenDownloadFactory {
 		return contexts;
 	}
 
-//	private ReleaseContext getReleaseContext( Context context ) {
-//		String uri = context.getUri();
-//		XmlDescriptor metadata = context.getRootDescriptor();
-//		String artifact = metadata.getValue( "metadata/artifactId" );
-//
-//		String uriPath = URI.create( uri ).getPath();
-//		String uriVersion = uriPath.substring( uriPath.lastIndexOf( "/" ) + 1 );
-//		Version version = new Version( uriVersion );
-//
-//		return new ReleaseContext( uri, artifact, version );
-//	}
+	//	private ReleaseContext getReleaseContext( Context context ) {
+	//		String uri = context.getUri();
+	//		XmlDescriptor metadata = context.getRootDescriptor();
+	//		String artifact = metadata.getValue( "metadata/artifactId" );
+	//
+	//		String uriPath = URI.create( uri ).getPath();
+	//		String uriVersion = uriPath.substring( uriPath.lastIndexOf( "/" ) + 1 );
+	//		Version version = new Version( uriVersion );
+	//
+	//		return new ReleaseContext( uri, artifact, version );
+	//	}
 
 	private ReleaseContext getReleaseContext( Context context, String version ) {
 		String uri = context.getUri();

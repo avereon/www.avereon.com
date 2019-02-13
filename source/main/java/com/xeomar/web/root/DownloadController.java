@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,10 +77,10 @@ public class DownloadController {
 
 	private static final int READ_TIMEOUT = 500;
 
-	private MavenDownloadFactory mavenDownloadFactory;
+	private DownloadFactory downloadFactory;
 
-	public DownloadController( MavenDownloadFactory factory ) {
-		this.mavenDownloadFactory = factory;
+	public DownloadController() {
+		this.downloadFactory = new MavenDownloadFactory();
 	}
 
 	//	@SuppressWarnings( "unused" )
@@ -93,30 +92,50 @@ public class DownloadController {
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
-		return mavenDownloadFactory.clearCache( createUri( artifact ), null, null, null );
+		return downloadFactory.clearCache( artifact, null, null, null );
 	}
+
+//	@SuppressWarnings( "unused" )
+//	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}" )
+//	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
+//		return downloadFactory.clearCache( artifact, category, null, null );
+//	}
+//
+//	@SuppressWarnings( "unused" )
+//	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}" )
+//	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
+//		return downloadFactory.clearCache( artifact, category, type, null );
+//	}
+//
+//	@SuppressWarnings( "unused" )
+//	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
+//	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+//		return downloadFactory.clearCache( artifact, category, type, version );
+//	}
 
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}" )
-	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
-		return mavenDownloadFactory.clearCache( createUri( artifact ), category, null, null );
+	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate" )
+	public String clearCache(
+			@RequestParam( value = "artifact" ) String artifact,
+			@RequestParam( value = "platform", required = false ) String platform,
+			@RequestParam( value = "channel", required = false ) String channel,
+			@RequestParam( value = "category", required = false ) String category,
+			@RequestParam( value = "type", required = false ) String type
+	) throws IOException {
+		return downloadFactory.clearCache( artifact, category, type, channel );
 	}
 
-	@SuppressWarnings( "unused" )
-	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}" )
-	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
-		return mavenDownloadFactory.clearCache( createUri( artifact ), category, type, null );
-	}
-
-	@SuppressWarnings( "unused" )
-	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
-	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
-		return mavenDownloadFactory.clearCache( createUri( artifact ), category, type, version );
-	}
-
+	@Deprecated
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}/{category}/{type}/{version:.+}" )
-	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+	private void downloadArtifact(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@PathVariable( "artifact" ) String artifact,
+			@PathVariable( "category" ) String category,
+			@PathVariable( "type" ) String type,
+			@PathVariable( "version" ) String version
+	) throws IOException {
 		downloadArtifact( request, response, artifact, "linux", version, category, type );
 	}
 
@@ -129,27 +148,34 @@ public class DownloadController {
 	 * <li>http://xeomar.com/download/xenon?category=product&type=card&version=snapshot</li>
 	 * </ul>
 	 *
-	 * @param request  The HTTP request object
+	 * @param request The HTTP request object
 	 * @param response The HTTP response object
 	 * @param artifact The artifact id
 	 * @param platform The platform (e.g. linux, mac, windows, etc.)
 	 * @param category The category (e.g. catalog, product, etc.)
-	 * @param type     The artifact type (e.g. card, pack, jar, etc.)
-	 * @param channel  The artifact channel (e.g. stable, beta, nightly, latest, etc.)
+	 * @param type The artifact type (e.g. card, pack, jar, etc.)
+	 * @param channel The artifact channel (e.g. stable, beta, nightly, latest, etc.)
 	 * @throws IOException If an IO error occurs
 	 */
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download" )
-	private void downloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "catalog" ) String category, @RequestParam( value = "type", required = false, defaultValue = "card" ) String type ) throws IOException {
+	private void downloadArtifact(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam( value = "artifact" ) String artifact,
+			@RequestParam( value = "platform", required = false ) String platform,
+			@RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel,
+			@RequestParam( value = "category", required = false, defaultValue = "catalog" ) String category,
+			@RequestParam( value = "type", required = false, defaultValue = "card" ) String type
+	) throws IOException {
 		log.info( "Requested: " + artifact + "-" + platform + "-" + channel + "-" + category + "-" + type );
 
 		if( "card".equals( type ) ) platform = null;
 		String classifier = (platform == null ? category : platform + "-" + category);
 		String version = convertToVersion( channel );
 
-		List<MavenDownload> downloads = mavenDownloadFactory.getDownloads( createUri( artifact ), classifier, type, convertToVersion( channel ) );
-		if( downloads.size() == 0 )
-			throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
+		List<MavenDownload> downloads = downloadFactory.getDownloads( artifact, classifier, type, convertToVersion( channel ) );
+		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
 
 		MavenDownload download = downloads.get( 0 );
 		String link = download == null ? null : download.getLink();
@@ -165,8 +191,18 @@ public class DownloadController {
 		}
 	}
 
-	private String createUri( String artifact ) {
-		return REPO + GROUP + artifact;
+	//	private String createUri( String artifact ) {
+	//		return REPO + GROUP + artifact;
+	//	}
+
+	private String convertToChannel( String version ) {
+		switch( version ) {
+			case "release":
+				return "stable";
+			case "latest":
+				return "latest";
+		}
+		return "stable";
 	}
 
 	private String convertToVersion( String channel ) {
@@ -185,8 +221,8 @@ public class DownloadController {
 
 	/**
 	 * @param response The HttpServletResponse object to use
-	 * @param source   The URL from which to get the data
-	 * @param name     The name to use for the resource
+	 * @param source The URL from which to get the data
+	 * @param name The name to use for the resource
 	 * @throws IOException If an IO error occurs
 	 */
 	private void stream( HttpServletResponse response, URL source, String name ) throws IOException {
