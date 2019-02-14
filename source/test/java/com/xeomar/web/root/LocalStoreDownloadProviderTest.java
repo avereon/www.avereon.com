@@ -37,7 +37,6 @@ public class LocalStoreDownloadProviderTest {
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
-		//verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
@@ -58,7 +57,6 @@ public class LocalStoreDownloadProviderTest {
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
-		//verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );

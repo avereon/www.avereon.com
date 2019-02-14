@@ -94,29 +94,12 @@ public class DownloadController {
 	//		return "<h1>Xeomar Download Page</h1>";
 	//	}
 
+	@Deprecated
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
 		return downloadProvider.clearCache( artifact, null, null, null, null );
 	}
-
-//	@SuppressWarnings( "unused" )
-//	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}" )
-//	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
-//		return downloadProvider.clearCache( artifact, category, null, null );
-//	}
-//
-//	@SuppressWarnings( "unused" )
-//	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}" )
-//	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
-//		return downloadProvider.clearCache( artifact, category, type, null );
-//	}
-//
-//	@SuppressWarnings( "unused" )
-//	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
-//	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
-//		return downloadProvider.clearCache( artifact, category, type, version );
-//	}
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate" )
@@ -134,12 +117,7 @@ public class DownloadController {
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}/{category}/{type}/{version:.+}" )
 	private void downloadArtifact(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			@PathVariable( "artifact" ) String artifact,
-			@PathVariable( "category" ) String category,
-			@PathVariable( "type" ) String type,
-			@PathVariable( "version" ) String version
+			HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version
 	) throws IOException {
 		downloadArtifact( request, response, artifact, "linux", version, category, type );
 	}
@@ -173,22 +151,22 @@ public class DownloadController {
 			@RequestParam( value = "category", required = false, defaultValue = "catalog" ) String category,
 			@RequestParam( value = "type", required = false, defaultValue = "card" ) String type
 	) throws IOException {
-		log.info( "Requested: " + artifact + "-" + platform + "-" + channel + "-" + category + "-" + type );
+		log.info( "Requested: " + Download.key( artifact, platform, channel, category, type ) );
 
 		if( "card".equals( type ) ) platform = null;
-		String classifier = (platform == null ? category : platform + "-" + category);
-		String version = normalizeChannel( channel );
+		channel = normalizeChannel( channel );
+		//String classifier = (platform == null ? category : platform + "-" + category);
 
-		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, classifier, type, normalizeChannel( channel ), null );
-		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
+		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, category, type, channel, platform );
+		if( downloads.size() == 0 ) throw new FileNotFoundException( "Download not found: " + Download.key( artifact, platform, channel, category, type ) );
 
 		ProductDownload download = downloads.get( 0 );
 		String link = download == null ? null : download.getLink();
 		if( link == null ) {
 			response.getOutputStream().close();
 		} else {
-			log.info( "Returned: " + link );
 			try {
+				log.info( "Return stream: " + link );
 				stream( response, new URL( link ), artifact + "-" + category + "." + type );
 			} catch( FileNotFoundException exception ) {
 				throw new FileNotFoundException( request.getRequestURI() );
