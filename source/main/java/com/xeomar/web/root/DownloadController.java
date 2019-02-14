@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class has to responsibilities: 1. Handling the simple download requests
+ * and returning the artifact as a stream. 2. Handling requests about what is
+ * available and returning metadata about the downloads.
+ * <p>
  * This class is responsible for handling the simple download requests and
  * mapping them to the location of the actual artifacts, wherever they may
  * be. In the past, mapping a request to the artifact was a combination
@@ -173,9 +177,9 @@ public class DownloadController {
 
 		if( "card".equals( type ) ) platform = null;
 		String classifier = (platform == null ? category : platform + "-" + category);
-		String version = convertToVersion( channel );
+		String version = normalizeChannel( channel );
 
-		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, classifier, type, convertToVersion( channel ), null );
+		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, classifier, type, normalizeChannel( channel ), null );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
 
 		ProductDownload download = downloads.get( 0 );
@@ -192,29 +196,13 @@ public class DownloadController {
 		}
 	}
 
-	//	private String createUri( String artifact ) {
-	//		return REPO + GROUP + artifact;
-	//	}
-
-	private String convertToChannel( String version ) {
-		switch( version ) {
+	private String normalizeChannel( String channel ) {
+		switch( channel ) {
 			case "release":
 				return "stable";
-			case "latest":
-				return "latest";
-		}
-		return "stable";
-	}
-
-	private String convertToVersion( String channel ) {
-		switch( channel ) {
-			case "stable":
-				return "release";
 			case "beta":
-				return "release";
+				return "earlyaccess";
 			case "nightly":
-				return "release";
-			case "latest":
 				return "latest";
 		}
 		return "release";
