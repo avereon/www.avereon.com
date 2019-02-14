@@ -6,7 +6,7 @@ import com.xeomar.util.Version;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class MavenDownload implements Comparable<MavenDownload> {
+public class ProductDownload implements Comparable<ProductDownload> {
 
 	private String key;
 
@@ -34,7 +34,7 @@ public class MavenDownload implements Comparable<MavenDownload> {
 
 	private Date date;
 
-	MavenDownload( String key, String groupId, String artifactId, Version version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
+	ProductDownload( String key, String groupId, String artifactId, Version version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
 		this.key = key;
 		this.groupId = groupId;
 		this.artifactId = artifactId;
@@ -119,15 +119,15 @@ public class MavenDownload implements Comparable<MavenDownload> {
 	}
 
 	@Override
-	public int compareTo( MavenDownload that ) {
+	public int compareTo( ProductDownload that ) {
 		return this.getVersion().compareTo( that.getVersion() );
 	}
 
 	@Override
 	public boolean equals( Object object ) {
-		if( !(object instanceof MavenDownload) ) return false;
+		if( !(object instanceof ProductDownload) ) return false;
 
-		MavenDownload that = (MavenDownload)object;
+		ProductDownload that = (ProductDownload)object;
 
 		return this.identifier.equals( that.identifier );
 	}

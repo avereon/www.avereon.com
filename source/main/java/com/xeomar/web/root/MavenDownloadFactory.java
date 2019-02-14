@@ -1,13 +1,14 @@
 package com.xeomar.web.root;
 
+import com.xeomar.util.LogUtil;
 import com.xeomar.util.TextUtil;
 import com.xeomar.util.Version;
 import com.xeomar.util.XmlDescriptor;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -15,9 +16,9 @@ import java.util.*;
 import java.util.concurrent.*;
 
 @Component
-public class MavenDownloadFactory implements DownloadFactory {
+public class MavenDownloadFactory extends AbstractDownloadFactory {
 
-	private static final Logger log = LoggerFactory.getLogger( MavenDownloadFactory.class );
+	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
 	private static final String REPO = "https://repo.xeomar.com/xeo/";
 
@@ -27,24 +28,24 @@ public class MavenDownloadFactory implements DownloadFactory {
 
 	private static final String DEFAULT_EXTENSION = "jar";
 
-	private static final Map<String, List<MavenDownload>> cache = new ConcurrentHashMap<>();
+	private static final Map<String, List<ProductDownload>> cache = new ConcurrentHashMap<>();
 
-	public List<MavenDownload> getDownloads( String artifact, String classifier, String type ) {
+	public List<ProductDownload> getDownloads( String artifact, String classifier, String type ) {
 		return getDownloads( List.of( artifact ), classifier, type, null );
 	}
 
-	public List<MavenDownload> getDownloads( String artifact, String classifier, String type, String version ) {
+	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version ) {
 		return getDownloads( List.of( artifact ), classifier, type, version );
 	}
 
-	public List<MavenDownload> getDownloads( List<String> artifacts, String classifier, String type, String version ) {
-		List<MavenDownload> downloads = new ArrayList<>();
+	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version ) {
+		List<ProductDownload> downloads = new ArrayList<>();
 
 		// Check the cache.
 		List<String> neededUris = new ArrayList<>();
 		for( String artifact : artifacts ) {
 			String uri = createUri( artifact );
-			List<MavenDownload> cachedDownloads = cache.get( getDownloadKey( uri, classifier, type, version ) );
+			List<ProductDownload> cachedDownloads = cache.get( getDownloadKey( artifact, classifier, type, version ) );
 			if( cachedDownloads == null ) {
 				neededUris.add( uri );
 			} else {
@@ -54,13 +55,13 @@ public class MavenDownloadFactory implements DownloadFactory {
 
 		// Get direct downloads.
 		if( neededUris.size() > 0 ) {
-			List<MavenDownload> directDownloads = getDownloadsDirect( neededUris, classifier, type, version );
+			List<ProductDownload> directDownloads = getDownloadsDirect( neededUris, classifier, type, version );
 
-			for( MavenDownload download : directDownloads ) {
+			for( ProductDownload download : directDownloads ) {
 				String key = download.getKey();
 
 				// Add download to cache.
-				List<MavenDownload> cachedDownloads = cache.get( key );
+				List<ProductDownload> cachedDownloads = cache.get( key );
 				if( cachedDownloads == null ) {
 					cachedDownloads = new CopyOnWriteArrayList<>();
 					cache.put( key, cachedDownloads );
@@ -81,7 +82,7 @@ public class MavenDownloadFactory implements DownloadFactory {
 	}
 
 	public String clearCache( String artifact, String classifier, String type, String channel ) {
-		String key = getDownloadKey( createUri( artifact ), classifier, type, channel );
+		String key = getDownloadKey( artifact, classifier, type, channel );
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
@@ -103,31 +104,6 @@ public class MavenDownloadFactory implements DownloadFactory {
 		return ROOT + artifact;
 	}
 
-	private String getDownloadKey( String uri, String classifier, String type ) {
-		return getDownloadKey( uri, classifier, type, null );
-	}
-
-	private String getDownloadKey( String uri, String classifier, String type, String channel ) {
-		StringBuilder builder = new StringBuilder( uri );
-
-		if( classifier != null ) {
-			builder.append( "-" );
-			builder.append( classifier );
-		}
-
-		if( type != null ) {
-			builder.append( "-" );
-			builder.append( type );
-		}
-
-		if( channel != null ) {
-			builder.append( "-" );
-			builder.append( channel );
-		}
-
-		return builder.toString();
-	}
-
 	/**
 	 * Retrieves all the applicable downloads for the specified URIs, classifier and type.
 	 *
@@ -136,7 +112,7 @@ public class MavenDownloadFactory implements DownloadFactory {
 	 * @param type       The artifact file type
 	 * @return A list of all applicable downloads
 	 */
-	private List<MavenDownload> getDownloadsDirect( List<String> uris, String classifier, String type, String version ) {
+	private List<ProductDownload> getDownloadsDirect( List<String> uris, String classifier, String type, String version ) {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		List<Future<?>> futures = new ArrayList<>();
 
@@ -170,10 +146,9 @@ public class MavenDownloadFactory implements DownloadFactory {
 				waitFor( futures );
 			}
 
-			List<MavenDownload> downloads = new ArrayList<>();
+			List<ProductDownload> downloads = new ArrayList<>();
 			for( Context context : contexts ) {
 				if( !context.isValid() ) continue;
-				String key = getDownloadKey( context.getUri(), classifier, type, version );
 
 				for( ReleaseContext releaseContext : context.getReleaseContexts() ) {
 					if( !releaseContext.isValid() ) continue;
@@ -189,13 +164,14 @@ public class MavenDownloadFactory implements DownloadFactory {
 					String md5Link = link + ".md5";
 					String sha1Link = link + ".sha1";
 
-					downloads.add( new MavenDownload( key, groupId, artifactId, artifactVersion, classifier, type, name, link, md5Link, sha1Link ) );
+					String key = getDownloadKey( artifactId, classifier, type, version );
+					downloads.add( new ProductDownload( key, groupId, artifactId, artifactVersion, classifier, type, name, link, md5Link, sha1Link ) );
 				}
 			}
 
 			// Load the artifact metadata.
 			futures.clear();
-			for( MavenDownload download : downloads ) {
+			for( ProductDownload download : downloads ) {
 				futures.add( executor.submit( new LoadArtifactData( download ) ) );
 			}
 			waitFor( futures );
@@ -460,16 +436,16 @@ public class MavenDownloadFactory implements DownloadFactory {
 
 	}
 
-	private class LoadArtifactData implements Callable<MavenDownload> {
+	private class LoadArtifactData implements Callable<ProductDownload> {
 
-		private MavenDownload download;
+		private ProductDownload download;
 
-		LoadArtifactData( MavenDownload download ) {
+		LoadArtifactData( ProductDownload download ) {
 			this.download = download;
 		}
 
 		@Override
-		public MavenDownload call() throws Exception {
+		public ProductDownload call() throws Exception {
 			String link = download.getLink();
 
 			URL url = new URL( link );

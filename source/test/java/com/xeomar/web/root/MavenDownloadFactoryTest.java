@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 public class MavenDownloadFactoryTest {
 
-	private MavenDownloadFactory factory = mock( MavenDownloadFactory.class );
+	private MavenDownloadFactory factory;
 
 	private String group = "com.xeomar";
 
@@ -34,8 +34,10 @@ public class MavenDownloadFactoryTest {
 	public void before() throws Exception {
 		factory = mock( MavenDownloadFactory.class );
 
-		// Needed because the method is mocked
+		// Needed because the methods are mocked
+		when( factory.getDownloads( anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 		when( factory.getDownloads( anyList(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( factory.getDownloadKey( anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 
 		// Setup the repository descriptors
 		stageDescriptor( uri, "/maven-metadata.xml" );
@@ -60,16 +62,14 @@ public class MavenDownloadFactoryTest {
 
 	@Test
 	public void testGetLatestDownload() throws Exception {
-		String requestVersion = "latest";
-
-		when( factory.getDownloads( artifact, classifier, type, requestVersion ) ).thenCallRealMethod();
+		String channel = "latest";
 
 		// Execute the method
-		List<MavenDownload> downloads = factory.getDownloads( artifact, classifier, type, requestVersion );
+		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
 		verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "https://repo.xeomar.com/xeo/com/xeomar/xenon-product-card-" + requestVersion ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
 		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.8-SNAPSHOT" ) );
 		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
@@ -81,16 +81,14 @@ public class MavenDownloadFactoryTest {
 
 	@Test
 	public void testGetReleaseDownload() throws Exception {
-		String requestVersion = "release";
-
-		when( factory.getDownloads( artifact, classifier, type, requestVersion ) ).thenCallRealMethod();
+		String channel = "release";
 
 		// Execute the method
-		List<MavenDownload> downloads = factory.getDownloads( artifact, classifier, type, requestVersion );
+		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
 		verify( factory, times( 2 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "https://repo.xeomar.com/xeo/com/xeomar/xenon-product-card-" + requestVersion ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
 		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.7" ) );
 		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
@@ -102,17 +100,15 @@ public class MavenDownloadFactoryTest {
 
 	@Test
 	public void testGetVersionDownload() throws Exception {
-		String requestVersion = "0.5-SNAPSHOT";
-
-		when( factory.getDownloads( artifact, classifier, type, requestVersion ) ).thenCallRealMethod();
+		String channel = "0.5-SNAPSHOT";
 
 		// Execute the method
-		List<MavenDownload> downloads = factory.getDownloads( artifact, classifier, type, requestVersion );
+		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
 		verify( factory, times( 13 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "https://repo.xeomar.com/xeo/com/xeomar/xenon-product-card-" + requestVersion ) );
-		assertThat( downloads.get( 0 ).getVersion().toString(), is( requestVersion ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
+		assertThat( downloads.get( 0 ).getVersion().toString(), is( channel ) );
 		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
 		assertThat( downloads.get( 0 ).getClassifier(), is( classifier ) );

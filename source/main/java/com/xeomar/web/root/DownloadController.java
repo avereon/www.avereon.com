@@ -1,7 +1,7 @@
 package com.xeomar.web.root;
 
+import com.xeomar.util.LogUtil;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.invoke.MethodHandles;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -63,7 +64,7 @@ import java.util.Map;
 @RestController
 public class DownloadController {
 
-	private static Logger log = LoggerFactory.getLogger( DownloadController.class );
+	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
 	private static final String REPO = "https://repo.xeomar.com/xeo/";
 
@@ -174,10 +175,10 @@ public class DownloadController {
 		String classifier = (platform == null ? category : platform + "-" + category);
 		String version = convertToVersion( channel );
 
-		List<MavenDownload> downloads = downloadFactory.getDownloads( artifact, classifier, type, convertToVersion( channel ) );
+		List<ProductDownload> downloads = downloadFactory.getDownloads( artifact, classifier, type, convertToVersion( channel ) );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
 
-		MavenDownload download = downloads.get( 0 );
+		ProductDownload download = downloads.get( 0 );
 		String link = download == null ? null : download.getLink();
 		if( link == null ) {
 			response.getOutputStream().close();

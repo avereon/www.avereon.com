@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface DownloadFactory {
 
-	List<MavenDownload> getDownloads( String artifact, String category, String type );
+	List<ProductDownload> getDownloads( String artifact, String category, String type );
 
-	List<MavenDownload> getDownloads( String artifact, String category, String type, String channel );
+	List<ProductDownload> getDownloads( String artifact, String category, String type, String channel );
 
-	List<MavenDownload> getDownloads( List<String> artifacts, String classifier, String type, String version );
+	List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version );
 
 	/**
 	 * @param artifact
