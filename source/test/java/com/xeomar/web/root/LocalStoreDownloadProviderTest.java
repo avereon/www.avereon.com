@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 
 public class LocalStoreDownloadProviderTest {
 
-	private LocalStoreDownloadProvider factory;
+	private LocalStoreDownloadProvider provider;
 
 	private String artifact = "xenon";
 
@@ -22,33 +22,53 @@ public class LocalStoreDownloadProviderTest {
 
 	@Before
 	public void setup() {
-		factory = mock( LocalStoreDownloadProvider.class );
+		provider = mock( LocalStoreDownloadProvider.class );
 
 		// Needed because the methods are mocked
-		when( factory.getDownloads( anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
-		when( factory.getDownloads( anyList(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
-		when( factory.getDownloadKey( anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 	}
 
 	@Test
 	public void testGetLatestDownload() throws Exception {
 		String channel = "latest";
-
-		when( factory.getDownloads( artifact, classifier, type, channel ) ).thenCallRealMethod();
+		String platform= "linux";
 
 		// Execute the method
-		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
+		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
 		//verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
 		//		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.8-SNAPSHOT" ) );
 		//		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
-		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getClassifier(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		//		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/latest/xenon/linux-product.card" ) );
+		assertThat( downloads.size(), is( 1 ) );
+	}
+
+	@Test
+	public void testGetStableDownload() throws Exception {
+		String channel = "stable";
+		String platform = "linux";
+
+		// Execute the method
+		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		//verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
+
+		assertTrue( "No downloads retrieved", downloads.size() > 0 );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+				assertThat( downloads.get( 0 ).getChannel().toString(), is( "stable" ) );
+		//		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
+		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getType(), is( type ) );
+		//		assertThat( downloads.get( 0 ).getName(), is( name ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/stable/xenon/linux-product.card" ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 

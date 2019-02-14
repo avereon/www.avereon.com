@@ -1,7 +1,6 @@
 package com.xeomar.web.root;
 
 import com.xeomar.util.FileUtil;
-import com.xeomar.util.Version;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -10,19 +9,21 @@ public class ProductDownload implements Comparable<ProductDownload> {
 
 	private String key;
 
-	private String groupId;
+	private String group;
 
-	private String artifactId;
+	private String artifact;
 
 	private String name;
 
-	private String classifier;
+	private String category;
 
 	private String type;
 
 	private String identifier;
 
-	private Version version;
+	private String channel;
+
+	private String platform;
 
 	private String link;
 
@@ -34,48 +35,53 @@ public class ProductDownload implements Comparable<ProductDownload> {
 
 	private Date date;
 
-	ProductDownload( String key, String groupId, String artifactId, Version version, String classifier, String type, String name, String link, String md5Link, String sha1Link ) {
+	ProductDownload( String key, String group, String artifact, String channel, String category, String type, String platform, String name, String link, String md5Link, String sha1Link ) {
 		this.key = key;
-		this.groupId = groupId;
-		this.artifactId = artifactId;
-		this.version = version;
-		this.classifier = classifier;
+		this.group = group;
+		this.artifact = artifact;
+		this.channel = channel;
+		this.category = category;
 		this.type = type;
+		this.platform = platform;
 
 		this.name = name;
 		this.link = link;
 		this.md5Link = md5Link;
 		this.sha1Link = sha1Link;
 
-		identifier = String.format( "%s-%s-%s-%s-%s", groupId, artifactId, version, classifier, type );
+		identifier = String.format( "%s-%s-%s-%s-%s-%s", group, artifact, channel, category, type, platform );
 	}
 
 	public String getKey() {
 		return key;
 	}
 
-	public String getGroupId() {
-		return groupId;
+	public String getGroup() {
+		return group;
 	}
 
-	public String getArtifactId() {
-		return artifactId;
+	public String getArtifact() {
+		return artifact;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Version getVersion() {
-		return version;
+	public String getChannel() {
+		return channel;
 	}
 
-	public String getClassifier() {
-		return classifier;
+	public String getCategory() {
+		return category;
 	}
 
 	public String getType() {
 		return type;
+	}
+
+	public String getPlatform() {
+		return platform;
 	}
 
 	public String getLink() {
@@ -120,7 +126,7 @@ public class ProductDownload implements Comparable<ProductDownload> {
 
 	@Override
 	public int compareTo( ProductDownload that ) {
-		return this.getVersion().compareTo( that.getVersion() );
+		return this.getChannel().compareTo( that.getChannel() );
 	}
 
 	@Override

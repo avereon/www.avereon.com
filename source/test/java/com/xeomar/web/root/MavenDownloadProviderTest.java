@@ -14,9 +14,9 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
 
-public class MavenDownloadFactoryTest {
+public class MavenDownloadProviderTest {
 
-	private MavenDownloadFactory factory;
+	private MavenDownloadProvider provider;
 
 	private String group = "com.xeomar";
 
@@ -32,12 +32,12 @@ public class MavenDownloadFactoryTest {
 
 	@Before
 	public void before() throws Exception {
-		factory = mock( MavenDownloadFactory.class );
+		provider = mock( MavenDownloadProvider.class );
 
 		// Needed because the methods are mocked
-		when( factory.getDownloads( anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
-		when( factory.getDownloads( anyList(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
-		when( factory.getDownloadKey( anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 
 		// Setup the repository descriptors
 		stageDescriptor( uri, "/maven-metadata.xml" );
@@ -63,18 +63,20 @@ public class MavenDownloadFactoryTest {
 	@Test
 	public void testGetLatestDownload() throws Exception {
 		String channel = "latest";
+		String platform = "linux";
 
 		// Execute the method
-		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
-		verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
+		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		verify( provider, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
-		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.8-SNAPSHOT" ) );
-		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
-		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getClassifier(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		//assertThat( downloads.get( 0 ).getChannel(), is( "0.8-SNAPSHOT" ) );
+		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
+		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
+		assertThat( downloads.get( 0 ).getPlatform(), is( platform ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
@@ -82,18 +84,20 @@ public class MavenDownloadFactoryTest {
 	@Test
 	public void testGetReleaseDownload() throws Exception {
 		String channel = "release";
+		String platform = "linux";
 
 		// Execute the method
-		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
-		verify( factory, times( 2 ) ).getXmlDescriptor( anyString() );
+		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		verify( provider, times( 2 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
-		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.7" ) );
-		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
-		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getClassifier(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		//assertThat( downloads.get( 0 ).getChannel(), is( "0.7" ) );
+		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
+		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
+		assertThat( downloads.get( 0 ).getPlatform(), is( platform ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
@@ -101,25 +105,27 @@ public class MavenDownloadFactoryTest {
 	@Test
 	public void testGetVersionDownload() throws Exception {
 		String channel = "0.5-SNAPSHOT";
+		String platform = "linux";
 
 		// Execute the method
-		List<ProductDownload> downloads = factory.getDownloads( artifact, classifier, type, channel );
-		verify( factory, times( 13 ) ).getXmlDescriptor( anyString() );
+		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		verify( provider, times( 13 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel ) );
-		assertThat( downloads.get( 0 ).getVersion().toString(), is( channel ) );
-		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
-		assertThat( downloads.get( 0 ).getArtifactId(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getClassifier(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		assertThat( downloads.get( 0 ).getChannel(), is( channel ) );
+		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
+		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
+		assertThat( downloads.get( 0 ).getPlatform(), is( platform ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 
 	private void stageDescriptor( String uri, String path ) throws IOException {
 		XmlDescriptor releasePom = new XmlDescriptor( getClass().getResource( "/repo" + path ) );
-		when( factory.getXmlDescriptor( uri + path ) ).thenReturn( releasePom );
+		when( provider.getXmlDescriptor( uri + path ) ).thenReturn( releasePom );
 	}
 
 }

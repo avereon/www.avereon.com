@@ -16,7 +16,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 @Component
-public class MavenDownloadFactory extends AbstractDownloadFactory {
+public class MavenDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
@@ -30,22 +30,25 @@ public class MavenDownloadFactory extends AbstractDownloadFactory {
 
 	private static final Map<String, List<ProductDownload>> cache = new ConcurrentHashMap<>();
 
-	public List<ProductDownload> getDownloads( String artifact, String classifier, String type ) {
-		return getDownloads( List.of( artifact ), classifier, type, null );
+//	@Override
+//	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String platform ) {
+//		return getDownloads( List.of( artifact ), classifier, type, "stable", platform );
+//	}
+
+	@Override
+	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version, String platform ) {
+		return getDownloads( List.of( artifact ), classifier, type, version, platform );
 	}
 
-	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version ) {
-		return getDownloads( List.of( artifact ), classifier, type, version );
-	}
-
-	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version ) {
+	@Override
+	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version, String platform ) {
 		List<ProductDownload> downloads = new ArrayList<>();
 
 		// Check the cache.
 		List<String> neededUris = new ArrayList<>();
 		for( String artifact : artifacts ) {
 			String uri = createUri( artifact );
-			List<ProductDownload> cachedDownloads = cache.get( getDownloadKey( artifact, classifier, type, version ) );
+			List<ProductDownload> cachedDownloads = cache.get( getDownloadKey( artifact, classifier, type, version, platform ) );
 			if( cachedDownloads == null ) {
 				neededUris.add( uri );
 			} else {
@@ -55,7 +58,7 @@ public class MavenDownloadFactory extends AbstractDownloadFactory {
 
 		// Get direct downloads.
 		if( neededUris.size() > 0 ) {
-			List<ProductDownload> directDownloads = getDownloadsDirect( neededUris, classifier, type, version );
+			List<ProductDownload> directDownloads = getDownloadsDirect( neededUris, classifier, type, version, platform );
 
 			for( ProductDownload download : directDownloads ) {
 				String key = download.getKey();
@@ -81,8 +84,8 @@ public class MavenDownloadFactory extends AbstractDownloadFactory {
 		return "Cache cleared for all";
 	}
 
-	public String clearCache( String artifact, String classifier, String type, String channel ) {
-		String key = getDownloadKey( artifact, classifier, type, channel );
+	public String clearCache( String artifact, String classifier, String type, String channel, String platform ) {
+		String key = getDownloadKey( artifact, classifier, type, channel, platform );
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
@@ -112,7 +115,7 @@ public class MavenDownloadFactory extends AbstractDownloadFactory {
 	 * @param type       The artifact file type
 	 * @return A list of all applicable downloads
 	 */
-	private List<ProductDownload> getDownloadsDirect( List<String> uris, String classifier, String type, String version ) {
+	private List<ProductDownload> getDownloadsDirect( List<String> uris, String classifier, String type, String version, String platform ) {
 		ExecutorService executor = Executors.newCachedThreadPool();
 		List<Future<?>> futures = new ArrayList<>();
 
@@ -164,8 +167,8 @@ public class MavenDownloadFactory extends AbstractDownloadFactory {
 					String md5Link = link + ".md5";
 					String sha1Link = link + ".sha1";
 
-					String key = getDownloadKey( artifactId, classifier, type, version );
-					downloads.add( new ProductDownload( key, groupId, artifactId, artifactVersion, classifier, type, name, link, md5Link, sha1Link ) );
+					String key = getDownloadKey( artifactId, classifier, type, version, platform );
+					downloads.add( new ProductDownload( key, groupId, artifactId, version, classifier, type, platform, name, link, md5Link, sha1Link ) );
 				}
 			}
 

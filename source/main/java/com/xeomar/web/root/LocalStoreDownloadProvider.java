@@ -2,17 +2,14 @@ package com.xeomar.web.root;
 
 import com.xeomar.util.LogUtil;
 import com.xeomar.util.TextUtil;
-import com.xeomar.util.Version;
 import org.slf4j.Logger;
-import org.w3c.dom.Text;
 
 import java.lang.invoke.MethodHandles;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalStoreDownloadProvider extends AbstractDownloadFactory {
+public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
@@ -20,39 +17,35 @@ public class LocalStoreDownloadProvider extends AbstractDownloadFactory {
 
 	private static String GROUP = "com.xeomar";
 
+//	@Override
+//	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String platform ) {
+//		return getDownloads( List.of( artifact ), classifier, type, "stable", platform );
+//	}
+
 	@Override
-	public List<ProductDownload> getDownloads( String artifact, String classifier, String type ) {
-		return getDownloads( List.of( artifact ), classifier, type, null );
+	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version, String platform ) {
+		return getDownloads( List.of( artifact ), classifier, type, version, platform );
 	}
 
 	@Override
-	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version ) {
-		return getDownloads( List.of( artifact ), classifier, type, version );
-	}
-
-	@Override
-	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version ) {
+	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version, String platform ) {
 		List<ProductDownload> downloads = new ArrayList<>();
 
-		String platform = "linux";
-
 		for( String artifact : artifacts ) {
-			String key = getDownloadKey( artifact, classifier, type, version );
-			Version artifactVersion = new Version( version );
-			// TODO Get the name and version from the product card
-			String name = "Xenon";
+			String key = getDownloadKey( artifact, classifier, type, version, platform );
+			String name = null;
 			String filename = getFilename( platform, classifier, type );
 			String link = Paths.get( ROOT, version, artifact, filename ).toUri().toString();
 			String md5Link = "";
 			String sha1Link = "";
-			downloads.add( new ProductDownload( key, GROUP, artifact, artifactVersion, classifier, type, name, link, md5Link, sha1Link ) );
+			downloads.add( new ProductDownload( key, GROUP, artifact, version, classifier, type, platform, name, link, md5Link, sha1Link ) );
 		}
 
 		return downloads;
 	}
 
 	@Override
-	public String clearCache( String artifact, String category, String type, String channel ) {
+	public String clearCache( String artifact, String category, String type, String channel, String platform ) {
 		return null;
 	}
 

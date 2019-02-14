@@ -78,10 +78,10 @@ public class DownloadController {
 
 	private static final int READ_TIMEOUT = 500;
 
-	private DownloadFactory downloadFactory;
+	private DownloadProvider downloadProvider;
 
 	public DownloadController() {
-		this.downloadFactory = new MavenDownloadFactory();
+		this.downloadProvider = new MavenDownloadProvider();
 	}
 
 	//	@SuppressWarnings( "unused" )
@@ -93,25 +93,25 @@ public class DownloadController {
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}" )
 	public String clearCache( @PathVariable( "artifact" ) String artifact ) throws IOException {
-		return downloadFactory.clearCache( artifact, null, null, null );
+		return downloadProvider.clearCache( artifact, null, null, null, null );
 	}
 
 //	@SuppressWarnings( "unused" )
 //	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}" )
 //	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category ) throws IOException {
-//		return downloadFactory.clearCache( artifact, category, null, null );
+//		return downloadProvider.clearCache( artifact, category, null, null );
 //	}
 //
 //	@SuppressWarnings( "unused" )
 //	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}" )
 //	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type ) throws IOException {
-//		return downloadFactory.clearCache( artifact, category, type, null );
+//		return downloadProvider.clearCache( artifact, category, type, null );
 //	}
 //
 //	@SuppressWarnings( "unused" )
 //	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate/{artifact}/{category}/{type}/{version:.+}" )
 //	public String clearCache( @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
-//		return downloadFactory.clearCache( artifact, category, type, version );
+//		return downloadProvider.clearCache( artifact, category, type, version );
 //	}
 
 	@SuppressWarnings( "unused" )
@@ -123,7 +123,7 @@ public class DownloadController {
 			@RequestParam( value = "category", required = false ) String category,
 			@RequestParam( value = "type", required = false ) String type
 	) throws IOException {
-		return downloadFactory.clearCache( artifact, category, type, channel );
+		return downloadProvider.clearCache( artifact, category, type, channel, platform );
 	}
 
 	@Deprecated
@@ -175,7 +175,7 @@ public class DownloadController {
 		String classifier = (platform == null ? category : platform + "-" + category);
 		String version = convertToVersion( channel );
 
-		List<ProductDownload> downloads = downloadFactory.getDownloads( artifact, classifier, type, convertToVersion( channel ) );
+		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, classifier, type, convertToVersion( channel ), null );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Now downloads found: " + artifact + "-" + category + "-" + type + "-" + channel );
 
 		ProductDownload download = downloads.get( 0 );
