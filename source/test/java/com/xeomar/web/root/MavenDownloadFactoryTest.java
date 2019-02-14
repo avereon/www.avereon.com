@@ -62,10 +62,10 @@ public class MavenDownloadFactoryTest {
 	public void testGetLatestDownload() throws Exception {
 		String requestVersion = "latest";
 
-		when( factory.getDownloads( uri, classifier, type, requestVersion ) ).thenCallRealMethod();
+		when( factory.getDownloads( artifact, classifier, type, requestVersion ) ).thenCallRealMethod();
 
 		// Execute the method
-		List<MavenDownload> downloads = factory.getDownloads( uri, classifier, type, requestVersion );
+		List<MavenDownload> downloads = factory.getDownloads( artifact, classifier, type, requestVersion );
 		verify( factory, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
@@ -83,10 +83,10 @@ public class MavenDownloadFactoryTest {
 	public void testGetReleaseDownload() throws Exception {
 		String requestVersion = "release";
 
-		when( factory.getDownloads( uri, classifier, type, requestVersion ) ).thenCallRealMethod();
+		when( factory.getDownloads( artifact, classifier, type, requestVersion ) ).thenCallRealMethod();
 
 		// Execute the method
-		List<MavenDownload> downloads = factory.getDownloads( uri, classifier, type, requestVersion );
+		List<MavenDownload> downloads = factory.getDownloads( artifact, classifier, type, requestVersion );
 		verify( factory, times( 2 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
@@ -104,10 +104,10 @@ public class MavenDownloadFactoryTest {
 	public void testGetVersionDownload() throws Exception {
 		String requestVersion = "0.5-SNAPSHOT";
 
-		when( factory.getDownloads( uri, classifier, type, requestVersion ) ).thenCallRealMethod();
+		when( factory.getDownloads( artifact, classifier, type, requestVersion ) ).thenCallRealMethod();
 
 		// Execute the method
-		List<MavenDownload> downloads = factory.getDownloads( uri, classifier, type, requestVersion );
+		List<MavenDownload> downloads = factory.getDownloads( artifact, classifier, type, requestVersion );
 		verify( factory, times( 13 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );

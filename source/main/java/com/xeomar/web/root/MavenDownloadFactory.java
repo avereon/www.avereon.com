@@ -30,11 +30,11 @@ public class MavenDownloadFactory implements DownloadFactory {
 	private static final Map<String, List<MavenDownload>> cache = new ConcurrentHashMap<>();
 
 	public List<MavenDownload> getDownloads( String artifact, String classifier, String type ) {
-		return getDownloads( List.of( createUri( artifact ) ), classifier, type, null );
+		return getDownloads( List.of( artifact ), classifier, type, null );
 	}
 
 	public List<MavenDownload> getDownloads( String artifact, String classifier, String type, String version ) {
-		return getDownloads( List.of( createUri( artifact ) ), classifier, type, version );
+		return getDownloads( List.of( artifact ), classifier, type, version );
 	}
 
 	public List<MavenDownload> getDownloads( List<String> artifacts, String classifier, String type, String version ) {
@@ -131,9 +131,9 @@ public class MavenDownloadFactory implements DownloadFactory {
 	/**
 	 * Retrieves all the applicable downloads for the specified URIs, classifier and type.
 	 *
-	 * @param uris The list of URIs to search
+	 * @param uris       The list of URIs to search
 	 * @param classifier The artifact classifier
-	 * @param type The artifact file type
+	 * @param type       The artifact file type
 	 * @return A list of all applicable downloads
 	 */
 	private List<MavenDownload> getDownloadsDirect( List<String> uris, String classifier, String type, String version ) {
@@ -235,7 +235,7 @@ public class MavenDownloadFactory implements DownloadFactory {
 	/**
 	 * Check if a version matches a requested version.
 	 *
-	 * @param downloadVersion The version string to match.
+	 * @param downloadVersion  The version string to match.
 	 * @param requestedVersion The requested version string. Can be "latest", "release" or a version number.
 	 * @return True if the version matches, false otherwise
 	 */
