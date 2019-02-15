@@ -12,7 +12,7 @@
 
 	<groupId>com.xeomar</groupId>
 	<artifactId>website</artifactId>
-	<version>1.2u0</version>
+	<version>1.2u1</version>
 	<packaging>jar</packaging>
 
 	<name>Xeomar Website</name>

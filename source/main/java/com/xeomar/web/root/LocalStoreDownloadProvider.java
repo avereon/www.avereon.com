@@ -17,28 +17,23 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	private static String GROUP = "com.xeomar";
 
-//	@Override
-//	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String platform ) {
-//		return getDownloads( List.of( artifact ), classifier, type, "stable", platform );
-//	}
-
 	@Override
-	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version, String platform ) {
-		return getDownloads( List.of( artifact ), classifier, type, version, platform );
+	public List<ProductDownload> getDownloads( String artifact, String category, String type, String channel, String platform ) {
+		return getDownloads( List.of( artifact ), category, type, channel, platform );
 	}
 
 	@Override
-	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version, String platform ) {
+	public List<ProductDownload> getDownloads( List<String> artifacts, String category, String type, String channel, String platform ) {
 		List<ProductDownload> downloads = new ArrayList<>();
 
 		for( String artifact : artifacts ) {
-			String key = getDownloadKey( artifact, classifier, type, version, platform );
+			String key = getDownloadKey( artifact, category, type, channel, platform );
 			String name = null;
-			String filename = getFilename( platform, classifier, type );
-			String link = Paths.get( ROOT, version, artifact, filename ).toUri().toString();
+			String filename = getFilename( platform, category, type );
+			String link = Paths.get( ROOT, channel, artifact, filename ).toUri().toString();
 			String md5Link = "";
 			String sha1Link = "";
-			downloads.add( new ProductDownload( key, GROUP, artifact, version, classifier, type, platform, name, link, md5Link, sha1Link ) );
+			downloads.add( new ProductDownload( key, GROUP, artifact, channel, category, type, platform, name, link, md5Link, sha1Link ) );
 		}
 
 		return downloads;

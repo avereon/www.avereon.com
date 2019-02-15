@@ -152,26 +152,26 @@ public class DownloadController {
 			@RequestParam( value = "category", required = false, defaultValue = "catalog" ) String category,
 			@RequestParam( value = "type", required = false, defaultValue = "card" ) String type
 	) throws IOException {
-		log.info( "Requested: " + Download.key( artifact, platform, channel, category, type ) );
+		log.info( "Requested: " + Download.key( artifact, category, type, channel, platform ) );
 
 		if( "card".equals( type ) ) platform = null;
 		channel = normalizeChannel( channel );
 		//String classifier = (platform == null ? category : platform + "-" + category);
 
 		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, category, type, channel, platform );
-		if( downloads.size() == 0 ) throw new FileNotFoundException( "Download not found: " + Download.key( artifact, platform, channel, category, type ) );
+		if( downloads.size() == 0 ) throw new FileNotFoundException( "Download not found: " + Download.key( artifact, category, type, channel, platform ) );
 
 		ProductDownload download = downloads.get( 0 );
 		String link = download == null ? null : download.getLink();
 		if( link == null ) {
 			response.getOutputStream().close();
 		} else {
-			try {
+			//try {
 				log.info( "Return stream: " + link );
 				stream( response, new URL( link ), artifact + "-" + category + "." + type );
-			} catch( FileNotFoundException exception ) {
-				throw new FileNotFoundException( request.getRequestURI() );
-			}
+//			} catch( FileNotFoundException exception ) {
+//				throw new FileNotFoundException( request.getRequestURI() );
+//			}
 		}
 	}
 
