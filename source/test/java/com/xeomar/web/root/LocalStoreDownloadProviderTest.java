@@ -53,7 +53,7 @@ public class LocalStoreDownloadProviderTest {
 	@Test
 	public void testGetStableDownload() throws Exception {
 		String channel = "stable";
-		String platform = "linux";
+		String platform = "windows";
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
@@ -66,7 +66,7 @@ public class LocalStoreDownloadProviderTest {
 		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		//		assertThat( downloads.get( 0 ).getName(), is( name ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/stable/xenon/linux-product.card" ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/stable/xenon/windows-product.card" ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 

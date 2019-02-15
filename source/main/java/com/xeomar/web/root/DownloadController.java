@@ -85,7 +85,8 @@ public class DownloadController {
 	private DownloadProvider downloadProvider;
 
 	public DownloadController() {
-		this.downloadProvider = new MavenDownloadProvider();
+		this.downloadProvider = new LocalStoreDownloadProvider();
+		//this.downloadProvider = new MavenDownloadProvider();
 	}
 
 	//	@SuppressWarnings( "unused" )
@@ -119,7 +120,7 @@ public class DownloadController {
 	private void downloadArtifact(
 			HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version
 	) throws IOException {
-		downloadArtifact( request, response, artifact, "linux", version, category, type );
+		downloadArtifact( request, response, artifact, null, version, category, type );
 	}
 
 	/**

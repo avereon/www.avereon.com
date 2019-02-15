@@ -84,7 +84,7 @@ public class MavenDownloadProviderTest {
 	@Test
 	public void testGetReleaseDownload() throws Exception {
 		String channel = "release";
-		String platform = "linux";
+		String platform = "macos";
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
@@ -105,7 +105,7 @@ public class MavenDownloadProviderTest {
 	@Test
 	public void testGetVersionDownload() throws Exception {
 		String channel = "0.5-SNAPSHOT";
-		String platform = "linux";
+		String platform = "windows";
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
