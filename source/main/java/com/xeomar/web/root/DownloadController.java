@@ -222,16 +222,16 @@ public class DownloadController {
 			if( key != null ) {
 				for( String value : fields.get( key ) ) {
 					response.addHeader( key, value );
+					log.info( "Header: " + key + "=" + value );
 				}
-				if( "Content-Disposition".equals( key ) ) {
-					response.setHeader( "Content-Disposition", "inline; filename=\"" + name + "\"" );
-				}
+				if( "Content-Disposition".equals( key ) ) response.setHeader( "Content-Disposition", "inline; filename=\"" + name + "\"" );
 			}
 		}
 
 		if( "file".equals( source.getProtocol() ) ) {
 			try {
 				response.addHeader( "Content-Length", String.valueOf( Files.size( Paths.get( source.toURI() ) ) ) );
+				response.setHeader( "Content-Disposition", "inline; filename=\"" + name + "\"" );
 			} catch( URISyntaxException exception ) {
 				throw new FileNotFoundException( source.toString() );
 			}
