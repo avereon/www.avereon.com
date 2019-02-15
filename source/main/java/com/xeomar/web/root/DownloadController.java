@@ -166,12 +166,8 @@ public class DownloadController {
 		if( link == null ) {
 			response.getOutputStream().close();
 		} else {
-			//try {
-				log.info( "Return stream: " + link );
-				stream( response, new URL( link ), artifact + "-" + category + "." + type );
-//			} catch( FileNotFoundException exception ) {
-//				throw new FileNotFoundException( request.getRequestURI() );
-//			}
+			log.info( "Return stream: " + link );
+			stream( response, new URL( link ), artifact + "-" + category + "." + type );
 		}
 	}
 
@@ -179,12 +175,12 @@ public class DownloadController {
 		switch( channel ) {
 			case "release":
 				return "stable";
-			case "beta":
-				return "earlyaccess";
+			//case "beta":
+			//	return "earlyaccess";
 			case "nightly":
 				return "latest";
 		}
-		return "release";
+		return channel;
 	}
 
 	/**
