@@ -5,6 +5,7 @@ import com.xeomar.util.TextUtil;
 import org.slf4j.Logger;
 
 import java.lang.invoke.MethodHandles;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +28,12 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		List<ProductDownload> downloads = new ArrayList<>();
 
 		for( String artifact : artifacts ) {
+			String filename = getFilename( platform, category, type );
+			Path path = Paths.get( ROOT, channel, artifact, filename );
+
 			String key = getDownloadKey( artifact, category, type, channel, platform );
 			String name = null;
-			String filename = getFilename( platform, category, type );
-			String link = Paths.get( ROOT, channel, artifact, filename ).toUri().toString();
+			String link = path.toUri().toString();
 			String md5Link = "";
 			String sha1Link = "";
 			downloads.add( new ProductDownload( key, GROUP, artifact, channel, category, type, platform, name, link, md5Link, sha1Link ) );

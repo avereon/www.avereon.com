@@ -11,8 +11,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.invoke.MethodHandles;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -149,11 +152,12 @@ public class DownloadController {
 			@RequestParam( value = "artifact" ) String artifact,
 			@RequestParam( value = "platform", required = false ) String platform,
 			@RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel,
-			@RequestParam( value = "category", required = false, defaultValue = "catalog" ) String category,
-			@RequestParam( value = "type", required = false, defaultValue = "card" ) String type
+			@RequestParam( value = "category", required = false, defaultValue = "product" ) String category,
+			@RequestParam( value = "type", required = false, defaultValue = "pack" ) String type
 	) throws IOException {
 		log.info( "Requested: " + Download.key( artifact, category, type, channel, platform ) );
 
+		if( "pack".equals( type ) ) type = "jar";
 		if( "card".equals( type ) ) platform = null;
 		channel = normalizeChannel( channel );
 		//String classifier = (platform == null ? category : platform + "-" + category);
@@ -222,6 +226,14 @@ public class DownloadController {
 				if( "Content-Disposition".equals( key ) ) {
 					response.setHeader( "Content-Disposition", "inline; filename=\"" + name + "\"" );
 				}
+			}
+		}
+
+		if( "file".equals( source.getProtocol() ) ) {
+			try {
+				response.addHeader( "Content-Length", String.valueOf( Files.size( Paths.get( source.toURI() ) ) ) );
+			} catch( URISyntaxException exception ) {
+				throw new FileNotFoundException( source.toString() );
 			}
 		}
 
