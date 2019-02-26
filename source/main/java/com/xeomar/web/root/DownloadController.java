@@ -77,7 +77,7 @@ public class DownloadController {
 
 	private static final String GROUP = "com/xeomar/";
 
-	private static final int IO_BUFFER_SIZE = 256 * 1024;
+	private static final int IO_BUFFER_SIZE = 1024 * 1024;
 
 	private static final int CONNECT_TIMEOUT = 1000;
 
