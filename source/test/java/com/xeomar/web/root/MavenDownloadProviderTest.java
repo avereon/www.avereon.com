@@ -70,7 +70,7 @@ public class MavenDownloadProviderTest {
 		verify( provider, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
 		//assertThat( downloads.get( 0 ).getChannel(), is( "0.8-SNAPSHOT" ) );
 		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
@@ -91,7 +91,7 @@ public class MavenDownloadProviderTest {
 		verify( provider, times( 2 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
 		//assertThat( downloads.get( 0 ).getChannel(), is( "0.7" ) );
 		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
@@ -112,7 +112,7 @@ public class MavenDownloadProviderTest {
 		verify( provider, times( 13 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
 		assertThat( downloads.get( 0 ).getChannel(), is( channel ) );
 		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );

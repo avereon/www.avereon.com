@@ -33,13 +33,13 @@ public class LocalStoreDownloadProviderTest {
 	@Test
 	public void testGetLatestDownload() throws Exception {
 		String channel = "latest";
-		String platform= "linux";
+		String platform = "linux";
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
 		//		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.8-SNAPSHOT" ) );
 		//		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
@@ -59,8 +59,8 @@ public class LocalStoreDownloadProviderTest {
 		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-product-card-" + channel + "-" + platform ) );
-				assertThat( downloads.get( 0 ).getChannel().toString(), is( "stable" ) );
+		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
+		assertThat( downloads.get( 0 ).getChannel().toString(), is( "stable" ) );
 		//		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
 		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
