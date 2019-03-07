@@ -171,7 +171,11 @@ public class DownloadController {
 			response.getOutputStream().close();
 		} else {
 			log.info( "Return stream: " + link );
-			stream( response, new URL( link ), artifact + "-" + category + "." + type );
+			StringBuilder name = new StringBuilder( artifact );
+			name.append( "-" ).append( category );
+			if( platform != null ) name.append( "-" ).append( platform );
+			name.append( "." ).append( type );
+			stream( response, new URL( link ), name.toString() );
 		}
 	}
 
