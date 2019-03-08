@@ -26,6 +26,9 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 	public List<ProductDownload> getDownloads( List<String> artifacts, String category, String type, String channel, String platform ) {
 		List<ProductDownload> downloads = new ArrayList<>();
 
+		// WORKAROUND
+		if( platform == null ) platform="linux";
+
 		for( String artifact : artifacts ) {
 			String key = getDownloadKey( artifact, category, type, channel, platform );
 			log.info( "Get artifact by key: " + key );
