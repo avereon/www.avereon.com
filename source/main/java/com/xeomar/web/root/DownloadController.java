@@ -158,9 +158,7 @@ public class DownloadController {
 		log.info( "Requested: " + Download.key( artifact, category, type, channel, platform ) );
 
 		if( "pack".equals( type ) ) type = "jar";
-		if( "card".equals( type ) ) platform = null;
 		channel = normalizeChannel( channel );
-		//String classifier = (platform == null ? category : platform + "-" + category);
 
 		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, category, type, channel, platform );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Download not found: " + Download.key( artifact, category, type, channel, platform ) );
