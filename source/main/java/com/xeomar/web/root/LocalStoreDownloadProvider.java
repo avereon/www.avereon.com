@@ -27,10 +27,12 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		List<ProductDownload> downloads = new ArrayList<>();
 
 		for( String artifact : artifacts ) {
+			String key = getDownloadKey( artifact, category, type, channel, platform );
+			log.info( "Get artifact by key: " + key );
+
 			String filename = getFilename( category, type );
 			Path path = Paths.get( ROOT, channel, artifact, platform, filename );
 
-			String key = getDownloadKey( artifact, category, type, channel, platform );
 			String name = null;
 			String link = path.toUri().toString();
 			String md5Link = "";
