@@ -16,7 +16,7 @@ public class LocalStoreDownloadProviderTest {
 
 	private String artifact = "xenon";
 
-	private String classifier = "product";
+	private String category = "product";
 
 	private String type = "card";
 
@@ -36,17 +36,17 @@ public class LocalStoreDownloadProviderTest {
 		String platform = "linux";
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( artifact, category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
 		//		assertThat( downloads.get( 0 ).getVersion().toString(), is( "0.8-SNAPSHOT" ) );
 		//		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( category ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		//		assertThat( downloads.get( 0 ).getName(), is( name ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/latest/xenon/linux-product.card" ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/" + channel + "/" + artifact + "/" + platform + "/" + category + "." + type ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 
@@ -56,17 +56,17 @@ public class LocalStoreDownloadProviderTest {
 		String platform = "windows";
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( artifact, category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
 		assertThat( downloads.get( 0 ).getChannel().toString(), is( "stable" ) );
 		//		assertThat( downloads.get( 0 ).getGroupId(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
+		assertThat( downloads.get( 0 ).getCategory(), is( category ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		//		assertThat( downloads.get( 0 ).getName(), is( name ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/stable/xenon/windows-product.card" ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/" + channel + "/" + artifact + "/" + platform + "/" + category + "." + type ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 

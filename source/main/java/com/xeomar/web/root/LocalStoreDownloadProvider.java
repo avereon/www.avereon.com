@@ -1,7 +1,6 @@
 package com.xeomar.web.root;
 
 import com.xeomar.util.LogUtil;
-import com.xeomar.util.TextUtil;
 import org.slf4j.Logger;
 
 import java.lang.invoke.MethodHandles;
@@ -28,8 +27,8 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		List<ProductDownload> downloads = new ArrayList<>();
 
 		for( String artifact : artifacts ) {
-			String filename = getFilename( platform, category, type );
-			Path path = Paths.get( ROOT, channel, artifact, filename );
+			String filename = getFilename( category, type );
+			Path path = Paths.get( ROOT, channel, artifact, platform, filename );
 
 			String key = getDownloadKey( artifact, category, type, channel, platform );
 			String name = null;
@@ -53,13 +52,8 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		return "Cache cleared for all";
 	}
 
-	private String getFilename( String platform, String category, String type ) {
-		StringBuilder builder = new StringBuilder();
-
-		if( !TextUtil.isEmpty( platform ) ) builder.append( platform ).append( "-" );
-		builder.append( category ).append( "." ).append( type );
-
-		return builder.toString();
+	private String getFilename( String category, String type ) {
+		return category + "." + type;
 	}
 
 }
