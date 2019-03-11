@@ -31,7 +31,9 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			log.info( "Get artifact by key: " + key );
 
 			String filename = getFilename( category, type );
-			Path path = Paths.get( ROOT, channel, artifact, platform, filename );
+			Path path = Paths.get( ROOT, channel, artifact );
+			if( platform != null ) path = path.resolve( platform );
+			path = path.resolve( filename );
 
 			String name = null;
 			String link = path.toUri().toString();

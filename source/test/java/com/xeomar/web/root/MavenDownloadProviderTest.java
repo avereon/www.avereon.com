@@ -70,7 +70,7 @@ public class MavenDownloadProviderTest {
 		verify( provider, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
+		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-" + platform + "-product-card" ) );
 		//assertThat( downloads.get( 0 ).getChannel(), is( "0.8-SNAPSHOT" ) );
 		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
@@ -91,29 +91,8 @@ public class MavenDownloadProviderTest {
 		verify( provider, times( 2 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
+		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-" + platform + "-product-card" ) );
 		//assertThat( downloads.get( 0 ).getChannel(), is( "0.7" ) );
-		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
-		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
-		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
-		assertThat( downloads.get( 0 ).getType(), is( type ) );
-		assertThat( downloads.get( 0 ).getPlatform(), is( platform ) );
-		assertThat( downloads.get( 0 ).getName(), is( name ) );
-		assertThat( downloads.size(), is( 1 ) );
-	}
-
-	@Test
-	public void testGetVersionDownload() throws Exception {
-		String channel = "0.5-SNAPSHOT";
-		String platform = "windows";
-
-		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
-		verify( provider, times( 13 ) ).getXmlDescriptor( anyString() );
-
-		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( "xenon-" + channel + "-" + platform + "-product-card" ) );
-		assertThat( downloads.get( 0 ).getChannel(), is( channel ) );
 		assertThat( downloads.get( 0 ).getGroup(), is( group ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
 		assertThat( downloads.get( 0 ).getCategory(), is( classifier ) );
