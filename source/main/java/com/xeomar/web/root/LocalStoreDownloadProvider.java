@@ -39,10 +39,14 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			path = path.resolve( getFilename( category, type ) );
 			if( !exists( path ) ) continue;
 
+			String name = null;
+			String version = null;
 			ProductCard card = getProductCard( path, category );
+			if( card != null ) {
+				name = card.getName();
+				version = card.getVersion();
+			}
 
-			String name = card.getName();
-			String version = card.getVersion();
 			String link = path.toUri().toString();
 			String md5Link = "";
 			String sha1Link = "";
@@ -72,6 +76,8 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	ProductCard getProductCard( Path path, String category ) {
 		path = path.resolve( getFilename( category, "card" ) );
+		if( !Files.exists( path ) ) return null;
+
 		ProductCard card = new ProductCard();
 		try {
 			card.load( new FileInputStream( path.toFile() ), null );
