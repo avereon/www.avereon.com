@@ -30,10 +30,10 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Map<String, List<ProductDownload>> cache = new ConcurrentHashMap<>();
 
-//	@Override
-//	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String platform ) {
-//		return getDownloads( List.of( artifact ), classifier, type, "stable", platform );
-//	}
+	//	@Override
+	//	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String platform ) {
+	//		return getDownloads( List.of( artifact ), classifier, type, "stable", platform );
+	//	}
 
 	@Override
 	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version, String platform ) {
@@ -110,9 +110,9 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 	/**
 	 * Retrieves all the applicable downloads for the specified URIs, classifier and type.
 	 *
-	 * @param uris       The list of URIs to search
+	 * @param uris The list of URIs to search
 	 * @param classifier The artifact classifier
-	 * @param type       The artifact file type
+	 * @param type The artifact file type
 	 * @return A list of all applicable downloads
 	 */
 	private List<ProductDownload> getDownloadsDirect( List<String> uris, String classifier, String type, String version, String platform ) {
@@ -168,7 +168,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 					String sha1Link = link + ".sha1";
 
 					String key = getDownloadKey( artifactId, classifier, type, version, platform );
-					downloads.add( new ProductDownload( key, groupId, artifactId, version, classifier, type, platform, name, link, md5Link, sha1Link ) );
+					downloads.add( new ProductDownload( key, groupId, artifactId, version, classifier, type, platform, version, name, link, md5Link, sha1Link ) );
 				}
 			}
 
@@ -214,7 +214,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 	/**
 	 * Check if a version matches a requested version.
 	 *
-	 * @param downloadVersion  The version string to match.
+	 * @param downloadVersion The version string to match.
 	 * @param requestedVersion The requested version string. Can be "latest", "release" or a version number.
 	 * @return True if the version matches, false otherwise
 	 */

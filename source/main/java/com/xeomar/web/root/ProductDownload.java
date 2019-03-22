@@ -5,7 +5,7 @@ import com.xeomar.util.FileUtil;
 import java.text.DateFormat;
 import java.util.Date;
 
-public class ProductDownload implements Comparable<ProductDownload> {
+public class ProductDownload implements Download, Comparable<ProductDownload> {
 
 	private String key;
 
@@ -25,6 +25,8 @@ public class ProductDownload implements Comparable<ProductDownload> {
 
 	private String platform;
 
+	private String version;
+
 	private String link;
 
 	private String md5Link;
@@ -35,7 +37,7 @@ public class ProductDownload implements Comparable<ProductDownload> {
 
 	private Date date;
 
-	ProductDownload( String key, String group, String artifact, String channel, String category, String type, String platform, String name, String link, String md5Link, String sha1Link ) {
+	ProductDownload( String key, String group, String artifact, String channel, String category, String type, String platform, String version, String name, String link, String md5Link, String sha1Link ) {
 		this.key = key;
 		this.group = group;
 		this.artifact = artifact;
@@ -43,6 +45,7 @@ public class ProductDownload implements Comparable<ProductDownload> {
 		this.category = category;
 		this.type = type;
 		this.platform = platform;
+		this.version = version;
 
 		this.name = name;
 		this.link = link;
@@ -82,6 +85,10 @@ public class ProductDownload implements Comparable<ProductDownload> {
 
 	public String getPlatform() {
 		return platform;
+	}
+
+	public String getVersion() {
+		return version;
 	}
 
 	public String getLink() {
@@ -136,6 +143,14 @@ public class ProductDownload implements Comparable<ProductDownload> {
 		ProductDownload that = (ProductDownload)object;
 
 		return this.identifier.equals( that.identifier );
+	}
+
+	public static String formatName( String artifact, String category, String platform, String type) {
+		StringBuilder name = new StringBuilder( artifact );
+		name.append( "-" ).append( category );
+		if( platform != null ) name.append( "-" ).append( platform );
+		name.append( "." ).append( type );
+		return name.toString();
 	}
 
 }

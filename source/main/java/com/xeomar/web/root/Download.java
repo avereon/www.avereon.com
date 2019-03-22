@@ -8,8 +8,7 @@ public interface Download {
 
 	String getVersion();
 
-	// FIXME Rename to getCategory
-	String getClassifier();
+	String getCategory();
 
 	String getType();
 
