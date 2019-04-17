@@ -30,7 +30,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.xeomar</groupId>
-			<artifactId>zenna</artifactId>
+			<artifactId>zevra</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
