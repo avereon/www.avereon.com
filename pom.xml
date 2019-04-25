@@ -62,16 +62,29 @@
 						<goals>
 							<goal>exec</goal>
 						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<workingDirectory>${project.basedir}/source/main/react</workingDirectory>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>npm</executable>
+							<workingDirectory>${project.basedir}/source/main/react</workingDirectory>
+							<arguments>
+								<argument>run</argument>
+								<argument>build</argument>
+							</arguments>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<executable>npm</executable>
-					<workingDirectory>${project.basedir}/source/main/react</workingDirectory>
-					<arguments>
-						<argument>run</argument>
-						<argument>build</argument>
-					</arguments>
-				</configuration>
 			</plugin>
 
 			<plugin>
