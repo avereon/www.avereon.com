@@ -44,7 +44,35 @@
 	<build>
 		<finalName>xeomar</finalName>
 
+		<resources>
+			<resource>
+				<directory>source/main/react/build</directory>
+			</resource>
+		</resources>
+
 		<plugins>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<executable>npm</executable>
+					<workingDirectory>${project.basedir}/source/main/react</workingDirectory>
+					<arguments>
+						<argument>run</argument>
+						<argument>build</argument>
+					</arguments>
+				</configuration>
+			</plugin>
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
