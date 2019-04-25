@@ -58,6 +58,7 @@
 				<version>1.6.0</version>
 				<executions>
 					<execution>
+						<id>npm-install</id>
 						<phase>compile</phase>
 						<goals>
 							<goal>exec</goal>
@@ -71,6 +72,7 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>npm-run-build</id>
 						<phase>compile</phase>
 						<goals>
 							<goal>exec</goal>
