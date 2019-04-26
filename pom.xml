@@ -59,7 +59,7 @@
 				<executions>
 					<execution>
 						<id>npm-install</id>
-						<phase>compile</phase>
+						<phase>initialize</phase>
 						<goals>
 							<goal>exec</goal>
 						</goals>
@@ -73,7 +73,7 @@
 					</execution>
 					<execution>
 						<id>npm-run-build</id>
-						<phase>compile</phase>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>exec</goal>
 						</goals>
