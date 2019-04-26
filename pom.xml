@@ -44,11 +44,11 @@
 	<build>
 		<finalName>xeomar</finalName>
 
-		<resources>
-			<resource>
-				<directory>source/main/react/build</directory>
-			</resource>
-		</resources>
+<!--		<resources>-->
+<!--			<resource>-->
+<!--				<directory>source/main/react/build</directory>-->
+<!--			</resource>-->
+<!--		</resources>-->
 
 		<plugins>
 
