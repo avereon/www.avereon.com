@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-const ICON_URL="https://www.xeomar.com/download?channel=latest&artifact=mouse&category=product&type=icon";
+const ICON_URL="https://www.xeomar.com/download?channel=latest&artifact=xeomar&category=product&type=icon";
 
 function App() {
 	return (
