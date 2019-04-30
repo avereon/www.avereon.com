@@ -1,4 +1,4 @@
-package com.xeomar.web.root;
+package com.xeomar.www.download;
 
 import com.xeomar.util.XmlDescriptor;
 import org.junit.After;
@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -103,7 +105,8 @@ public class MavenDownloadProviderTest {
 	}
 
 	private void stageDescriptor( String uri, String path ) throws IOException {
-		XmlDescriptor releasePom = new XmlDescriptor( getClass().getResource( "/repo" + path ) );
+		Path resource = Paths.get( "source/test/repo", path );
+		XmlDescriptor releasePom = new XmlDescriptor( resource.toUri() );
 		when( provider.getXmlDescriptor( uri + path ) ).thenReturn( releasePom );
 	}
 

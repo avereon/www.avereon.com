@@ -1,4 +1,4 @@
-package com.xeomar.web.root;
+package com.xeomar.www;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
