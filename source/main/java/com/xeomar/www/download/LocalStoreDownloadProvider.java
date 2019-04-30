@@ -22,11 +22,6 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 	private static String GROUP = "com.xeomar";
 
 	@Override
-	public List<ProductDownload> getDownloads( String artifact, String category, String type, String channel, String platform ) {
-		return getDownloads( List.of( artifact ), category, type, channel, platform );
-	}
-
-	@Override
 	public List<ProductDownload> getDownloads( List<String> artifacts, String category, String type, String channel, String platform ) {
 		List<ProductDownload> downloads = new ArrayList<>();
 

@@ -22,4 +22,12 @@ public interface Download {
 		return builder.toString();
 	}
 
+	static String name( String artifact, String category, String platform, String type ) {
+		StringBuilder name = new StringBuilder( artifact );
+		name.append( "-" ).append( category );
+		if( platform != null ) name.append( "-" ).append( platform );
+		name.append( "." ).append( type );
+		return name.toString();
+	}
+
 }

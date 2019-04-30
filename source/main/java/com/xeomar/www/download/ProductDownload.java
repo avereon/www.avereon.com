@@ -145,12 +145,4 @@ public class ProductDownload implements Download, Comparable<ProductDownload> {
 		return this.identifier.equals( that.identifier );
 	}
 
-	public static String formatName( String artifact, String category, String platform, String type) {
-		StringBuilder name = new StringBuilder( artifact );
-		name.append( "-" ).append( category );
-		if( platform != null ) name.append( "-" ).append( platform );
-		name.append( "." ).append( type );
-		return name.toString();
-	}
-
 }

@@ -5,7 +5,6 @@ import com.xeomar.util.TextUtil;
 import com.xeomar.util.Version;
 import com.xeomar.util.XmlDescriptor;
 import org.slf4j.Logger;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
@@ -15,7 +14,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.concurrent.*;
 
-@Component
 public class MavenDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
@@ -29,16 +27,6 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 	private static final String DEFAULT_EXTENSION = "jar";
 
 	private static final Map<String, List<ProductDownload>> cache = new ConcurrentHashMap<>();
-
-	//	@Override
-	//	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String platform ) {
-	//		return getDownloads( List.of( artifact ), classifier, type, "stable", platform );
-	//	}
-
-	@Override
-	public List<ProductDownload> getDownloads( String artifact, String classifier, String type, String version, String platform ) {
-		return getDownloads( List.of( artifact ), classifier, type, version, platform );
-	}
 
 	@Override
 	public List<ProductDownload> getDownloads( List<String> artifacts, String classifier, String type, String version, String platform ) {

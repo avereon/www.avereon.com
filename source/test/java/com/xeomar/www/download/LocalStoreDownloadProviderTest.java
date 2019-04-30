@@ -40,7 +40,7 @@ public class LocalStoreDownloadProviderTest {
 		provider = mock( LocalStoreDownloadProvider.class );
 
 		// Needed because the methods are mocked
-		when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
+		//when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
 		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
 		when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
 		when( provider.getProductCard( any( Path.class ), anyString() ) ).thenReturn( card );
@@ -54,7 +54,7 @@ public class LocalStoreDownloadProviderTest {
 		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, category, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-" + platform + "-product-card" ) );
@@ -75,7 +75,7 @@ public class LocalStoreDownloadProviderTest {
 		when( provider.exists( Paths.get( "/opt/xeo/store/stable/xenon/windows/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, category, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-" + platform + "-product-card" ) );
@@ -97,7 +97,7 @@ public class LocalStoreDownloadProviderTest {
 		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, category, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-product-card" ) );
@@ -120,7 +120,7 @@ public class LocalStoreDownloadProviderTest {
 		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.pack" ) ) ).thenReturn( true );
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, category, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
 		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-product-pack" ) );

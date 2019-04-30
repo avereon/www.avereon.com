@@ -2,6 +2,7 @@ package com.xeomar.www.download;
 
 import com.xeomar.util.LogUtil;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,16 +21,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * This class has to responsibilities: 1. Handling the simple download requests
- * and returning the artifact as a stream. 2. Handling requests about what is
- * available and returning metadata about the downloads.
+ * This class has two responsibilities:
+ * <ol>
+ * <li>Handle the download requests and return the artifact as a stream</li>
+ * <li>Handle requests about available downloads and returning their metadata</li>
+ * </ol>
  * <p>
- * This class is responsible for handling the simple download requests and
- * mapping them to the location of the actual artifacts, wherever they may
- * be. In the past, mapping a request to the artifact was a combination
- * of URL rewriting in the Apache web server and calling the download
- * servlet to interpret a complex set of query parameters. This left the
- * download servlet open to abuse if given the correct set of parameters.
+ * This class handles the simple download requests and
+ * maps them to the location of the actual artifacts, wherever they may
+ * be.
  * <p>
  * This code will take the download request and perform the mapping and
  * hide the complexity of artifact resolution internally instead of
@@ -73,10 +73,6 @@ public class DownloadController {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
-	private static final String REPO = "https://repo.xeomar.com/xeo/";
-
-	private static final String GROUP = "com/xeomar/";
-
 	private static final int IO_BUFFER_SIZE = 1024 * 1024;
 
 	private static final int CONNECT_TIMEOUT = 1000;
@@ -88,15 +84,14 @@ public class DownloadController {
 	private DownloadProvider downloadProvider;
 
 	public DownloadController() {
-		this.downloadProvider = new LocalStoreDownloadProvider();
+		//setDownloadProvider( new LocalStoreDownloadProvider() );
 		//this.downloadProvider = new MavenDownloadProvider();
 	}
 
-	//	@SuppressWarnings( "unused" )
-	//	@RequestMapping( "/download" )
-	//	public String download( HttpServletRequest request, HttpServletResponse response ) {
-	//		return "<h1>Xeomar Download Page</h1>";
-	//	}
+	@Autowired
+	public void setDownloadProvider( DownloadProvider provider ) {
+		this.downloadProvider = provider;
+	}
 
 	@Deprecated
 	@SuppressWarnings( "unused" )
@@ -107,60 +102,48 @@ public class DownloadController {
 
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = { RequestMethod.GET, RequestMethod.POST }, value = "/extirpate" )
-	public String clearCache(
-			@RequestParam( value = "artifact" ) String artifact,
-			@RequestParam( value = "platform", required = false ) String platform,
-			@RequestParam( value = "channel", required = false ) String channel,
-			@RequestParam( value = "category", required = false ) String category,
-			@RequestParam( value = "type", required = false ) String type
-	) throws IOException {
+	public String clearCache( @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false ) String channel, @RequestParam( value = "category", required = false ) String category, @RequestParam( value = "type", required = false ) String type ) throws IOException {
 		return downloadProvider.clearCache( artifact, category, type, channel, platform );
 	}
 
 	@Deprecated
-	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download/{artifact}/{category}/{type}/{version:.+}" )
-	private void downloadArtifact(
-			HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version
-	) throws IOException {
-		downloadArtifact( request, response, artifact, null, version, category, type );
+	public void v0DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String version ) throws IOException {
+		v0DownloadArtifact( request, response, artifact, null, version, category, type );
+	}
+
+	@Deprecated
+	@RequestMapping( method = RequestMethod.GET, value = "/download" )
+	private void v0DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "product" ) String category, @RequestParam( value = "type", required = false, defaultValue = "pack" ) String type ) throws IOException {
+		v1DownloadArtifact( request, response, artifact, platform, channel, category, type );
+	}
+
+	@Deprecated
+	@RequestMapping( method = RequestMethod.GET, value = "/download/v1/{artifact}/{category}/{type}/{version:.+}" )
+	public void v1DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "category" ) String category, @PathVariable( "type" ) String type, @PathVariable( "version" ) String channel ) throws IOException {
+		v1DownloadArtifact( request, response, artifact, null, channel, category, type );
 	}
 
 	/**
-	 * Examples:
-	 * <ul>
-	 * <li>http://xeomar.com/download/xenon?category=catalog&type=card&version=latest</li>
-	 * <li>http://xeomar.com/download/xenon?category=product&type=card&version=latest</li>
-	 * <li>http://xeomar.com/download/xenon?category=product&type=pack&version=release</li>
-	 * <li>http://xeomar.com/download/xenon?category=product&type=card&version=snapshot</li>
-	 * </ul>
-	 *
 	 * @param request The HTTP request object
 	 * @param response The HTTP response object
 	 * @param artifact The artifact id
-	 * @param platform The platform (e.g. linux, mac, windows, etc.)
+	 * @param platform The platform (e.g. linux, macos, windows, etc.)
 	 * @param category The category (e.g. catalog, product, etc.)
 	 * @param type The artifact type (e.g. card, pack, jar, etc.)
 	 * @param channel The artifact channel (e.g. stable, beta, nightly, latest, etc.)
 	 * @throws IOException If an IO error occurs
 	 */
 	@SuppressWarnings( "unused" )
-	@RequestMapping( method = RequestMethod.GET, value = "/download" )
-	private void downloadArtifact(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			@RequestParam( value = "artifact" ) String artifact,
-			@RequestParam( value = "platform", required = false ) String platform,
-			@RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel,
-			@RequestParam( value = "category", required = false, defaultValue = "product" ) String category,
-			@RequestParam( value = "type", required = false, defaultValue = "pack" ) String type
-	) throws IOException {
+	@RequestMapping( method = RequestMethod.GET, value = "/download/v1" )
+	private void v1DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "product" ) String category, @RequestParam( value = "type", required = false, defaultValue = "pack" ) String type ) throws IOException {
 		log.info( "Requested: " + Download.key( artifact, category, type, channel, platform ) );
 
 		if( "pack".equals( type ) ) type = "jar";
 		channel = normalizeChannel( channel );
 
-		List<ProductDownload> downloads = downloadProvider.getDownloads( artifact, category, type, channel, platform );
+		System.out.println( "Provider class: " + downloadProvider.getClass().toString() );
+		List<ProductDownload> downloads = downloadProvider.getDownloads( List.of( artifact ), category, type, channel, platform );
 		if( downloads.size() == 0 ) throw new FileNotFoundException( "Download not found: " + Download.key( artifact, category, type, channel, platform ) );
 
 		ProductDownload download = downloads.get( 0 );
@@ -169,7 +152,7 @@ public class DownloadController {
 			response.getOutputStream().close();
 		} else {
 			log.info( "Return stream: " + link );
-			String name = ProductDownload.formatName( artifact, category, platform, type );
+			String name = Download.name( artifact, category, platform, type );
 			stream( response, new URL( link ), name );
 		}
 	}

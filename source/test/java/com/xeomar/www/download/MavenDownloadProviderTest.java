@@ -20,6 +20,8 @@ public class MavenDownloadProviderTest {
 
 	private MavenDownloadProvider provider;
 
+	private static final String TEST_MAVEN_REPOSITORY = "source/test/repos/maven";
+
 	private String group = "com.xeomar";
 
 	private String artifact = "xenon";
@@ -37,7 +39,7 @@ public class MavenDownloadProviderTest {
 		provider = mock( MavenDownloadProvider.class );
 
 		// Needed because the methods are mocked
-		when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		//when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 		when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 
@@ -68,7 +70,7 @@ public class MavenDownloadProviderTest {
 		String platform = "linux";
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), classifier, type, channel, platform );
 		verify( provider, times( 3 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
@@ -89,7 +91,7 @@ public class MavenDownloadProviderTest {
 		String platform = "macos";
 
 		// Execute the method
-		List<ProductDownload> downloads = provider.getDownloads( artifact, classifier, type, channel, platform );
+		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), classifier, type, channel, platform );
 		verify( provider, times( 2 ) ).getXmlDescriptor( anyString() );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
@@ -105,7 +107,7 @@ public class MavenDownloadProviderTest {
 	}
 
 	private void stageDescriptor( String uri, String path ) throws IOException {
-		Path resource = Paths.get( "source/test/repo", path );
+		Path resource = Paths.get( TEST_MAVEN_REPOSITORY, path );
 		XmlDescriptor releasePom = new XmlDescriptor( resource.toUri() );
 		when( provider.getXmlDescriptor( uri + path ) ).thenReturn( releasePom );
 	}
