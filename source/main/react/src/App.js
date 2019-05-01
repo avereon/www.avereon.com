@@ -7,7 +7,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1><img className="logo" alt="O" src={ICON_URL}/>Xeomar</h1>
-			<p>Specialized software for specialized work</p>
+			<p>Specialized products for specialized work</p>
 		</div>
 	);
 }

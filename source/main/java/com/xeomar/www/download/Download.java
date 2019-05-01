@@ -12,22 +12,28 @@ public interface Download {
 
 	String getType();
 
+	// FIXME I'm not sure channel should be in the download key for the repo
+	// but might need to if hosting multiple repositories
 	static String key( String artifact, String category, String type, String channel, String platform ) {
 		StringBuilder builder = new StringBuilder();
-		builder.append( channel ).append( "/" );
+		builder.append( channel ).append( "-" );
 		builder.append( artifact );
-		builder.append( "-" ).append( category );
 		if( !TextUtil.isEmpty( platform ) ) builder.append( "-" ).append( platform );
-		builder.append( "." ).append( type );
+		builder.append( "-" ).append( category );
+		builder.append( "-" ).append( type );
 		return builder.toString();
 	}
 
-	static String name( String artifact, String category, String platform, String type ) {
+	static String name( String artifact, String platform, String category, String type ) {
 		StringBuilder name = new StringBuilder( artifact );
 		name.append( "-" ).append( category );
 		if( platform != null ) name.append( "-" ).append( platform );
 		name.append( "." ).append( type );
 		return name.toString();
+	}
+
+	static String name( ProductDownload download ) {
+		return name( download.getArtifact(), download.getPlatform(), download. getCategory(), download.getType() );
 	}
 
 }

@@ -41,7 +41,7 @@ public class MavenDownloadProviderTest {
 		// Needed because the methods are mocked
 		//when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
-		when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
+		//when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), anyString() ) ).thenCallRealMethod();
 
 		// Setup the repository descriptors
 		stageDescriptor( uri, "/maven-metadata.xml" );

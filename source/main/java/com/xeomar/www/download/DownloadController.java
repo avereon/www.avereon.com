@@ -139,7 +139,6 @@ public class DownloadController {
 	private void v1DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "product" ) String category, @RequestParam( value = "type", required = false, defaultValue = "pack" ) String type ) throws IOException {
 		log.info( "Requested: " + Download.key( artifact, category, type, channel, platform ) );
 
-		if( "pack".equals( type ) ) type = "jar";
 		channel = normalizeChannel( channel );
 
 		System.out.println( "Provider class: " + downloadProvider.getClass().toString() );
@@ -152,8 +151,7 @@ public class DownloadController {
 			response.getOutputStream().close();
 		} else {
 			log.info( "Return stream: " + link );
-			String name = Download.name( artifact, category, platform, type );
-			stream( response, new URL( link ), name );
+			stream( response, new URL( link ), Download.name( download ) );
 		}
 	}
 

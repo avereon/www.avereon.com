@@ -42,7 +42,7 @@ public class LocalStoreDownloadProviderTest {
 		// Needed because the methods are mocked
 		//when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
 		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
-		when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
+		//when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
 		when( provider.getProductCard( any( Path.class ), anyString() ) ).thenReturn( card );
 	}
 

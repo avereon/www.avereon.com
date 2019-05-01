@@ -37,8 +37,8 @@ public class ProductDownload implements Download, Comparable<ProductDownload> {
 
 	private Date date;
 
-	ProductDownload( String key, String group, String artifact, String channel, String category, String type, String platform, String version, String name, String link, String md5Link, String sha1Link ) {
-		this.key = key;
+	ProductDownload( String group, String artifact, String channel, String category, String type, String platform, String version, String name, String link, String md5Link, String sha1Link ) {
+		this.key = Download.key( artifact, category, type, channel, platform );
 		this.group = group;
 		this.artifact = artifact;
 		this.channel = channel;
@@ -52,7 +52,7 @@ public class ProductDownload implements Download, Comparable<ProductDownload> {
 		this.md5Link = md5Link;
 		this.sha1Link = sha1Link;
 
-		identifier = String.format( "%s-%s-%s-%s-%s-%s", group, artifact, channel, category, type, platform );
+		identifier = String.format( "%s-%s-%s-%s-%s-%s", channel, group, artifact, category, type, platform );
 	}
 
 	public String getKey() {

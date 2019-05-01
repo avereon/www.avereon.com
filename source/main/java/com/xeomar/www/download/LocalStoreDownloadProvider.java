@@ -26,7 +26,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		List<ProductDownload> downloads = new ArrayList<>();
 
 		for( String artifact : artifacts ) {
-			String key = getDownloadKey( artifact, category, type, channel, platform );
+			String key = Download.key( artifact, category, type, channel, platform );
 			log.info( "Get artifact by key: " + key );
 
 			Path path = Paths.get( ROOT, channel, artifact );
@@ -45,7 +45,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			String link = path.toUri().toString();
 			String md5Link = "";
 			String sha1Link = "";
-			downloads.add( new ProductDownload( key, GROUP, artifact, channel, category, type, platform, version, name, link, md5Link, sha1Link ) );
+			downloads.add( new ProductDownload( GROUP, artifact, channel, category, type, platform, version, name, link, md5Link, sha1Link ) );
 		}
 
 		// If now downloads were found check for non-platform specific downloads

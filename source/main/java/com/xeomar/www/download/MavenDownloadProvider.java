@@ -36,7 +36,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 		List<String> neededUris = new ArrayList<>();
 		for( String artifact : artifacts ) {
 			String uri = createUri( artifact );
-			List<ProductDownload> cachedDownloads = cache.get( getDownloadKey( artifact, classifier, type, version, platform ) );
+			List<ProductDownload> cachedDownloads = cache.get( Download.key( artifact, classifier, type, version, platform ) );
 			if( cachedDownloads == null ) {
 				neededUris.add( uri );
 			} else {
@@ -73,7 +73,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 	}
 
 	public String clearCache( String artifact, String classifier, String type, String channel, String platform ) {
-		String key = getDownloadKey( artifact, classifier, type, channel, platform );
+		String key = Download.key( artifact, classifier, type, channel, platform );
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
@@ -155,8 +155,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 					String md5Link = link + ".md5";
 					String sha1Link = link + ".sha1";
 
-					String key = getDownloadKey( artifactId, classifier, type, version, platform );
-					downloads.add( new ProductDownload( key, groupId, artifactId, version, classifier, type, platform, version, name, link, md5Link, sha1Link ) );
+					downloads.add( new ProductDownload( groupId, artifactId, version, classifier, type, platform, version, name, link, md5Link, sha1Link ) );
 				}
 			}
 

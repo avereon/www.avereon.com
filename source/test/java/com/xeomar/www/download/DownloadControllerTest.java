@@ -26,10 +26,15 @@ public class DownloadControllerTest {
 
 	private String channel = "latest";
 
-	private String artifact = "seenc";
+	// TODO Should this be provider???
+	private String group = "com.xeomar";
 
+	private String artifact = "xenon";
+
+	// TODO Change to resource/asset
 	private String category = "product";
 
+	// TODO Change to format
 	private String type = "pack";
 
 	private String platform;
@@ -47,10 +52,10 @@ public class DownloadControllerTest {
 	@Before
 	public void setup() {
 		String key = Download.key( artifact, category, type, channel, platform );
-		String name = Download.name( artifact, category, platform, type );
+		String name = Download.name( artifact, platform, category, type );
 		String version = "0.0";
 		String link = Paths.get( "source/test/repos/maven/0.8-SNAPSHOT/maven-metadata.xml" ).toUri().toString();
-		ProductDownload download = new ProductDownload( key, "", artifact, channel, category, type, platform, version, name, link, "", "" );
+		ProductDownload download = new ProductDownload( group, artifact, channel, category, type, platform, version, name, link, "", "" );
 
 		// NEXT Continue improving these tests
 
@@ -67,15 +72,14 @@ public class DownloadControllerTest {
 	public void testDownloadV0() throws Exception {
 		String path = String.format( "/download/%s/%s/%s/%s", artifact, category, type, channel );
 		mvc.perform( MockMvcRequestBuilders.get( path ) ).andExpect( status().isOk() );
-
-		verify( provider, times( 1 ) ).getDownloads( anyList(), eq( category ), eq( "jar" ), eq( channel ), eq( platform ) );
+		verify( provider, times( 1 ) ).getDownloads( anyList(), eq( category ), eq( type ), eq( channel ), eq( platform ) );
 	}
 
 	@Test
 	public void testDownloadV1() throws Exception {
 		String path = String.format( "/download?artifact=%s&category=%s&type=%s&channel=%s", artifact, category, type, channel );
 		mvc.perform( MockMvcRequestBuilders.get( path ) ).andExpect( status().isOk() );
-		verify( provider, times( 1 ) ).getDownloads( anyList(), eq( category ), eq( "jar" ), eq( channel ), eq( platform ) );
+		verify( provider, times( 1 ) ).getDownloads( anyList(), eq( category ), eq( type ), eq( channel ), eq( platform ) );
 	}
 
 }

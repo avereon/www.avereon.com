@@ -1,0 +1,61 @@
+# Xeomar Repositories
+
+Below are some sample repository base URLs. They are intended to stir ideas and
+provoke thought how to stage and access Xeomar repositories.
+
+-- These examples show different base URLs for the same distribution:
+http://xeomar.com/download/stable
+http://www.xeomar.com/download/stable
+http://xeomar.com/market/stable
+http://market.xeomar.com/stable
+http://download.xeomar.com/market/stable
+
+-- These examples use the same base URL and show distribution options:
+http://market.xeomar.com/eppler (distribution code name)
+http://market.xeomar.com/handy (distribution code name)
+http://market.xeomar.com/stable (distribution alias)
+http://market.xeomar.com/latest (distribution alias)
+
+-- This example with a specific version number should not be used
+http://market.xeomar.com/xenon/1.0 (don't like the specific version here)
+
+# The Debian Pattern
+<type:str> <repository:url> <distribution:str> [<component:str>...]
+
+Following the Debian pattern (Note that this is configuration for the repository
+not necessarily that it is enabled)
+
+typ url                                     dist   comp1  comp2
+--- --------------------------------------- ------ ------ --------
+xeo http://download.xeomar.com/market/xenon stable latest backport
+
+Distribution >aliases or release classes< are useful for connecting to a
+distribution for a particular purpose. For example, the stable alias can point
+to a particular distribution today and me moved to a new one in the future.
+Distributions could be considered containers for releases which, in turn, are
+identified by specific version numbers. Distribution is similar if not the same
+concept as a channel (current working name in Xeomar repos). One item to note
+is that a distribution contains only one version/release of any specific product
+but may contain many products. The artifacts of individual products should
+generally be updated at the same time, but not necessarily the artifacts of
+other products.
+
+Components are not necessarily a concept used in Xeomar repos. Components are
+intended to separate packages with different licenses and therefore different
+restrictions on use. This can be accomplished with a different repo and/or
+license inclusion in a package.
+
+SAMPLE APT CONFIGURATION
+deb http://mirrors.xmission.com/linuxmint tessa main upstream import backport
+
+deb http://mirrors.xmission.com/ubuntu bionic main restricted universe multiverse
+deb http://mirrors.xmission.com/ubuntu bionic-updates main restricted universe multiverse
+deb http://mirrors.xmission.com/ubuntu bionic-backports main restricted universe multiverse
+
+deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu/ bionic partner
+
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main
+deb https://deb.nodesource.com/node_11.x bionic main
+deb-src https://deb.nodesource.com/node_11.x bionic main
