@@ -26,30 +26,22 @@ public class LocalStoreDownloadProviderTest {
 
 	private String version = "0.0u0";
 
-	private ProductCard card = new ProductCard();
+	//private ProductCard card = new ProductCard();
 
-	private Path root = Paths.get( "source/test/repos/xeo" );
+	private Path root = Paths.get( "source/test/repos/xeo/stable" );
 
 	@Before
 	public void setup() {
-		card.setName( name );
-		card.setVersion( version );
+		//card.setName( name );
+		//card.setVersion( version );
 
 		provider = new LocalStoreDownloadProvider( root );
-
-//		provider = mock( LocalStoreDownloadProvider.class );
-//
-//		// Needed because the methods are mocked
-//		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
-//		when( provider.getProductCard( any( Path.class ), anyString() ) ).thenReturn( card );
 	}
 
 	@Test
 	public void testGetLatestDownload() {
 		String channel = "latest";
 		String platform = "linux";
-
-		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
@@ -61,7 +53,7 @@ public class LocalStoreDownloadProviderTest {
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.get( 0 ).getVersion(), is( version ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/" + channel + "/" + artifact + "/" + platform + "/" + category + "." + type ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file://" + root.toAbsolutePath() + "/" + artifact + "/" + platform + "/" + category + "." + type ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 
@@ -69,8 +61,6 @@ public class LocalStoreDownloadProviderTest {
 	public void testGetStableDownload() {
 		String channel = "stable";
 		String platform = "windows";
-
-		//when( provider.exists( Paths.get( "/opt/xeo/store/stable/xenon/windows/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
@@ -83,35 +73,37 @@ public class LocalStoreDownloadProviderTest {
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.get( 0 ).getVersion(), is( version ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/" + channel + "/" + artifact + "/" + platform + "/" + category + "." + type ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file://" + root.toAbsolutePath() + "/" + artifact + "/" + platform + "/" + category + "." + type ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 
 	@Test
 	public void testGetLatestDownloadWithoutPlatform() {
 		String channel = "latest";
+		artifact = "mouse";
+		name = "Mouse";
 		String platform = null;
-
-		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-product-card" ) );
+		assertThat( downloads.get( 0 ).getKey(), is( channel + "-mouse-product-card" ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
 		assertThat( downloads.get( 0 ).getCategory(), is( category ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.get( 0 ).getVersion(), is( version ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/" + channel + "/" + artifact + "/" + category + "." + type ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file://" + root.toAbsolutePath() + "/" + artifact + "/" + category + "." + type ) );
 		assertThat( downloads.size(), is( 1 ) );
 	}
 
 	@Test
-	public void testGetLatestDownloadMissingPlatform() {
+	public void testGetLatestDownloadProductPack() {
 		String channel = "latest";
 		String platform = "linux";
+		String artifact = "mouse";
+		//String name = "Mouse";
 		type = "pack";
 
 		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.pack" ) ) ).thenReturn( false );
@@ -121,11 +113,11 @@ public class LocalStoreDownloadProviderTest {
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
-		assertThat( downloads.get( 0 ).getKey(), is( channel + "-xenon-product-pack" ) );
+		assertThat( downloads.get( 0 ).getKey(), is( channel + "-mouse-product-pack" ) );
 		assertThat( downloads.get( 0 ).getArtifact(), is( artifact ) );
 		assertThat( downloads.get( 0 ).getCategory(), is( category ) );
 		assertThat( downloads.get( 0 ).getType(), is( type ) );
-		assertThat( downloads.get( 0 ).getLink(), is( "file:///opt/xeo/store/" + channel + "/" + artifact + "/" + category + "." + type ) );
+		assertThat( downloads.get( 0 ).getLink(), is( "file://" + root.toAbsolutePath() + "/" + artifact + "/" + category + ".jar" ) );
 		assertThat( downloads.get( 0 ).getName(), is( name ) );
 		assertThat( downloads.get( 0 ).getVersion(), is( version ) );
 		assertThat( downloads.size(), is( 1 ) );

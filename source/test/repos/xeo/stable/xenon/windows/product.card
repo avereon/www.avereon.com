@@ -1,0 +1,14 @@
+{
+  "group": "com.xeomar",
+  "artifact": "xenon",
+  "version": "0.0u0",
+  "timestamp": "2019-05-02 18:01:36",
+  "iconUri": "program",
+  "name": "Xenon",
+  "provider": "Xeomar",
+  "providerUrl": "http://xeomar.com",
+  "inception": "2017",
+  "summary": "Java application platform",
+  "description": "A Java application platform for developing modular cross-platform applications.",
+  "copyrightSummary": "All rights reserved."
+}
