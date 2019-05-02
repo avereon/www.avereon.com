@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * This class has two responsibilities:
@@ -83,9 +84,14 @@ public class DownloadController {
 
 	private DownloadProvider downloadProvider;
 
+	private Map<String, DownloadProvider> providers = new ConcurrentHashMap<>();
+
 	public DownloadController() {
 		//setDownloadProvider( new LocalStoreDownloadProvider() );
 		//this.downloadProvider = new MavenDownloadProvider();
+
+		providers.put( "latest", new LocalStoreDownloadProvider( "/opt/xeo/store/latest") );
+		providers.put( "stable", new LocalStoreDownloadProvider( "/opt/xeo/store/stable") );
 	}
 
 	@Autowired

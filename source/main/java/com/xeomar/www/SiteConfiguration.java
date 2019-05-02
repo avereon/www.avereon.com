@@ -10,7 +10,7 @@ public class SiteConfiguration {
 
 	@Bean
 	public DownloadProvider getDownloadProvider() {
-		return new LocalStoreDownloadProvider();
+		return new LocalStoreDownloadProvider( "/opt/xeo/store" );
 	}
 
 }

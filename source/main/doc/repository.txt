@@ -4,20 +4,40 @@ Below are some sample repository base URLs. They are intended to stir ideas and
 provoke thought how to stage and access Xeomar repositories.
 
 -- These examples show different base URLs for the same distribution:
-http://xeomar.com/download/stable
-http://www.xeomar.com/download/stable
-http://xeomar.com/market/stable
-http://market.xeomar.com/stable
-http://download.xeomar.com/market/stable
+https://archive.xeomar.com/stable
+https://bin.xeomar.com/stable
+https://distro.xeomar.com/stable
+https://download.xeomar.com/stable
+https://market.xeomar.com/stable
+https://pack.xeomar.com/stable
+https://product.xeomar.com/stable
+https://store.xeomar.com/stable
+
+https://www.xeomar.com/archive/stable
+https://www.xeomar.com/bin/stable
+https://www.xeomar.com/download/stable
+https://www.xeomar.com/market/stable
+https://www.xeomar.com/pack/stable
+https://www.xeomar.com/product/stable
+https://www.xeomar.com/store/stable
+
+Ubuntu: archive
+Google: dl
+Microsoft: packages
+Nodesource: deb
+Debian: releases
+Cloud Foundry: packages
+
+Other terms: bin, channel, distro, download, feed, market, pipe, product, repo, store
 
 -- These examples use the same base URL and show distribution options:
-http://market.xeomar.com/eppler (distribution code name)
-http://market.xeomar.com/handy (distribution code name)
-http://market.xeomar.com/stable (distribution alias)
-http://market.xeomar.com/latest (distribution alias)
+https://www.xeomar.com/eppler (distribution code name)
+https://www.xeomar.com/handy (distribution code name)
+https://www.xeomar.com/stable (distribution alias)
+https://www.xeomar.com/latest (distribution alias)
 
 -- This example with a specific version number should not be used
-http://market.xeomar.com/xenon/1.0 (don't like the specific version here)
+http://www.xeomar.com/stable/1.0 (don't like the specific version here)
 
 # The Debian Pattern
 <type:str> <repository:url> <distribution:str> [<component:str>...]

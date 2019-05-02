@@ -11,10 +11,6 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.AdditionalMatchers.or;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class LocalStoreDownloadProviderTest {
 
@@ -32,18 +28,20 @@ public class LocalStoreDownloadProviderTest {
 
 	private ProductCard card = new ProductCard();
 
+	private Path root = Paths.get( "source/test/repos/xeo" );
+
 	@Before
 	public void setup() {
 		card.setName( name );
 		card.setVersion( version );
 
-		provider = mock( LocalStoreDownloadProvider.class );
+		provider = new LocalStoreDownloadProvider( root );
 
-		// Needed because the methods are mocked
-		//when( provider.getDownloads( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
-		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
-		//when( provider.getDownloadKey( anyString(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
-		when( provider.getProductCard( any( Path.class ), anyString() ) ).thenReturn( card );
+//		provider = mock( LocalStoreDownloadProvider.class );
+//
+//		// Needed because the methods are mocked
+//		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenCallRealMethod();
+//		when( provider.getProductCard( any( Path.class ), anyString() ) ).thenReturn( card );
 	}
 
 	@Test
@@ -51,7 +49,7 @@ public class LocalStoreDownloadProviderTest {
 		String channel = "latest";
 		String platform = "linux";
 
-		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.card" ) ) ).thenReturn( true );
+		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
@@ -72,7 +70,7 @@ public class LocalStoreDownloadProviderTest {
 		String channel = "stable";
 		String platform = "windows";
 
-		when( provider.exists( Paths.get( "/opt/xeo/store/stable/xenon/windows/product.card" ) ) ).thenReturn( true );
+		//when( provider.exists( Paths.get( "/opt/xeo/store/stable/xenon/windows/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
@@ -94,7 +92,7 @@ public class LocalStoreDownloadProviderTest {
 		String channel = "latest";
 		String platform = null;
 
-		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.card" ) ) ).thenReturn( true );
+		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.card" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
@@ -116,8 +114,8 @@ public class LocalStoreDownloadProviderTest {
 		String platform = "linux";
 		type = "pack";
 
-		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.pack" ) ) ).thenReturn( false );
-		when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.pack" ) ) ).thenReturn( true );
+		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/linux/product.pack" ) ) ).thenReturn( false );
+		//when( provider.exists( Paths.get( "/opt/xeo/store/latest/xenon/product.pack" ) ) ).thenReturn( true );
 
 		// Execute the method
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );

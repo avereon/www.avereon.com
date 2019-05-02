@@ -21,6 +21,16 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	private static String GROUP = "com.xeomar";
 
+	private Path root;
+
+	public LocalStoreDownloadProvider( String root ) {
+		this( Paths.get( root ) );
+	}
+
+	public LocalStoreDownloadProvider( Path root ) {
+		this.root = root;
+	}
+
 	@Override
 	public List<ProductDownload> getDownloads( List<String> artifacts, String category, String type, String channel, String platform ) {
 		List<ProductDownload> downloads = new ArrayList<>();
@@ -28,8 +38,10 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		for( String artifact : artifacts ) {
 			String key = Download.key( artifact, category, type, channel, platform );
 			log.info( "Get artifact by key: " + key );
+			log.info( "ROOT: " + ROOT );
+			log.info( "root: " + root );
 
-			Path path = Paths.get( ROOT, channel, artifact );
+			Path path = root.resolve( artifact );
 			if( platform != null ) path = path.resolve( platform );
 			path = path.resolve( getFilename( category, type ) );
 			if( !exists( path ) ) continue;
