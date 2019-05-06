@@ -39,12 +39,10 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			String key = Download.key( artifact, category, type, channel, platform );
 			log.info( "Get artifact by key: " + key );
 
-//			if( "pack".equals( type ) ) type = "jar";
-
 			Path path = root.resolve( artifact );
 			if( platform != null ) path = path.resolve( platform );
-			path = path.resolve( getFilename( category, "pack".equals( type) ? "jar" : type ) );
-			System.err.println( "path: " + path );
+			path = path.resolve( getFilename( category, Download.type( type ) ) );
+			System.err.println( "path(" + (Files.exists( path ) ? "exists" : "missing") + "): " + path );
 			if( !exists( path ) ) continue;
 
 			String name = null;
@@ -84,7 +82,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	ProductCard getProductCard( Path path, String category ) {
 		path = path.resolve( getFilename( category, "card" ) );
-		System.err.println( "card: " + path );
+		System.err.println( "card(" + (Files.exists( path ) ? "exists" : "missing") + "): " + path );
 		if( !Files.exists( path ) ) return null;
 
 		ProductCard card = new ProductCard();

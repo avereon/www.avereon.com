@@ -36,4 +36,11 @@ public interface Download {
 		return name( download.getArtifact(), download.getPlatform(), download. getCategory(), download.getType() );
 	}
 
+	static String type( String type ) {
+		switch( type ) {
+			case "pack": return "jar";
+		}
+		return type;
+	}
+
 }
