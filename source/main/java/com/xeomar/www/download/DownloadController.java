@@ -87,11 +87,9 @@ public class DownloadController {
 	private Map<String, DownloadProvider> providers = new ConcurrentHashMap<>();
 
 	public DownloadController() {
-		//setDownloadProvider( new LocalStoreDownloadProvider() );
-		//this.downloadProvider = new MavenDownloadProvider();
-
-		providers.put( "latest", new LocalStoreDownloadProvider( "/opt/xeo/store/latest") );
-		providers.put( "stable", new LocalStoreDownloadProvider( "/opt/xeo/store/stable") );
+		// TODO Create a composite download provider
+		//providers.put( "latest", new LocalStoreDownloadProvider( "/opt/xeo/store/latest") );
+		//providers.put( "stable", new LocalStoreDownloadProvider( "/opt/xeo/store/stable") );
 	}
 
 	@Autowired

@@ -17,8 +17,6 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
-	private static String ROOT = "/opt/xeo/store";
-
 	private static String GROUP = "com.xeomar";
 
 	private Path root;
@@ -42,8 +40,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			Path path = root.resolve( artifact );
 			if( platform != null ) path = path.resolve( platform );
 			path = path.resolve( getFilename( category, Download.type( type ) ) );
-			System.err.println( "path(" + (Files.exists( path ) ? "exists" : "missing") + "): " + path );
-			if( !exists( path ) ) continue;
+			if( !Files.exists( path ) ) continue;
 
 			String name = null;
 			String version = null;
@@ -59,7 +56,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			downloads.add( new ProductDownload( GROUP, artifact, channel, category, type, platform, version, name, link, md5Link, sha1Link ) );
 		}
 
-		// If now downloads were found check for non-platform specific downloads
+		// If no downloads were found check for non-platform specific downloads
 		if( platform != null && downloads.size() == 0 ) downloads.addAll( getDownloads( artifacts, category, type, channel, null ) );
 
 		return downloads;
@@ -76,13 +73,8 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 		return "Cache cleared for all";
 	}
 
-	boolean exists( Path path ) {
-		return Files.exists( path );
-	}
-
-	ProductCard getProductCard( Path path, String category ) {
+	private ProductCard getProductCard( Path path, String category ) {
 		path = path.resolve( getFilename( category, "card" ) );
-		System.err.println( "card(" + (Files.exists( path ) ? "exists" : "missing") + "): " + path );
 		if( !Files.exists( path ) ) return null;
 
 		ProductCard card = new ProductCard();

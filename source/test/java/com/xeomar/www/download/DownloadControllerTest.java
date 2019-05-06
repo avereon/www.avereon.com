@@ -29,7 +29,7 @@ public class DownloadControllerTest {
 	// TODO Should this be provider???
 	private String group = "com.xeomar";
 
-	private String artifact = "xenon";
+	private String artifact = "mouse";
 
 	// TODO Change to resource/asset
 	private String category = "product";
@@ -51,15 +51,11 @@ public class DownloadControllerTest {
 
 	@Before
 	public void setup() {
-		String key = Download.key( artifact, category, type, channel, platform );
 		String name = Download.name( artifact, platform, category, type );
 		String version = "0.0";
-		String link = Paths.get( "source/test/repos/maven/0.8-SNAPSHOT/maven-metadata.xml" ).toUri().toString();
+		String link = Paths.get( "source/test/repos/xeo/stable/" + artifact + "/" + category + "." + Download.type( type ) ).toUri().toString();
 		ProductDownload download = new ProductDownload( group, artifact, channel, category, type, platform, version, name, link, "", "" );
 
-		// NEXT Continue improving these tests
-
-		//when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), or( isNull(), anyString() ) ) ).thenReturn( List.of( download ) );
 		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), eq( platform ) ) ).thenReturn( List.of( download ) );
 	}
 
