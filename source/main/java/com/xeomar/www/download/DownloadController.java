@@ -84,12 +84,12 @@ public class DownloadController {
 
 	private DownloadProvider downloadProvider;
 
-	private Map<String, DownloadProvider> providers = new ConcurrentHashMap<>();
+	private Map<String, V2DownloadProvider> v2providers = new ConcurrentHashMap<>();
 
 	public DownloadController() {
 		// TODO Create a composite download provider
-		//providers.put( "latest", new LocalStoreDownloadProvider( "/opt/xeo/store/latest") );
-		//providers.put( "stable", new LocalStoreDownloadProvider( "/opt/xeo/store/stable") );
+		//providers.put( "latest", new LocalStoreDownloadProvider( "/opt/xeo/repo/latest") );
+		//providers.put( "stable", new LocalStoreDownloadProvider( "/opt/xeo/repo/stable") );
 	}
 
 	@Autowired
@@ -138,9 +138,10 @@ public class DownloadController {
 	 * @param channel The artifact channel (e.g. stable, beta, nightly, latest, etc.)
 	 * @throws IOException If an IO error occurs
 	 */
+	@Deprecated
 	@SuppressWarnings( "unused" )
 	@RequestMapping( method = RequestMethod.GET, value = "/download/v1" )
-	private void v1DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "product" ) String category, @RequestParam( value = "type", required = false, defaultValue = "pack" ) String type ) throws IOException {
+	public void v1DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @RequestParam( value = "artifact" ) String artifact, @RequestParam( value = "platform", required = false ) String platform, @RequestParam( value = "channel", required = false, defaultValue = "stable" ) String channel, @RequestParam( value = "category", required = false, defaultValue = "product" ) String category, @RequestParam( value = "type", required = false, defaultValue = "pack" ) String type ) throws IOException {
 		log.info( "Requested: " + Download.key( artifact, category, type, channel, platform ) );
 
 		channel = normalizeChannel( channel );
@@ -159,6 +160,17 @@ public class DownloadController {
 		}
 	}
 
+	@RequestMapping( method = RequestMethod.GET, value = "/download/v2/{artifact}/{asset}/{format}" )
+	public void v2DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "asset" ) String asset, @PathVariable( "format" ) String format ) throws IOException {
+		v2DownloadArtifact( request, response, artifact, "", asset, format );
+	}
+
+	@RequestMapping( method = RequestMethod.GET, value = "/download/v2/{artifact}/{platform}/{asset}/{format}" )
+	public void v2DownloadArtifact( HttpServletRequest request, HttpServletResponse response, @PathVariable( "artifact" ) String artifact, @PathVariable( "platform" ) String platform, @PathVariable( "asset" ) String asset, @PathVariable( "format" ) String format ) throws IOException {
+		//v2DownloadArtifact( request, response, artifact, platform, asset, format );
+	}
+
+	@Deprecated
 	private String normalizeChannel( String channel ) {
 		switch( channel ) {
 			case "release":
