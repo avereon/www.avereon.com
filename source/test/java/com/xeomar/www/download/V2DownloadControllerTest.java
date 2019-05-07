@@ -28,9 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith( SpringRunner.class )
 public class V2DownloadControllerTest {
 
-	private String ROOT = "/download/stable";
-
-	private String API = ROOT + "/v2";
+	private String API = "/download/stable/v2";
 
 	private MockMvc mvc;
 
@@ -43,7 +41,6 @@ public class V2DownloadControllerTest {
 		Map<String, V2DownloadProvider> providers = new HashMap<>();
 		providers.put( "stable", new V2LocalDownloadProvider( root.resolve( "stable" ) ) );
 		providers.put( "latest", new V2LocalDownloadProvider( root.resolve( "latest" ) ) );
-		System.err.println( "Mock provider count: " + providers.size() );
 		when( factory.getProviders() ).thenReturn( providers );
 	}
 
@@ -73,7 +70,21 @@ public class V2DownloadControllerTest {
 	}
 
 	@Test
-	public void testGetMetadata() throws Exception {
+	public void testGetProductCardMetadata() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/product/card" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+	}
+
+	@Test
+	public void testGetProductPackMetadata() throws Exception {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/product/pack" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
@@ -84,6 +95,51 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "format" ), is( "pack" ) );
 		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+	}
+
+	@Test
+	public void testGetProductCardMetadataWithPlatform() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/xenon/linux/product/card" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Xenon" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+	}
+
+	@Test
+	public void testGetProductPackMetadataWithPlatform() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/xenon/linux/product/pack" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "pack" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Xenon" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+	}
+
+	@Test
+	public void testGetProductCard() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/mouse/product/card" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+
+		assertThat( result.getResponse().getContentLength(), is( 424 ) );
+		assertThat( result.getResponse().getContentType(), is( "application/octet-stream" ) );
 	}
 
 }

@@ -2,6 +2,8 @@ package com.xeomar.www.download;
 
 import com.xeomar.util.TextUtil;
 
+import java.io.InputStream;
+
 public class V2Download {
 
 	private String key;
@@ -20,10 +22,17 @@ public class V2Download {
 
 	private String version;
 
+	private String filename;
+
+	private long size;
+
+	private InputStream inputStream;
+
 	public V2Download(){}
 
 	public V2Download( String artifact, String platform, String asset, String format ) {
 		this.key = key( artifact, platform, asset, format );
+		this.filename = filename( artifact, platform, asset, format );
 		this.artifact = artifact;
 		this.platform = platform;
 		this.asset = asset;
@@ -90,6 +99,30 @@ public class V2Download {
 		this.version = version;
 	}
 
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename( String filename ) {
+		this.filename = filename;
+	}
+
+	public long getSize() {
+		return size;
+	}
+
+	public void setSize( long size ) {
+		this.size = size;
+	}
+
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+
+	public void setInputStream( InputStream inputStream ) {
+		this.inputStream = inputStream;
+	}
+
 	static String key( String artifact, String platform, String asset, String format ) {
 		StringBuilder builder = new StringBuilder();
 		builder.append( artifact );
@@ -97,6 +130,14 @@ public class V2Download {
 		builder.append( "-" ).append( asset );
 		builder.append( "-" ).append( format );
 		return builder.toString();
+	}
+
+	static String filename( String artifact, String platform, String asset, String format ) {
+		StringBuilder name = new StringBuilder( artifact );
+		name.append( "-" ).append( asset );
+		if( platform != null ) name.append( "-" ).append( platform );
+		name.append( "." ).append( format );
+		return name.toString();
 	}
 
 	static String resolveFormat( String format ) {

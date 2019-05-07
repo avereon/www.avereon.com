@@ -1,5 +1,7 @@
 package com.xeomar.www.download;
 
+import java.io.IOException;
+
 /**
  * The V2DownloadProvider is an interface for retrieving an individual artifact.
  */
@@ -23,6 +25,6 @@ public interface V2DownloadProvider {
 	 * @param format The artifact format
 	 * @return
 	 */
-	V2Download getDownload( String artifact, String platform, String asset, String format );
+	V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException;
 
 }

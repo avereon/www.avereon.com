@@ -26,7 +26,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 	}
 
 	@Override
-	public V2Download getDownload( String artifact, String platform, String asset, String format ) {
+	public V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException {
 		V2Download download = new V2Download( artifact, platform, asset, format );
 
 		String key = download.getKey();
@@ -48,6 +48,8 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		download.setGroup( card.getGroup() );
 		download.setName( card.getName() );
 		download.setVersion( card.getVersion() );
+		download.setSize( Files.size( path ) );
+		download.setInputStream( Files.newInputStream( path ) );
 
 		return download;
 	}
