@@ -2,6 +2,7 @@ package com.xeomar.www.download;
 
 import com.xeomar.util.TextUtil;
 
+@Deprecated
 public interface Download {
 
 	String getArtifact();

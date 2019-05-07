@@ -139,7 +139,58 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
 		assertThat( result.getResponse().getContentLength(), is( 424 ) );
-		assertThat( result.getResponse().getContentType(), is( "application/octet-stream" ) );
+		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+	}
+
+	@Test
+	public void testGetProduct() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/mouse/product/pack" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "pack" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+
+		assertThat( result.getResponse().getContentLength(), is( 410 ) );
+		assertThat( result.getResponse().getContentType(), is( "application/java-archive" ) );
+	}
+
+	@Test
+	public void testGetProductCardWithPlatform() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/xenon/linux/product/card" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Xenon" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+
+		assertThat( result.getResponse().getContentLength(), is( 426 ) );
+		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+	}
+
+	@Test
+	public void testGetProductWithPlatform() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/xenon/linux/product/pack" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "pack" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Xenon" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+
+		assertThat( result.getResponse().getContentLength(), is( 412 ) );
+		assertThat( result.getResponse().getContentType(), is( "application/java-archive" ) );
 	}
 
 }

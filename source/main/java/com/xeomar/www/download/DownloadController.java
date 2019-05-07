@@ -69,6 +69,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * -> repo/xeo/com/xeomar/xenon/<version>/xenon-<version>-product.pack
  */
 
+@Deprecated
 @RestController
 public class DownloadController {
 

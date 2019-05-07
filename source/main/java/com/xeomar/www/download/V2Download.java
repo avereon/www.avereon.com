@@ -28,7 +28,7 @@ public class V2Download {
 
 	private InputStream inputStream;
 
-	public V2Download(){}
+	public V2Download() {}
 
 	public V2Download( String artifact, String platform, String asset, String format ) {
 		this.key = key( artifact, platform, asset, format );
@@ -142,9 +142,20 @@ public class V2Download {
 
 	static String resolveFormat( String format ) {
 		switch( format ) {
-			case "pack": return "jar";
+			case "pack":
+				return "jar";
 		}
 		return format;
+	}
+
+	static String resolveContentType( String format ) {
+		switch( format ) {
+			case "card":
+				return "application/json";
+			case "pack":
+				return "application/java-archive";
+		}
+		return "application/octet-stream";
 	}
 
 }

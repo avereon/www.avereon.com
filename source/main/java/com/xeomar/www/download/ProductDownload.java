@@ -5,6 +5,7 @@ import com.xeomar.util.FileUtil;
 import java.text.DateFormat;
 import java.util.Date;
 
+@Deprecated
 public class ProductDownload implements Download, Comparable<ProductDownload> {
 
 	private String key;
