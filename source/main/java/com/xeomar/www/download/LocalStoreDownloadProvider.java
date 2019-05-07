@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
