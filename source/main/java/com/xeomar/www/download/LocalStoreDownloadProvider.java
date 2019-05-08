@@ -41,7 +41,10 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			Path path = root.resolve( artifact );
 			if( platform != null ) path = path.resolve( platform );
 			path = path.resolve( getFilename( category, Download.type( type ) ) );
-			if( !Files.exists( path ) ) continue;
+			if( !Files.exists( path ) ) {
+				log.info( "Path not found: " + path );
+				continue;
+			}
 
 			String name = null;
 			String version = null;
