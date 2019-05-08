@@ -38,7 +38,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 			String key = Download.key( artifact, category, type, channel, platform );
 			log.info( "Get artifact by key: " + key );
 
-			Path path = root.resolve( artifact );
+			Path path = root.resolve( channel ).resolve( artifact );
 			if( platform != null ) path = path.resolve( platform );
 			path = path.resolve( getFilename( category, Download.type( type ) ) );
 			if( !Files.exists( path ) ) {
