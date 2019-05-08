@@ -15,7 +15,7 @@ public class LocalStoreDownloadProviderTest {
 
 	private LocalStoreDownloadProvider provider;
 
-	private Path root = Paths.get( "source/test/repos/xeo/stable" );
+	private Path root = Paths.get( "source/test/repos/xeo" );
 
 	@Before
 	public void setup() {
@@ -34,22 +34,22 @@ public class LocalStoreDownloadProviderTest {
 
 	@Test
 	public void testGetLatestDownloadWithoutPlatform() {
-		assertDownloads( "latest", "mouse", null, "product", "card", "Mouse", "0.0u0" );
+		assertDownloads( "stable", "mouse", null, "product", "card", "Mouse", "0.0u0" );
 	}
 
 	@Test
 	public void testGetLatestDownloadProductPack() {
-		assertDownloads( "latest", "mouse", null, "product", "pack", "Mouse", "0.0u0" );
+		assertDownloads( "stable", "mouse", null, "product", "pack", "Mouse", "0.0u0" );
 	}
 
 	private void assertDownloads( String channel, String artifact, String platform, String category, String type, String name, String version ) {
 		List<ProductDownload> downloads = provider.getDownloads( List.of( artifact ), category, type, channel, platform );
 
 		String key = String.format( "%s-%s-%s-%s", channel, artifact, category, type );
-		String link = String.format( "file://%s/%s/%s.%s", root.toAbsolutePath(), artifact, category, Download.type( type ) );
+		String link = String.format( "file://%s/%s/%s/%s.%s", root.toAbsolutePath(), channel, artifact, category, Download.type( type ) );
 		if( platform != null ) {
 			key = String.format( "%s-%s-%s-%s-%s", channel, artifact, platform, category, type );
-			link = String.format( "file://%s/%s/%s/%s.%s", root.toAbsolutePath(), artifact, platform, category, Download.type( type ) );
+			link = String.format( "file://%s/%s/%s/%s/%s.%s", root.toAbsolutePath(), channel, artifact, platform, category, Download.type( type ) );
 		}
 
 		assertTrue( "No downloads retrieved", downloads.size() > 0 );
