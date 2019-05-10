@@ -38,7 +38,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		StringBuilder builder = new StringBuilder();
 		builder.append( "{" );
 		builder.append( "\"timestamp\":\"" ).append( System.currentTimeMillis() ).append( "\"," );
-		builder.append( "[" );
+		builder.append( "\"products\":[" );
 		builder.append( products );
 		builder.append( "]" );
 		builder.append( "}" );
