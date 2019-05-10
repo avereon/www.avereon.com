@@ -70,6 +70,15 @@ public class V2DownloadControllerTest {
 	}
 
 	@Test
+	public void testGetCatalogCard() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/catalog" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+		assertThat( result.getResponse().getContentLength(), is( 46 ) );
+	}
+
+	@Test
 	public void testGetProductCardMetadata() throws Exception {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/product/card" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
@@ -138,8 +147,8 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
-		assertThat( result.getResponse().getContentLength(), is( 424 ) );
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+		assertThat( result.getResponse().getContentLength(), is( 424 ) );
 	}
 
 	@Test
@@ -155,8 +164,8 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
-		assertThat( result.getResponse().getContentLength(), is( 410 ) );
 		assertThat( result.getResponse().getContentType(), is( "application/java-archive" ) );
+		assertThat( result.getResponse().getContentLength(), is( 410 ) );
 	}
 
 	@Test
@@ -172,8 +181,8 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "name" ), is( "Xenon" ) );
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
-		assertThat( result.getResponse().getContentLength(), is( 426 ) );
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+		assertThat( result.getResponse().getContentLength(), is( 426 ) );
 	}
 
 	@Test
@@ -189,8 +198,8 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "name" ), is( "Xenon" ) );
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
-		assertThat( result.getResponse().getContentLength(), is( 412 ) );
 		assertThat( result.getResponse().getContentType(), is( "application/java-archive" ) );
+		assertThat( result.getResponse().getContentLength(), is( 412 ) );
 	}
 
 }

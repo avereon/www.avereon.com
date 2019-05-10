@@ -4,12 +4,15 @@ import com.xeomar.product.ProductCard;
 import com.xeomar.util.LogUtil;
 import org.slf4j.Logger;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.invoke.MethodHandles;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 public class V2LocalDownloadProvider implements V2DownloadProvider {
 
@@ -26,12 +29,33 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 	}
 
 	@Override
+	public V2Download getCatalog() throws IOException {
+		V2Download download = new V2Download( "catalog", "card" );
+		log.info( "Get artifact: " + download.getKey() );
+
+		String products = Files.list( root ).filter( ( f ) -> Files.isDirectory( f ) ).map( ( f ) -> "\"" + f.getFileName().toString() + "\"" ).collect( Collectors.joining( "," ) );
+
+		StringBuilder builder = new StringBuilder();
+		builder.append( "{" );
+		builder.append( "\"timestamp\":\"" ).append( System.currentTimeMillis() ).append( "\"" );
+		builder.append( "[" );
+		builder.append( products );
+		builder.append( "]" );
+		builder.append( "}" );
+
+		// TODO The catalog should probably be cached
+		byte[] catalog = builder.toString().getBytes( StandardCharsets.UTF_8 );
+
+		download.setSize( catalog.length );
+		download.setInputStream( new ByteArrayInputStream( catalog ) );
+
+		return download;
+	}
+
+	@Override
 	public V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException {
 		V2Download download = new V2Download( artifact, platform, asset, format );
-
-		String key = download.getKey();
-		log.info( "Get artifact: " + key );
-		System.err.println( "Get artifact: " + key );
+		log.info( "Get artifact: " + download.getKey() );
 
 		// TODO Opportunity to provide a cache here
 

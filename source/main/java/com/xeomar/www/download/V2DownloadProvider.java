@@ -8,7 +8,15 @@ import java.io.IOException;
 public interface V2DownloadProvider {
 
 	/**
-	 * Get a product download asset.
+	 * Get the catalog download.
+	 *
+	 * @return
+	 * @throws IOException
+	 */
+	V2Download getCatalog() throws IOException;
+
+	/**
+	 * Get a product artifact download.
 	 * <ul>
 	 * <li>artifact - The artifact identifier. A lowercase string.</li>
 	 * <li>platform - The artifact platform. This might include os and arch:

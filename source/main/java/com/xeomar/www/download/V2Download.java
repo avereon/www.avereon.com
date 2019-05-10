@@ -30,6 +30,13 @@ public class V2Download {
 
 	public V2Download() {}
 
+	public V2Download( String asset, String format ) {
+		this.key = key( "null", "null", asset, format );
+		this.filename = filename( null, null, asset, format );
+		this.asset = asset;
+		this.format = format;
+	}
+
 	public V2Download( String artifact, String platform, String asset, String format ) {
 		this.key = key( artifact, platform, asset, format );
 		this.filename = filename( artifact, platform, asset, format );
@@ -133,8 +140,9 @@ public class V2Download {
 	}
 
 	static String filename( String artifact, String platform, String asset, String format ) {
-		StringBuilder name = new StringBuilder( artifact );
-		name.append( "-" ).append( asset );
+		StringBuilder name = new StringBuilder();
+		if( artifact != null ) name.append( artifact ).append( "-" );
+		if( asset != null ) name.append( asset );
 		if( platform != null ) name.append( "-" ).append( platform );
 		name.append( "." ).append( format );
 		return name.toString();

@@ -35,13 +35,15 @@ public class V2DownloadController {
 
 	// TODO Should there be a path to get artifact metadata from all providers?
 
+	@GetMapping( path = "/catalog" )
+	public void getCatalog( HttpServletResponse response, @PathVariable( "channel" ) String channel ) throws IOException {
+		HttpStatus status = doGetCatalog( response, channel );
+		response.setStatus( status.value() );
+	}
+
 	@RequestMapping( method = RequestMethod.HEAD, path = "/{artifact}/{asset}/{format}" )
 	public void getMetadata(
-			HttpServletResponse response,
-			@PathVariable( "channel" ) String channel,
-			@PathVariable( "artifact" ) String artifact,
-			@PathVariable( "asset" ) String asset,
-			@PathVariable( "format" ) String format
+			HttpServletResponse response, @PathVariable( "channel" ) String channel, @PathVariable( "artifact" ) String artifact, @PathVariable( "asset" ) String asset, @PathVariable( "format" ) String format
 	) throws IOException {
 		getMetadata( response, channel, artifact, null, asset, format );
 	}
@@ -61,11 +63,7 @@ public class V2DownloadController {
 
 	@GetMapping( path = "/{artifact}/{asset}/{format}" )
 	public void getArtifact(
-			HttpServletResponse response,
-			@PathVariable( "channel" ) String channel,
-			@PathVariable( "artifact" ) String artifact,
-			@PathVariable( "asset" ) String asset,
-			@PathVariable( "format" ) String format
+			HttpServletResponse response, @PathVariable( "channel" ) String channel, @PathVariable( "artifact" ) String artifact, @PathVariable( "asset" ) String asset, @PathVariable( "format" ) String format
 	) throws IOException {
 		getArtifact( response, channel, artifact, null, asset, format );
 	}
@@ -81,6 +79,21 @@ public class V2DownloadController {
 	) throws IOException {
 		HttpStatus status = doGetArtifact( RequestMethod.GET, response, channel, artifact, platform, asset, format );
 		response.setStatus( status.value() );
+	}
+
+	private HttpStatus doGetCatalog( HttpServletResponse response, String channel ) throws IOException {
+		V2DownloadProvider provider = factory.getProviders().get( channel );
+		if( provider == null ) System.err.println( "The download provider is null: " + channel );
+		if( provider == null ) return HttpStatus.NOT_FOUND;
+
+		V2Download download = provider.getCatalog();
+		if( download == null ) System.err.println( "The catalog is null" );
+		if( download == null ) return HttpStatus.NOT_FOUND;
+
+		response.setContentType( V2Download.resolveContentType( "card" ) );
+		stream( response, download.getInputStream(), download.getFilename(), download.getSize() );
+
+		return HttpStatus.OK;
 	}
 
 	private HttpStatus doGetArtifact( RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format ) throws IOException {
