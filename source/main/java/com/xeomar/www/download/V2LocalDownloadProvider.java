@@ -102,7 +102,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 			return true;
 		} else {
 			try {
-				for( Path child : Files.list( path ).collect( Collectors.toList() ) ) {
+				for( Path child : Files.list( path ).filter( Files::isDirectory ).collect( Collectors.toList() ) ) {
 					if( hasProductCard( child ) ) return true;
 				}
 			} catch( IOException exception ) {
