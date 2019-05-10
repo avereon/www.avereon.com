@@ -56,7 +56,7 @@ public class V2DownloadControllerTest {
 
 	@Test
 	public void testInvalidPlatform() throws Exception {
-		mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/invalid/product/pack" ) ).andExpect( status().is4xxClientError() );
+		mvc.perform( MockMvcRequestBuilders.head( API + "/xenon/invalid/product/pack" ) ).andExpect( status().is4xxClientError() );
 	}
 
 	@Test
@@ -76,6 +76,20 @@ public class V2DownloadControllerTest {
 
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
 		assertThat( result.getResponse().getContentLength(), is( 58 ) );
+	}
+
+	@Test
+	public void testGetProductCardMetadataWithExtraPlatform() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/linux/product/card" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 	}
 
 	@Test

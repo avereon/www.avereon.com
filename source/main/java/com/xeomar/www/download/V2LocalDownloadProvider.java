@@ -54,6 +54,17 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 
 	@Override
 	public V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException {
+		V2Download download = doGetDownload( artifact, platform, asset, format );
+
+		// Fallbacks
+		if( download == null ) download = doGetDownload( artifact, null, asset, format );
+		if( download == null ) download = doGetDownload( artifact, platform, asset, null );
+		if( download == null ) download = doGetDownload( artifact, null, asset, null );
+
+		return download;
+	}
+
+	private V2Download doGetDownload( String artifact, String platform, String asset, String format ) throws IOException {
 		V2Download download = new V2Download( artifact, platform, asset, format );
 		log.info( "Get artifact: " + download.getKey() );
 

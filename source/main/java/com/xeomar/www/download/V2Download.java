@@ -149,6 +149,8 @@ public class V2Download {
 	}
 
 	static String resolveFormat( String format ) {
+		if( format == null ) return null;
+
 		switch( format ) {
 			case "pack":
 				return "jar";
@@ -157,6 +159,8 @@ public class V2Download {
 	}
 
 	static String resolveContentType( String format ) {
+		if( format == null ) return null;
+
 		switch( format ) {
 			case "card":
 				return "application/json";
