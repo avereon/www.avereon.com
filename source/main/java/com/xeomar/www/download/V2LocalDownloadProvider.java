@@ -33,11 +33,11 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		V2Download download = new V2Download( "catalog", "card" );
 		log.info( "Get artifact: " + download.getKey() );
 
-		String products = Files.list( root ).filter( ( f ) -> Files.isDirectory( f ) ).map( ( f ) -> "\"" + f.getFileName().toString() + "\"" ).collect( Collectors.joining( "," ) );
+		String products = Files.list( root ).filter( ( f ) -> Files.isDirectory( f ) ).filter( this::hasProductCard ).map( ( f ) -> "\"" + f.getFileName().toString() + "\"" ).collect( Collectors.joining( "," ) );
 
 		StringBuilder builder = new StringBuilder();
 		builder.append( "{" );
-		builder.append( "\"timestamp\":\"" ).append( System.currentTimeMillis() ).append( "\"" );
+		builder.append( "\"timestamp\":\"" ).append( System.currentTimeMillis() ).append( "\"," );
 		builder.append( "[" );
 		builder.append( products );
 		builder.append( "]" );
@@ -95,6 +95,21 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 
 	private String getFilename( String asset, String format ) {
 		return asset + "." + V2Download.resolveFormat( format );
+	}
+
+	private boolean hasProductCard( Path path ) {
+		if( Files.exists( path.resolve( "product.card" ) ) ) {
+			return true;
+		} else {
+			try {
+				for( Path child : Files.list( path ).collect( Collectors.toList() ) ) {
+					if( hasProductCard( child ) ) return true;
+				}
+			} catch( IOException exception ) {
+				log.warn( "Error listing path: " + path, exception );
+			}
+		}
+		return false;
 	}
 
 }

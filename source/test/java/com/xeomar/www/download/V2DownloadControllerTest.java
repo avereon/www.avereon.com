@@ -75,7 +75,7 @@ public class V2DownloadControllerTest {
 		verify( factory, times( 1 ) ).getProviders();
 
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
-		assertThat( result.getResponse().getContentLength(), is( 46 ) );
+		assertThat( result.getResponse().getContentLength(), is( 47 ) );
 	}
 
 	@Test
