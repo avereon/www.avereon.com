@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class V2LocalDownloadProvider implements V2DownloadProvider {
 
@@ -33,7 +34,10 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		V2Download download = new V2Download( "catalog", "card" );
 		log.info( "Get artifact: " + download.getKey() );
 
-		String products = Files.list( root ).filter( ( f ) -> Files.isDirectory( f ) ).filter( this::hasProductCard ).map( ( f ) -> "\"" + f.getFileName().toString() + "\"" ).collect( Collectors.joining( "," ) );
+		String products;
+		try( Stream<Path> children = Files.list( root ) ) {
+			products = children.filter( ( f ) -> Files.isDirectory( f ) ).filter( this::hasProductCard ).map( ( f ) -> "\"" + f.getFileName().toString() + "\"" ).collect( Collectors.joining( "," ) );
+		}
 
 		StringBuilder builder = new StringBuilder();
 		builder.append( "{" );
@@ -112,8 +116,8 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		if( Files.exists( path.resolve( "product.card" ) ) ) {
 			return true;
 		} else {
-			try {
-				for( Path child : Files.list( path ).filter( Files::isDirectory ).collect( Collectors.toList() ) ) {
+			try( Stream<Path> children = Files.list( path ) ) {
+				for( Path child : children.filter( Files::isDirectory ).collect( Collectors.toList() ) ) {
 					if( hasProductCard( child ) ) return true;
 				}
 			} catch( IOException exception ) {
