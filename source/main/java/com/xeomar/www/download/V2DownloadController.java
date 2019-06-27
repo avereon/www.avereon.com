@@ -83,11 +83,11 @@ public class V2DownloadController {
 
 	private HttpStatus doGetCatalog( HttpServletResponse response, String channel ) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
-		if( provider == null ) System.err.println( "The download provider is null: " + channel );
+		if( provider == null ) log.warn( "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getCatalog();
-		if( download == null ) System.err.println( "The catalog is null" );
+		if( download == null ) log.warn( "The catalog is null" );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( "card" ) );
@@ -98,11 +98,11 @@ public class V2DownloadController {
 
 	private HttpStatus doGetArtifact( RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format ) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
-		if( provider == null ) System.err.println( "The download provider is null: " + channel );
+		if( provider == null ) log.warn( "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getDownload( artifact, platform, asset, format );
-		if( download == null ) System.err.println( "The download is null: " + artifact );
+		if( download == null ) log.warn( "The download is null: " + V2Download.key( artifact, platform, asset, format ) );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( format ) );
