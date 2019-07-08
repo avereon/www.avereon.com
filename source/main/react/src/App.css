@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 5vmin);
-  color: white;
+  color: #e0e0e0;
 }
 
 .App-link {
@@ -15,4 +15,12 @@
 
 .logo {
   vertical-align: middle;
+}
+
+a {
+	color: #c0c0c0;
+}
+
+a:hover {
+	color: #e0e0e0;
 }
