@@ -80,6 +80,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		if( !Files.exists( path ) ) log.warn( "Artifact path not found: " + path );
 		if( !Files.exists( path ) ) return null;
 
+		// FIXME Not all artifacts have a product card
 		ProductCard card = getProductCard( path.getParent() );
 		if( card == null ) log.warn( "Product card not found: " + path );
 		if( card == null ) return null;
