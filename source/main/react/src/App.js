@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import {Platform} from "./Platform";
 
-const ICON_URL="https://www.xeomar.com/download?channel=latest&artifact=xeomar&category=product&type=icon";
+//const ICON_URL="https://www.xeomar.com/download?channel=latest&artifact=xeomar&category=product&type=icon";
+const ICON_URL="https://www.xeomar.com/download/latest/v2/xeomar/product/icon";
 
 function App() {
 
