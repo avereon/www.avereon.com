@@ -21,6 +21,7 @@ import java.lang.invoke.MethodHandles;
  * <li>Handle requests for an artifact with general parameters and return the stream</li>
  * </ol>
  */
+@CrossOrigin
 @RestController
 @RequestMapping( "/download/{channel}/v2" )
 public class V2DownloadController {

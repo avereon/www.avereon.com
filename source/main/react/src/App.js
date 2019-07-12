@@ -2,19 +2,68 @@ import React from 'react';
 import './App.css';
 import {Platform} from "./Platform";
 
-//const ICON_URL="https://www.xeomar.com/download?channel=latest&artifact=xeomar&category=product&type=icon";
-const ICON_URL="https://www.xeomar.com/download/latest/v2/xeomar/product/icon";
+const ROOT_URL = "https://www.xeomar.com/download";
+const ICON_URL = ROOT_URL + "/latest/v2/xeomar/product/icon";
+const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.PLATFORM + "/product/card";
+const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.PLATFORM + "/product/card";
 
-function App() {
-
-	return (
-		<div className="App">
-			<h1><img className="logo" alt="" src={ICON_URL}/>Xeomar</h1>
-			<p>Specialized products for specialized work</p>
-			<a href={'https://www.xeomar.com/download/stable/v2/xenon/' + Platform.PLATFORM +'/install/jar'}>Xenon Installer - Stable Release</a>
-			<a href={'https://www.xeomar.com/download/latest/v2/xenon/' + Platform.PLATFORM +'/install/jar'}>Xenon Installer - Nightly Release</a>
-		</div>
-	);
+function productCard(url, success, failure) {
+	console.log("Request: " + url);
+	return fetch(url)
+		.then((response) => response.status === 200 ? response.json() : {})
+		.then((card) => {
+			console.log(card);
+			return card;
+		})
+		.then((card) => success(card))
 }
 
-export default App;
+export default class App extends React.Component {
+
+	state = {
+		xenonStableProductCard: {
+			version: 'stable'
+		},
+		xenonLatestProductCard: {
+			version: 'latest'
+		}
+	};
+
+	componentDidMount() {
+		productCard(XENON_STABLE_URL, (card) => {
+			this.setState({xenonStableProductCard: {...card}});
+		});
+		productCard(XENON_LATEST_URL, (card) => {
+			this.setState({xenonLatestProductCard: {...card}});
+		})
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<div>
+					<div className='title-row'>
+						<img className="logo" alt="" src={ICON_URL}/>
+						<div className='title-block'>
+							<div className='title'>Xeomar</div>
+							<div className='subtitle'>Specialized products for specialized work</div>
+						</div>
+					</div>
+
+					<h1>Xenon Installers</h1>
+					<div>
+						<a className="download official" href={'https://www.xeomar.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
+							<div className='title'>Stable Release</div>
+							<div>{this.state.xenonStableProductCard.version}</div>
+						</a>
+						<a className="download nightly" href={'https://www.xeomar.com/download/latest/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
+							<div className='title'>Latest Release</div>
+							<div>{this.state.xenonLatestProductCard.version}</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+}

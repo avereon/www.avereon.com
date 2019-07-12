@@ -5,7 +5,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 5vmin);
   color: #e0e0e0;
 }
 
@@ -13,8 +12,30 @@
   color: #61dafb;
 }
 
+.title-row {
+	display: flex;
+	flex-direction: row;
+	align-items: normal;
+	justify-content: left;
+}
+
 .logo {
-  vertical-align: middle;
+}
+
+.title-block {
+	display: flex;
+	flex-direction: column;
+	align-items: normal;
+	justify-content: left;
+}
+
+.title {
+	font-size: 10em;
+	font-weight: bold;
+}
+
+.subtitle {
+	font-size: 2em;
 }
 
 a {
@@ -24,4 +45,24 @@ a {
 
 a:hover {
 	color: #e0e0e0;
+}
+
+.official {
+	background-color: #204080;
+}
+
+.nightly {
+	background-color: #808000;
+}
+
+.download {
+	display: inline-block;
+	border: white 2px solid;
+	border-radius: 5px;
+	margin: 1em;
+	padding: 0.5em;
+}
+
+.download .title {
+	font-size: 2em;
 }

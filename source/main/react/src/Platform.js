@@ -16,6 +16,6 @@ if (platform.startsWith('linux')) {
 	Platform.PLATFORM = 'windows';
 	Platform.NAME = 'Windows';
 } else if (platform.startsWith('mac')) {
-	Platform.PLATFORM = 'macos';
+	Platform.PLATFORM = 'macosx';
 	Platform.NAME = 'Mac OS'
 }
