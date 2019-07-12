@@ -51,16 +51,16 @@ export default class App extends React.Component {
 					</div>
 
 					<h1>Xenon Installers</h1>
-					<div>
-						<a className="download official" href={'https://www.xeomar.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
-							<div className='title'>Stable Release</div>
-							<div>{this.state.xenonStableProductCard.version}</div>
-						</a>
-						<a className="download nightly" href={'https://www.xeomar.com/download/latest/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
-							<div className='title'>Latest Release</div>
-							<div>{this.state.xenonLatestProductCard.version}</div>
-						</a>
-					</div>
+				</div>
+				<div>
+					<a className="download official" href={'https://www.xeomar.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
+						<div className='title'>Stable Release</div>
+						<div>{this.state.xenonStableProductCard.version} - {'size'} MB</div>
+					</a>
+					<a className="download nightly" href={'https://www.xeomar.com/download/latest/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
+						<div className='title'>Nightly Release</div>
+						<div>{this.state.xenonLatestProductCard.version} - {'size'} MB</div>
+					</a>
 				</div>
 			</div>
 		);
