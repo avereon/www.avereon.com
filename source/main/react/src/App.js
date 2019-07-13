@@ -3,7 +3,8 @@ import './App.css';
 import {Platform} from "./Platform";
 
 const ROOT_URL = "https://www.xeomar.com/download";
-const ICON_URL = ROOT_URL + "/latest/v2/xeomar/product/icon";
+const XEOMAR_ICON_URL = ROOT_URL + "/latest/v2/xeomar/product/icon";
+const XENON_ICON_URL = ROOT_URL + "/latest/v2/xenon/product/icon";
 const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.PLATFORM + "/product/card";
 const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.PLATFORM + "/product/card";
 
@@ -39,14 +40,15 @@ export default class App extends React.Component {
 			<div className="App">
 				<div>
 					<div className='title-row'>
-						<img className="logo" alt="" src={ICON_URL}/>
+						<img className="logo" alt="" src={XEOMAR_ICON_URL}/>
 						<div className='title-block'>
 							<div className='title'>Xeomar</div>
 							<div className='subtitle'>Specialized products for specialized work</div>
 						</div>
 					</div>
 				</div>
-				<div>
+				<div className='title-row'>
+					<img className="product-icon" alt="" src={XENON_ICON_URL}/>
 					<h1>Xenon Installers</h1>
 				</div>
 				<div>

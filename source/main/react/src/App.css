@@ -15,7 +15,7 @@
 .title-row {
 	display: flex;
 	flex-direction: row;
-	align-items: normal;
+	align-items: center;
 	justify-content: left;
 }
 
@@ -45,6 +45,11 @@ a {
 
 a:hover {
 	color: #e0e0e0;
+}
+
+.product-icon {
+	width: 64px;
+	height: 64px;
 }
 
 .disabled {
