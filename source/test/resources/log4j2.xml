@@ -5,7 +5,7 @@
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
 		</Console>
 	</Appenders>
-	<Logger name="com.xeomar.www" level="INFO"/>
+	<Logger name="com.avereon.www" level="INFO"/>
 	<Loggers>
 		<Root level="ERROR">
 			<AppenderRef ref="Console"/>

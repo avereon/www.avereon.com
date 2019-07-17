@@ -1,25 +1,25 @@
-# Xeomar Repositories
+# Avereon Repositories
 
 Below are some sample repository base URLs. They are intended to stir ideas and
-provoke thought how to stage and access Xeomar repositories.
+provoke thought how to stage and access Avereon repositories.
 
 -- These examples show different base URLs for the same distribution:
-https://archive.xeomar.com/stable
-https://bin.xeomar.com/stable
-https://distro.xeomar.com/stable
-https://download.xeomar.com/stable
-https://market.xeomar.com/stable
-https://pack.xeomar.com/stable
-https://product.xeomar.com/stable
-https://store.xeomar.com/stable
+https://archive.avereon.com/stable
+https://bin.avereon.com/stable
+https://distro.avereon.com/stable
+https://download.avereon.com/stable
+https://market.avereon.com/stable
+https://pack.avereon.com/stable
+https://product.avereon.com/stable
+https://store.avereon.com/stable
 
-https://www.xeomar.com/archive/stable
-https://www.xeomar.com/bin/stable
-https://www.xeomar.com/download/stable
-https://www.xeomar.com/market/stable
-https://www.xeomar.com/pack/stable
-https://www.xeomar.com/product/stable
-https://www.xeomar.com/store/stable
+https://www.avereon.com/archive/stable
+https://www.avereon.com/bin/stable
+https://www.avereon.com/download/stable
+https://www.avereon.com/market/stable
+https://www.avereon.com/pack/stable
+https://www.avereon.com/product/stable
+https://www.avereon.com/store/stable
 
 Ubuntu: archive
 Google: dl
@@ -31,13 +31,13 @@ Cloud Foundry: packages
 Other terms: bin, channel, distro, download, feed, market, pipe, product, repo, store
 
 -- These examples use the same base URL and show distribution options:
-https://www.xeomar.com/eppler (distribution code name)
-https://www.xeomar.com/handy (distribution code name)
-https://www.xeomar.com/stable (distribution alias)
-https://www.xeomar.com/latest (distribution alias)
+https://www.avereon.com/eppler (distribution code name)
+https://www.avereon.com/handy (distribution code name)
+https://www.avereon.com/stable (distribution alias)
+https://www.avereon.com/latest (distribution alias)
 
 -- This example with a specific version number should not be used
-http://www.xeomar.com/stable/1.0 (don't like the specific version here)
+http://www.avereon.com/stable/1.0 (don't like the specific version here)
 
 # The Debian Pattern
 <type:str> <repository:url> <distribution:str> [<component:str>...]
@@ -47,20 +47,20 @@ not necessarily that it is enabled)
 
 typ url                                     dist   comp1  comp2
 --- --------------------------------------- ------ ------ --------
-xeo http://download.xeomar.com/market/xenon stable latest backport
+avn http://download.avereon.com/market/xenon stable latest backport
 
 Distribution >aliases or release classes< are useful for connecting to a
 distribution for a particular purpose. For example, the stable alias can point
 to a particular distribution today and me moved to a new one in the future.
 Distributions could be considered containers for releases which, in turn, are
 identified by specific version numbers. Distribution is similar if not the same
-concept as a channel (current working name in Xeomar repos). One item to note
+concept as a channel (current working name in Avereon repos). One item to note
 is that a distribution contains only one version/release of any specific product
 but may contain many products. The artifacts of individual products should
 generally be updated at the same time, but not necessarily the artifacts of
 other products.
 
-Components are not necessarily a concept used in Xeomar repos. Components are
+Components are not necessarily a concept used in Avereon repos. Components are
 intended to separate packages with different licenses and therefore different
 restrictions on use. This can be accomplished with a different repo and/or
 license inclusion in a package.

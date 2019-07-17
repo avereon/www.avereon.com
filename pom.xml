@@ -5,31 +5,31 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.xeomar.pom</groupId>
+		<groupId>com.avereon.pom</groupId>
 		<artifactId>web</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.xeomar</groupId>
+	<groupId>com.avereon</groupId>
 	<artifactId>website</artifactId>
 	<version>1.2u11</version>
 	<packaging>jar</packaging>
 
-	<name>Xeomar Website</name>
-	<description>The Xeomar website</description>
-	<url>http://www.xeomar.com/</url>
+	<name>Avereon Website</name>
+	<description>The Avereon website</description>
+	<url>http://www.avereon.com/</url>
 	<inceptionYear>2017</inceptionYear>
 
 	<repositories>
 		<repository>
-			<id>xeo</id>
-			<url>https://repo.xeomar.com/xeo</url>
+			<id>avn</id>
+			<url>https://repo.avereon.com/avn</url>
 		</repository>
 	</repositories>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.xeomar</groupId>
+			<groupId>com.avereon</groupId>
 			<artifactId>zevra</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
@@ -42,7 +42,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>xeomar</finalName>
+		<finalName>avereon</finalName>
 
 <!--		<resources>-->
 <!--			<resource>-->
@@ -109,12 +109,12 @@
 
 	<distributionManagement>
 		<repository>
-			<id>xeo-release</id>
-			<url>https://repo.xeomar.com/xeo-release/</url>
+			<id>avn-release</id>
+			<url>https://repo.avereon.com/avn-release/</url>
 		</repository>
 		<snapshotRepository>
-			<id>xeo-snapshot</id>
-			<url>https://repo.xeomar.com/xeo-snapshot/</url>
+			<id>avn-snapshot</id>
+			<url>https://repo.avereon.com/avn-snapshot/</url>
 		</snapshotRepository>
 	</distributionManagement>
 

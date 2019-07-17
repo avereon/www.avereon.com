@@ -1,4 +1,4 @@
-package com.xeomar.www;
+package com.avereon.www;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

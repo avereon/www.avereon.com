@@ -1,6 +1,6 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.util.TextUtil;
+import com.avereon.util.TextUtil;
 
 @Deprecated
 public interface Download {

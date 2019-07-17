@@ -1,5 +1,9 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
+import com.avereon.www.download.Download;
+import com.avereon.www.download.DownloadController;
+import com.avereon.www.download.DownloadProvider;
+import com.avereon.www.download.ProductDownload;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +31,7 @@ public class DownloadControllerTest {
 	private String channel = "latest";
 
 	// TODO Should this be provider???
-	private String group = "com.xeomar";
+	private String group = "com.avereon";
 
 	private String artifact = "mouse";
 
@@ -53,7 +57,7 @@ public class DownloadControllerTest {
 	public void setup() {
 		String name = Download.name( artifact, platform, category, type );
 		String version = "0.0";
-		String link = Paths.get( "source/test/repos/xeo/stable/" + artifact + "/" + category + "." + Download.type( type ) ).toUri().toString();
+		String link = Paths.get( "source/test/repos/avn/stable/" + artifact + "/" + category + "." + Download.type( type ) ).toUri().toString();
 		ProductDownload download = new ProductDownload( group, artifact, channel, category, type, platform, version, name, link, "", "" );
 
 		when( provider.getDownloads( anyList(), anyString(), anyString(), anyString(), eq( platform ) ) ).thenReturn( List.of( download ) );

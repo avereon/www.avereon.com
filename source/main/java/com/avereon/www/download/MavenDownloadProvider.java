@@ -1,9 +1,9 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.util.LogUtil;
-import com.xeomar.util.TextUtil;
-import com.xeomar.util.Version;
-import com.xeomar.util.XmlDescriptor;
+import com.avereon.util.LogUtil;
+import com.avereon.util.TextUtil;
+import com.avereon.util.Version;
+import com.avereon.util.XmlDescriptor;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -18,9 +18,9 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
-	private static final String REPO = "https://repo.xeomar.com/xeo/";
+	private static final String REPO = "https://repo.avereon.com/xeo/";
 
-	private static final String GROUP = "com/xeomar/";
+	private static final String GROUP = "com/avereon/";
 
 	private static String ROOT = REPO + GROUP;
 

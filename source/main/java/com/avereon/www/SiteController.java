@@ -1,4 +1,4 @@
-package com.xeomar.www;
+package com.avereon.www;
 
 public class SiteController {
 

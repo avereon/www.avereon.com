@@ -1,7 +1,7 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.product.ProductCard;
-import com.xeomar.util.LogUtil;
+import com.avereon.product.ProductCard;
+import com.avereon.util.LogUtil;
 import org.slf4j.Logger;
 
 import java.io.FileInputStream;
@@ -18,7 +18,7 @@ public class LocalStoreDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
-	private static String GROUP = "com.xeomar";
+	private static String GROUP = "com.avereon";
 
 	private Path root;
 

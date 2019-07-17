@@ -1,6 +1,6 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.util.LogUtil;
+import com.avereon.util.LogUtil;
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

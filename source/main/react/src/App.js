@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import {Platform} from "./Platform";
 
-const ROOT_URL = "https://www.xeomar.com/download";
-const XEOMAR_ICON_URL = ROOT_URL + "/latest/v2/xeomar/product/icon";
+const ROOT_URL = "https://www.avereon.com/download";
+const XEOMAR_ICON_URL = ROOT_URL + "/latest/v2/avereon/product/icon";
 const XENON_ICON_URL = ROOT_URL + "/latest/v2/xenon/product/icon";
 const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.PLATFORM + "/product/card";
 const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.PLATFORM + "/product/card";
@@ -42,7 +42,7 @@ export default class App extends React.Component {
 					<div className='title-row'>
 						<img className="logo" alt="" src={XEOMAR_ICON_URL}/>
 						<div className='title-block'>
-							<div className='title'>Xeomar</div>
+							<div className='title'>Avereon</div>
 							<div className='subtitle'>Specialized products for specialized work</div>
 						</div>
 					</div>
@@ -52,15 +52,15 @@ export default class App extends React.Component {
 					<h1>Xenon Installers</h1>
 				</div>
 				<div>
-					<span className="download disabled" href={'https://www.xeomar.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
+					<span className="download disabled" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
 						<div className='title'>Stable Release</div>
 						<div>xenon-{Platform.PLATFORM}-{this.state.xenonStableProductCard.version}</div>
 					</span>
-					{/*<a className="download official" href={'https://www.xeomar.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>*/}
+					{/*<a className="download official" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>*/}
 					{/*	<div className='title'>Stable Release</div>*/}
 					{/*	<div>xenon-{Platform.PLATFORM}-{this.state.xenonStableProductCard.version}</div>*/}
 					{/*</a>*/}
-					<a className="download nightly" href={'https://www.xeomar.com/download/latest/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
+					<a className="download nightly" href={'https://www.avereon.com/download/latest/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
 						<div className='title'>Nightly Release</div>
 						<div>xenon-{Platform.PLATFORM}-{this.state.xenonLatestProductCard.version}</div>
 					</a>

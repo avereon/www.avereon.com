@@ -1,7 +1,7 @@
-package com.xeomar.www;
+package com.avereon.www;
 
-import com.xeomar.www.download.DownloadProvider;
-import com.xeomar.www.download.LocalStoreDownloadProvider;
+import com.avereon.www.download.DownloadProvider;
+import com.avereon.www.download.LocalStoreDownloadProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,7 +10,7 @@ public class SiteConfiguration {
 
 	@Bean
 	public DownloadProvider getDownloadProvider() {
-		return new LocalStoreDownloadProvider( "/opt/xeo/store" );
+		return new LocalStoreDownloadProvider( "/opt/avn/store" );
 	}
 
 }

@@ -1,5 +1,8 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
+import com.avereon.www.download.V2DownloadProvider;
+import com.avereon.www.download.V2DownloadProviderFactory;
+import com.avereon.www.download.V2LocalDownloadProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +40,7 @@ public class V2DownloadControllerTest {
 
 	@Before
 	public void setup() {
-		Path root = Paths.get( "source/test/repos/xeo" ).toAbsolutePath();
+		Path root = Paths.get( "source/test/repos/avn" ).toAbsolutePath();
 		Map<String, V2DownloadProvider> providers = new HashMap<>();
 		providers.put( "stable", new V2LocalDownloadProvider( root.resolve( "stable" ) ) );
 		providers.put( "latest", new V2LocalDownloadProvider( root.resolve( "latest" ) ) );
@@ -83,7 +86,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/linux/product/card" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -97,7 +100,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/product/card" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -111,7 +114,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/mouse/product/pack" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -125,7 +128,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/xenon/linux/product/card" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -139,7 +142,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.head( API + "/xenon/linux/product/pack" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -153,7 +156,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/mouse/product/card" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -170,7 +173,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/mouse/product/pack" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -187,7 +190,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/xenon/linux/product/card" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
@@ -204,7 +207,7 @@ public class V2DownloadControllerTest {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/xenon/linux/product/pack" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
 
-		assertThat( result.getResponse().getHeader( "group" ), is( "com.xeomar" ) );
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
 		assertThat( result.getResponse().getHeader( "artifact" ), is( "xenon" ) );
 		assertThat( result.getResponse().getHeader( "platform" ), is( "linux" ) );
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );

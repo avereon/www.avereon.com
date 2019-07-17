@@ -1,6 +1,6 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.util.FileUtil;
+import com.avereon.util.FileUtil;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -39,7 +39,7 @@ public class ProductDownload implements Download, Comparable<ProductDownload> {
 	private Date date;
 
 	ProductDownload( String group, String artifact, String channel, String category, String type, String platform, String version, String name, String link, String md5Link, String sha1Link ) {
-		this.key = Download.key( artifact, category, type, channel, platform );
+		this.key = key( artifact, category, type, channel, platform );
 		this.group = group;
 		this.artifact = artifact;
 		this.channel = channel;

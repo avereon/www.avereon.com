@@ -1,6 +1,6 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.util.LogUtil;
+import com.avereon.util.LogUtil;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -57,16 +57,16 @@ import java.util.concurrent.ConcurrentHashMap;
  * Card > text/yaml
  * <h2>Examples</h2>
  * /download/catalog/xenon/prod - Download the prod catalog card file
- * -> repo/xeo/com/xeomar/xenon/<version>/xenon-<version>-catalog-prod.card
+ * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-catalog-prod.card
  * <p>
  * /download/catalog/xenon/snap - Download the snap catalog card file
- * -> repo/xeo/com/xeomar/xenon/<version>/xenon-<version>-catalog-snap.card
+ * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-catalog-snap.card
  * <p>
  * /download/product/xenon/card - Download the product card file
- * -> repo/xeo/com/xeomar/xenon/<version>/xenon-<version>-product.card
+ * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-product.card
  * <p>
  * /download/product/xenon/pack - Download the product pack file
- * -> repo/xeo/com/xeomar/xenon/<version>/xenon-<version>-product.pack
+ * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-product.pack
  */
 
 @Deprecated
@@ -89,8 +89,8 @@ public class DownloadController {
 
 	public DownloadController() {
 		// TODO Create a composite download provider
-		//providers.put( "latest", new LocalStoreDownloadProvider( "/opt/xeo/repo/latest") );
-		//providers.put( "stable", new LocalStoreDownloadProvider( "/opt/xeo/repo/stable") );
+		//providers.put( "latest", new LocalStoreDownloadProvider( "/opt/avn/repo/latest") );
+		//providers.put( "stable", new LocalStoreDownloadProvider( "/opt/avn/repo/stable") );
 	}
 
 	@Autowired

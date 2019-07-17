@@ -1,6 +1,8 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
-import com.xeomar.util.XmlDescriptor;
+import com.avereon.www.download.MavenDownloadProvider;
+import com.avereon.www.download.ProductDownload;
+import com.avereon.util.XmlDescriptor;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,7 +24,7 @@ public class MavenDownloadProviderTest {
 
 	private static final String TEST_MAVEN_REPOSITORY = "source/test/repos/maven";
 
-	private String group = "com.xeomar";
+	private String group = "com.avereon";
 
 	private String artifact = "xenon";
 
@@ -32,7 +34,7 @@ public class MavenDownloadProviderTest {
 
 	private String name = "Xenon";
 
-	private String uri = "https://repo.xeomar.com/xeo/" + group.replace( '.', '/' ) + "/" + artifact;
+	private String uri = "https://repo.avereon.com/avn/" + group.replace( '.', '/' ) + "/" + artifact;
 
 	@Before
 	public void before() throws Exception {

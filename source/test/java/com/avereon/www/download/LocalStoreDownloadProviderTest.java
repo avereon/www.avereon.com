@@ -1,5 +1,8 @@
-package com.xeomar.www.download;
+package com.avereon.www.download;
 
+import com.avereon.www.download.Download;
+import com.avereon.www.download.LocalStoreDownloadProvider;
+import com.avereon.www.download.ProductDownload;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +18,7 @@ public class LocalStoreDownloadProviderTest {
 
 	private LocalStoreDownloadProvider provider;
 
-	private Path root = Paths.get( "source/test/repos/xeo" );
+	private Path root = Paths.get( "source/test/repos/avn" );
 
 	@Before
 	public void setup() {
