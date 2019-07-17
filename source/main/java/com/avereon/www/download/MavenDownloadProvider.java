@@ -18,7 +18,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
-	private static final String REPO = "https://repo.avereon.com/xeo/";
+	private static final String REPO = "https://repo.avereon.com/avn/";
 
 	private static final String GROUP = "com/avereon/";
 

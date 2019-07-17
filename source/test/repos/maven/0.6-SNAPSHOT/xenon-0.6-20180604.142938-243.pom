@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.xeomar.pom</groupId>
+		<groupId>com.avereon.pom</groupId>
 		<artifactId>jar</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 
 	<!-- Update the product roadmap when the version changes -->
-	<groupId>com.xeomar</groupId>
+	<groupId>com.avereon</groupId>
 	<artifactId>xenon</artifactId>
 	<version>0.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -55,13 +55,13 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>com.xeomar</groupId>
+			<groupId>com.avereon</groupId>
 			<artifactId>razor</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.xeomar</groupId>
+			<groupId>com.avereon</groupId>
 			<artifactId>annex</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
@@ -162,7 +162,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.xeomar.xenon.Program</mainClass>
+							<mainClass>com.avereon.xenon.Program</mainClass>
 							<classpathLayoutType>custom</classpathLayoutType>
 							<customClasspathLayout>$${artifact.artifactId}.$${artifact.extension}</customClasspathLayout>
 						</manifest>

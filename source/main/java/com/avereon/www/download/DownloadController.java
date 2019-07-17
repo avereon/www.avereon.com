@@ -57,16 +57,16 @@ import java.util.concurrent.ConcurrentHashMap;
  * Card > text/yaml
  * <h2>Examples</h2>
  * /download/catalog/xenon/prod - Download the prod catalog card file
- * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-catalog-prod.card
+ * -> repo/avn/com/avereon/xenon/<version>/xenon-<version>-catalog-prod.card
  * <p>
  * /download/catalog/xenon/snap - Download the snap catalog card file
- * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-catalog-snap.card
+ * -> repo/avn/com/avereon/xenon/<version>/xenon-<version>-catalog-snap.card
  * <p>
  * /download/product/xenon/card - Download the product card file
- * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-product.card
+ * -> repo/avn/com/avereon/xenon/<version>/xenon-<version>-product.card
  * <p>
  * /download/product/xenon/pack - Download the product pack file
- * -> repo/xeo/com/avereon/xenon/<version>/xenon-<version>-product.pack
+ * -> repo/avn/com/avereon/xenon/<version>/xenon-<version>-product.pack
  */
 
 @Deprecated

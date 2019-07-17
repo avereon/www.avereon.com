@@ -3,7 +3,7 @@ import './App.css';
 import {Platform} from "./Platform";
 
 const ROOT_URL = "https://www.avereon.com/download";
-const XEOMAR_ICON_URL = ROOT_URL + "/latest/v2/avereon/product/icon";
+const AVEREON_ICON_URL = ROOT_URL + "/latest/v2/avereon/product/icon";
 const XENON_ICON_URL = ROOT_URL + "/latest/v2/xenon/product/icon";
 const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.PLATFORM + "/product/card";
 const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.PLATFORM + "/product/card";
@@ -40,7 +40,7 @@ export default class App extends React.Component {
 			<div className="App">
 				<div>
 					<div className='title-row'>
-						<img className="logo" alt="" src={XEOMAR_ICON_URL}/>
+						<img className="logo" alt="" src={AVEREON_ICON_URL}/>
 						<div className='title-block'>
 							<div className='title'>Avereon</div>
 							<div className='subtitle'>Specialized products for specialized work</div>

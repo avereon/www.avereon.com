@@ -1,8 +1,5 @@
 package com.avereon.www.download;
 
-import com.avereon.www.download.V2DownloadProvider;
-import com.avereon.www.download.V2DownloadProviderFactory;
-import com.avereon.www.download.V2LocalDownloadProvider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -165,7 +162,7 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
-		assertThat( result.getResponse().getContentLength(), is( 424 ) );
+		assertThat( result.getResponse().getContentLength(), is( 427 ) );
 	}
 
 	@Test
@@ -199,7 +196,7 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
 
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
-		assertThat( result.getResponse().getContentLength(), is( 426 ) );
+		assertThat( result.getResponse().getContentLength(), is( 429 ) );
 	}
 
 	@Test

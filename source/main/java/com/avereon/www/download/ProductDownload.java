@@ -39,7 +39,7 @@ public class ProductDownload implements Download, Comparable<ProductDownload> {
 	private Date date;
 
 	ProductDownload( String group, String artifact, String channel, String category, String type, String platform, String version, String name, String link, String md5Link, String sha1Link ) {
-		this.key = key( artifact, category, type, channel, platform );
+		this.key = Download.key( artifact, category, type, channel, platform );
 		this.group = group;
 		this.artifact = artifact;
 		this.channel = channel;
