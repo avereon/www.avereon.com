@@ -1,6 +1,0 @@
-<!-- After updating the docBase to the right location add this file to $TOMCAT_HOME/conf/Catalina/localhost -->
-<Context path="/xeomar" docBase="/home/ecco/Data/xeo/website/root/target/xeomar" debug="0" reloadable="true" cachingAllowed="false"/>
-
-<!-- 
-<Context path="/parasymm" docBase="C:/Users/ecco/Data/xeo/website/root/target/xeomar" debug="0" reloadable="true" cachingAllowed="false" antiJARLocking="true" antiResourceLocking="true"/>
--->
