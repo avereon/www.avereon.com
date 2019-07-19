@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #d0d0d0;
+  color: #d8d8d8;
 }
 
 .App-link {
@@ -20,6 +20,7 @@
 }
 
 .logo {
+	margin: 0 1em 0 0;
 }
 
 .title-block {
@@ -38,6 +39,14 @@
 	font-size: 2em;
 }
 
+.product-icon {
+	margin: 0 1em 0 0;
+}
+
+.title-row h1 {
+	font-size: 4em;
+}
+
 a {
 	color: #c0c0c0;
 	text-decoration: none;
@@ -53,16 +62,18 @@ a:hover {
 }
 
 .disabled {
-	cursor: not-allowed;
+	color: #c0c0c0;
 	background-color: #808080;
+	cursor: not-allowed;
 }
 
 .official {
-	background-color: #204080;
+	background-color: #402060;
 }
 
 .nightly {
-	background-color: #606000;
+	color: #ffffff;
+	background-color: #c06000;
 }
 
 .download {
