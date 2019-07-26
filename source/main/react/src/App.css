@@ -1,50 +1,70 @@
-.App {
-  background-color: #505860;
+.app {
+	background-color: #e0e0e0;
+	color: #505860;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #d8d8d8;
+	justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-.title-row {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: left;
-}
-
-.logo {
-	margin: 0 1em 0 0;
-}
-
-.title-block {
+.header {
+	background-color: #505860;
+	color: #f0f0f0;
+	padding: 0.4cm;
 	display: flex;
 	flex-direction: column;
-	align-items: normal;
-	justify-content: left;
+	align-items: center;
 }
 
-.title {
-	font-size: 10em;
+.header-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+	align-items: center;
+}
+
+.header-block {
+	display: flex;
+	flex-direction: column;
+}
+
+.header-logo {
+	width: 2cm;
+	height: 2cm;
+	margin: 0 0.4cm 0 0;
+}
+
+.header-name {
+	font-size: 2cm;
 	font-weight: bold;
 }
 
-.subtitle {
-	font-size: 2em;
+.product {
+	padding: 0.4cm;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: justify;
 }
 
-.product-icon {
+.product.space {
+	width: 18cm;
+}
+
+.product.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.product.icon {
+	width: 64px;
+	height: 64px;
 	margin: 0 1em 0 0;
 }
 
-.title-row h1 {
-	font-size: 4em;
+.product.title {
+	font-size: 1.4cm;
 }
 
 a {
@@ -56,38 +76,61 @@ a:hover {
 	color: #e0e0e0;
 }
 
-.product-icon {
-	width: 64px;
-	height: 64px;
-}
-
-.disabled {
-	color: #c0c0c0;
-	background-color: #808080;
-	cursor: not-allowed;
-}
-
-.official {
-	background-color: #402060;
-}
-
-.nightly {
-	color: #ffffff;
-	background-color: #c06000;
-}
-
 .download {
+	color: #e0e0e0;
+
+	width: 7.5cm;
+	height: 2cm;
+
 	display: inline-flex;
 	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	justify-content: left;
 
-	border: #c0c0c0 2px solid;
 	border-radius: 5px;
-	margin: 1em;
-	padding: 0.5em;
+	margin: 0.5cm;
+	padding: 0.2cm;
 }
 
 .download .title {
 	font-size: 2em;
+}
+
+.download.stable {
+	background-color: #206080;
+}
+.download.stable:hover {
+	color: #f0f0f0;
+	background-color: #286888;
+}
+
+.download.latest {
+	background-color: #c06000;
+}
+.download.latest:hover {
+	color: #f0f0f0;
+	background-color: #c86808;
+}
+
+
+.download.disabled {
+	cursor: not-allowed;
+	background-color: #808080;
+}
+
+.footer {
+	display: flex;
+	margin-top: auto;
+	padding: 0.2cm;
+	background-color: #505860;
+	color: #d8d8d8;
+	font-size: 0.4cm;
+}
+
+.copyright {
+	margin-right: auto;
+}
+
+.tag-line {
+	margin-left: auto;
 }

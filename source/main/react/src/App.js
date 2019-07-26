@@ -5,8 +5,8 @@ import {Platform} from "./Platform";
 const ROOT_URL = "https://www.avereon.com/download";
 const AVEREON_ICON_URL = ROOT_URL + "/latest/v2/avereon/product/icon";
 const XENON_ICON_URL = ROOT_URL + "/latest/v2/xenon/product/icon";
-const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.PLATFORM + "/product/card";
-const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.PLATFORM + "/product/card";
+const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.KEY + "/product/card";
+const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.KEY + "/product/card";
 
 function productCard(url, success, failure) {
 	console.log("Request: " + url);
@@ -37,33 +37,56 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<div className="App">
-				<div>
-					<div className='title-row'>
-						<img className="logo" alt="" src={AVEREON_ICON_URL}/>
-						<div className='title-block'>
-							<div className='title'>Avereon</div>
-							<div className='subtitle'>Specialized products for specialized work</div>
+			<div className='app'>
+
+				<div className='header'>
+					<div className='header-row'>
+						<img className='header-logo' alt="" src={AVEREON_ICON_URL}/>
+						<div className='header-name'>Avereon</div>
+					</div>
+				</div>
+
+				<div className='product'>
+					<div className='product space'>
+						<div className='product row'>
+							<img className="product icon" alt="" src={XENON_ICON_URL}/>
+							<div className='product title'>Xenon</div>
+						</div>
+
+						<p>
+							Xenon is a simple application framework that provides common
+							services for product features. Product features are provided as
+							packages called mods that provide the functionality. Users are
+							encouraged to discover and utilize the mods that best suit their
+							needs.
+						</p>
+
+						<h1>Download for {Platform.NAME}</h1>
+
+						<div>
+							<div className="download disabled" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.KEY + '/install/jar'}>
+								<div className='title'>Stable Release</div>
+								<div>unavailable</div>
+							</div>
+
+							{/*
+							<a className="download stable" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.KEY + '/install/jar'}>
+								<div className='title'>Stable Release</div>
+								<div>xenon-{Platform.KEY}-{this.state.xenonStableProductCard.version}</div>
+							</a>
+							*/}
+
+							<a className="download latest" href={'https://www.avereon.com/download/latest/v2/xenon/' + Platform.KEY + '/install/jar'}>
+								<div className='title'>Developer Build</div>
+								<div>xenon-{Platform.KEY}-{this.state.xenonLatestProductCard.version}</div>
+							</a>
 						</div>
 					</div>
 				</div>
-				<div className='title-row'>
-					<img className="product-icon" alt="" src={XENON_ICON_URL}/>
-					<h1>Xenon Installers</h1>
-				</div>
-				<div>
-					<span className="download disabled" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
-						<div className='title'>Stable Release</div>
-						<div>xenon-{Platform.PLATFORM}-{this.state.xenonStableProductCard.version}</div>
-					</span>
-					{/*<a className="download official" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>*/}
-					{/*	<div className='title'>Stable Release</div>*/}
-					{/*	<div>xenon-{Platform.PLATFORM}-{this.state.xenonStableProductCard.version}</div>*/}
-					{/*</a>*/}
-					<a className="download nightly" href={'https://www.avereon.com/download/latest/v2/xenon/' + Platform.PLATFORM + '/install/jar'}>
-						<div className='title'>Nightly Release</div>
-						<div>xenon-{Platform.PLATFORM}-{this.state.xenonLatestProductCard.version}</div>
-					</a>
+
+				<div className='footer'>
+					<div className='copyright'>Copyright &copy; 2019 Avereon</div>
+					<div className='tag-line'>Unique products for unique work</div>
 				</div>
 			</div>
 		);
