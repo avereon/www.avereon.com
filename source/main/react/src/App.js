@@ -56,9 +56,9 @@ export default class App extends React.Component {
 						<p>
 							Xenon is a simple application framework that provides common
 							services for product features. Product features are provided as
-							packages called mods that provide the functionality. Users are
-							encouraged to discover and utilize the mods that best suit their
-							needs.
+							packages, called mods, that provide the specific functionality.
+							Users are encouraged to discover and utilize the mods that best
+							suit their needs.
 						</p>
 
 						<h1>Download for {Platform.NAME}</h1>

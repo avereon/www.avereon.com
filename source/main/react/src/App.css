@@ -1,3 +1,9 @@
+@font-face {
+	font-family: sansation;
+	font-weight: normal;
+	src: url('font/sansation/Sansation-Regular.ttf');
+}
+
 .app {
 	background-color: #e0e0e0;
 	color: #505860;
@@ -10,6 +16,7 @@
 .header {
 	background-color: #505860;
 	color: #f0f0f0;
+	font-family: sansation, sans-serif;
 	padding: 0.4cm;
 	display: flex;
 	flex-direction: column;
@@ -119,12 +126,13 @@ a:hover {
 }
 
 .footer {
+	color: #d8d8d8;
+	font-size: 0.4cm;
+	font-family: sansation, sans-serif;
 	display: flex;
 	margin-top: auto;
 	padding: 0.2cm;
 	background-color: #505860;
-	color: #d8d8d8;
-	font-size: 0.4cm;
 }
 
 .copyright {
