@@ -14,7 +14,7 @@
 }
 
 .header {
-	background-color: #505860;
+	background-color: #2878a0;
 	color: #f0f0f0;
 	font-family: sansation, sans-serif;
 	padding: 0.4cm;
@@ -132,7 +132,7 @@ a:hover {
 	display: flex;
 	margin-top: auto;
 	padding: 0.2cm;
-	background-color: #505860;
+	background-color: #206080;
 }
 
 .copyright {
