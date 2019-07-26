@@ -49,9 +49,9 @@ typ url                                     dist   comp1  comp2
 --- --------------------------------------- ------ ------ --------
 avn http://download.avereon.com/market/xenon stable latest backport
 
-Distribution >aliases or release classes< are useful for connecting to a
+Distribution >aliases or release classes< are useful to connect to a
 distribution for a particular purpose. For example, the stable alias can point
-to a particular distribution today and me moved to a new one in the future.
+to a particular distribution today and be moved to a new one in the future.
 Distributions could be considered containers for releases which, in turn, are
 identified by specific version numbers. Distribution is similar if not the same
 concept as a channel (current working name in Avereon repos). One item to note
@@ -79,3 +79,14 @@ deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main
 deb https://deb.nodesource.com/node_11.x bionic main
 deb-src https://deb.nodesource.com/node_11.x bionic main
+
+# Decisions to Make
+
+At this point there are a couple of questions that are important to consider
+regarding the prior examples. Note that all of the examples above are http
+endpoints and not file endpoints. This brings up the question, should the file
+scheme be supported as a repository protocol? If so, it does present some
+restrictions on how paths and file names are represented. It also would cause
+some interesting logic questions to come up regarding artifact discovery. Are
+repository indexes/catalogs required or can an artifact be found by path alone?
+Will "available" packages only be determined by indexes/catalogs?
