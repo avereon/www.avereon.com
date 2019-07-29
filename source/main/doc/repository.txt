@@ -89,4 +89,26 @@ scheme be supported as a repository protocol? If so, it does present some
 restrictions on how paths and file names are represented. It also would cause
 some interesting logic questions to come up regarding artifact discovery. Are
 repository indexes/catalogs required or can an artifact be found by path alone?
-Will "available" packages only be determined by indexes/catalogs?
+Will "available" packages only be determined by indexes/catalogs? The DEB repos
+are practically databases with catalogs/indexes/references/etc to help navigate
+the large number of packages available. Also, it appears that repos can be
+stacked, meaning that they can be searched in order for packages, although I
+suppose any set of databases can be "stacked".
+
+
+deb http://mirrors.xmission.com/linuxmint tessa main upstream import backport
+turns into
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/main
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/upstream
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/import
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/backport
+under each are folders for the architecture and source
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/main/binary-amd64
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/main/binary-i386
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/main/source
+
+http://mirrors.xmission.com/linuxmint/[dists]/tessa/main/binary-amd64/Release
+which leads to
+http://mirrors.xmission.com/linuxmint/pool/main/c/cinnamon/cinnamon_2.6.13+rafaela.*
+just like a database...a file based database. How far do I go?
+
