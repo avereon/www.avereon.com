@@ -14,7 +14,8 @@
 }
 
 .header {
-	background-color: #2878a0;
+	/* Tint of #206080 */
+	background-color: #427893;
 	color: #f0f0f0;
 	font-family: sansation, sans-serif;
 	padding: 0.4cm;
@@ -128,7 +129,6 @@ a:hover {
 .footer {
 	color: #d8d8d8;
 	font-size: 0.4cm;
-	font-family: sansation, sans-serif;
 	display: flex;
 	margin-top: auto;
 	padding: 0.2cm;
@@ -137,6 +137,7 @@ a:hover {
 
 .copyright {
 	margin-right: auto;
+	font-family: sansation, sans-serif;
 }
 
 .tag-line {
