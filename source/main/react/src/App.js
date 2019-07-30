@@ -3,7 +3,7 @@ import './App.css';
 import {Platform} from "./Platform";
 
 const ROOT_URL = "https://www.avereon.com/download";
-const AVEREON_ICON_URL = ROOT_URL + "/latest/v2/avereon/product/icon";
+const AVEREON_ICON_URL = ROOT_URL + "/stable/v2/avereon/product/icon";
 const XENON_ICON_URL = ROOT_URL + "/latest/v2/xenon/product/icon";
 const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.KEY + "/product/card";
 const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.KEY + "/product/card";
