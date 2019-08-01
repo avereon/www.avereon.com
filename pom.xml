@@ -27,6 +27,13 @@
 		</repository>
 	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>avn</id>
+			<url>https://repo.avereon.com/avn</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<properties>
 		<images-folder>target/main/images</images-folder>
 	</properties>
