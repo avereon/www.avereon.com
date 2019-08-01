@@ -27,11 +27,27 @@
 		</repository>
 	</repositories>
 
+	<properties>
+		<images-folder>target/main/images</images-folder>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.avereon</groupId>
 			<artifactId>zevra</artifactId>
 			<version>0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.avereon</groupId>
+			<artifactId>xenon</artifactId>
+			<version>[0.9-SNAPSHOT,)</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-jdk14</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -102,6 +118,29 @@
 					<executable>true</executable>
 					<addResources>true</addResources>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.avereon</groupId>
+				<artifactId>cameo</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>render-images</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>render</goal>
+						</goals>
+						<configuration>
+							<images>
+								<image>
+									<class>com.avereon.www.images.WingDiscLargeIcon</class>
+									<target>${images-folder}/avereon.png</target>
+								</image>
+							</images>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>
