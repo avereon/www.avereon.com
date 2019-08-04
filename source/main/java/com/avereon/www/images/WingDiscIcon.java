@@ -91,7 +91,7 @@ public class WingDiscIcon extends ProgramIcon {
 		calculateNumbers();
 
 		double goA = -0.2;
-		double goB = 0.4;
+		double goB = 0.2;
 		double leftLeNormal = (zx - yx) / (yy - zy);
 		double leftLeX = 0.5 * (yx + zx);
 		double leftLeY = 0.5 * (yy + zy);
@@ -116,11 +116,14 @@ public class WingDiscIcon extends ProgramIcon {
 
 		Color wingColor1 = primaryHighlight;
 		Color wingColor2 = primary;
+		Stop colorStop0 = new Stop( 0, wingColor1 );
+		Stop colorStop1 = new Stop( 1, wingColor2 );
+
 		// Left wing
 		getGraphicsContext2D().save();
 		clip( 0, 0, 0.5, 1 );
 		arrow();
-		setFillPaint( linearPaint( leftGbX, leftGbY, leftGeX, leftGeY, new Stop( 0, wingColor2 ), new Stop( 1, wingColor1 ) ) );
+		setFillPaint( linearPaint( leftGbX, leftGbY, leftGeX, leftGeY, colorStop0, colorStop1 ) );
 		//setFillPaint( radialPaint( xx, g( 20 ), g( 20 ), new Stop( 0, wingColor1 ), new Stop( xy, wingColor2 ) ) );
 		fill();
 		getGraphicsContext2D().restore();
@@ -129,23 +132,13 @@ public class WingDiscIcon extends ProgramIcon {
 		getGraphicsContext2D().save();
 		clip( 0.5, 0, 1, 1 );
 		arrow();
-		setFillPaint( linearPaint( rightGbX, rightGbY, rightGeX, rightGeY, new Stop( 0, wingColor2 ), new Stop( 1, wingColor1 ) ) );
+		setFillPaint( linearPaint( rightGbX, rightGbY, rightGeX, rightGeY, colorStop0, colorStop1 ) );
 		fill();
 		getGraphicsContext2D().restore();
 
 		// Outline
 		arrow();
 		draw();
-
-		// Reference
-		//		setDrawPaint( Color.GREEN );
-		//		drawDot( leftLeX, leftLeY );
-		//		drawDot( rightLeX, rightLeY );
-		//		setDrawPaint( Color.YELLOW );
-		//		drawDot( leftGeX, leftGeY );
-		//		drawDot( rightGeX, rightGeY );
-		//drawLine( zx,zy, yx,yy );
-
 	}
 
 	private void arrow() {
