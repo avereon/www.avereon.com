@@ -23,7 +23,7 @@ import java.lang.invoke.MethodHandles;
  */
 @CrossOrigin
 @RestController
-@RequestMapping( value = { "/download/{channel}/v2", "/download/{channel}" } )
+@RequestMapping( value = { "/download/{channel}", "/download/{channel}/v2" } )
 public class V2DownloadController {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
