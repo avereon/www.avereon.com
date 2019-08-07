@@ -3,10 +3,10 @@ import './App.css';
 import {Platform} from "./Platform";
 
 const ROOT_URL = "https://www.avereon.com/download";
-const AVEREON_ICON_URL = ROOT_URL + "/stable/v2/avereon/product/icon";
-const XENON_ICON_URL = ROOT_URL + "/latest/v2/xenon/product/icon";
-const XENON_STABLE_URL = ROOT_URL + "/stable/v2/xenon/" + Platform.KEY + "/product/card";
-const XENON_LATEST_URL = ROOT_URL + "/latest/v2/xenon/" + Platform.KEY + "/product/card";
+const AVEREON_ICON_URL = ROOT_URL + "/stable/avereon/provider/icon";
+const XENON_ICON_URL = ROOT_URL + "/latest/xenon/product/icon";
+const XENON_STABLE_URL = ROOT_URL + "/stable/xenon/" + Platform.KEY + "/product/card";
+const XENON_LATEST_URL = ROOT_URL + "/latest/xenon/" + Platform.KEY + "/product/card";
 
 function productCard(url, success, failure) {
 	console.log("Request: " + url);
@@ -64,19 +64,19 @@ export default class App extends React.Component {
 						<h1>Download for {Platform.NAME}</h1>
 
 						<div>
-							<div className="download disabled" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.KEY + '/install/jar'}>
+							<div className="download disabled" href={'https://www.avereon.com/download/stable/xenon/' + Platform.KEY + '/install/jar'}>
 								<div className='title'>Stable Release</div>
 								<div>unavailable</div>
 							</div>
 
 							{/*
-							<a className="download stable" href={'https://www.avereon.com/download/stable/v2/xenon/' + Platform.KEY + '/install/jar'}>
+							<a className="download stable" href={'https://www.avereon.com/download/stable/xenon/' + Platform.KEY + '/install/jar'}>
 								<div className='title'>Stable Release</div>
 								<div>xenon-{Platform.KEY}-{this.state.xenonStableProductCard.version}</div>
 							</a>
 							*/}
 
-							<a className="download latest" href={'https://www.avereon.com/download/latest/v2/xenon/' + Platform.KEY + '/install/jar'}>
+							<a className="download latest" href={'https://www.avereon.com/download/latest/xenon/' + Platform.KEY + '/install/jar'}>
 								<div className='title'>Developer Build</div>
 								<div>xenon-{Platform.KEY}-{this.state.xenonLatestProductCard.version}</div>
 							</a>
