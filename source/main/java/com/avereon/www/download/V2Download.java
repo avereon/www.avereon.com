@@ -154,6 +154,8 @@ public class V2Download {
 		switch( format ) {
 			case "pack":
 				return "jar";
+			case "icon":
+				return "png";
 		}
 		return format;
 	}

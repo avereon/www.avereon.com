@@ -23,7 +23,7 @@ import java.lang.invoke.MethodHandles;
  */
 @CrossOrigin
 @RestController
-@RequestMapping( "/download/{channel}/v2" )
+@RequestMapping( value = { "/download/{channel}/v2", "/download/{channel}" } )
 public class V2DownloadController {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
@@ -44,19 +44,23 @@ public class V2DownloadController {
 
 	@RequestMapping( method = RequestMethod.HEAD, path = "/{artifact}/{asset}/{format}" )
 	public void getMetadata(
-			HttpServletResponse response, @PathVariable( "channel" ) String channel, @PathVariable( "artifact" ) String artifact, @PathVariable( "asset" ) String asset, @PathVariable( "format" ) String format
+		HttpServletResponse response,
+		@PathVariable( "channel" ) String channel,
+		@PathVariable( "artifact" ) String artifact,
+		@PathVariable( "asset" ) String asset,
+		@PathVariable( "format" ) String format
 	) throws IOException {
 		getMetadata( response, channel, artifact, null, asset, format );
 	}
 
 	@RequestMapping( method = RequestMethod.HEAD, path = "/{artifact}/{platform}/{asset}/{format}" )
 	public void getMetadata(
-			HttpServletResponse response,
-			@PathVariable( "channel" ) String channel,
-			@PathVariable( "artifact" ) String artifact,
-			@PathVariable( "platform" ) String platform,
-			@PathVariable( "asset" ) String asset,
-			@PathVariable( "format" ) String format
+		HttpServletResponse response,
+		@PathVariable( "channel" ) String channel,
+		@PathVariable( "artifact" ) String artifact,
+		@PathVariable( "platform" ) String platform,
+		@PathVariable( "asset" ) String asset,
+		@PathVariable( "format" ) String format
 	) throws IOException {
 		HttpStatus status = doGetArtifact( RequestMethod.HEAD, response, channel, artifact, platform, asset, format );
 		response.setStatus( status.value() );
@@ -64,19 +68,23 @@ public class V2DownloadController {
 
 	@GetMapping( path = "/{artifact}/{asset}/{format}" )
 	public void getArtifact(
-			HttpServletResponse response, @PathVariable( "channel" ) String channel, @PathVariable( "artifact" ) String artifact, @PathVariable( "asset" ) String asset, @PathVariable( "format" ) String format
+		HttpServletResponse response,
+		@PathVariable( "channel" ) String channel,
+		@PathVariable( "artifact" ) String artifact,
+		@PathVariable( "asset" ) String asset,
+		@PathVariable( "format" ) String format
 	) throws IOException {
 		getArtifact( response, channel, artifact, null, asset, format );
 	}
 
 	@GetMapping( path = "/{artifact}/{platform}/{asset}/{format}" )
 	public void getArtifact(
-			HttpServletResponse response,
-			@PathVariable( "channel" ) String channel,
-			@PathVariable( "artifact" ) String artifact,
-			@PathVariable( "platform" ) String platform,
-			@PathVariable( "asset" ) String asset,
-			@PathVariable( "format" ) String format
+		HttpServletResponse response,
+		@PathVariable( "channel" ) String channel,
+		@PathVariable( "artifact" ) String artifact,
+		@PathVariable( "platform" ) String platform,
+		@PathVariable( "asset" ) String asset,
+		@PathVariable( "format" ) String format
 	) throws IOException {
 		HttpStatus status = doGetArtifact( RequestMethod.GET, response, channel, artifact, platform, asset, format );
 		response.setStatus( status.value() );
@@ -97,7 +105,15 @@ public class V2DownloadController {
 		return HttpStatus.OK;
 	}
 
-	private HttpStatus doGetArtifact( RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format ) throws IOException {
+	private HttpStatus doGetArtifact(
+		RequestMethod method,
+		HttpServletResponse response,
+		String channel,
+		String artifact,
+		String platform,
+		String asset,
+		String format
+	) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
 		if( provider == null ) log.warn( "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
