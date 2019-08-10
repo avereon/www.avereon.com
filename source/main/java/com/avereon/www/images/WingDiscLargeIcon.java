@@ -21,7 +21,6 @@ public class WingDiscLargeIcon extends WingDiscIcon {
 	}
 
 	public static void main( String[] commands ) {
-		//save( new WingDiscLargeIcon(), new File( System.getProperty( "user.home"), "Downloads/avereon.png" ) );
 		proof( new WingDiscLargeIcon() );
 	}
 

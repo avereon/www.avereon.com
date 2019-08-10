@@ -64,7 +64,7 @@ public class WingDiscIcon extends ProgramIcon {
 	// White
 	private Color primaryHighlight = Color.web( "#FFFFFF" );
 	// Tint of #206080
-	private Color primary = Color.web( "#79A0B3" );
+	private Color primary = Color.web( "#206080" );
 
 	// Yellow 200
 	private Color secondaryHighlight = Color.web( "#FFF59D" );
@@ -90,8 +90,10 @@ public class WingDiscIcon extends ProgramIcon {
 	protected void render() {
 		calculateNumbers();
 
-		double goA = -0.2;
-		double goB = 0.2;
+		// Use these numbers to control the gradient across the wing
+		double goA = g( -8 );
+		double goB = g( 12 );
+
 		double leftLeNormal = (zx - yx) / (yy - zy);
 		double leftLeX = 0.5 * (yx + zx);
 		double leftLeY = 0.5 * (yy + zy);
@@ -114,8 +116,8 @@ public class WingDiscIcon extends ProgramIcon {
 		fillCenteredOval( vx, vy, DISC_RADIUS, DISC_RADIUS );
 		drawCenteredOval( vx, vy, DISC_RADIUS, DISC_RADIUS );
 
-		Color wingColor1 = primaryHighlight;
-		Color wingColor2 = primary;
+		Color wingColor1 = primary;
+		Color wingColor2 = primaryHighlight;
 		Stop colorStop0 = new Stop( 0, wingColor1 );
 		Stop colorStop1 = new Stop( 1, wingColor2 );
 
