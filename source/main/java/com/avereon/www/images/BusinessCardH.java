@@ -14,6 +14,7 @@ public class BusinessCardH extends BusinessCard {
 	protected void render() {
 		double scale = 0.6;
 		double offset = scale * 0.1;
+		double aspectRatio = (double)LONG / (double)SHORT;
 		move( offset, 1.5 * offset );
 		zoom( scale, scale );
 		draw( new WingDiscLargeIcon() );
@@ -24,10 +25,11 @@ public class BusinessCardH extends BusinessCard {
 		setTextAlign( TextAlignment.CENTER );
 		fillText( "Avereon", 0.5 * scale + offset, 0.85, 0.15 );
 
+		double fontHeight = 0.12;
+		double vAnchor = offset + fontHeight;
 		setFont( deriveFont( FONT, "Sans Serif" ) );
 		setTextAlign( TextAlignment.LEFT );
-		double vAnchor = 0.45;
-		fillText( "Mark Soderquist", 0.7, vAnchor, 0.12 );
+		fillText( "Mark Soderquist", 0.7, vAnchor, fontHeight, (aspectRatio - 0.7 - offset) );
 		fillText( "mark@avereon.com", 0.7, vAnchor + 0.1, 0.08 );
 	}
 
