@@ -85,8 +85,8 @@ export default class App extends React.Component {
 				</div>
 
 				<div className='footer'>
-					<div className='copyright'>Copyright &copy; 2019 Avereon</div>
 					<div className='tag-line'>Unique products for unique work</div>
+					<div className='copyright'>&copy; 2019 Avereon</div>
 				</div>
 			</div>
 		);

@@ -136,10 +136,10 @@ a:hover {
 }
 
 .copyright {
-	margin-right: auto;
+	margin-left: auto;
 	font-family: sansation, sans-serif;
 }
 
 .tag-line {
-	margin-left: auto;
+	margin-right: auto;
 }

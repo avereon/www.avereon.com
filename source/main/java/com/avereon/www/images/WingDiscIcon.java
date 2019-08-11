@@ -62,9 +62,9 @@ public class WingDiscIcon extends ProgramIcon {
 	private double rightArcSpanAngleDeg;
 
 	// White
-	private Color primaryHighlight = Color.web( "#FFFFFF" );
+	private Color primaryHighlight = Color.web( "#ffffff" );
 	// Tint of #206080
-	private Color primary = Color.web( "#206080" );
+	private Color primary = Color.web( "#90b0c0" );
 
 	// Yellow 200
 	private Color secondaryHighlight = Color.web( "#FFF59D" );
@@ -91,22 +91,21 @@ public class WingDiscIcon extends ProgramIcon {
 		calculateNumbers();
 
 		// Use these numbers to control the gradient across the wing
-		double goA = g( -8 );
 		double goB = g( 12 );
 
 		double leftLeNormal = (zx - yx) / (yy - zy);
 		double leftLeX = 0.5 * (yx + zx);
 		double leftLeY = 0.5 * (yy + zy);
-		double leftGbX = leftLeX + goA;
-		double leftGbY = leftLeY + goA * leftLeNormal;
+		double leftGbX = leftLeX - POINT_RADIUS;
+		double leftGbY = leftLeY - POINT_RADIUS * leftLeNormal;
 		double leftGeX = leftLeX + goB;
 		double leftGeY = leftLeY + goB * leftLeNormal;
 
 		double rightLeNormal = (wx - zx) / (wy - zy);
 		double rightLeX = 0.5 * (wx + zx);
 		double rightLeY = 0.5 * (wy + zy);
-		double rightGbX = rightLeX - goA;
-		double rightGbY = rightLeY + goA * rightLeNormal;
+		double rightGbX = rightLeX + POINT_RADIUS;
+		double rightGbY = rightLeY - POINT_RADIUS * rightLeNormal;
 		double rightGeX = rightLeX - goB;
 		double rightGeY = rightLeY + goB * rightLeNormal;
 

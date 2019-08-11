@@ -29,7 +29,7 @@
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>avn</id>
+			<id>avn-plugin</id>
 			<url>https://repo.avereon.com/avn</url>
 		</pluginRepository>
 	</pluginRepositories>
@@ -138,34 +138,34 @@
 						<goals>
 							<goal>render</goal>
 						</goals>
-						<configuration>
-							<images>
-								<image>
-									<class>com.avereon.www.images.WingDiscLargeIcon</class>
-									<target>${images-folder}/avereon.png</target>
-								</image>
-								<image>
-									<class>com.avereon.www.images.WingDiscLargeIcon</class>
-									<target>${images-folder}/avereon-avatar.png</target>
-									<offsetX>64</offsetX>
-									<offsetY>64</offsetY>
-									<imageWidth>384</imageWidth>
-									<imageHeight>384</imageHeight>
-								</image>
-								<image>
-									<class>com.avereon.www.images.WingDiscLargeIcon</class>
-									<target>${images-folder}/avereon-avatar-circle.png</target>
-									<!-- center the icon in the image -->
-									<offsetX>64</offsetX>
-									<!-- just a little above center for circle avatars -->
-									<offsetY>40</offsetY>
-									<imageWidth>384</imageWidth>
-									<imageHeight>384</imageHeight>
-								</image>
-							</images>
-						</configuration>
 					</execution>
 				</executions>
+				<configuration>
+					<images>
+						<image>
+							<class>com.avereon.www.images.WingDiscLargeIcon</class>
+							<target>${images-folder}/avereon.png</target>
+						</image>
+						<image>
+							<class>com.avereon.www.images.WingDiscLargeIcon</class>
+							<target>${images-folder}/avereon-avatar.png</target>
+							<offsetX>64</offsetX>
+							<offsetY>64</offsetY>
+							<imageWidth>384</imageWidth>
+							<imageHeight>384</imageHeight>
+						</image>
+						<image>
+							<class>com.avereon.www.images.WingDiscLargeIcon</class>
+							<target>${images-folder}/avereon-avatar-circle.png</target>
+							<!-- center the icon in the image -->
+							<offsetX>64</offsetX>
+							<!-- just a little above center for circle avatars -->
+							<offsetY>40</offsetY>
+							<imageWidth>384</imageWidth>
+							<imageHeight>384</imageHeight>
+						</image>
+					</images>
+				</configuration>
 			</plugin>
 
 		</plugins>
