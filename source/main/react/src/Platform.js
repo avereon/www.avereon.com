@@ -4,19 +4,24 @@ export class Platform {
 
 	static NAME = 'Unknown';
 
+	static ICON = '';
+
 	static LINUX = {
 		KEY: 'linux',
-		NAME: 'Linux'
+		NAME: 'Linux',
+		ICON: 'linux',
 	};
 
 	static MAC = {
 		KEY: 'macosx',
-		NAME: 'Mac OS'
+		NAME: 'Mac OS',
+		ICON: 'apple',
 	};
 
 	static WINDOWS = {
 		KEY: 'windows',
-		NAME: 'Windows'
+		NAME: 'Windows',
+		ICON: 'windows',
 	}
 
 }

@@ -42,18 +42,29 @@ export default class App extends React.Component {
 		})
 	}
 
-	createChicklet( type, category, title, artifact, version, platform ) {
+	createChicklet(type, category, title, artifact, version, platform) {
 		let style = "download " + type;
-		const icon = type === "primary" ? <FontAwesomeIcon icon='download'/> : '';
+		const platformSize = type === "primary" ? '3x' : '2x';
+		const platformIcon = type === "primary" ? 'download' : ['fab', platform.ICON];
 		if (version === undefined) {
 			return <div className={style + " disabled"}>
-				<div className='title'>{icon} {title}</div>
-				<div>unavailable</div>
+				<div className='download-layout'>
+					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
+					<div className='download-metadata'>
+						<div className='title'>{title}</div>
+						<div>unavailable</div>
+					</div>
+				</div>
 			</div>
 		} else {
-			return <a className={style + " " + category} href={'https://www.avereon.com/download/' + category +'/' + artifact + '/' + platform + '/install/jar'}>
-				<div className='title'>{icon} {title}</div>
-				<div>{version}</div>
+			return <a className={style + " " + category} href={'https://www.avereon.com/download/' + category + '/' + artifact + '/' + platform.KEY + '/install/jar'}>
+				<div className='download-layout'>
+					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
+					<div className='download-metadata'>
+						<div className='title'>{title}</div>
+						<div>{version}</div>
+					</div>
+				</div>
 			</a>
 		}
 	}
@@ -62,49 +73,51 @@ export default class App extends React.Component {
 		const stableProduct = this.state.xenonStableProductCard;
 		const latestProduct = this.state.xenonLatestProductCard;
 
-		let stableDownload = this.createChicklet("primary", "stable", "Download for " + Platform.NAME, stableProduct.artifact, stableProduct.version, Platform.KEY);
-		let latestDownload = this.createChicklet("secondary", "latest", "Dev for " + Platform.NAME, latestProduct.artifact, latestProduct.version, Platform.KEY);
+		let stableDownload = this.createChicklet("primary", "stable", "Download for " + Platform.NAME, stableProduct.artifact, stableProduct.version, Platform);
 
-		let stableDownloads = <div>
-			{this.createChicklet("secondary", "stable", "Download for " + Platform.LINUX.NAME, stableProduct.artifact, stableProduct.version, Platform.LINUX.KEY)}
-			{this.createChicklet("secondary", "stable", "Download for " + Platform.MAC.NAME, stableProduct.artifact, stableProduct.version, Platform.MAC.KEY)}
-			{this.createChicklet("secondary", "stable", "Download for " + Platform.WINDOWS.NAME, stableProduct.artifact, stableProduct.version, Platform.WINDOWS.KEY)}
+		let stableDownloads = <div className='download-row'>
+			{this.createChicklet("secondary", "stable", stableProduct.name, stableProduct.artifact, stableProduct.version, Platform.LINUX)}
+			{this.createChicklet("secondary", "stable", stableProduct.name, stableProduct.artifact, stableProduct.version, Platform.MAC)}
+			{this.createChicklet("secondary", "stable", stableProduct.name, stableProduct.artifact, stableProduct.version, Platform.WINDOWS)}
 		</div>;
 
-		let latestDownloads = <div>
-			{this.createChicklet("secondary", "latest", "Dev for " + Platform.LINUX.NAME, latestProduct.artifact, latestProduct.version, Platform.LINUX.KEY)}
-			{this.createChicklet("secondary", "latest", "Dev for " + Platform.MAC.NAME, latestProduct.artifact, latestProduct.version, Platform.MAC.KEY)}
-			{this.createChicklet("secondary", "latest", "Dev for " + Platform.WINDOWS.NAME, latestProduct.artifact, latestProduct.version, Platform.WINDOWS.KEY)}
+		let latestDownloads = <div className='download-row'>
+			{this.createChicklet("secondary", "latest", latestProduct.name + " Dev", latestProduct.artifact, latestProduct.version, Platform.LINUX)}
+			{this.createChicklet("secondary", "latest", latestProduct.name + " Dev", latestProduct.artifact, latestProduct.version, Platform.MAC)}
+			{this.createChicklet("secondary", "latest", latestProduct.name + " Dev", latestProduct.artifact, latestProduct.version, Platform.WINDOWS)}
 		</div>;
 
 		return (
 			<div className='app'>
 
 				<div className='header'>
-					<div className='header-row'>
-						<img className='header-logo' alt="" src={AVEREON_ICON_URL}/>
-						<div className='header-name'>Avereon</div>
-					</div>
+					<img className='logo' alt="" src={AVEREON_ICON_URL}/>
+					<div className='title'>Avereon</div>
 				</div>
 
-				<div className='product'>
-					<div className='product space'>
-						<div className='product row'>
-							<img className="product icon" alt="" src={XENON_ICON_URL}/>
-							<div className='product title'>Xenon</div>
+				<div className='content'>
+					<div className='product'>
+
+						<div className='product-header'>
+							<img className="product-icon" alt="" src={XENON_ICON_URL}/>
+							<div className='product-title'>Xenon</div>
 						</div>
 
-						<p>
+						<div className='product-content'>
 							Xenon is a simple application framework that provides common
 							services for product features. Product features are provided as
 							packages, called mods, that provide the specific functionality.
 							Users are encouraged to discover and utilize the mods that best
 							suit their needs.
-						</p>
+						</div>
 
 						{stableDownload}
+
+						<h2>Other Platforms</h2>
 						{stableDownloads}
+						<h2>Development Builds</h2>
 						{latestDownloads}
+
 					</div>
 				</div>
 
