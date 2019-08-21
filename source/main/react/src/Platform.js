@@ -4,18 +4,33 @@ export class Platform {
 
 	static NAME = 'Unknown';
 
+	static LINUX = {
+		KEY: 'linux',
+		NAME: 'Linux'
+	};
+
+	static MAC = {
+		KEY: 'macosx',
+		NAME: 'Mac OS'
+	};
+
+	static WINDOWS = {
+		KEY: 'windows',
+		NAME: 'Windows'
+	}
+
 }
 
 console.log(window.navigator);
 
 let platform = window.navigator.platform.toLocaleLowerCase();
 if (platform.startsWith('linux')) {
-	Platform.KEY = 'linux';
-	Platform.NAME = 'Linux';
+	Platform.KEY = Platform.LINUX.KEY;
+	Platform.NAME = Platform.LINUX.NAME;
 } else if (platform.startsWith('win')) {
-	Platform.KEY = 'windows';
-	Platform.NAME = 'Windows';
+	Platform.KEY = Platform.WINDOWS.KEY;
+	Platform.NAME = Platform.WINDOWS.NAME;
 } else if (platform.startsWith('mac')) {
-	Platform.KEY = 'macosx';
-	Platform.NAME = 'Mac OS'
+	Platform.KEY = Platform.MAC.KEY;
+	Platform.NAME = Platform.MAC.NAME;
 }

@@ -1,6 +1,10 @@
 import React from 'react';
 import './App.css';
 import {Platform} from "./Platform";
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons'
+import {fab} from '@fortawesome/free-brands-svg-icons'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const ROOT_URL = "https://www.avereon.com/download";
 const AVEREON_ICON_URL = ROOT_URL + "/stable/avereon/provider/icon";
@@ -8,11 +12,14 @@ const XENON_ICON_URL = ROOT_URL + "/latest/xenon/product/icon";
 const XENON_STABLE_URL = ROOT_URL + "/stable/xenon/" + Platform.KEY + "/product/card";
 const XENON_LATEST_URL = ROOT_URL + "/latest/xenon/" + Platform.KEY + "/product/card";
 
+library.add(fas, fab);
+
 function productCard(url, success, failure) {
 	console.log("Request: " + url);
 	return fetch(url)
 		.then((response) => response.status === 200 ? response.json() : {})
 		.then((card) => success(card))
+		.catch(failure)
 }
 
 export default class App extends React.Component {
@@ -35,7 +42,41 @@ export default class App extends React.Component {
 		})
 	}
 
+	createChicklet( type, category, title, artifact, version, platform ) {
+		let style = "download " + type;
+		const icon = type === "primary" ? <FontAwesomeIcon icon='download'/> : '';
+		if (version === undefined) {
+			return <div className={style + " disabled"}>
+				<div className='title'>{icon} {title}</div>
+				<div>unavailable</div>
+			</div>
+		} else {
+			return <a className={style + " " + category} href={'https://www.avereon.com/download/' + category +'/' + artifact + '/' + platform + '/install/jar'}>
+				<div className='title'>{icon} {title}</div>
+				<div>{version}</div>
+			</a>
+		}
+	}
+
 	render() {
+		const stableProduct = this.state.xenonStableProductCard;
+		const latestProduct = this.state.xenonLatestProductCard;
+
+		let stableDownload = this.createChicklet("primary", "stable", "Download for " + Platform.NAME, stableProduct.artifact, stableProduct.version, Platform.KEY);
+		let latestDownload = this.createChicklet("secondary", "latest", "Dev for " + Platform.NAME, latestProduct.artifact, latestProduct.version, Platform.KEY);
+
+		let stableDownloads = <div>
+			{this.createChicklet("secondary", "stable", "Download for " + Platform.LINUX.NAME, stableProduct.artifact, stableProduct.version, Platform.LINUX.KEY)}
+			{this.createChicklet("secondary", "stable", "Download for " + Platform.MAC.NAME, stableProduct.artifact, stableProduct.version, Platform.MAC.KEY)}
+			{this.createChicklet("secondary", "stable", "Download for " + Platform.WINDOWS.NAME, stableProduct.artifact, stableProduct.version, Platform.WINDOWS.KEY)}
+		</div>;
+
+		let latestDownloads = <div>
+			{this.createChicklet("secondary", "latest", "Dev for " + Platform.LINUX.NAME, latestProduct.artifact, latestProduct.version, Platform.LINUX.KEY)}
+			{this.createChicklet("secondary", "latest", "Dev for " + Platform.MAC.NAME, latestProduct.artifact, latestProduct.version, Platform.MAC.KEY)}
+			{this.createChicklet("secondary", "latest", "Dev for " + Platform.WINDOWS.NAME, latestProduct.artifact, latestProduct.version, Platform.WINDOWS.KEY)}
+		</div>;
+
 		return (
 			<div className='app'>
 
@@ -61,26 +102,9 @@ export default class App extends React.Component {
 							suit their needs.
 						</p>
 
-						<h1>Download for {Platform.NAME}</h1>
-
-						<div>
-							<div className="download disabled" href={'https://www.avereon.com/download/stable/xenon/' + Platform.KEY + '/install/jar'}>
-								<div className='title'>Stable Release</div>
-								<div>unavailable</div>
-							</div>
-
-							{/*
-							<a className="download stable" href={'https://www.avereon.com/download/stable/xenon/' + Platform.KEY + '/install/jar'}>
-								<div className='title'>Stable Release</div>
-								<div>xenon-{Platform.KEY}-{this.state.xenonStableProductCard.version}</div>
-							</a>
-							*/}
-
-							<a className="download latest" href={'https://www.avereon.com/download/latest/xenon/' + Platform.KEY + '/install/jar'}>
-								<div className='title'>Developer Build</div>
-								<div>xenon-{Platform.KEY}-{this.state.xenonLatestProductCard.version}</div>
-							</a>
-						</div>
+						{stableDownload}
+						{stableDownloads}
+						{latestDownloads}
 					</div>
 				</div>
 
