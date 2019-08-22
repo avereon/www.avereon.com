@@ -25,12 +25,8 @@ function productCard(url, success, failure) {
 export default class App extends React.Component {
 
 	state = {
-		xenonStableProductCard: {
-			version: 'stable'
-		},
-		xenonLatestProductCard: {
-			version: 'latest'
-		}
+		xenonStableProductCard: {},
+		xenonLatestProductCard: {}
 	};
 
 	componentDidMount() {
@@ -73,18 +69,18 @@ export default class App extends React.Component {
 		const stableProduct = this.state.xenonStableProductCard;
 		const latestProduct = this.state.xenonLatestProductCard;
 
-		let stableDownload = this.createChicklet("primary", "stable", "Download for " + Platform.NAME, stableProduct.artifact, stableProduct.version, Platform);
+		let stableDownload = this.createChicklet("primary", "stable", "Xenon for " + Platform.NAME, stableProduct.artifact, stableProduct.version, Platform);
 
 		let stableDownloads = <div className='download-row'>
-			{this.createChicklet("secondary", "stable", stableProduct.name, stableProduct.artifact, stableProduct.version, Platform.LINUX)}
-			{this.createChicklet("secondary", "stable", stableProduct.name, stableProduct.artifact, stableProduct.version, Platform.MAC)}
-			{this.createChicklet("secondary", "stable", stableProduct.name, stableProduct.artifact, stableProduct.version, Platform.WINDOWS)}
+			{this.createChicklet("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.LINUX)}
+			{this.createChicklet("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.MAC)}
+			{this.createChicklet("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.WINDOWS)}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{this.createChicklet("secondary", "latest", latestProduct.name + " Dev", latestProduct.artifact, latestProduct.version, Platform.LINUX)}
-			{this.createChicklet("secondary", "latest", latestProduct.name + " Dev", latestProduct.artifact, latestProduct.version, Platform.MAC)}
-			{this.createChicklet("secondary", "latest", latestProduct.name + " Dev", latestProduct.artifact, latestProduct.version, Platform.WINDOWS)}
+			{this.createChicklet("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.LINUX)}
+			{this.createChicklet("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.MAC)}
+			{this.createChicklet("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.WINDOWS)}
 		</div>;
 
 		return (
@@ -118,6 +114,16 @@ export default class App extends React.Component {
 						<h2>Development Builds</h2>
 						{latestDownloads}
 
+						<div className='resource-row'>
+							<a href='https://github.com/avereon/xenon' className='resource-tile'>
+								<FontAwesomeIcon icon={['fab', 'github']} size='4x'/>
+								<span>GitHub</span>
+							</a>
+							<a href='https://travis-ci.org/avereon/xenon' className='resource-tile'>
+								<img alt='' style={{width: '4em', height: '4em'}} src='https://cdn.travis-ci.org/favicon-b4e438ec85b9ae88d26b49538bc4e5ce.png'/>
+								<span>Travis-CI</span>
+							</a>
+						</div>
 					</div>
 				</div>
 
