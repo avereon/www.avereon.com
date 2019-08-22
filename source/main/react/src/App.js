@@ -38,7 +38,7 @@ export default class App extends React.Component {
 		})
 	}
 
-	createChicklet(type, category, title, artifact, version, platform) {
+	static createDownloadTile(type, category, product, artifact, version, platform) {
 		let style = "download " + type;
 		const platformSize = type === "primary" ? '3x' : '2x';
 		const platformIcon = type === "primary" ? 'download' : ['fab', platform.ICON];
@@ -47,7 +47,7 @@ export default class App extends React.Component {
 				<div className='download-layout'>
 					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
 					<div className='download-metadata'>
-						<div className='title'>{title}</div>
+						<div className='title'>{product} for {platform.NAME}</div>
 						<div>unavailable</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@ export default class App extends React.Component {
 				<div className='download-layout'>
 					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
 					<div className='download-metadata'>
-						<div className='title'>{title}</div>
+						<div className='title'>{product} for {platform.NAME}</div>
 						<div>{version}</div>
 					</div>
 				</div>
@@ -69,18 +69,18 @@ export default class App extends React.Component {
 		const stableProduct = this.state.xenonStableProductCard;
 		const latestProduct = this.state.xenonLatestProductCard;
 
-		let stableDownload = this.createChicklet("primary", "stable", "Xenon for " + Platform.NAME, stableProduct.artifact, stableProduct.version, Platform);
+		let stableDownload = App.createDownloadTile("primary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform);
 
 		let stableDownloads = <div className='download-row'>
-			{this.createChicklet("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.LINUX)}
-			{this.createChicklet("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.MAC)}
-			{this.createChicklet("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.WINDOWS)}
+			{App.createDownloadTile("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.LINUX)}
+			{App.createDownloadTile("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.MAC)}
+			{App.createDownloadTile("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.WINDOWS)}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{this.createChicklet("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.LINUX)}
-			{this.createChicklet("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.MAC)}
-			{this.createChicklet("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.WINDOWS)}
+			{App.createDownloadTile("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.LINUX)}
+			{App.createDownloadTile("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.MAC)}
+			{App.createDownloadTile("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.WINDOWS)}
 		</div>;
 
 		return (
