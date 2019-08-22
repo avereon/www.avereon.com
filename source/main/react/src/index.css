@@ -1,14 +1,79 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "DejaVu Sans", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+	"DejaVu Sans", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+	sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+
+@font-face {
+	font-family: sansation;
+	font-weight: normal;
+	src: url('font/sansation/Sansation-Regular.ttf');
+}
+
+.app {
+	background-color: #e0e0e0;
+	color: #505860;
+	min-height: 100vh;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+
+.header {
+	/* Tint of #206080 */
+	background-color: #427893;
+	color: #f0f0f0;
+	padding: 1mm;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: left;
+	align-items: center;
+}
+
+.logo {
+	width: 32px;
+	height: 32px;
+	margin: 0 1mm 0 0;
+}
+
+.title {
+	font-family: sansation, sans-serif;
+	font-size: 8mm;
+}
+
+.content {
+	/* flex child constraints */
+	flex: 1 1 auto;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.footer {
+	color: #d8d8d8;
+	background-color: #427893;
+	font-size: 0.4cm;
+	padding: 0.2cm;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tag-line {
+}
+
+.copyright {
 }
