@@ -36,13 +36,19 @@ code {
 	padding: 1mm 10mm;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: baseline;
 }
 
 .banner {
+	background-color: orange;
 	font-family: sansation, sans-serif;
-	font-size: 10mm;
+	font-size: 2em;
+
+	display: inline-flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
 }
 
 .logo {
@@ -60,6 +66,7 @@ a:hover.banner {
 }
 
 .menu {
+	background-color: orange;
 	margin: 0 0 0 0mm;
 	vertical-align: baseline;
 }
