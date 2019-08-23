@@ -113,11 +113,11 @@ export default class Xenon extends React.Component {
 						{latestDownloads}
 
 						<div className='resource-row'>
-							<a href='https://github.com/avereon/xenon' className='resource-tile'>
+							<a href='https://github.com/avereon/xenon' className='resource-tile' target="_blank">
 								<FontAwesomeIcon icon={['fab', 'github']} size='4x'/>
 								<span>GitHub</span>
 							</a>
-							<a href='https://travis-ci.org/avereon/xenon' className='resource-tile'>
+							<a href='https://travis-ci.org/avereon/xenon' className='resource-tile' target="_blank">
 								<img alt='' style={{width: '4em', height: '4em'}} src='https://cdn.travis-ci.org/favicon-b4e438ec85b9ae88d26b49538bc4e5ce.png'/>
 								<span>Travis-CI</span>
 							</a>
