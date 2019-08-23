@@ -7,7 +7,7 @@ export default class Home extends React.Component {
 	render() {
 		return (
 			<div className='app'>
-				<Header/>
+				<Header size='large'/>
 				<div className='content'>
 					<h1 className='title'>Avereon</h1>
 				</div>

@@ -33,22 +33,48 @@ code {
 	/* Tint of #206080 */
 	background-color: #427893;
 	color: #f0f0f0;
-	padding: 1mm;
+	padding: 1mm 10mm;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: left;
-	align-items: center;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.banner {
+	font-family: sansation, sans-serif;
+	font-size: 10mm;
 }
 
 .logo {
 	width: 32px;
 	height: 32px;
-	margin: 0 1mm 0 0;
+	vertical-align: middle;
 }
 
-.title {
-	font-family: sansation, sans-serif;
-	font-size: 8mm;
+a.banner {
+	color: #f0f0f0;
+}
+
+a:hover.banner {
+	color: #f0f0f0;
+}
+
+.menu {
+	margin: 0 0 0 0mm;
+	vertical-align: baseline;
+}
+
+.menuitem {
+	font-size: 6mm;
+	margin: 0 2mm;
+}
+
+a.menuitem {
+	color: #f0f0f0a0;
+}
+
+a:hover.menuitem {
+	color: #f0f0f0;
 }
 
 .content {
@@ -61,11 +87,16 @@ code {
 	align-items: center;
 }
 
+.title {
+	padding: 0 0 0 2mm;
+	font-size: 10mm;
+}
+
 .footer {
 	color: #d8d8d8;
 	background-color: #427893;
 	font-size: 0.4cm;
-	padding: 0.2cm;
+	padding: 2mm 10mm;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
