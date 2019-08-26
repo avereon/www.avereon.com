@@ -36,12 +36,11 @@ code {
 	padding: 1mm 10mm;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: center;
+	justify-content: left;
 	align-items: baseline;
 }
 
 .banner {
-	background-color: orange;
 	font-family: sansation, sans-serif;
 	font-size: 2em;
 
@@ -54,6 +53,7 @@ code {
 .logo {
 	width: 32px;
 	height: 32px;
+	margin: 0 8px 0 0;
 	vertical-align: middle;
 }
 
