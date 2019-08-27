@@ -10,8 +10,6 @@ import './product.css';
 
 const ROOT_URL = "https://www.avereon.com/download";
 const XENON_ICON_URL = ROOT_URL + "/latest/xenon/product/icon";
-const XENON_STABLE_URL = ROOT_URL + "/stable/xenon/" + Platform.KEY + "/product/card";
-const XENON_LATEST_URL = ROOT_URL + "/latest/xenon/" + Platform.KEY + "/product/card";
 
 library.add(fas, fab);
 
