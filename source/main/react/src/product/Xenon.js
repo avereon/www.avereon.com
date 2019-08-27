@@ -15,7 +15,7 @@ const XENON_LATEST_URL = ROOT_URL + "/latest/xenon/" + Platform.KEY + "/product/
 
 library.add(fas, fab);
 
-function productCard(url, success, failure) {
+function productCardFromUrl(url, success, failure) {
 	console.log("Request: " + url);
 	return fetch(url)
 		.then((response) => response.status === 200 ? response.json() : {})
@@ -23,23 +23,57 @@ function productCard(url, success, failure) {
 		.catch(failure)
 }
 
+function productCard(release, platform, success, failure) {
+	const url = ROOT_URL + "/" + release + "/xenon/" + platform + "/product/card";
+	return productCardFromUrl(url, success, failure);
+}
+
 export default class Xenon extends React.Component {
 
 	state = {
-		xenonStableProductCard: {},
-		xenonLatestProductCard: {}
+		stable: {
+			linux: {},
+			macosx: {},
+			windows: {}
+		},
+		latest: {
+			linux: {},
+			macosx: {},
+			windows: {}
+		}
 	};
 
 	componentDidMount() {
-		productCard(XENON_STABLE_URL, (card) => {
-			this.setState({xenonStableProductCard: {...card}});
+		productCard("stable", "linux", (card) => {
+			console.log("card=" + JSON.stringify(card));
+			this.setState({stable: {...this.state.stable, linux: {...card}}});
 		});
-		productCard(XENON_LATEST_URL, (card) => {
-			this.setState({xenonLatestProductCard: {...card}});
-		})
+		productCard("stable", "macosx", (card) => {
+			console.log("card=" + JSON.stringify(card));
+			this.setState({stable: {...this.state.stable, macosx: {...card}}});
+		});
+		productCard("stable", "windows", (card) => {
+			console.log("card=" + JSON.stringify(card));
+			this.setState({stable: {...this.state.stable, windows: {...card}}});
+		});
+		productCard("latest", "linux", (card) => {
+			console.log("card=" + JSON.stringify(card));
+			this.setState({latest: {...this.state.latest, linux: {...card}}});
+		});
+		productCard("latest", "macosx", (card) => {
+			console.log("card=" + JSON.stringify(card));
+			this.setState({latest: {...this.state.latest, macosx: {...card}}});
+		});
+		productCard("latest", "windows", (card) => {
+			console.log("card=" + JSON.stringify(card));
+			this.setState({latest: {...this.state.latest, windows: {...card}}});
+		});
 	}
 
-	static createDownloadTile(type, category, product, artifact, version, platform) {
+	static createDownloadTile(type, category, product, platform, card) {
+		const artifact = card.artifact;
+		const version = card.version;
+
 		let style = "download " + type;
 		const platformSize = type === "primary" ? '3x' : '2x';
 		const platformIcon = type === "primary" ? 'download' : ['fab', platform.ICON];
@@ -67,21 +101,18 @@ export default class Xenon extends React.Component {
 	}
 
 	render() {
-		const stableProduct = this.state.xenonStableProductCard;
-		const latestProduct = this.state.xenonLatestProductCard;
-
-		let stableDownload = Xenon.createDownloadTile("primary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform);
+		let stableDownload = Xenon.createDownloadTile("primary", "stable", "Xenon",Platform, this.state.stable[Platform.KEY]);
 
 		let stableDownloads = <div className='download-row'>
-			{Xenon.createDownloadTile("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.LINUX)}
-			{Xenon.createDownloadTile("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.MAC)}
-			{Xenon.createDownloadTile("secondary", "stable", "Xenon", stableProduct.artifact, stableProduct.version, Platform.WINDOWS)}
+			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}
+			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.MAC, this.state.stable[Platform.MAC.KEY])}
+			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.WINDOWS, this.state.stable[Platform.WINDOWS.KEY])}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{Xenon.createDownloadTile("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.LINUX)}
-			{Xenon.createDownloadTile("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.MAC)}
-			{Xenon.createDownloadTile("secondary", "latest", "Xenon", latestProduct.artifact, latestProduct.version, Platform.WINDOWS)}
+			{Xenon.createDownloadTile("secondary", "latest", "Xenon", Platform.LINUX, this.state.latest[Platform.LINUX.KEY])}
+			{Xenon.createDownloadTile("secondary", "latest", "Xenon", Platform.MAC, this.state.latest[Platform.MAC.KEY])}
+			{Xenon.createDownloadTile("secondary", "latest", "Xenon", Platform.WINDOWS, this.state.latest[Platform.WINDOWS.KEY])}
 		</div>;
 
 		return (
