@@ -15,5 +15,6 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: |
-        export DISPLAY=:99 && Xvfb $DISPLAY &
+        export DISPLAY=:99
+        Xvfb $DISPLAY &
         mvn package -B -U -V --settings .github/settings.xml --file pom.xml
