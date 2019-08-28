@@ -15,4 +15,4 @@ echo 'avereon.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdH
 
 ls -al ${HOME}/.ssh
 echo 'test' > test.txt
-scp -B test.txt travis@avereon.com:test.txt
+scp -vv -B test.txt travis@avereon.com:test.txt
