@@ -14,11 +14,9 @@ jobs:
       with:
         java-version: 11
     - name: Build
-      env:
-        AVN_REPO_USERNAME: ${{ secrets.AVN_REPO_USERNAME }}
-        DISPLAY: ":99"
       run: .github/build.sh
     - name: Deploy
       env:
         TRAVIS_SSH_KEY: ${{ secrets.TRAVIS_SSH_KEY }}
+        TRAVIS_SSH_PUB: ${{ secrets.TRAVIS_SSH_PUB }}
       run: .github/deploy.sh
