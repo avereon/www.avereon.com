@@ -5,8 +5,8 @@
 
 mkdir ${HOME}/.ssh
 #chmod 600 ${HOME}/.ssh
-echo "${TRAVIS_SSH_KEY}" > ${HOME}/.ssh/rsa_id
-echo "${TRAVIS_SSH_PUB}" > ${HOME}/.ssh/rsa_id.pub
+echo "${TRAVIS_SSH_KEY}" > ${HOME}/.ssh/id_rsa
+echo "${TRAVIS_SSH_PUB}" > ${HOME}/.ssh/id_rsa.pub
 echo 'avereon.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBAX0k5tSvrXVpKl7HNPIPglp6Kyj0Ypty6M3hgR783ViTzhRnojEZvdCXuYiGSVKEzZWr9oYQnLr03qjU/t0SNw=' >> ${HOME}/.ssh/known_hosts
 #chmod 600 ${HOME}/.ssh/*
 
