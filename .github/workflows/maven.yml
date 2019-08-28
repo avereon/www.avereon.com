@@ -18,6 +18,6 @@ jobs:
         AVN_MAVEN_USERNAME: ${{ secrets.AVN_REPO_USERNAME }}
         DISPLAY: ":99"
       run: |
-        echo "Maven user: ${AVN_REPO_USERNAME}"
+        echo "Maven user: travis"
 #        Xvfb ${DISPLAY} -screen 0 1920x1080x24 -nolisten unix &
 #        mvn package -B -U -V --settings .github/settings.xml --file pom.xml
