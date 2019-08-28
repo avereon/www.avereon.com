@@ -13,9 +13,12 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Build with Maven
+    - name: Build
       env:
         AVN_REPO_USERNAME: ${{ secrets.AVN_REPO_USERNAME }}
-        TRAVIS_SSH_KEY: ${{ secrets.TRAVIS_SSH_KEY }}
         DISPLAY: ":99"
       run: .github/build.sh
+    - name: Deploy
+      env:
+        TRAVIS_SSH_KEY: ${{ secrets.TRAVIS_SSH_KEY }}
+      run: .github/deploy.sh
