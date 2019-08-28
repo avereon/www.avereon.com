@@ -17,4 +17,4 @@ jobs:
       run: |
         export DISPLAY=:99
         Xvfb $DISPLAY &
-        mvn package --file pom.xml
+        mvn package -B -U -V --settings .github/settings.xml --file pom.xml
