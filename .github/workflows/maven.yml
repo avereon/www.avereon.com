@@ -16,5 +16,6 @@ jobs:
     - name: Build with Maven
       env:
         AVN_REPO_USERNAME: ${{ secrets.AVN_REPO_USERNAME }}
+        TRAVIS_SSH_KEY: ${{ secrets.TRAVIS_SSH_KEY }}
         DISPLAY: ":99"
       run: .github/build.sh
