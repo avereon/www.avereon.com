@@ -132,9 +132,8 @@ public class V2DownloadController {
 	private void addCardToMap( Map<String, Object> map, V2DownloadProvider provider, String artifact, String platform ) {
 		try {
 			V2Download download = provider.getDownload( artifact, platform, "product", "card" );
-			if( download == null ) return;
 			if( platform == null ) platform = "card";
-			map.put( platform, new ObjectMapper().readValue( download.getInputStream(), Map.class ) );
+			map.put( platform, download == null ? Map.of() : new ObjectMapper().readValue( download.getInputStream(), Map.class ) );
 		} catch( Throwable throwable ) {
 			throwable.printStackTrace( System.err );
 			// Intentionally ignore exception
@@ -142,13 +141,7 @@ public class V2DownloadController {
 	}
 
 	private HttpStatus doGetArtifact(
-		RequestMethod method,
-		HttpServletResponse response,
-		String channel,
-		String artifact,
-		String platform,
-		String asset,
-		String format
+		RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format
 	) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
 		if( provider == null ) log.warn( "The download provider is null: " + channel );
