@@ -26,6 +26,14 @@ function productCard(release, platform, success, failure) {
 	return productCardFromUrl(url, success, failure);
 }
 
+function productCards(product, success, failure) {
+	const url = ROOT_URL + "/product/cards/" + product;
+	return fetch(url)
+		.then((response) => response.status === 200 ? response.json() : {})
+		.then((card) => success(card))
+		.catch(failure)
+}
+
 export default class Xenon extends React.Component {
 
 	state = {
@@ -42,30 +50,34 @@ export default class Xenon extends React.Component {
 	};
 
 	componentDidMount() {
-		productCard("stable", "linux", (card) => {
-			console.log("card=" + JSON.stringify(card));
-			this.setState({stable: {...this.state.stable, linux: {...card}}});
+		productCards( "xenon", (cards)=> {
+			console.log("cards=" + JSON.stringify(cards));
+			this.setState(cards);
 		});
-		productCard("stable", "macosx", (card) => {
-			console.log("card=" + JSON.stringify(card));
-			this.setState({stable: {...this.state.stable, macosx: {...card}}});
-		});
-		productCard("stable", "windows", (card) => {
-			console.log("card=" + JSON.stringify(card));
-			this.setState({stable: {...this.state.stable, windows: {...card}}});
-		});
-		productCard("latest", "linux", (card) => {
-			console.log("card=" + JSON.stringify(card));
-			this.setState({latest: {...this.state.latest, linux: {...card}}});
-		});
-		productCard("latest", "macosx", (card) => {
-			console.log("card=" + JSON.stringify(card));
-			this.setState({latest: {...this.state.latest, macosx: {...card}}});
-		});
-		productCard("latest", "windows", (card) => {
-			console.log("card=" + JSON.stringify(card));
-			this.setState({latest: {...this.state.latest, windows: {...card}}});
-		});
+		// productCard("stable", "linux", (card) => {
+		// 	console.log("card=" + JSON.stringify(card));
+		// 	this.setState({stable: {...this.state.stable, linux: {...card}}});
+		// });
+		// productCard("stable", "macosx", (card) => {
+		// 	console.log("card=" + JSON.stringify(card));
+		// 	this.setState({stable: {...this.state.stable, macosx: {...card}}});
+		// });
+		// productCard("stable", "windows", (card) => {
+		// 	console.log("card=" + JSON.stringify(card));
+		// 	this.setState({stable: {...this.state.stable, windows: {...card}}});
+		// });
+		// productCard("latest", "linux", (card) => {
+		// 	console.log("card=" + JSON.stringify(card));
+		// 	this.setState({latest: {...this.state.latest, linux: {...card}}});
+		// });
+		// productCard("latest", "macosx", (card) => {
+		// 	console.log("card=" + JSON.stringify(card));
+		// 	this.setState({latest: {...this.state.latest, macosx: {...card}}});
+		// });
+		// productCard("latest", "windows", (card) => {
+		// 	console.log("card=" + JSON.stringify(card));
+		// 	this.setState({latest: {...this.state.latest, windows: {...card}}});
+		// });
 	}
 
 	static createDownloadTile(type, category, product, platform, card) {
@@ -99,7 +111,7 @@ export default class Xenon extends React.Component {
 	}
 
 	render() {
-		let stableDownload = Xenon.createDownloadTile("primary", "stable", "Xenon",Platform, this.state.stable[Platform.KEY]);
+		let stableDownload = Xenon.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY]);
 
 		let stableDownloads = <div className='download-row'>
 			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}

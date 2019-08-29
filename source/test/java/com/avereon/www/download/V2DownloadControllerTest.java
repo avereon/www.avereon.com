@@ -94,7 +94,9 @@ public class V2DownloadControllerTest {
 		assertThat( StreamSupport.stream( ((Iterable<String>)json::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "stable", "latest" ) );
 
 		JsonNode stable = json.get( "stable" );
-		assertThat( StreamSupport.stream( ((Iterable<String>)stable::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "linux", "windows" ) );
+		assertThat( StreamSupport.stream( ((Iterable<String>)stable::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "linux", "windows", "macosx", "card" ) );
+		JsonNode latest = json.get( "latest" );
+		assertThat( StreamSupport.stream( ((Iterable<String>)latest::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "linux", "windows", "macosx", "card" ) );
 	}
 
 	@Test
