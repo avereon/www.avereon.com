@@ -1,6 +1,7 @@
 package com.avereon.www.download;
 
 import com.avereon.util.LogUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.invoke.MethodHandles;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class handles all requests for artifacts for all repos and providers.
@@ -28,18 +31,28 @@ public class V2DownloadController {
 
 	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
 
-	V2DownloadProviderFactory factory;
+	private V2DownloadProviderFactory factory;
 
 	V2DownloadController( V2DownloadProviderFactory factory ) {
 		this.factory = factory;
 	}
 
-	// TODO Should there be a path to get artifact metadata from all providers?
-
-	@GetMapping( path = "/catalog" )
+	@RequestMapping( method = RequestMethod.GET, path = "/catalog" )
 	public void getCatalog( HttpServletResponse response, @PathVariable( "channel" ) String channel ) throws IOException {
 		HttpStatus status = doGetCatalog( response, channel );
 		response.setStatus( status.value() );
+	}
+
+	@RequestMapping( method = RequestMethod.GET, path = "/cards/{artifact}" )
+	public Map<String, Object> getProductCards( @PathVariable String artifact ) {
+		Map<String, Object> cards = new HashMap<>();
+
+		for( String key : factory.getProviders().keySet() ) {
+			V2DownloadProvider provider = factory.getProviders().get( key );
+			cards.put( key, getProductCards( provider, artifact ) );
+		}
+
+		return cards;
 	}
 
 	@RequestMapping( method = RequestMethod.HEAD, path = "/{artifact}/{asset}/{format}" )
@@ -103,6 +116,29 @@ public class V2DownloadController {
 		stream( response, download.getInputStream(), download.getFilename(), download.getSize() );
 
 		return HttpStatus.OK;
+	}
+
+	private Map<String, Object> getProductCards( V2DownloadProvider provider, String artifact ) {
+		Map<String, Object> cards = new HashMap<>();
+
+		addCardToMap( cards, provider, artifact, "linux" );
+		addCardToMap( cards, provider, artifact, "macosx" );
+		addCardToMap( cards, provider, artifact, "windows" );
+		addCardToMap( cards, provider, artifact, null );
+
+		return cards;
+	}
+
+	private void addCardToMap( Map<String, Object> map, V2DownloadProvider provider, String artifact, String platform ) {
+		try {
+			V2Download download = provider.getDownload( artifact, platform, "product", "card" );
+			if( download == null ) return;
+			if( platform == null ) platform = "card";
+			map.put( platform, new ObjectMapper().readValue( download.getInputStream(), Map.class ) );
+		} catch( Throwable throwable ) {
+			throwable.printStackTrace( System.err );
+			// Intentionally ignore exception
+		}
 	}
 
 	private HttpStatus doGetArtifact(

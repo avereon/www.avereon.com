@@ -1,5 +1,8 @@
 package com.avereon.www.download;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +19,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
@@ -76,6 +81,20 @@ public class V2DownloadControllerTest {
 
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
 		assertThat( result.getResponse().getContentLength(), is( 58 ) );
+	}
+
+	@Test
+	public void testGetProductCards() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( "/download/product/cards/xenon" ) ).andExpect( status().isOk() ).andReturn();
+
+		assertThat( result.getResponse().getContentType(), is( "application/json;charset=UTF-8" ) );
+		//assertThat( result.getResponse().getContentAsString(), is( "" ));
+
+		JsonNode json = new ObjectMapper().readValue( result.getResponse().getContentAsString(), JsonNode.class );
+		assertThat( StreamSupport.stream( ((Iterable<String>)json::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "stable", "latest" ) );
+
+		JsonNode stable = json.get( "stable" );
+		assertThat( StreamSupport.stream( ((Iterable<String>)stable::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "linux", "windows" ) );
 	}
 
 	@Test

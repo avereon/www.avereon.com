@@ -25,13 +25,14 @@ public interface V2DownloadProvider {
 	 * <li>format - The artifact format: card, pack</li>
 	 * </ul>
 	 *
-	 * This should return one specific version of the artifact.
+	 * Returns one specific version of the artifact or null if the artifact does
+	 * not exist.
 	 *
 	 * @param artifact The artifact identifier
 	 * @param platform The artifact platform
 	 * @param asset The artifact asset type
 	 * @param format The artifact format
-	 * @return
+	 * @return A specific version of the artifact or null if is does not exist
 	 */
 	V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException;
 
