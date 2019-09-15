@@ -98,15 +98,20 @@ a:hover {
 	font-size: 1em;
 }
 
-.download.stable {
+.download.stable.primary {
+	background-color: #208060;
+}
+.download.stable.primary:hover {
+	color: #f0f0f0;
+	background-color: #288868;
+}
+
+.download.stable.secondary {
 	background-color: #206080;
 }
 .download.stable:hover {
 	color: #f0f0f0;
 	background-color: #286888;
-}
-.download.stable.primary {
-	background-color: #208060;
 }
 
 .download.latest {
