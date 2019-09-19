@@ -1,0 +1,8 @@
+.license {
+	margin: 0.4cm;
+	width: 20cm;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+}
