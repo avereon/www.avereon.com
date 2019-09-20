@@ -14,7 +14,7 @@ export default class Xenon extends React.Component {
 				<div className='content'>
 					<div className='license'>
 						<h1>MIT License</h1>
-						<p>Copyright (c) 2017 Mark Soderquist</p>
+						<p>Copyright (c) 2017 Avereon</p>
 						<p>
 							Permission is hereby granted, free of charge, to any person obtaining a copy
 							of this software and associated documentation files (the "Software"), to deal
