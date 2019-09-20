@@ -4,8 +4,6 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Footer from "../Footer";
-import Header from "../Header";
 import './product.css';
 
 const ROOT_URL = "https://www.avereon.com/download";
@@ -50,7 +48,7 @@ export default class Xenon extends React.Component {
 	};
 
 	componentDidMount() {
-		productCards( "xenon", (cards)=> {
+		productCards("xenon", (cards) => {
 			console.log("cards=" + JSON.stringify(cards));
 			this.setState(cards);
 		});
@@ -126,43 +124,36 @@ export default class Xenon extends React.Component {
 		</div>;
 
 		return (
-			<div className='app'>
+			<div className='content'>
+				<div className='product'>
 
-				<Header/>
+					<div className='product-header'>
+						<img className="product-icon" alt="" src={XENON_ICON_URL}/>
+						<div className='product-title'>Xenon</div>
+					</div>
 
-				<div className='content'>
-					<div className='product'>
+					<div className='product-content'>
+						Xenon is a simple application framework that provides common
+						services for product features. Product features are provided as
+						packages, called mods, that provide the specific functionality.
+						Users are encouraged to discover and utilize the mods that best
+						suit their needs.
+					</div>
 
-						<div className='product-header'>
-							<img className="product-icon" alt="" src={XENON_ICON_URL}/>
-							<div className='product-title'>Xenon</div>
-						</div>
+					{stableDownload}
 
-						<div className='product-content'>
-							Xenon is a simple application framework that provides common
-							services for product features. Product features are provided as
-							packages, called mods, that provide the specific functionality.
-							Users are encouraged to discover and utilize the mods that best
-							suit their needs.
-						</div>
+					<h2>Other Platforms</h2>
+					{stableDownloads}
+					<h2>Development Builds</h2>
+					{latestDownloads}
 
-						{stableDownload}
-
-						<h2>Other Platforms</h2>
-						{stableDownloads}
-						<h2>Development Builds</h2>
-						{latestDownloads}
-
-						<div className='resource-row'>
-							<a href='https://github.com/avereon/xenon' className='resource-tile' target="_blank">
-								<FontAwesomeIcon icon={['fab', 'github']} size='4x'/>
-								<span>GitHub</span>
-							</a>
-						</div>
+					<div className='resource-row'>
+						<a href='https://github.com/avereon/xenon' className='resource-tile' target="_blank">
+							<FontAwesomeIcon icon={['fab', 'github']} size='4x'/>
+							<span>GitHub</span>
+						</a>
 					</div>
 				</div>
-
-				<Footer/>
 			</div>
 		);
 	}
