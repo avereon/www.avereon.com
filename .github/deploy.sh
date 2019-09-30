@@ -8,5 +8,5 @@ chmod 600 ${HOME}/.ssh/id_rsa
 chmod 600 ${HOME}/.ssh/id_rsa.pub
 chmod 600 ${HOME}/.ssh/known_hosts
 
-scp -B target/*.jar travis@avereon.com:/opt/avn/store/latest/www.avereon.com
-scp -B target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
+scp -B server/target/*.jar travis@avereon.com:/opt/avn/store/latest/www.avereon.com
+scp -B server/target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
