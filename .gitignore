@@ -1,3 +1,4 @@
+source/main/resources/public/*
 source/main/resources/static/*
 
 *.iml
