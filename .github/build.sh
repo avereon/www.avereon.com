@@ -6,8 +6,8 @@ npm install-clean
 npm run-script build
 cd build
 zip -r ../client.zip *
-cd -
-cd -
+cd ..
+cd ..
 
 export DISPLAY=:99
 Xvfb ${DISPLAY} -screen 0 1920x1080x24 -nolisten unix &
