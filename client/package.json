@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm client.zip && cd build && zip -r ../client.zip * && cd -",
+    "build": "react-scripts build",
+    "rebuild": "rm client.zip && react-scripts build && cd build && zip -r ../client.zip * && cd -",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
