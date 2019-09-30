@@ -13,7 +13,6 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-
 @font-face {
 	font-family: sansation;
 	font-weight: normal;
@@ -36,17 +35,33 @@ code {
 	padding: 1mm 10mm;
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: left;
-	align-items: baseline;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .banner {
 	font-family: sansation, sans-serif;
-	font-size: 2em;
+	font-size: 8mm;
+
+	/* Match with banner-mirror */
+	width: 5cm;
 
 	display: inline-flex;
 	flex-flow: row nowrap;
-	justify-content: center;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.banner-mirror {
+	font-family: sansation, sans-serif;
+	font-size: 8mm;
+
+	/* Match with banner */
+	width: 5cm;
+
+	display: inline-flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
 	align-items: center;
 }
 
@@ -66,13 +81,13 @@ a:hover.banner {
 }
 
 .menu {
-	background-color: orange;
-	margin: 0 0 0 0mm;
-	vertical-align: baseline;
+	font-family: sansation, sans-serif;
+	margin: 0 0 0 0;
+	vertical-align: center;
 }
 
 .menuitem {
-	font-size: 6mm;
+	font-size: 8mm;
 	margin: 0 2mm;
 }
 
@@ -114,4 +129,8 @@ a:hover.menuitem {
 }
 
 .copyright {
+}
+
+.copyright a, .copyright a:hover {
+	color: #f0f0f0;
 }
