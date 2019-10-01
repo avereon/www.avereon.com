@@ -22,7 +22,7 @@ export default class Legal extends React.Component {
 
 				<h2>Licenses</h2>
 				<p>
-					<a href='/liceses/mit'>MIT License</a>
+					<a href='/licenses/mit'>MIT License</a>
 				</p>
 				</div>
 			</div>
