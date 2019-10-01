@@ -64,12 +64,12 @@ public class WingDiscIcon extends ProgramIcon {
 	// White
 	private Color primaryHighlight = Color.web( "#ffffff" );
 	// Tint of #206080
-	private Color primary = Color.web( "#90b0c0" );
+	private Color primary = Color.web( "#a0a0a0" );
 
 	// Yellow 200
-	private Color secondaryHighlight = Color.web( "#FFF59D" );
+	private Color secondaryHighlight = Color.web( "#e0e0e0" );
 	// Orange 500
-	private Color secondary = Color.web( "#FF9800" );
+	private Color secondary = Color.web( "#9FA8DA" );
 
 	public WingDiscIcon() {
 		POINT_RADIUS = g( 2 );

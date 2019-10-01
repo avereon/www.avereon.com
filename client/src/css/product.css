@@ -28,7 +28,10 @@
 	font-size: 1.4cm;
 }
 
-.product-banner {
+.product-bar {
+	width: 20cm;
+	text-align: justify;
+
 	display: flex;
 	flex-flow: row nowrap;
 	/* along the main axis */
@@ -37,7 +40,7 @@
 	align-items: flex-start;
 }
 
-/*.product-banner .product-icon {*/
+/*.product-bar .product-icon {*/
 /*	width: 64px;*/
 /*	height: 64px;*/
 /*}*/

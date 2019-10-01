@@ -9,6 +9,10 @@ body {
 
 }
 
+p {
+	text-align: justify;
+}
+
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -65,6 +69,13 @@ code {
 	align-items: center;
 }
 
+.hbox {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
 .logo {
 	width: 32px;
 	height: 32px;
@@ -81,13 +92,13 @@ a:hover.banner {
 }
 
 .menu {
-	font-family: sansation, sans-serif;
 	margin: 0 0 0 0;
 	vertical-align: center;
 }
 
 .menuitem {
-	font-size: 8mm;
+	font-family: sansation, sans-serif;
+	font-size: 7mm;
 	margin: 0 2mm;
 }
 
@@ -112,6 +123,10 @@ a:hover.menuitem {
 .title {
 	padding: 0 0 0 2mm;
 	font-size: 10mm;
+}
+
+.content p {
+	width: 20cm;
 }
 
 .footer {
