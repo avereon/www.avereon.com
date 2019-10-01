@@ -62,9 +62,9 @@ public class WingDiscIcon extends ProgramIcon {
 	private double rightArcSpanAngleDeg;
 
 	// White
-	private Color primaryHighlight = Color.web( "#808080" );
+	private Color primaryHighlight = Color.web( "#a0a0a0" );
 	// Tint of #206080
-	private Color primary = Color.web( "#c0c0c0" );
+	private Color primary = Color.web( "#e0e0e0" );
 
 	// Yellow 200
 	private Color secondaryHighlight = Color.web( "#B2EBF2" );
