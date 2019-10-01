@@ -1,13 +1,13 @@
 import React from 'react';
+import * as Icon from "../Icon";
 import {Platform} from "../Platform";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import './product.css';
+import '../css/product.css';
 
 const ROOT_URL = "https://www.avereon.com/download";
-const XENON_ICON_URL = ROOT_URL + "/latest/xenon/product/icon";
 
 library.add(fas, fab);
 
@@ -128,7 +128,7 @@ export default class Xenon extends React.Component {
 				<div className='product'>
 
 					<div className='product-header'>
-						<img className="product-icon" alt="" src={XENON_ICON_URL}/>
+						<img className="product-icon" alt="" src={Icon.XENON}/>
 						<div className='product-title'>Xenon</div>
 					</div>
 

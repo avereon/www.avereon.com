@@ -11,8 +11,6 @@ export default class Header extends React.Component {
 				</div>
 				<div className='menu'>
 					<a className='menuitem products' href='/products'>Products</a>
-					<a className='menuitem docs' href='/docs'>Documentation</a>
-					<a className='menuitem support' href='/support'>Support</a>
 					<a className='menuitem about' href='/about'>About</a>
 				</div>
 				<div className='banner-mirror'>

@@ -16,7 +16,7 @@ code {
 @font-face {
 	font-family: sansation;
 	font-weight: normal;
-	src: url('font/sansation/Sansation-Regular.ttf');
+	src: url('../font/sansation/Sansation-Regular.ttf');
 }
 
 .app {

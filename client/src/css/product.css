@@ -20,12 +20,27 @@
 .product-icon {
 	width: 64px;
 	height: 64px;
+	flex-shrink: 0;
 	margin: 0 1em 0 0;
 }
 
 .product-title {
 	font-size: 1.4cm;
 }
+
+.product-banner {
+	display: flex;
+	flex-flow: row nowrap;
+	/* along the main axis */
+	justify-content: left;
+	/* along the cross axis */
+	align-items: flex-start;
+}
+
+/*.product-banner .product-icon {*/
+/*	width: 64px;*/
+/*	height: 64px;*/
+/*}*/
 
 .product-content {
 	text-align: justify;
