@@ -62,14 +62,16 @@ public class WingDiscIcon extends ProgramIcon {
 	private double rightArcSpanAngleDeg;
 
 	// White
-	private Color primaryHighlight = Color.web( "#a0a0a0" );
+	private Color primaryHighlight = Color.web( "#e0e0e0" );
+
 	// Tint of #206080
-	private Color primary = Color.web( "#e0e0e0" );
+	private Color primary = Color.web( "#c0c0c0" );
 
 	// Yellow 200
-	private Color secondaryHighlight = Color.web( "#B2EBF2" );
+	private Color secondaryHighlight = Color.web( "#E8EAF6" );
+
 	// Orange 500
-	private Color secondary = Color.web( "#00ACC1" );
+	private Color secondary = Color.web( "#7986CB" );
 
 	public WingDiscIcon() {
 		POINT_RADIUS = g( 2 );
@@ -91,7 +93,7 @@ public class WingDiscIcon extends ProgramIcon {
 		calculateNumbers();
 
 		// Use these numbers to control the gradient across the wing
-		double goB = g( 12 );
+		double goB = g( 7 );
 
 		double leftLeNormal = (zx - yx) / (yy - zy);
 		double leftLeX = 0.5 * (yx + zx);
@@ -117,14 +119,14 @@ public class WingDiscIcon extends ProgramIcon {
 
 		Color wingColor1 = primary;
 		Color wingColor2 = primaryHighlight;
-		Stop colorStop0 = new Stop( 0, wingColor1 );
-		Stop colorStop1 = new Stop( 1, wingColor2 );
+
+		Stop[] stops = new Stop[]{ new Stop( 0, wingColor1 ), new Stop( 0.5, wingColor1 ), new Stop( 1, wingColor2 ) };
 
 		// Left wing
 		getGraphicsContext2D().save();
 		clip( 0, 0, 0.5, 1 );
 		arrow();
-		setFillPaint( linearPaint( leftGbX, leftGbY, leftGeX, leftGeY, colorStop0, colorStop1 ) );
+		setFillPaint( linearPaint( leftGbX, leftGbY, leftGeX, leftGeY, stops ) );
 		//setFillPaint( radialPaint( xx, g( 20 ), g( 20 ), new Stop( 0, wingColor1 ), new Stop( xy, wingColor2 ) ) );
 		fill();
 		getGraphicsContext2D().restore();
@@ -133,7 +135,7 @@ public class WingDiscIcon extends ProgramIcon {
 		getGraphicsContext2D().save();
 		clip( 0.5, 0, 1, 1 );
 		arrow();
-		setFillPaint( linearPaint( rightGbX, rightGbY, rightGeX, rightGeY, colorStop0, colorStop1 ) );
+		setFillPaint( linearPaint( rightGbX, rightGbY, rightGeX, rightGeY, stops ) );
 		fill();
 		getGraphicsContext2D().restore();
 
