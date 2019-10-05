@@ -9,6 +9,6 @@ public abstract class BusinessCard extends ProgramImage {
 
 	static final int SHORT = 600;
 
-	static final Font FONT = Font.loadFont( BusinessCard.class.getResourceAsStream( "/font/Sansation-Regular.ttf" ), 12 );
+	static final Font FONT = Font.loadFont( BusinessCard.class.getResourceAsStream( "/font/sansation/Sansation-Regular.ttf" ), 12 );
 
 }
