@@ -61,17 +61,17 @@ public class WingDiscIcon extends ProgramIcon {
 
 	private double rightArcSpanAngleDeg;
 
-	// White
-	private Color primaryHighlight = Color.web( "#c0c0c0" );
+	// Gray 400
+	private Color wingColor = Color.web( "#BDBDBD" );
 
-	// Tint of #206080
-	private Color primary = Color.web( "#c0c0c0" );
+	// Gray 300
+	private Color wingHighlight = Color.web( "#E0E0E0" );
 
-	// Yellow 200
-	private Color secondaryHighlight = Color.web( "#E8EAF6" );
+	// Teal 300
+	private Color discColor = Color.web( "#4DB6AC" );
 
-	// Orange 500
-	private Color secondary = Color.web( "#7986CB" );
+	// Teal 50
+	private Color discHighlight = Color.web( "#E0F2F1" );
 
 	public WingDiscIcon() {
 		POINT_RADIUS = g( 2 );
@@ -93,7 +93,7 @@ public class WingDiscIcon extends ProgramIcon {
 		calculateNumbers();
 
 		// Use these numbers to control the gradient across the wing
-		double goB = g( 7 );
+		double goB = g( 3 );
 
 		double leftLeNormal = (zx - yx) / (yy - zy);
 		double leftLeX = 0.5 * (yx + zx);
@@ -111,23 +111,18 @@ public class WingDiscIcon extends ProgramIcon {
 		double rightGeX = rightLeX - goB;
 		double rightGeY = rightLeY + goB * rightLeNormal;
 
-		Color discColor1 = secondaryHighlight;
-		Color discColor2 = secondary;
-		setFillPaint( radialPaint( vx, vy - DISC_RADIUS, 2 * DISC_RADIUS, new Stop( 0.5, discColor1 ), new Stop( 1, discColor2 ) ) );
+		setFillPaint( radialPaint( vx, vy - DISC_RADIUS, 2 * DISC_RADIUS, new Stop( 0.5, discHighlight ), new Stop( 1, discColor ) ) );
 		fillCenteredOval( vx, vy, DISC_RADIUS, DISC_RADIUS );
 		drawCenteredOval( vx, vy, DISC_RADIUS, DISC_RADIUS );
 
-		Color wingColor1 = primary;
-		Color wingColor2 = primaryHighlight;
-
-		Stop[] stops = new Stop[]{ new Stop( 0, wingColor1 ), new Stop( 0.5, wingColor1 ), new Stop( 1, wingColor2 ) };
+		Stop[] stops = new Stop[]{ new Stop( 0, wingColor ), new Stop( 0.6, wingColor ), new Stop( 1, wingHighlight ) };
 
 		// Left wing
 		getGraphicsContext2D().save();
 		clip( 0, 0, 0.5, 1 );
 		arrow();
-		setFillPaint( linearPaint( leftGbX, leftGbY, leftGeX, leftGeY, stops ) );
-		//setFillPaint( radialPaint( xx, g( 20 ), g( 20 ), new Stop( 0, wingColor1 ), new Stop( xy, wingColor2 ) ) );
+		//setFillPaint( linearPaint( leftGbX, leftGbY, leftGeX, leftGeY, stops ) );
+		setFillPaint( linearPaint( 0, 0, 0.5,0, stops));
 		fill();
 		getGraphicsContext2D().restore();
 
@@ -135,7 +130,8 @@ public class WingDiscIcon extends ProgramIcon {
 		getGraphicsContext2D().save();
 		clip( 0.5, 0, 1, 1 );
 		arrow();
-		setFillPaint( linearPaint( rightGbX, rightGbY, rightGeX, rightGeY, stops ) );
+		//setFillPaint( linearPaint( rightGbX, rightGbY, rightGeX, rightGeY, stops ) );
+		setFillPaint( linearPaint( 1, 0, 0.5,0, stops));
 		fill();
 		getGraphicsContext2D().restore();
 

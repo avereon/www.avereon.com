@@ -23,7 +23,7 @@ public class WingDiscLargeIcon extends WingDiscIcon {
 	}
 
 	public static void main( String[] commands ) {
-		proof( new WingDiscLargeIcon(), Color.web( ("#206080")) );
+		proof( new WingDiscLargeIcon(), Color.web( ("#427893")) );
 	}
 
 }
