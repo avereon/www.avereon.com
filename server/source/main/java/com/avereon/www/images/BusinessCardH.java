@@ -26,7 +26,7 @@ public class BusinessCardH extends BusinessCard {
 		fillText( "Avereon", 0.5 * scale + offset, 0.85, 0.15 );
 
 		double fontHeight = 0.12;
-		double vAnchor = offset + fontHeight;
+		double vAnchor = 2 * offset + fontHeight;
 		setFont( deriveFont( FONT, "Sans Serif" ) );
 		setTextAlign( TextAlignment.LEFT );
 		fillText( "Mark Soderquist", 0.7, vAnchor, fontHeight, (aspectRatio - 0.7 - offset) );
