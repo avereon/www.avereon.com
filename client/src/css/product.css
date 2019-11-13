@@ -7,7 +7,7 @@
 	align-items: stretch;
 }
 
-.product-header {
+.product-title {
 	padding: 2mm;
 	display: flex;
 	flex-flow: row nowrap;
@@ -24,7 +24,7 @@
 	margin: 0 1em 0 0;
 }
 
-.product-title {
+.product-name {
 	font-size: 1.4cm;
 }
 
@@ -44,6 +44,10 @@
 /*	width: 64px;*/
 /*	height: 64px;*/
 /*}*/
+
+.product-header {
+	font-size: 1.5em;
+}
 
 .product-content {
 	text-align: justify;
@@ -146,7 +150,6 @@ a:hover {
 }
 
 .resource-row {
-	margin-top: 2em;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-evenly;

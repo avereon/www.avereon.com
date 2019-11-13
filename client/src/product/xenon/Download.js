@@ -1,11 +1,11 @@
 import React from 'react';
-import * as Icon from "../Icon";
-import {Platform} from "../Platform";
+import * as Icon from "../../Icon";
+import {Platform} from "../../Platform";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import '../css/product.css';
+import '../../css/product.css';
 
 const ROOT_URL = "https://www.avereon.com/download";
 
@@ -32,7 +32,7 @@ function productCards(product, success, failure) {
 		.catch(failure)
 }
 
-export default class Xenon extends React.Component {
+export default class XenonDownload extends React.Component {
 
 	state = {
 		stable: {
@@ -109,18 +109,18 @@ export default class Xenon extends React.Component {
 	}
 
 	render() {
-		let stableDownload = Xenon.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY]);
+		let stableDownload = XenonDownload.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY]);
 
 		let stableDownloads = <div className='download-row'>
-			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}
-			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.MAC, this.state.stable[Platform.MAC.KEY])}
-			{Xenon.createDownloadTile("secondary", "stable", "Xenon", Platform.WINDOWS, this.state.stable[Platform.WINDOWS.KEY])}
+			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}
+			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.MAC, this.state.stable[Platform.MAC.KEY])}
+			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.WINDOWS, this.state.stable[Platform.WINDOWS.KEY])}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{Xenon.createDownloadTile("secondary", "latest", "Xenon", Platform.LINUX, this.state.latest[Platform.LINUX.KEY])}
-			{Xenon.createDownloadTile("secondary", "latest", "Xenon", Platform.MAC, this.state.latest[Platform.MAC.KEY])}
-			{Xenon.createDownloadTile("secondary", "latest", "Xenon", Platform.WINDOWS, this.state.latest[Platform.WINDOWS.KEY])}
+			{XenonDownload.createDownloadTile("secondary", "latest", "Xenon", Platform.LINUX, this.state.latest[Platform.LINUX.KEY])}
+			{XenonDownload.createDownloadTile("secondary", "latest", "Xenon", Platform.MAC, this.state.latest[Platform.MAC.KEY])}
+			{XenonDownload.createDownloadTile("secondary", "latest", "Xenon", Platform.WINDOWS, this.state.latest[Platform.WINDOWS.KEY])}
 		</div>;
 
 		return (
@@ -133,11 +133,18 @@ export default class Xenon extends React.Component {
 					</div>
 
 					<div className='product-content'>
-						Xenon is a simple application framework that provides common
-						services for product features. Product features are provided as
-						packages, called mods, that provide the specific functionality.
-						Users are encouraged to discover and utilize the mods that best
-						suit their needs.
+						Xenon is a simple application framework that provides services common
+						to modern desktop applications. Specific functionality is implemented
+						with downloadable packages called mods. Users are encouraged to
+						discover and utilize the mods that best suit their needs.
+					</div>
+
+					<div className='resource-row'>
+						<a href="/products/xenon/start">Getting Started <FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/></a>
+						<a href="/products/xenon/builders">Mod Builders <FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/></a>
+						<a href="/products/xenon/contribute">Get Involved <FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/></a>
+						<a href='/products/xenon/javadoc' target="_blank">API <FontAwesomeIcon icon={['fab', 'java']}/></a>
+						<a href='https://github.com/avereon/xenon' target="_blank">GitHub <FontAwesomeIcon icon={['fab', 'github']}/></a>
 					</div>
 
 					{stableDownload}
@@ -147,12 +154,6 @@ export default class Xenon extends React.Component {
 					<h2>Development Builds</h2>
 					{latestDownloads}
 
-					<div className='resource-row'>
-						<a href='https://github.com/avereon/xenon' className='resource-tile' target="_blank">
-							<FontAwesomeIcon icon={['fab', 'github']} size='4x'/>
-							<span>GitHub</span>
-						</a>
-					</div>
 				</div>
 			</div>
 		);
