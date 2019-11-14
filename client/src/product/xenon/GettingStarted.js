@@ -17,7 +17,9 @@ export default class XenonGettingStarted extends React.Component {
 
 					<div className='product-content'>
 						<ul>
-							<li><a href='/products/xenon'>Download the Xenon installer</a> for your platform</li>
+							<li><a href='/products/xenon'>Download the Xenon installer</a> for your operating system</li>
+							<li>Run the installer to install Xenon</li>
+							<li>Start Xenon using the program shortcut</li>
 						</ul>
 					</div>
 
