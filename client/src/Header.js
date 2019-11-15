@@ -11,7 +11,7 @@ export default class Header extends React.Component {
 						<a className='banner' href='/'><img className='logo' alt="" src={Icon.AVEREON}/>Avereon</a>
 					</div>
 					<div className='menu'>
-						<a className='menuitem products' href='/products'>Products</a>
+						<a className='menuitem products' href='/product'>Products</a>
 					</div>
 				</div>
 				<div className='menu'>

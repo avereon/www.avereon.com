@@ -140,11 +140,11 @@ export default class XenonDownload extends React.Component {
 					</div>
 
 					<div className='resource-row'>
-						<a href="/products/xenon/start">Getting Started <FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/></a>
-						<a href="/products/xenon/builders">Mod Builders <FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/></a>
-						<a href="/products/xenon/contribute">Get Involved <FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/></a>
-						<a href='/products/xenon/javadoc' target="_blank">API <FontAwesomeIcon icon={['fab', 'java']}/></a>
-						<a href='https://github.com/avereon/xenon' target="_blank">GitHub <FontAwesomeIcon icon={['fab', 'github']}/></a>
+						<a href="/product/xenon/start"><FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/> Getting Started</a>
+						<a href="/product/xenon/builders"><FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/> Mod Builders</a>
+						<a href="/product/xenon/contribute"><FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/> Get Involved</a>
+						<a href='/product/xenon/javadoc' target="_blank"><FontAwesomeIcon icon={['fab', 'java']}/> API</a>
+						<a href='https://github.com/avereon/xenon' target="_blank"><FontAwesomeIcon icon={['fab', 'github']}/> GitHub</a>
 					</div>
 
 					{stableDownload}

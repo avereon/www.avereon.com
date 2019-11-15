@@ -21,21 +21,42 @@
 	width: 64px;
 	height: 64px;
 	flex-shrink: 0;
-	margin: 0 1em 0 0;
 }
 
 .product-name {
 	font-size: 1.4cm;
+	margin: 0 0 0 5mm;
 }
 
 .product-bar {
 	width: 20cm;
 	text-align: justify;
+	margin: 1em 0;
 
 	display: flex;
 	flex-flow: row nowrap;
 	/* along the main axis */
 	justify-content: left;
+	/* along the cross axis */
+	align-items: stretch;
+}
+
+.product-bar .body {
+	padding: 0 0 0 1em;
+	display: flex;
+	flex-flow: column nowrap;
+	/* along the main axis */
+	justify-content: flex-start;
+	/* along the cross axis */
+	align-items: flex-start;
+}
+
+.product-bar .item {
+	padding: 0 0 0 1em;
+	display: flex;
+	flex-flow: column nowrap;
+	/* along the main axis */
+	justify-content: center;
 	/* along the cross axis */
 	align-items: flex-start;
 }

@@ -22,9 +22,9 @@ export default class App extends React.Component {
 						<Route exact path='/home' component={Home}/>
 						<Route exact path='/about' component={About}/>
 						<Route exact path='/legal' component={Legal}/>
-						<Route exact path='/products' component={Products}/>
-						<Route exact path='/products/xenon' component={XenonDownload}/>
-						<Route exact path='/products/xenon/start' component={XenonGettingStarted}/>
+						<Route exact path='/product' component={Products}/>
+						<Route exact path='/product/xenon' component={XenonDownload}/>
+						<Route exact path='/product/xenon/start' component={XenonGettingStarted}/>
 						<Route exact path='/licenses/mit' component={Mit}/>
 						<Redirect to='/'/>
 					</Switch>

@@ -28,7 +28,7 @@ export default class Legal extends React.Component {
 
 					<h2>Licenses</h2>
 					<p>
-						<a href='/licenses/mit'>MIT License</a>
+						All Avereon products are licensed under the <a href='/licenses/mit'>MIT License</a>.
 					</p>
 				</div>
 			</div>

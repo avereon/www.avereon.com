@@ -129,6 +129,28 @@ a:hover.menuitem {
 	width: 20cm;
 }
 
+.announcement {
+	width: 20cm;
+	text-align: justify;
+	margin: 2em 0;
+
+	display: flex;
+	flex-flow: row nowrap;
+	/* along the main axis */
+	justify-content: left;
+	/* along the cross axis */
+	align-items: center;
+}
+
+.announcement .body {
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.announcement .title {
+	font-size: 10mm;
+}
+
 .footer {
 	color: #d8d8d8;
 	background-color: #427893;
@@ -140,12 +162,12 @@ a:hover.menuitem {
 	align-items: center;
 }
 
-.tag-line {
+.footer .tag-line {
 }
 
-.copyright {
+.footer .copyright {
 }
 
-.copyright a, .copyright a:hover {
+.footer .copyright a, .copyright a:hover {
 	color: #f0f0f0;
 }
