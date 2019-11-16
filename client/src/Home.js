@@ -13,7 +13,7 @@ export default class Home extends React.Component {
 							Xenon 1.0 Arriving Soon
 						</div>
 						<div>
-							Download <a href='/product/xenon'>early releases</a> now.
+							<a href='/product/xenon'>Download early an release</a> to preview the features
 						</div>
 					</div>
 				</div>

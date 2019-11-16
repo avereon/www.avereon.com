@@ -27,7 +27,7 @@ export default class XenonGettingStarted extends React.Component {
 						<div className='item'>Start Xenon using the program shortcut</div>
 					</div>
 
-					<div className='product-bar'><img width="480" height="270" alt="" src="/screenshots/welcome-tool.png"/></div>
+					<div className='product-bar'><img width="100%" alt="" src="/screenshots/welcome-tool.png"/></div>
 
 				</div>
 			</div>

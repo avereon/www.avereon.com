@@ -109,7 +109,9 @@ export default class XenonDownload extends React.Component {
 	}
 
 	render() {
-		let stableDownload = XenonDownload.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY]);
+		let stableDownload = <div className='download-row'>
+			{XenonDownload.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY])}
+		</div>;
 
 		let stableDownloads = <div className='download-row'>
 			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}

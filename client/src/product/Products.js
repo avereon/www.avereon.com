@@ -6,7 +6,9 @@ export default class Products extends React.Component {
 	render() {
 		return (
 			<div className='content'>
-				<h1 className='title'>Products</h1>
+
+				<div className='title'>Products</div>
+
 				<div className='product-bar'>
 					<a href='/product/xenon'><img className="product-icon" alt="" src={Icon.XENON}/></a>
 					<div className='body'>

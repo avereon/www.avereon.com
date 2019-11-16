@@ -1,6 +1,6 @@
 .product {
-	margin: 0.4cm;
-	width: 20cm;
+	margin: 1rem;
+	width: 50rem;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 .product-title {
-	padding: 2mm;
+	margin: 0.5rem;
 	display: flex;
 	flex-flow: row nowrap;
 	/* along the main axis */
@@ -18,20 +18,20 @@
 }
 
 .product-icon {
-	width: 64px;
-	height: 64px;
+	width: 4rem;
+	height: 4rem;
 	flex-shrink: 0;
 }
 
 .product-name {
-	font-size: 1.4cm;
-	margin: 0 0 0 5mm;
+	font-size: 3rem;
+	margin: 0 0 0 1rem;
 }
 
 .product-bar {
-	width: 20cm;
+	width: 50rem;
 	text-align: justify;
-	margin: 1em 0;
+	margin: 1rem 0;
 
 	display: flex;
 	flex-flow: row nowrap;
@@ -42,7 +42,7 @@
 }
 
 .product-bar .body {
-	padding: 0 0 0 1em;
+	padding: 0 0 0 1rem;
 	display: flex;
 	flex-flow: column nowrap;
 	/* along the main axis */
@@ -52,7 +52,7 @@
 }
 
 .product-bar .item {
-	padding: 0 0 0 1em;
+	padding: 0 0 0 1rem;
 	display: flex;
 	flex-flow: column nowrap;
 	/* along the main axis */
@@ -61,18 +61,13 @@
 	align-items: flex-start;
 }
 
-/*.product-bar .product-icon {*/
-/*	width: 64px;*/
-/*	height: 64px;*/
-/*}*/
-
 .product-header {
-	font-size: 1.5em;
+	font-size: 1.5rem;
 }
 
 .product-content {
 	text-align: justify;
-	padding: 2mm;
+	padding: 0.5rem;
 }
 
 a {
@@ -92,9 +87,9 @@ a:hover {
 }
 
 .download {
-	margin: 2mm;
+	margin: 0.5rem;
 	color: #e0e0e0;
-	border-radius: 5px;
+	border-radius: 0.5rem;
 
 	display: flex;
 	flex-flow: row nowrap;
@@ -112,7 +107,7 @@ a:hover {
 }
 
 .download-icon {
-	margin: 0 0.2em 0 0;
+	margin: 0 0.2rem 0 0;
 }
 
 .download-metadata {
@@ -125,20 +120,24 @@ a:hover {
 }
 
 .download.primary {
-	margin: 5mm 2mm;
-	padding: 8mm;
+	width: 100%;
+	margin: 1rem 0.5rem;
+	padding: 1.5rem;
 }
 
 .download.primary .title {
-	font-size: 2em;
+	font-size: 2rem;
+	margin: 0.5rem;
 }
 
 .download.secondary {
 	flex-basis: 100%;
-	padding: 2mm;
+	margin: 0.5rem 0.5rem;
+	padding: 0.5rem;
 }
 .download.secondary .title {
-	font-size: 1em;
+	font-size: 1rem;
+	margin: 0.5rem;
 }
 
 .download.stable.primary {
