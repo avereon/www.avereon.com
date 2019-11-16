@@ -8,14 +8,14 @@ export default class About extends React.Component {
 
 		return (
 			<div className='content'>
-				<h1 className='title'>About Us</h1>
+				<h1>About Us</h1>
 				<p>
 					Avereon is a small organization of engineers, students, hobbyists and
 					artists with the simple goal of creating unique products for the work
 					they do.
 				</p>
 
-				<h1>Icons</h1>
+				<h2>Icons</h2>
 				<p>
 					<img className="product-icon" style={flow} alt="" src={Icon.AVEREON}/>
 					The Avereon wing icon is a stylized <a href='https://en.wikipedia.org/wiki/Flying_wing'>flying wing</a> with
