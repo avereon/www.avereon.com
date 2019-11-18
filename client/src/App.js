@@ -25,7 +25,6 @@ export default class App extends React.Component {
 						<Route exact path='/product' component={Products}/>
 						<Route exact path='/product/xenon' component={XenonDownload}/>
 						<Route exact path='/product/xenon/start' component={XenonGettingStarted}/>
-						<Route exact path='/product/xenon/javadoc' onEnter={() => window.location.reload()} />
 						<Route exact path='/licenses/mit' component={Mit}/>
 						<Redirect to='/'/>
 					</Switch>

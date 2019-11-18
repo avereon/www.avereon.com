@@ -145,7 +145,7 @@ export default class XenonDownload extends React.Component {
 						<a href="/product/xenon/start"><FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/> Getting Started</a>
 						<a href="/product/xenon/builders"><FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/> Mod Builders</a>
 						<a href="/product/xenon/contribute"><FontAwesomeIcon icon={['fas', 'arrow-circle-right']}/> Get Involved</a>
-						<a href='/product/xenon/javadoc' target="_blank"><FontAwesomeIcon icon={['fab', 'java']}/> API</a>
+						<a href={process.env.PUBLIC_URL +'/product/xenon/javadoc/index.html'}><FontAwesomeIcon icon={['fab', 'java']}/> API</a>
 						<a href='https://github.com/avereon/xenon' target="_blank"><FontAwesomeIcon icon={['fab', 'github']}/> GitHub</a>
 					</div>
 
