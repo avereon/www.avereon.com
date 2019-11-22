@@ -10,6 +10,8 @@ import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
 
+const reload = () => window.location.reload();
+
 export default class App extends React.Component {
 
 	render() {
@@ -18,15 +20,14 @@ export default class App extends React.Component {
 				<Header/>
 				<Router>
 					<Switch>
-						<Route exact path='/' component={Home}/>
-						<Route exact path='/home' component={Home}/>
-						<Route exact path='/about' component={About}/>
-						<Route exact path='/legal' component={Legal}/>
-						<Route exact path='/product' component={Products}/>
-						<Route exact path='/product/xenon' component={XenonDownload}/>
-						<Route exact path='/product/xenon/start' component={XenonGettingStarted}/>
-						<Route exact path='/licenses/mit' component={Mit}/>
-						<Redirect to='/'/>
+						<Route path='/about' component={About}/>
+						<Route path='/legal' component={Legal}/>
+						<Route path='/product/*/javadoc' onEnter={reload}/>
+						<Route path='/product/xenon/start' component={XenonGettingStarted}/>
+						<Route path='/product/xenon' component={XenonDownload}/>
+						<Route path='/product' component={Products}/>
+						<Route path='/licenses/mit' component={Mit}/>
+						<Route component={Home}/>
 					</Switch>
 				</Router>
 				<Footer/>
