@@ -20,13 +20,17 @@ export default class App extends React.Component {
 				<Header/>
 				<Router>
 					<Switch>
-						<Route path='/about' component={About}/>
-						<Route path='/legal' component={Legal}/>
-						<Route path='/product/*/javadoc' onEnter={reload}/>
-						<Route path='/product/xenon/start' component={XenonGettingStarted}/>
-						<Route path='/product/xenon' component={XenonDownload}/>
-						<Route path='/product' component={Products}/>
-						<Route path='/licenses/mit' component={Mit}/>
+						<Route exact path='/product/xenon/start' component={XenonGettingStarted}/>
+						<Route exact path='/product/xenon' component={XenonDownload}/>
+						<Route exact path='/product' component={Products}/>
+						<Route exact path='/licenses/mit' component={Mit}/>
+						<Route exact path='/legal' component={Legal}/>
+						<Route exact path='/about' component={About}/>
+
+						<Route path='/product/zevra/javadoc' onEnter={reload}/>
+						<Route path='/product/zenna/javadoc' onEnter={reload}/>
+						<Route path='/product/xenon/javadoc' onEnter={reload}/>
+
 						<Route component={Home}/>
 					</Switch>
 				</Router>
