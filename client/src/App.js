@@ -27,9 +27,9 @@ export default class App extends React.Component {
 						<Route exact path='/legal' component={Legal}/>
 						<Route exact path='/about' component={About}/>
 
-						<Route path='/product/zevra/javadoc' onEnter={reload}/>
-						<Route path='/product/zenna/javadoc' onEnter={reload}/>
-						<Route path='/product/xenon/javadoc' onEnter={reload}/>
+						<Route path='/product/zevra/docs/api' onEnter={reload}/>
+						<Route path='/product/zenna/docs/api' onEnter={reload}/>
+						<Route path='/product/xenon/docs/api' onEnter={reload}/>
 
 						<Route component={Home}/>
 					</Switch>
