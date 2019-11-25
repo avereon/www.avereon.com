@@ -23,6 +23,7 @@ export default class App extends React.Component {
 						<Route path='/about' component={About}/>
 						<Route path='/legal' component={Legal}/>
 						<Route path='/product/*/javadoc' onEnter={reload}/>
+						<Route path='/product/*/docs/api' onEnter={reload}/>
 						<Route path='/product/xenon/start' component={XenonGettingStarted}/>
 						<Route path='/product/xenon' component={XenonDownload}/>
 						<Route path='/product' component={Products}/>
