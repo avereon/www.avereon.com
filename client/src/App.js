@@ -9,6 +9,12 @@ import Footer from "./Footer";
 import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
+import DocViewer from "./product/DocViewer";
+
+import './css/index.css';
+import './css/license.css';
+import './css/product.css';
+import './css/viewer.css';
 
 const reload = () => window.location.reload();
 
@@ -20,18 +26,20 @@ export default class App extends React.Component {
 				<Header/>
 				<Router>
 					<Switch>
+						<Route exact path='/product/xenon/docs/manual' component={DocViewer}/>
 						<Route exact path='/product/xenon/start' component={XenonGettingStarted}/>
 						<Route exact path='/product/xenon' component={XenonDownload}/>
 						<Route exact path='/product' component={Products}/>
 						<Route exact path='/licenses/mit' component={Mit}/>
 						<Route exact path='/legal' component={Legal}/>
 						<Route exact path='/about' component={About}/>
+						<Route exact path='/' component={Home}/>
 
 						<Route path='/product/zevra/docs/api' onEnter={reload}/>
 						<Route path='/product/zenna/docs/api' onEnter={reload}/>
 						<Route path='/product/xenon/docs/api' onEnter={reload}/>
 
-						<Route component={Home}/>
+						<Redirect to='/'/>
 					</Switch>
 				</Router>
 				<Footer/>

@@ -1,0 +1,18 @@
+.doc-view {
+	background: green;
+
+	display: flex;
+	flex-flow: row nowrap;
+	/* along the main axis */
+	justify-content: inherit;
+	/* along the cross axis */
+	align-items: flex-start;
+}
+
+.doc-index {
+	background: orange;
+}
+
+.doc-content {
+	background: yellow;
+}

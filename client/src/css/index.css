@@ -147,6 +147,8 @@ a:hover.menuitem {
 }
 
 .content {
+	background: blue;
+
 	/* flex child constraints */
 	flex: 1 1 auto;
 

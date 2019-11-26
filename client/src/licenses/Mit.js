@@ -1,5 +1,4 @@
 import React from 'react';
-import './licenses.css';
 
 export default class Xenon extends React.Component {
 
