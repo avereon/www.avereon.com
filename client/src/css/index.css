@@ -1,3 +1,9 @@
+/*
+206080
+Tints: 206080 36708d 4d8099 6390a6 79a0b3 90b0c0 a6bfcc bccfd9 d2dfe6 e9eff2 ffffff
+Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 000000
+ */
+
 body {
 	margin: 0;
 	padding: 0;
@@ -65,52 +71,25 @@ code {
 	min-height: 100vh;
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: space-between;
+	justify-content: flex-start;
+	align-items: center;
 }
 
 .header {
 	/* Tint of #206080 */
 	background-color: #427893;
 	color: #f0f0f0;
+
+	font-family: sansation, sans-serif;
+
+	align-self: stretch;
+
 	/* Match this with the footer */
-	padding: 0.2rem 2rem;
+	padding: 0 2rem;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-between;
-	align-items: center;
-}
-
-.banner {
-	font-family: sansation, sans-serif;
-	font-size: 2rem;
-
-	/* Match with banner-mirror */
-	width: 12rem;
-
-	display: inline-flex;
-	flex-flow: row nowrap;
-	justify-content: flex-start;
-	align-items: center;
-}
-
-.banner-mirror {
-	font-family: sansation, sans-serif;
-	font-size: 2rem;
-
-	/* Match with banner */
-	width: 12rem;
-
-	display: inline-flex;
-	flex-flow: row nowrap;
-	justify-content: flex-end;
-	align-items: center;
-}
-
-.hbox {
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: space-evenly;
-	align-items: center;
+	align-items: stretch;
 }
 
 .logo {
@@ -120,37 +99,45 @@ code {
 	vertical-align: middle;
 }
 
-a.banner {
-	color: #f0f0f0;
-}
-
-a:hover.banner {
-	color: #f0f0f0;
-}
-
 .menu {
+	height: 2.5rem;
 	margin: 0 0 0 0;
-	vertical-align: center;
+
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+	align-items: stretch;
 }
 
-.menuitem {
-	font-family: sansation, sans-serif;
-	font-size: 1.5rem;
-}
-
-a.menuitem {
-	color: #f0f0f0a0;
-}
-
-a:hover.menuitem {
+.menu a {
 	color: #f0f0f0;
+
+	/* Height is determined by the menu height */
+	padding: 0 0.2rem;
+
+	font-size: 1.5rem;
+
+	display: flex;
+	align-items: center;
+}
+
+.menu a:hover {
+	background: #6390a6;
+}
+
+.menu a.banner {
+	font-size: 2rem;
+	margin-right: 1rem;
 }
 
 .content {
-	background: blue;
+	max-width: 80rem;
+	min-width: 40rem;
+
+	padding: 1rem;
 
 	/* flex child constraints */
-	flex: 1 1 auto;
+	flex: 100 1 auto;
 
 	display: flex;
 	flex-flow: column nowrap;
@@ -158,9 +145,9 @@ a:hover.menuitem {
 	align-items: center;
 }
 
-.content p {
-	width: 50rem;
-}
+/*.content p {*/
+/*	width: 50rem;*/
+/*}*/
 
 .announcement {
 	margin: 2rem 0;
@@ -187,7 +174,8 @@ a:hover.menuitem {
 .footer {
 	color: #d8d8d8;
 	background-color: #427893;
-	font-size: 1rem;
+	align-self: stretch;
+
 	/* Match this with the header */
 	padding: 0.2rem 2rem;
 	display: flex;

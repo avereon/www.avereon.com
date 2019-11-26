@@ -2,7 +2,7 @@
 	background: green;
 
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: row;
 	/* along the main axis */
 	justify-content: inherit;
 	/* along the cross axis */
@@ -10,9 +10,11 @@
 }
 
 .doc-index {
+	flex: 1 1 20%;
 	background: orange;
 }
 
 .doc-content {
+	flex: 1 1 80%;
 	background: yellow;
 }
