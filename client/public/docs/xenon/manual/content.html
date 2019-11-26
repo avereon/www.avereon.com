@@ -1,18 +1,95 @@
-<h1>Xenon User Manual</h1>
+<div>
 
-<h2 id="welcome">Welcome</h2>
-Welcome, and thank you for using Xenon, a
-<h3 id="user-experience-principles">User Experience Principles</h3>
-<h4>HiDPI Monitors</h4>
-<p>Support the use of high DPI monitors over the use of standard DPI
-	monitors. Over time the pixel density of monitors had hovered between 80 and
-	120 DPI. With the introduction of the Apple Retina display in 2010 the DPI
-	increased significantly and now there are many monitors with DPI counts
-	above 150.
-</p>
-<h4>Return the User to Where They Were</h4>
-<p>
-	Return the user where they left off. Whenever the program is restarted it
-	should return the user to where they left off unless the user specifically
-	changes the settings not to.
-</p>
+	<h1 id="user-guide">User Guide</h1>
+
+	<h2 id="welcome">Welcome</h2>
+	<p>
+		Welcome, and thank you for using Xenon, a simple application framework. Xenon
+		is a framework that provides services common to modern desktop applications
+		like selection tabs, dockable work area, notifications and many others. We
+		hope you find this program useful as you get to know its features and
+		capabilities. We particularly encourage you to <a href="/product/xenon/mods">
+		discover the mods</a> available for Xenon that provide capabilities to
+		accomplish all kinds of tasks.
+	</p>
+
+
+	<h2 id="getting-started">Getting Started</h2>
+	<p>
+		If you have not done so already, <a href='/product/xenon'>start by downloading
+		the Xenon installer</a> for your platform. Once downloaded, run the installer
+		to install Xenon. Once installed Xenon can be found by searching for Xenon
+		in the start menu or application finder of your operating system.
+	</p>
+
+	<h4 id="terminology">Terminology</h4>
+	<p>
+		In the course of reading this document, you will run across a number of terms
+		that have specific meaning in Xenon. This section serves as a brief introduction
+		to some of the concepts and terminology used in Xenon as well as an explanation
+		for each.
+	</p>
+
+	<h6>Resource</h6>
+	<h6>Resource Type</h6>
+	<h6>Workspace</h6>
+	<h6 id="workarea">Workarea</h6>
+	<h6>Tool</h6>
+	<h6>Action</h6>
+	<h6>Program Home</h6>
+	<p>
+		This is the location where the program is installed and from where the program
+		executes. The location of the program home is different across platforms but
+		the structure is the same. The following table shows the default program home
+		for common platforms
+	</p>
+	<table>
+		<tr>
+			<td>Linux</td>
+			<td>$HOME/.local/share/xenon</td>
+		</tr>
+		<tr>
+			<td>Mac OS</td>
+			<td>/Applications/Xenon.app/Contents</td>
+		</tr>
+		<tr>
+			<td>Windows</td>
+			<td>C:\Program Files\Xenon</td>
+		</tr>
+	</table>
+	<h6>Product</h6>
+	<p>
+		The program and mods are collectively referred to as products. You will notice
+		that program updates and mod updates are handled with the same tools and
+		workflow. Anytime you see the term product it may refer to either the program,
+		mods or both.
+	</p>
+	<h6>Mod</h6>
+	<h6>Product Market</h6>
+
+	<h4 id="user-experience-principles">User Experience Principles</h4>
+	<h6>HiDPI Monitors</h6>
+	<p>Support the use of high DPI monitors over the use of standard DPI
+		monitors. Over time the pixel density of monitors had hovered between 80 and
+		120 DPI. With the introduction of the Apple Retina display in 2010 the DPI
+		increased significantly and now there are many monitors with DPI counts
+		above 150.
+	</p>
+	<h6>Pick Up Where You Left Off</h6>
+	<p>
+		Return the user where they left off. Whenever the program is restarted it
+		should return the user to where they left off unless the user specifically
+		changes the settings not to. This means that the program should open the same
+		number of workspaces with the same number of workareas and the same tools and
+		resources loaded.
+	</p>
+
+	<h2 id="command-line-interface">Command Line Interface</h2>
+	<p>
+		Xenon provides a command line interface to start and interact with the
+		program. The command line interface requires that the program be executable
+		from the command line. It is recommended to add the program home bin folder
+		to your PATH environment variable for convenience.
+	</p>
+
+</div>

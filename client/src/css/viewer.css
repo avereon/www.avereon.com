@@ -4,21 +4,67 @@
 	/* along the main axis */
 	justify-content: flex-start;
 	/* along the cross axis */
-	align-items: stretch;
+	align-items: flex-start;
 }
 
 .doc-index {
 	background: #c0c0c0;
+	margin: 0 1rem;
+	padding: 0 1rem;
+
+	position: sticky;
+	top: 0;
 	flex: 1 1 25%;
 }
 
 .doc-index a {
 	display: block;
+	text-wrap: none;
+	word-wrap: unset;
+}
+
+.doc-index h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+.doc-index h2 {
+	font-size: 1.75rem;
+}
+
+.doc-index h3 {
+	font-size: 1.5rem;
+}
+
+.doc-index h4 {
+	font-size: 1.25rem;
+}
+
+.doc-index h5 {
+	font-size: 1.125rem;
+}
+
+.doc-index h6 {
+	font-size: 1rem;
 }
 
 .doc-content {
+	background: #f0f0f0;
 	margin: 0 1rem;
 	padding: 0 1rem;
 	flex: 1 1 75%;
-	background: #f0f0f0;
 }
+
+.doc-content h1 {
+	color: var(--primary-color);
+	border-bottom: 0.1rem solid #808080;
+}
+
+.doc-content h2 {
+	color: var(--text-black);
+}
+
+.doc-content table{
+	background: #e0e0e0;
+}
+

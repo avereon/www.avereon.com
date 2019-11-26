@@ -1,3 +1,10 @@
+:root {
+	--primary-stable-color: #208060;
+	--primary-stable-tint: #288868;
+	--secondary-stable-color: #206080;
+	--secondary-stable-tint: #286888;
+}
+
 .product {
 	margin: 1rem;
 	width: 50rem;
@@ -70,15 +77,6 @@
 	padding: 0.5rem;
 }
 
-a {
-	color: #206080;
-	text-decoration: none;
-}
-
-a:hover {
-	color: #427893;
-}
-
 .download-row {
 	display: flex;
 	flex-flow: row nowrap;
@@ -88,7 +86,7 @@ a:hover {
 
 .download {
 	margin: 0.5rem;
-	color: #e0e0e0;
+	color: var(--text-white);
 	border-radius: 0.5rem;
 
 	display: flex;
@@ -141,19 +139,19 @@ a:hover {
 }
 
 .download.stable.primary {
-	background-color: #208060;
+	background-color: var(--primary-stable-color);
 }
 .download.stable.primary:hover {
 	color: #f0f0f0;
-	background-color: #288868;
+	background-color: var(--primary-stable-tint);
 }
 
 .download.stable.secondary {
-	background-color: #206080;
+	background-color: var(--secondary-stable-color);
 }
 .download.stable:hover {
 	color: #f0f0f0;
-	background-color: #286888;
+	background-color: var(--secondary-stable-tint);
 }
 
 .download.latest {

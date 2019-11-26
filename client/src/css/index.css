@@ -4,6 +4,24 @@ Tints: 206080 36708d 4d8099 6390a6 79a0b3 90b0c0 a6bfcc bccfd9 d2dfe6 e9eff2 fff
 Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 000000
  */
 
+@font-face {
+	font-family: sansation;
+	font-weight: normal;
+	src: url('../font/sansation/Sansation-Regular.ttf');
+}
+
+:root {
+	--primary-color: #206080;
+	--primary-tint: #427893;
+	--primary-shade: #1a4d66;
+
+	--primary-black: #505860;
+	--primary-white: #e0e0e0;
+
+	--text-black: var(--primary-black);
+	--text-white: var(--primary-white);
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -15,6 +33,15 @@ body {
 
 }
 
+a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--primary-tint);
+}
+
 h1 {
 	font-size: 3rem;
 	font-weight: normal;
@@ -24,50 +51,45 @@ h1 {
 h2 {
 	font-size: 2.5rem;
 	font-weight: normal;
-	margin: 0.5rem 0 0 0;
+	margin: 1rem 0 0 0;
 }
 
 h3 {
 	font-size: 2rem;
 	font-weight: normal;
-	margin: 0.4rem 0 0 0;
+	margin: 0.8rem 0 0 0;
 }
 
 h4 {
 	font-size: 1.8rem;
 	font-weight: normal;
-	margin: 0.3rem 0 0 0;
+	margin: 0.7rem 0 0 0;
 }
 
 h5 {
 	font-size: 1.5rem;
 	font-weight: normal;
-	margin: 0.2rem 0 0 0;
+	margin: 0.6rem 0 0 0;
 }
 
 h6 {
 	font-size: 1.2rem;
 	font-weight: normal;
-	margin: 0.1rem 0 0 0;
+	margin: 0.5rem 0 0 0;
 }
 
 p {
 	text-align: justify;
+	margin: 0;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-@font-face {
-	font-family: sansation;
-	font-weight: normal;
-	src: url('../font/sansation/Sansation-Regular.ttf');
-}
-
 .app {
-	background-color: #e0e0e0;
-	color: #505860;
+	color: var(--text-black);
+	background-color: var(--primary-white);
 	min-height: 100vh;
 	display: flex;
 	flex-flow: column nowrap;
@@ -76,9 +98,8 @@ code {
 }
 
 .header {
-	/* Tint of #206080 */
-	background-color: #427893;
-	color: #f0f0f0;
+	color: var(--text-white);
+	background-color: var(--primary-color);
 
 	font-family: sansation, sans-serif;
 
@@ -110,7 +131,7 @@ code {
 }
 
 .menu a {
-	color: #f0f0f0;
+	color: var(--text-white);
 
 	/* Height is determined by the menu height */
 	padding: 0 0.2rem;
@@ -122,7 +143,7 @@ code {
 }
 
 .menu a:hover {
-	background: #6390a6;
+	background: var(--primary-tint);
 }
 
 .menu a.banner {
@@ -172,8 +193,8 @@ code {
 }
 
 .footer {
-	color: #d8d8d8;
-	background-color: #427893;
+	color: var(--text-white);
+	background-color: var(--primary-color);
 	align-self: stretch;
 
 	/* Match this with the header */
@@ -191,5 +212,5 @@ code {
 }
 
 .footer .copyright a, .copyright a:hover {
-	color: #f0f0f0;
+	color: var(--text-white);
 }
