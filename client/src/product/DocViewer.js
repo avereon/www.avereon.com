@@ -2,20 +2,37 @@ import React from "react";
 
 export default class DocViewer extends React.Component {
 
-	loadDocIndex() {
-		return {__html: 'This Section Header Could be a bit longer but what if it is really long bit longer but what if it is really long bit longer but what if it is really long<ul><li>Item 1</li><ul><li>Item 1.1</li></ul></ul>'};
+	state = {
+		docIndex: 'INDEX',
+		docContent: 'CONTENT'
+	};
+
+	componentDidMount() {
+		// Load the viewer index
+		fetch(this.props.doc + "/index.html").then((response) => {
+			response.text().then((text) => this.setState({docIndex: text}))
+		});
+		// Load the viewer content
+		fetch(this.props.doc + "/content.html").then((response) => {
+			response.text().then((text) => this.setState({docContent: text}))
+		});
 	}
 
-	loadDocContent() {
-		return {__html: '<h2>Title</h2><p>This is some content that should be displayed. If it is long enough it should be wrapped. All HTML elements should be respected.</p>'};
+	getDocIndex() {
+		return {__html: this.state.docIndex}
+	};
+
+
+	getDocContent() {
+		return {__html: this.state.docContent};
 	}
 
 	render() {
 		return (
 			<div className='content'>
 				<div className='doc-view'>
-					<div className='doc-index' dangerouslySetInnerHTML={this.loadDocIndex()}/>
-					<div className='doc-content' dangerouslySetInnerHTML={this.loadDocContent()}/>
+					<div className='doc-index' dangerouslySetInnerHTML={this.getDocIndex()}/>
+					<div className='doc-content' dangerouslySetInnerHTML={this.getDocContent()}/>
 				</div>
 			</div>
 		)

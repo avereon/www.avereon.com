@@ -26,7 +26,7 @@ export default class App extends React.Component {
 				<Header/>
 				<Router>
 					<Switch>
-						<Route exact path='/product/xenon/docs/manual' component={DocViewer}/>
+						<Route exact path='/product/xenon/docs/manual' render={(props) => <DocViewer {...props} doc='/docs/xenon/manual'/>}/>
 						<Route exact path='/product/xenon/start' component={XenonGettingStarted}/>
 						<Route exact path='/product/xenon' component={XenonDownload}/>
 						<Route exact path='/product' component={Products}/>

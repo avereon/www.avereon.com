@@ -1,20 +1,24 @@
 .doc-view {
-	background: green;
-
 	display: flex;
 	flex-flow: row;
 	/* along the main axis */
-	justify-content: inherit;
+	justify-content: flex-start;
 	/* along the cross axis */
-	align-items: flex-start;
+	align-items: stretch;
 }
 
 .doc-index {
-	flex: 1 1 20%;
-	background: orange;
+	background: #c0c0c0;
+	flex: 1 1 25%;
+}
+
+.doc-index a {
+	display: block;
 }
 
 .doc-content {
-	flex: 1 1 80%;
-	background: yellow;
+	margin: 0 1rem;
+	padding: 0 1rem;
+	flex: 1 1 75%;
+	background: #f0f0f0;
 }
