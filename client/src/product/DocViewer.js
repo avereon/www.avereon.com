@@ -3,17 +3,16 @@ import React from "react";
 export default class DocViewer extends React.Component {
 
 	state = {
-		docIndex: 'INDEX',
-		docContent: 'CONTENT'
+		docIndex: '',
+		docContent: ''
 	};
 
 	componentDidMount() {
 		// Load the viewer content
 		fetch(this.props.doc).then((response) => {
 			response.text().then((text) => {
-				this.setState({docContent: text});
 				const xml = new DOMParser().parseFromString(text, "text/xml");
-				this.setState({docIndex: this.extractDocIndex(xml, this.props.outline)});
+				this.setState({docContent: text,docIndex: this.extractDocIndex(xml, this.props.outline)});
 			})
 		});
 	}
