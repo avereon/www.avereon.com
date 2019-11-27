@@ -35,28 +35,63 @@
 
 	<dl>
 		<dt>Program</dt>
-		<dd>Xenon uses the term program refer to the program itself. This term is
-			used in place of application for simplicity and to avoid ambiguity in the
-			term application.
+		<dd>Xenon uses the term 'program' to refer to the program itself. This term
+			is used in place of 'application' for simplicity and to avoid ambiguity
+			with the term application.
 		</dd>
 	</dl>
 	<dl>
 		<dt>Resource</dt>
+		<dd>
+			A resource is something on which Xenon operates. Specifically resources
+			are things that are 'opened' and 'closed' and sometimes 'loaded' and
+			'saved'. Resources are defined by Uniform Resource Identifiers (URIs) and
+			a URI is used to identify a specific resource to Xenon. Some examples of
+			resources are: 1. An SSH connection to another computer. 2. A file on the
+			local file system. 3. The built-in about resource.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Resource Type</dt>
+		<dd>
+			Resources are always assigned a resource type in order to identify what
+			tools are available for that resource. If a resource type cannot be
+			determined then Xenon is unable to operate on that resource. Resource
+			types are also used to determine what tools can be used on a particular
+			resource.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Workspace</dt>
+		<dd>
+			A workspace is everything in a Xenon window. Xenon allows multiple
+			workspaces to be open at any given time. Workspaces allow the user to
+			switch between workareas quickly.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Workarea</dt>
+		<dd>
+			A workarea is a named collection and layout of tools.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Tool</dt>
+		<dd>
+			A tool is a graphical component that provides specific functionality to
+			operate on a resource. Some examples of tools are: a text editor, a image
+			viewer, a calculator and an SSH terminal. Tools are provided and
+			implemented by mods.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Action</dt>
+		<dd>
+			Actions define the set of operations that can be used with tools. Many
+			actions are common among tools (e.d. cut, copy, paste) and some actions
+			are specific. Tools use common actions to provide a simpler user
+			experience.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Program Home</dt>
@@ -92,7 +127,11 @@
 	</dl>
 	<dl>
 		<dt>Mod</dt>
-		<dd></dd>
+		<dd>
+			A mod is a binary package that provides specific functionality. In
+			specific it provides tools to operate on resources. Mods may also provide
+			additional resource types and actions that can be used by other mods.
+		</dd>
 	</dl>
 	<dl>
 		<dt>Product Market</dt>
@@ -105,12 +144,23 @@
 	<h2 id="command-line-interface">Command Line Interface</h2>
 	<p>
 		Xenon provides a command line interface to start and interact with the
-		program. The command line interface requires that the program be executable
-		from the command line. It is recommended to add the program home bin folder
-		to your PATH environment variable for convenience.
+		program. The command line interface requires that the program be runnable
+		from the command line. It is expected that users use the provided program
+		shortcuts and shell scripts such that Xenon may simply be started by using
+		the command 'xenon' on the command line from any location. This document
+		assumes that Xenon is available to execute in this manner:
 	</p>
-	<p>The general pattern for the Xenon command line is:</p>
-	<code>xenon [option...] [uri...]</code>
+
+	<code>xenon [&lt;option&gt;...] [&lt;uri&gt;...]</code>
+
+	<p>
+		<em>Advanced</em>: Xenon is a Java module and as such can be started using
+		the Java module command line parameters. Xenon has been distributed as a
+		jlink-ed program and should be executed using the provided Java runtime. To
+		start Xenon using the Java module commands use the following:
+	</p>
+
+	<code>${XENON_HOME}/bin/java -m com.avereon.xenon</code>
 
 	<h3 id="cli-uris">URIs (Resources)</h3>
 	<p>
@@ -122,14 +172,56 @@
 		against user.path system property of the invoking JVM.
 	</p>
 
+	<h3 id="basic-options">Basic Options</h3>
+	<dl>
+		<dt>--help</dt>
+		<dd>
+			Print the command line help information. This option exits the invoked
+			instance immediately upon completion. It does not affect already running
+			instances.
+		</dd>
+	</dl>
+	<dl>
+		<dt>--version</dt>
+		<dd>
+			Print the program version information. This option exits the invoked
+			instance immediately upon completion. It does not affect already running
+			instances.
+		</dd>
+	</dl>
+
 	<h3 id="control-options">Control Options</h3>
 	<p>
 		Several options control the operation of the program allowing some level of
 		automation. If Xenon is run without any control option then the program is
-		simply started normally. If the existing process was
-		<a href="#cli-option-profile">started with a profile</a>, the control
-		option must also provide the same profile name to affect the desired instance.
+		simply started normally. If an existing process was started with a profile
+		(<a href="#cli-option-profile">see profile option</a>), the control option
+		must also provide the same profile name to affect the desired instance.
 	</p>
+	<dl>
+		<dt>--nosplash</dt>
+		<dd>
+			Start the program without showing the splash screen. This option is
+			useful in conjunction with the --daemon option.
+		</dd>
+	</dl>
+	<dl>
+		<dt id="cli-option-profile">--profile &lt;name&gt;</dt>
+		<dd>
+			Start the program with a named profile. Normally this is not necessary but
+			in cases where the user wants to have separate instances of the program
+			running at the same time each instance will need a different profile.
+		</dd>
+	</dl>
+	<dl>
+		<dt>--daemon</dt>
+		<dd>
+			Start the program without showing workspaces. This options is useful to
+			start the program &quot;in the background&quot; to allow the program to
+			be running before the user needs to use it. This option can benefit from
+			use of the --nosplash option.
+		</dd>
+	</dl>
 	<dl>
 		<dt>--stop</dt>
 		<dd>
@@ -157,23 +249,36 @@
 			watching instances for any normal instance.
 		</dd>
 	</dl>
-	<dl>
-		<dt id="cli-option-profile">--profile &lt;name&gt;</dt>
-		<dd>
-			Start the program with a named profile. Normally this is not necessary but
-			in cases where the user wants to have separate instances of the program
-			running at the same time each instance will need a different profile.
-		</dd>
-	</dl>
 
 	<h3 id="logging">Logging</h3>
-
+	<p>
+		Log events are published to stdout and to the program log file by default.
+	</p>
 	<dl>
 		<dt>--log-level &lt;level&gt;</dt>
 		<dd>
-			Start the program with a named profile. Normally this is not necessary but
-			in cases where the user wants to have separate instances of the program
-			running at the same time each instance will need a different profile.
+			The level of logging verbosity. The valid log level values are:
+			<p>none - Turn off all logging</p>
+			<p>error - Problematic events that may leave the program in an unstable state</p>
+			<p>warn - Problematic events that usually leave the program in a stable state</p>
+			<p>info - Information messages like normal program events (default)</p>
+			<p>debug - Extra messages that show high level events</p>
+			<p>trace - Extra messages that show low level events</p>
+			<p>all - Turn on all logging</p>
+		</dd>
+	</dl>
+	<dl>
+		<dt>--log-file &lt;file&gt;</dt>
+		<dd>
+			The log file location. This changes where the log file will be written
+			and, therefore, will not be written in the default location.
+		</dd>
+	</dl>
+	<dl>
+		<dt>--log-append</dt>
+		<dd>
+			Should the log file be appended. If this option is not specified the log
+			file will be overwritten each time the program is started.
 		</dd>
 	</dl>
 
@@ -186,13 +291,12 @@
 		increased significantly and now there are many monitors with DPI counts
 		above 150.
 	</p>
-	<h6>Pick Up Where You Left Off</h6>
+	<h6>Keep the User Context</h6>
 	<p>
-		Return the user where they left off. Whenever the program is restarted it
-		should return the user to where they left off unless the user specifically
-		changes the settings not to. This means that the program should open the same
-		number of workspaces with the same number of workareas and the same tools and
-		resources loaded.
+		Whenever the program is restarted it should return the user to where they
+		left off unless the user specifically changes the settings not to. This
+		means that the program should open the same workspaces with the same
+		workareas with the same tools and resources loaded.
 	</p>
 
 </div>
