@@ -90,6 +90,10 @@ p {
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+	background-color: var(--secondary-white);
+	display: block;
+	margin-top: 0.25rem;
+	padding: 0.25rem;
 }
 
 .app {

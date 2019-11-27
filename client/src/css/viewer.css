@@ -7,6 +7,10 @@
 	align-items: flex-start;
 }
 
+.doc-view code {
+	background-color: var(--primary-white);
+}
+
 .doc-index {
 	background: var(--secondary-gray);
 	margin: 0 1rem;
@@ -28,26 +32,26 @@
 }
 
 .doc-index h2 {
-	font-size: 1.75rem;
+	font-size: 1.25rem;
 }
 
 .doc-index h3 {
-	font-size: 1.5rem;
+	font-size: 1rem;
 	margin-left: 0.4rem;
 }
 
 .doc-index h4 {
-	font-size: 1.25rem;
+	font-size: 0.8rem;
 	margin-left: 0.6rem;
 }
 
 .doc-index h5 {
-	font-size: 1.125rem;
+	font-size: 0.6rem;
 	margin-left: 0.8rem;
 }
 
 .doc-index h6 {
-	font-size: 1rem;
+	font-size: 0.5rem;
 	margin-left: 1rem;
 }
 
