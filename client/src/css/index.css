@@ -16,7 +16,12 @@ Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 00
 	--primary-shade: #1a4d66;
 
 	--primary-black: #505860;
+	--primary-gray: #b0b0b0;
 	--primary-white: #e0e0e0;
+
+	--secondary-black: #606870;
+	--secondary-gray: #c0c0c0;
+	--secondary-white: #f0f0f0;
 
 	--text-black: var(--primary-black);
 	--text-white: var(--primary-white);
@@ -134,9 +139,9 @@ code {
 	color: var(--text-white);
 
 	/* Height is determined by the menu height */
-	padding: 0 0.2rem;
+	padding: 0 0.5rem;
 
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 
 	display: flex;
 	align-items: center;
@@ -147,7 +152,6 @@ code {
 }
 
 .menu a.banner {
-	font-size: 2rem;
 	margin-right: 1rem;
 }
 

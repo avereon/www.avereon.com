@@ -13,7 +13,7 @@ export default class DocViewer extends React.Component {
 			response.text().then((text) => {
 				this.setState({docContent: text});
 				const xml = new DOMParser().parseFromString(text, "text/xml");
-				this.setState({docIndex: this.extractDocIndex(xml, 6)});
+				this.setState({docIndex: this.extractDocIndex(xml, this.props.outline)});
 			})
 		});
 	}

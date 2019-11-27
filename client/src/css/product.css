@@ -3,6 +3,11 @@
 	--primary-stable-tint: #288868;
 	--secondary-stable-color: #206080;
 	--secondary-stable-tint: #286888;
+
+	--primary-latest-color: #c06000;
+	--primary-latest-tint: #c86808;
+
+	--primary-disabled-color: #808080;
 }
 
 .product {
@@ -133,6 +138,7 @@
 	margin: 0.5rem 0.5rem;
 	padding: 0.5rem;
 }
+
 .download.secondary .title {
 	font-size: 1rem;
 	margin: 0.5rem;
@@ -141,30 +147,33 @@
 .download.stable.primary {
 	background-color: var(--primary-stable-color);
 }
+
 .download.stable.primary:hover {
-	color: #f0f0f0;
+	color: var(--secondary-white);
 	background-color: var(--primary-stable-tint);
 }
 
 .download.stable.secondary {
 	background-color: var(--secondary-stable-color);
 }
+
 .download.stable:hover {
-	color: #f0f0f0;
+	color: var(--secondary-white);
 	background-color: var(--secondary-stable-tint);
 }
 
 .download.latest {
-	background-color: #c06000;
+	background-color: var(--primary-latest-color);
 }
+
 .download.latest:hover {
-	color: #f0f0f0;
-	background-color: #c86808;
+	color: var(--secondary-white);
+	background-color: var(--primary-latest-tint);
 }
 
 .download.disabled {
 	cursor: not-allowed;
-	background-color: #808080;
+	background-color: var(--primary-disabled-color);
 }
 
 .resource-row {

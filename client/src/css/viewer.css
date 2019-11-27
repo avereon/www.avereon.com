@@ -8,7 +8,7 @@
 }
 
 .doc-index {
-	background: #c0c0c0;
+	background: var(--secondary-gray);
 	margin: 0 1rem;
 	padding: 0 1rem;
 
@@ -19,8 +19,7 @@
 
 .doc-index a {
 	display: block;
-	text-wrap: none;
-	word-wrap: unset;
+	white-space: nowrap;
 }
 
 .doc-index h1 {
@@ -34,22 +33,26 @@
 
 .doc-index h3 {
 	font-size: 1.5rem;
+	margin-left: 0.4rem;
 }
 
 .doc-index h4 {
 	font-size: 1.25rem;
+	margin-left: 0.6rem;
 }
 
 .doc-index h5 {
 	font-size: 1.125rem;
+	margin-left: 0.8rem;
 }
 
 .doc-index h6 {
 	font-size: 1rem;
+	margin-left: 1rem;
 }
 
 .doc-content {
-	background: #f0f0f0;
+	background: var(--secondary-white);
 	margin: 0 1rem;
 	padding: 0 1rem;
 	flex: 1 1 75%;
@@ -57,14 +60,21 @@
 
 .doc-content h1 {
 	color: var(--primary-color);
-	border-bottom: 0.1rem solid #808080;
+	border-bottom: 0.1rem solid var(--text-black);
 }
 
 .doc-content h2 {
 	color: var(--text-black);
 }
 
+.doc-content img.centered {
+	display: block;
+	margin: 1rem auto;
+	border: 0.5rem solid var(--primary-white)
+}
+
 .doc-content table{
-	background: #e0e0e0;
+	margin-top: 0.5rem;
+	background: var(--primary-white);
 }
 
