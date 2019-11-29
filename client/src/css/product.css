@@ -177,6 +177,10 @@
 }
 
 .resource-row {
+	background: var(--secondary-white);
+	padding: 0.5rem 0;
+	margin: 1rem 0.5rem;
+	font-size: 1.2rem;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-evenly;
