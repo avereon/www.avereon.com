@@ -26,15 +26,16 @@ export default class DocViewer extends React.Component {
 			let tag = node.tagName;
 			let id = node.id;
 			let text = node.textContent;
-			if (tag && id && tag.length === 2 && tag.startsWith("h")) {
+			if (tag && tag.length === 2 && tag.startsWith("h")) {
 				let depth = tag.charAt(1);
 				//console.log(tag + "#" + id + "=" + text);
 				if (depth <= level) {
-					idx += "<a href=\"#" + id + "\">";
+					if( id ) idx += "<a href=\"#" + id + "\">";
 					idx += "<h" + depth + ">";
 					idx += text;
 					idx += "</h" + depth +">";
-					idx += "</a>\n"
+					if( id ) idx += "</a>";
+					idx += "\n"
 				}
 			}
 		}

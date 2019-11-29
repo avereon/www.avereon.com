@@ -8,7 +8,7 @@ import Footer from "./Footer";
 import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
-import DocViewer from "./product/DocViewer";
+import DocViewer from "./DocViewer";
 
 import './css/index.css';
 import './css/license.css';
@@ -28,6 +28,7 @@ export default class App extends React.Component {
 					<Switch>
 						<Route exact path='/product/xenon/docs/manual' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/docs/mods' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
+						<Route exact path='/product/xenon/docs/contribute' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/contribute/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
 						<Route exact path='/product/xenon' component={XenonDownload}/>
 						<Route exact path='/product' component={Products}/>
