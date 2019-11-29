@@ -11,6 +11,10 @@
 	margin-top: 0.5rem;
 }
 
+.doc-view pre {
+	background-color: var(--primary-white);
+}
+
 .doc-view code {
 	background-color: var(--primary-white);
 }
