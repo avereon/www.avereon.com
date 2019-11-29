@@ -10,10 +10,10 @@ export default class Home extends React.Component {
 					<img className="product-icon" alt="" src={Icon.XENON}/>
 					<div className='body'>
 						<div className='title'>
-							Xenon 1.0 Arriving Soon
+							Xenon 1.0 Has Arrived
 						</div>
 						<div>
-							<a href='/product/xenon'>Download an early release</a> to preview the features
+							<a href='/product/xenon'>Download now</a> to get the latest features
 						</div>
 					</div>
 				</div>
