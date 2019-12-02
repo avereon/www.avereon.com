@@ -43,7 +43,7 @@ export default class Products extends React.Component {
 				</div>
 
 				<div className='product-bar'>
-					<a href='https://github.com/avereon/acorn'><img className="product-icon" alt="" src={Icon.AVEREON}/></a>
+					<a href='https://github.com/avereon/acorn'><img className="product-icon" alt="" src={Icon.ACORN}/></a>
 					<div className='body'>
 						<div><a href='https://github.com/avereon/acorn'>Acorn</a> is a command line
 							tool to score system performance in Java. The tool allows you to
