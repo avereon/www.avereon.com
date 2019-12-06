@@ -44,6 +44,13 @@ export default class DocViewer extends React.Component {
 		return idx;
 	}
 
+
+	componentDidUpdate(){
+		if( window.location.search && window.location.search.startsWith('#')) {
+			document.getElementById(window.location.search.substr(1)).scrollIntoView();
+		}
+	}
+
 	getDocIndex() {
 		return {__html: this.state.docIndex}
 	};
@@ -54,6 +61,10 @@ export default class DocViewer extends React.Component {
 	}
 
 	render() {
+		let reload = this.state.docContent === '';
+
+		//if( reload ) 				window.location.reload();
+
 		return (
 			<div className='content'>
 				<div className='doc-view'>

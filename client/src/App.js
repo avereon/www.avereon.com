@@ -46,8 +46,8 @@ export default class App extends React.Component {
 						<Route path='/product/xenon/docs/api' onEnter={reload}/>
 
 						{/* Deprecated routes */}
-						<Redirect exact path='/product/xenon/docs/manual' to='/product/xenon/docs/user-guide'/>
-						<Redirect exact path='/product/xenon/docs/mods' to='/product/xenon/docs/mods-guide'/>
+						<Redirect exact path='/product/xenon/docs/manual' to={{ ...window.location, pathname: '/product/xenon/docs/user-guide' }}/>
+						<Redirect exact path='/product/xenon/docs/mods' to={{ ...window.location, pathname: '/product/xenon/docs/mods-guide' }}/>
 
 						{/* Default route */}
 						<Route component={NotFound}/>
