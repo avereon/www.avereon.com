@@ -15,10 +15,6 @@
 	background-color: var(--primary-white);
 }
 
-.doc-view code {
-	background-color: var(--primary-white);
-}
-
 .doc-index {
 	background: var(--secondary-gray);
 	margin: 0 1rem;

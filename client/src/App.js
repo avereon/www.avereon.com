@@ -1,20 +1,21 @@
 import React from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
+import './css/index.css';
+import './css/license.css';
+import './css/product.css';
+import './css/viewer.css';
 import Home from "./Home";
-import Mit from "./licenses/Mit"
-import XenonDownload from "./product/xenon/Download";
+import LicenseMit from "./licenses/Mit"
 import Header from "./Header";
 import Footer from "./Footer";
 import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
 import DocViewer from "./DocViewer";
-
-import './css/index.css';
-import './css/license.css';
-import './css/product.css';
-import './css/viewer.css';
-import XenonMods from "./product/xenon/Mods";
+import XenonMods from "./product/xenon/XenonMods";
+import XenonDocs from "./product/xenon/XenonDocs";
+import XenonProduct from "./product/xenon/XenonProduct";
+import NotFound from "./NotFound";
 
 const reload = () => window.location.reload();
 
@@ -26,22 +27,30 @@ export default class App extends React.Component {
 				<Header/>
 				<Router>
 					<Switch>
-						<Route exact path='/product/xenon/docs/manual' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
-						<Route exact path='/product/xenon/docs/mods' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
+						{/* Supported routes */}
+						<Route exact path='/product/xenon/docs/user-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
+						<Route exact path='/product/xenon/docs/mods-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/contribute' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/contribute/content.html' outline={3}/>}/>
+						<Route exact path='/product/xenon/docs' component={XenonDocs}/>
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
-						<Route exact path='/product/xenon' component={XenonDownload}/>
-						<Route exact path='/product' component={Products}/>
-						<Route exact path='/license/mit' component={Mit}/>
+						<Route exact path='/product/xenon' component={XenonProduct}/>
+						<Route exact path='/products' component={Products}/>
+						<Route exact path='/license/mit' component={LicenseMit}/>
 						<Route exact path='/legal' component={Legal}/>
 						<Route exact path='/about' component={About}/>
 						<Route exact path='/' component={Home}/>
 
+						{/* API documentation routes */}
 						<Route path='/product/zevra/docs/api' onEnter={reload}/>
 						<Route path='/product/zenna/docs/api' onEnter={reload}/>
 						<Route path='/product/xenon/docs/api' onEnter={reload}/>
 
-						<Redirect to='/'/>
+						{/* Deprecated routes */}
+						<Redirect exact path='/product/xenon/docs/manual' to='/product/xenon/docs/user-guide'/>
+						<Redirect exact path='/product/xenon/docs/mods' to='/product/xenon/docs/mods-guide'/>
+
+						{/* Default route */}
+						<Route component={NotFound}/>
 					</Switch>
 				</Router>
 				<Footer/>

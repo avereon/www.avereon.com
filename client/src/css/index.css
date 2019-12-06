@@ -25,6 +25,8 @@ Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 00
 
 	--text-black: var(--primary-black);
 	--text-white: var(--primary-white);
+
+	--monospaced-font: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 body {
@@ -90,7 +92,11 @@ p {
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+	font-family: var(--monospaced-font);
+}
+
+pre {
+	font-family: var(--monospaced-font);
 	background-color: var(--secondary-white);
 	display: block;
 	margin-top: 0.25rem;

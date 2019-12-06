@@ -32,7 +32,7 @@ function productCards(product, success, failure) {
 		.catch(failure)
 }
 
-export default class XenonDownload extends React.Component {
+export default class XenonProduct extends React.Component {
 
 	state = {
 		stable: {
@@ -110,19 +110,19 @@ export default class XenonDownload extends React.Component {
 
 	render() {
 		let stableDownload = <div className='download-row'>
-			{XenonDownload.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY])}
+			{XenonProduct.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY])}
 		</div>;
 
 		let stableDownloads = <div className='download-row'>
-			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}
-			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.MAC, this.state.stable[Platform.MAC.KEY])}
-			{XenonDownload.createDownloadTile("secondary", "stable", "Xenon", Platform.WINDOWS, this.state.stable[Platform.WINDOWS.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", Platform.MAC, this.state.stable[Platform.MAC.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", Platform.WINDOWS, this.state.stable[Platform.WINDOWS.KEY])}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{XenonDownload.createDownloadTile("secondary", "latest", "Xenon", Platform.LINUX, this.state.latest[Platform.LINUX.KEY])}
-			{XenonDownload.createDownloadTile("secondary", "latest", "Xenon", Platform.MAC, this.state.latest[Platform.MAC.KEY])}
-			{XenonDownload.createDownloadTile("secondary", "latest", "Xenon", Platform.WINDOWS, this.state.latest[Platform.WINDOWS.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", Platform.LINUX, this.state.latest[Platform.LINUX.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", Platform.MAC, this.state.latest[Platform.MAC.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", Platform.WINDOWS, this.state.latest[Platform.WINDOWS.KEY])}
 		</div>;
 
 		return (
@@ -142,10 +142,14 @@ export default class XenonDownload extends React.Component {
 					</div>
 
 					<div className='resource-row'>
-						<a href="/product/xenon/docs/manual"><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a>
-						<a href="/product/xenon/docs/mods"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mod Builders</a>
+						<a href="/product/xenon/docs/user-guide"><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a>
+						<a href="/product/xenon/mods"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a>
+					</div>
+
+					<div className='resource-row'>
+						<a href="/product/xenon/docs/mods-guide"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mod Builders</a>
 						<a href="/product/xenon/contribute"><FontAwesomeIcon icon={['fas', 'user-friends']}/> Get Involved</a>
-						<a href={process.env.PUBLIC_URL +'/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> API</a>
+						<a href={process.env.PUBLIC_URL +'/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a>
 						<a href='https://github.com/avereon/xenon' target="_blank"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a>
 					</div>
 
