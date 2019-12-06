@@ -12,7 +12,7 @@ export default class DocViewer extends React.Component {
 		fetch(this.props.doc).then((response) => {
 			response.text().then((text) => {
 				const xml = new DOMParser().parseFromString(text, "text/xml");
-				this.setState({docContent: text,docIndex: this.extractDocIndex(xml, this.props.outline)});
+				this.setState({docContent: text, docIndex: this.extractDocIndex(xml, this.props.outline)});
 			})
 		});
 	}
@@ -30,11 +30,11 @@ export default class DocViewer extends React.Component {
 				let depth = tag.charAt(1);
 				//console.log(tag + "#" + id + "=" + text);
 				if (depth <= level) {
-					if( id ) idx += "<a href=\"#" + id + "\">";
+					if (id) idx += "<a href=\"#" + id + "\">";
 					idx += "<h" + depth + ">";
 					idx += text;
-					idx += "</h" + depth +">";
-					if( id ) idx += "</a>";
+					idx += "</h" + depth + ">";
+					if (id) idx += "</a>";
 					idx += "\n"
 				}
 			}
@@ -44,27 +44,19 @@ export default class DocViewer extends React.Component {
 		return idx;
 	}
 
-
-	componentDidUpdate(){
-		if( window.location.search && window.location.search.startsWith('#')) {
-			document.getElementById(window.location.search.substr(1)).scrollIntoView();
-		}
+	componentDidUpdate() {
+		if (window.location.hash) document.getElementById(window.location.hash.substr(1)).scrollIntoView();
 	}
 
 	getDocIndex() {
 		return {__html: this.state.docIndex}
 	};
 
-
 	getDocContent() {
 		return {__html: this.state.docContent};
 	}
 
 	render() {
-		let reload = this.state.docContent === '';
-
-		//if( reload ) 				window.location.reload();
-
 		return (
 			<div className='content'>
 				<div className='doc-view'>
