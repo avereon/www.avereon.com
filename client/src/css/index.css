@@ -29,6 +29,11 @@ Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 00
 	--monospaced-font: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.debug {
+	border: 1px solid red;
+	background: yellow;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -205,6 +210,17 @@ pre {
 .announcement .title {
 	font-size: 2.5em;
 	margin: 0 0 0 -0.5rem;
+}
+
+.mark {
+}
+
+a.screenshot {
+	width: 80%;
+}
+
+img.screenshot {
+	width: 100%;
 }
 
 .footer {

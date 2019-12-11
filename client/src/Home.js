@@ -17,7 +17,9 @@ export default class Home extends React.Component {
 						</div>
 					</div>
 				</div>
-				<img src="/screenshots/welcome-tool.png" srcSet="/screenshots/welcome-tool@2x.png 2x, /screenshots/welcome-tool.png" alt="Xenon Welcome Tool"/>
+				<a className='screenshot' href='/product/xenon'>
+					<img className='screenshot' src="/screenshots/welcome-tool.png" srcSet="/screenshots/welcome-tool@2x.png 2x, /screenshots/welcome-tool.png" alt="Xenon Welcome Tool"/>
+				</a>
 			</div>
 		)
 	}
