@@ -11,3 +11,5 @@ chmod 600 ${HOME}/.ssh/known_hosts
 scp -B client/client.zip travis@avereon.com:/opt/avn/store/latest/www.avereon.com/client.zip
 scp -B server/target/avereon.jar travis@avereon.com:/opt/avn/store/latest/www.avereon.com/server.jar
 scp -B server/target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
+
+ssh travis@avereon.com /home/ecco/bin/update-avereon-website
