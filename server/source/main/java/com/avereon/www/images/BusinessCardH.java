@@ -1,5 +1,6 @@
 package com.avereon.www.images;
 
+import com.avereon.rossa.icon.WingDiscLargeIcon;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 

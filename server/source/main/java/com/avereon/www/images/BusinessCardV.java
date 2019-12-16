@@ -1,5 +1,6 @@
 package com.avereon.www.images;
 
+import com.avereon.rossa.icon.WingDiscLargeIcon;
 import javafx.scene.text.TextAlignment;
 
 public class BusinessCardV extends BusinessCard {

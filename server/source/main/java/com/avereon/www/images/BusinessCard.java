@@ -1,6 +1,6 @@
 package com.avereon.www.images;
 
-import com.avereon.xenon.ProgramImage;
+import com.avereon.venza.image.ProgramImage;
 import javafx.scene.text.Font;
 
 public abstract class BusinessCard extends ProgramImage {
