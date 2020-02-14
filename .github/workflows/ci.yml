@@ -62,11 +62,15 @@ jobs:
 
       - name: Build Client
         run: |
-          cd client && npm install-clean && npm run-script build
-          cd build && zip -r ../client.zip * && cd ../..
+          cd client
+          npm install-clean
+          npm run-script build
+          cd build
+          zip -r ../client.zip *
 
       - name: Build Server
         run: |
+          cd server
           mvn ${{env.MAVEN_PARMS}} package
 
       - name: Deploy
