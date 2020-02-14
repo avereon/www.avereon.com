@@ -60,8 +60,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Build
-        run: .github/build.sh
+      - name: Build Client
+        run: |
+          cd client && npm install-clean && npm run-script build
+          cd build && zip -r ../client.zip * && cd ../..
+
+      - name: Build Server
+        run: |
+          mvn ${{env.MAVEN_PARMS}} package
 
       - name: Deploy
         run: .github/deploy.sh
