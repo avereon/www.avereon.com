@@ -14,9 +14,11 @@ env:
   AVN_REPO_USERNAME: ${{ secrets.AVN_REPO_USERNAME }}
   AVN_REPO_PASSWORD: ${{ secrets.AVN_REPO_PASSWORD }}
 
+  DISPLAY: ":99"
   GITHUB_REF: ${{ github.ref }}
   JAVA_VERSION: "11"
   MAVEN_PARMS: "-B -U -V --settings .github/settings.xml --file pom.xml"
+  XVFB_PARMS: "-screen 0 1920x1080x24 -nolisten unix"
 
 jobs:
   build:
