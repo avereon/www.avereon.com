@@ -13,9 +13,13 @@
 .product {
 	margin: 1rem;
 	width: 50rem;
+
+	/* flex child constraints */
+	flex: 100 1 auto;
+
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: stretch;
 }
 
@@ -41,7 +45,7 @@
 }
 
 .product-bar {
-	width: 50rem;
+	width: 100%;
 	text-align: justify;
 	margin: 1rem 0;
 
@@ -192,4 +196,16 @@
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
+}
+
+.product-status {
+	width: 25rem;
+
+	/* flex child constraints */
+	flex: 100 1 auto;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
 }

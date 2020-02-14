@@ -5,15 +5,15 @@ export default class About extends React.Component {
 
 	render() {
 		return (
-			<div className='content'>
+			<div className='content product'>
 				<h1>About Us</h1>
 				<div className='product-bar'>
 					<img className="product-icon" alt="" src={Icon.AVEREON}/>
 					<div className='body'>
 						<div>
-							We are a small organization of engineers, students, hobbyists and
-							artists with the need to create unique products for the work we
-							do. We hope others will find our tools useful for their own work.
+							We are a small group of engineers, students, hobbyists and
+							artists that create unique products for the work we do. We
+							hope others will find our tools useful for their own work.
 						</div>
 					</div>
 				</div>

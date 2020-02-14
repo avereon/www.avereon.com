@@ -16,6 +16,7 @@ import XenonMods from "./product/xenon/XenonMods";
 import XenonDocs from "./product/xenon/XenonDocs";
 import XenonProduct from "./product/xenon/XenonProduct";
 import NotFound from "./NotFound";
+import Status from "./product/Status";
 
 const reload = () => window.location.reload();
 
@@ -35,6 +36,7 @@ export default class App extends React.Component {
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
 						<Route exact path='/product/xenon' component={XenonProduct}/>
 						<Route exact path='/products' component={Products}/>
+						<Route exact path='/status' component={Status}/>
 						<Route exact path='/license/mit' component={LicenseMit}/>
 						<Route exact path='/legal' component={Legal}/>
 						<Route exact path='/about' component={About}/>

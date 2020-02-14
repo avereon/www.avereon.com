@@ -30,8 +30,8 @@ Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 00
 }
 
 .debug {
-	border: 1px solid red;
-	background: yellow;
+	border: #FFFF0080 solid 1px;
+	background-color: #C0C00020;
 }
 
 body {
@@ -184,6 +184,17 @@ pre {
 	flex-flow: column nowrap;
 	justify-content: flex-start;
 	align-items: center;
+}
+
+.columns {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-evenly;
+	align-items: flex-start;
+}
+
+.column {
+	flex: 0 1;
 }
 
 /*.content p {*/
