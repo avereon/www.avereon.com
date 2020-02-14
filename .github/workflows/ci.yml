@@ -78,5 +78,14 @@ jobs:
           cd server
           mvn ${{env.MAVEN_PARMS}} package
 
-      - name: Deploy
-        run: .github/deploy.sh
+      - name: Copy Client ZIP
+        run: scp -B client/client.zip travis@avereon.com:/opt/avn/store/latest/www.avereon.com/client.zip
+
+      - name: Copy Server JAR
+        run: scp -B server/target/avereon.jar travis@avereon.com:/opt/avn/store/latest/www.avereon.com/server.jar
+
+      - name: Copy Provider Icon
+        run: scp -B server/target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
+
+      - name: Update the Website
+        run: ssh travis@avereon.com /home/ecco/bin/update-avereon-website
