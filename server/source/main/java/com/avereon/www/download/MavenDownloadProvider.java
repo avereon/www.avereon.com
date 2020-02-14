@@ -1,13 +1,11 @@
 package com.avereon.www.download;
 
-import com.avereon.util.LogUtil;
+import com.avereon.util.Log;
 import com.avereon.util.TextUtil;
 import com.avereon.util.Version;
 import com.avereon.util.XmlDescriptor;
-import org.slf4j.Logger;
 
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -16,7 +14,7 @@ import java.util.concurrent.*;
 
 public class MavenDownloadProvider extends AbstractDownloadProvider {
 
-	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
+	private static final System.Logger log = Log.log();
 
 	private static final String REPO = "https://repo.avereon.com/avn/";
 
@@ -68,7 +66,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 	public String clearCache() {
 		cache.clear();
 
-		log.info( "Cache cleared for all" );
+		log.log( Log.INFO, "Cache cleared for all" );
 		return "Cache cleared for all";
 	}
 
@@ -77,17 +75,17 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 
 		for( String cacheKey : new HashSet<>( cache.keySet() ) ) {
 			if( cacheKey.startsWith( key ) ) {
-				log.info( "Evict cache for: " + cacheKey );
+				log.log( Log.INFO, "Evict cache for: " + cacheKey );
 				cache.remove( cacheKey );
 			}
 		}
 
-		log.info( "Cache cleared for " + key );
+		log.log( Log.INFO, "Cache cleared for " + key );
 		return "Cache cleared for " + key;
 	}
 
 	XmlDescriptor getXmlDescriptor( String uri ) throws IOException {
-		log.debug( "Retrieve " + uri );
+		log.log( Log.DEBUG, "Retrieve " + uri );
 		return new XmlDescriptor( URI.create( uri ) );
 	}
 
@@ -219,7 +217,7 @@ public class MavenDownloadProvider extends AbstractDownloadProvider {
 			} catch( InterruptedException exception ) {
 				return;
 			} catch( ExecutionException exception ) {
-				log.error( "Error executing future", exception );
+				log.log( Log.ERROR, "Error executing future", exception );
 			}
 		}
 	}

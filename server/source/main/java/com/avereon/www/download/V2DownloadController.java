@@ -1,8 +1,7 @@
 package com.avereon.www.download;
 
-import com.avereon.util.LogUtil;
+import com.avereon.util.Log;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +27,7 @@ import java.util.Map;
 @RequestMapping( value = { "/download/{channel}", "/download/{channel}/v2" } )
 public class V2DownloadController {
 
-	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
+	private static final System.Logger log = Log.log();
 
 	private V2DownloadProviderFactory factory;
 
@@ -105,11 +103,11 @@ public class V2DownloadController {
 
 	private HttpStatus doGetCatalog( HttpServletResponse response, String channel ) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
-		if( provider == null ) log.warn( "The download provider is null: " + channel );
+		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getCatalog();
-		if( download == null ) log.warn( "The catalog is null" );
+		if( download == null ) log.log( Log.WARN, "The catalog is null" );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( "card" ) );
@@ -144,11 +142,11 @@ public class V2DownloadController {
 		RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format
 	) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
-		if( provider == null ) log.warn( "The download provider is null: " + channel );
+		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getDownload( artifact, platform, asset, format );
-		if( download == null ) log.warn( "The download is null: " + V2Download.key( artifact, platform, asset, format ) );
+		if( download == null ) log.log( Log.WARN, "The download is null: " + V2Download.key( artifact, platform, asset, format ) );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( format ) );

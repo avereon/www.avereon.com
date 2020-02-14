@@ -1,13 +1,11 @@
 package com.avereon.www.download;
 
 import com.avereon.product.ProductCard;
-import com.avereon.util.LogUtil;
-import org.slf4j.Logger;
+import com.avereon.util.Log;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.lang.invoke.MethodHandles;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,7 +15,7 @@ import java.util.stream.Stream;
 
 public class V2LocalDownloadProvider implements V2DownloadProvider {
 
-	private static final Logger log = LogUtil.get( MethodHandles.lookup().lookupClass() );
+	private static final System.Logger log = Log.log();
 
 	private Path root;
 
@@ -32,11 +30,15 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 	@Override
 	public V2Download getCatalog() throws IOException {
 		V2Download download = new V2Download( "catalog", "card" );
-		log.info( "Get artifact: " + download.getKey() );
+		log.log( Log.INFO, "Get artifact: " + download.getKey() );
 
 		String products;
 		try( Stream<Path> children = Files.list( root ) ) {
-			products = children.filter( ( f ) -> Files.isDirectory( f ) ).filter( this::hasProductCard ).map( ( f ) -> "\"" + f.getFileName().toString() + "\"" ).collect( Collectors.joining( "," ) );
+			products = children
+				.filter( ( f ) -> Files.isDirectory( f ) )
+				.filter( this::hasProductCard )
+				.map( ( f ) -> "\"" + f.getFileName().toString() + "\"" )
+				.collect( Collectors.joining( "," ) );
 		}
 
 		StringBuilder builder = new StringBuilder();
@@ -70,14 +72,14 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 
 	private V2Download doGetDownload( String artifact, String platform, String asset, String format ) throws IOException {
 		V2Download download = new V2Download( artifact, platform, asset, format );
-		log.info( "Get artifact: " + download.getKey() );
+		log.log( Log.INFO, "Get artifact: " + download.getKey() );
 
 		// TODO Opportunity to provide a cache here
 
 		Path path = root.resolve( artifact );
 		if( platform != null ) path = path.resolve( platform );
 		path = path.resolve( getFilename( asset, format ) );
-		if( !Files.exists( path ) ) log.warn( "Artifact path not found: " + path );
+		if( !Files.exists( path ) ) log.log( Log.WARN, "Artifact path not found: " + path );
 		if( !Files.exists( path ) ) return null;
 
 		ProductCard card = getProductCard( path.getParent() );
@@ -100,7 +102,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		try {
 			card.load( new FileInputStream( path.toFile() ), null );
 		} catch( IOException exception ) {
-			log.error( "Could not load product card: " + path, exception );
+			log.log( Log.ERROR, "Could not load product card: " + path, exception );
 			return null;
 		}
 
@@ -120,7 +122,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 					if( hasProductCard( child ) ) return true;
 				}
 			} catch( IOException exception ) {
-				log.warn( "Error listing path: " + path, exception );
+				log.log( Log.WARN, "Error listing path: " + path, exception );
 			}
 		}
 		return false;
