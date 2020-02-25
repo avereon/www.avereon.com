@@ -10,7 +10,7 @@ export default class Home extends React.Component {
 					<img className="product-icon" alt="" src={Icon.XENON}/>
 					<div className='body'>
 						<div className='title'>
-							Xenon 1.0 Has Arrived
+							Xenon 1.1 Released
 						</div>
 						<div>
 							<a href='/product/xenon'>Download now</a> to get the latest features
