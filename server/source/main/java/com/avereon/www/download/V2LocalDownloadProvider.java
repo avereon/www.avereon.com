@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 public class V2LocalDownloadProvider implements V2DownloadProvider {
 
-	private static final System.Logger log = Log.log();
+	private static final System.Logger log = Log.get();
 
 	private Path root;
 

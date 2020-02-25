@@ -1,8 +1,8 @@
 package com.avereon.www.download;
 
+import com.avereon.product.Version;
 import com.avereon.util.Log;
 import com.avereon.util.TextUtil;
-import com.avereon.util.Version;
 import com.avereon.util.XmlDescriptor;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.concurrent.*;
 
 public class MavenDownloadProvider extends AbstractDownloadProvider {
 
-	private static final System.Logger log = Log.log();
+	private static final System.Logger log = Log.get();
 
 	private static final String REPO = "https://repo.avereon.com/avn/";
 

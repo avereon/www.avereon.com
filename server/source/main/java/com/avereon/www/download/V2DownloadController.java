@@ -27,7 +27,7 @@ import java.util.Map;
 @RequestMapping( value = { "/download/{channel}", "/download/{channel}/v2" } )
 public class V2DownloadController {
 
-	private static final System.Logger log = Log.log();
+	private static final System.Logger log = Log.get();
 
 	private V2DownloadProviderFactory factory;
 
