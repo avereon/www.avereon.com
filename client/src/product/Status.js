@@ -32,11 +32,13 @@ class ProductStatus extends React.Component {
 	render() {
 		return (
 			<div className='product-bar'>
-				<img className="product-icon" alt="" src={this.props.icon}/>
+				<a href={"https://github.com/avereon/" + this.props.ident}>
+					<img className="product-icon" alt="" src={this.props.icon}/>
+				</a>
 				<div className='body'>
 					<h6>{this.props.name}</h6>
 					<a href={'https://github.com/avereon/' + this.props.ident + '/actions'}>
-					<img alt={this.props.name + " Build Status"} src={"https://github.com/avereon/" + this.props.ident + "/workflows/Avereon%20" + this.props.name + "%20Continuous/badge.svg"}/>
+						<img alt={this.props.name + " Build Status"} src={"https://github.com/avereon/" + this.props.ident + "/workflows/Avereon%20" + this.props.name + "%20Continuous/badge.svg"}/>
 					</a>
 				</div>
 			</div>
