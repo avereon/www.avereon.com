@@ -10,16 +10,19 @@ export default class Products extends React.Component {
 					<h3>Products</h3>
 					<ProductStatus ident='xenon' icon={Icon.XENON} name='Xenon'/>
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
-					<h3>Libraries</h3>
-					<ProductStatus ident='rossa' icon={Icon.ROSSA} name='Rossa'/>
-					<ProductStatus ident='venza' icon={Icon.VENZA} name='Venza'/>
-					<ProductStatus ident='zevra' icon={Icon.ZEVRA} name='Zevra'/>
-				</div>
-				<div className='column product-status'>
 					<h3>Mods</h3>
 					<ProductStatus ident='arena' icon={Icon.ARENA} name='Arena'/>
 					<ProductStatus ident='mazer' icon={Icon.MAZER} name='Mazer'/>
 					<ProductStatus ident='recon' icon={Icon.RECON} name='Recon'/>
+				</div>
+				<div className='column product-status'>
+					<h3>Libraries</h3>
+					<ProductStatus ident='rossa' icon={Icon.ROSSA} name='Rossa'/>
+					<ProductStatus ident='venza' icon={Icon.VENZA} name='Venza'/>
+					<ProductStatus ident='zevra' icon={Icon.ZEVRA} name='Zevra'/>
+					<h3>Maven Plugins</h3>
+					<ProductStatus ident='curex' icon={Icon.AVEREON} name='Curex'/>
+					<ProductStatus ident='cameo' icon={Icon.AVEREON} name='Cameo'/>
 				</div>
 			</div>
 		)
