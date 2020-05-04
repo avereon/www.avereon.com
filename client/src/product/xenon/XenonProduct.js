@@ -11,19 +11,6 @@ const ROOT_URL = "https://www.avereon.com/download";
 
 library.add(fas, fab);
 
-function productCardFromUrl(url, success, failure) {
-	console.log("Request: " + url);
-	return fetch(url)
-		.then((response) => response.status === 200 ? response.json() : {})
-		.then((card) => success(card))
-		.catch(failure)
-}
-
-function productCard(release, platform, success, failure) {
-	const url = ROOT_URL + "/" + release + "/xenon/" + platform + "/product/card";
-	return productCardFromUrl(url, success, failure);
-}
-
 function productCards(product, success, failure) {
 	const url = ROOT_URL + "/product/cards/" + product;
 	return fetch(url)
@@ -150,7 +137,7 @@ export default class XenonProduct extends React.Component {
 						<a href="/product/xenon/docs/mods-guide"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mod Builders</a>
 						<a href="/product/xenon/contribute"><FontAwesomeIcon icon={['fas', 'user-friends']}/> Get Involved</a>
 						<a href={process.env.PUBLIC_URL +'/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a>
-						<a href='https://github.com/avereon/xenon' target="_blank"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a>
+						<a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a>
 					</div>
 
 					{stableDownload}
