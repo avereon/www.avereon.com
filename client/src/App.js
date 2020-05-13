@@ -31,7 +31,7 @@ export default class App extends React.Component {
 						{/* Supported routes */}
 						<Route exact path='/product/xenon/docs/user-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/docs/mods-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
-						<Route exact path='/product/xenon/docs/tool-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tool/content.html' outline={3}/>}/>
+						<Route exact path='/product/xenon/docs/tool-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tools/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/contribute' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/contribute/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/docs' component={XenonDocs}/>
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
