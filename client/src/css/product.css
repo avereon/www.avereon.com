@@ -98,6 +98,8 @@
 	color: var(--text-white);
 	border-radius: 0.5rem;
 
+	flex: 1 1 100%;
+
 	display: flex;
 	flex-flow: row nowrap;
 	/* main axis */
@@ -127,9 +129,9 @@
 }
 
 .download.primary {
-	width: 100%;
+	flex-grow: 1.5;
 	margin: 1rem 0.5rem;
-	padding: 1.5rem;
+	padding: 1rem;
 }
 
 .download.primary .title {
@@ -138,7 +140,7 @@
 }
 
 .download.secondary {
-	flex-basis: 100%;
+	flex-grow: 1;
 	margin: 0.5rem 0.5rem;
 	padding: 0.5rem;
 }
@@ -181,21 +183,25 @@
 }
 
 .resource-row {
-	background: var(--secondary-white);
-	padding: 0.5rem 0;
-	margin: 1rem 0.5rem;
-	font-size: 1.2rem;
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-evenly;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .resource-tile {
+	font-size: 1.2rem;
+	background: var(--secondary-white);
+	padding: 0.5rem;
+	margin: 1rem 0.5rem;
+	border-radius: 0.5rem;
+
+	flex: 1 1;
+
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
 }
 
 .product-status {

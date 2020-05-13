@@ -194,7 +194,7 @@ pre {
 }
 
 .column {
-	flex: 0 1;
+	flex: 1 1;
 }
 
 /*.content p {*/
@@ -221,9 +221,6 @@ pre {
 .announcement .title {
 	font-size: 2.5em;
 	margin: 0 0 0 -0.5rem;
-}
-
-.mark {
 }
 
 a.screenshot {

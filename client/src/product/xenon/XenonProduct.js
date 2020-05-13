@@ -122,29 +122,30 @@ export default class XenonProduct extends React.Component {
 					</div>
 
 					<div className='product-content'>
-						Xenon is a simple application framework that provides services common
-						to modern desktop applications. Specific functionality is implemented
+						Xenon is an application framework that provides common services for
+						modern desktop applications. Specific functionality is implemented
 						with downloadable packages called mods. Users are encouraged to
 						discover and utilize the mods that best suit their needs.
 					</div>
 
-					<div className='resource-row'>
-						<a href="/product/xenon/docs/user-guide"><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a>
-						<a href="/product/xenon/mods"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a>
-					</div>
+						{stableDownload}
 
 					<div className='resource-row'>
-						<a href="/product/xenon/docs/mods-guide"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mod Builders</a>
-						<a href="/product/xenon/contribute"><FontAwesomeIcon icon={['fas', 'user-friends']}/> Get Involved</a>
-						<a href={process.env.PUBLIC_URL +'/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a>
-						<a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a>
+						<div className='resource-tile'>
+							<div><a href="/product/xenon/docs/user-guide"><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a></div>
+							<div><a href="/product/xenon/mods"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
+							<div><a href={process.env.PUBLIC_URL + '/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a></div>
+							<div><a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
+						</div>
+						<div className='resource-tile'>
+							<div><a href="/product/xenon/docs/mods-guide"><FontAwesomeIcon icon={['fas', 'file']}/> Building Mods</a></div>
+							<div><a href="/product/xenon/docs/tool-guide"><FontAwesomeIcon icon={['fas', 'file']}/> Building Tools</a></div>
+						</div>
 					</div>
 
-					{stableDownload}
-
-					<h2>Other Platforms</h2>
+					<h3>Other Platforms</h3>
 					{stableDownloads}
-					<h2>Development Builds</h2>
+					<h3>Development Builds</h3>
 					{latestDownloads}
 
 				</div>
