@@ -11,7 +11,7 @@ export default class Products extends React.Component {
 					<ProductStatus ident='xenon' icon={Icon.XENON} name='Xenon'/>
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
 					<h3>Mods</h3>
-					<ProductStatus ident='arena' icon={Icon.ARENA} name='Arena'/>
+					<ProductStatus ident='amazo' icon={Icon.ARENA} name='Amazo'/>
 					<ProductStatus ident='aveon' icon={Icon.AVEON} name='Aveon'/>
 					<ProductStatus ident='mazer' icon={Icon.MAZER} name='Mazer'/>
 					<ProductStatus ident='recon' icon={Icon.RECON} name='Recon'/>
