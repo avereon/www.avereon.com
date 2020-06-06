@@ -9,6 +9,7 @@ export const ROSSA= ROOT_URL + "/stable/avereon/provider/icon";
 export const VENZA= ROOT_URL + "/stable/avereon/provider/icon";
 export const ZEVRA= ROOT_URL + "/stable/avereon/provider/icon";
 
+export const AMAZO= ROOT_URL + "/latest/amazo/product/icon";
 export const ARENA= ROOT_URL + "/latest/arena/product/icon";
 export const AVEON= ROOT_URL + "/latest/aveon/product/icon";
 export const MAZER= ROOT_URL + "/latest/mazer/product/icon";
