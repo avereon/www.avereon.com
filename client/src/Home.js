@@ -1,9 +1,13 @@
 import React from "react";
 import * as Icon from "./Icon";
+import * as Image from "./Image";
 
 export default class Home extends React.Component {
 
 	render() {
+		// /screenshots/welcome-tool@2x.png 2x, /screenshots/welcome-tool.png
+		const imageSet = Image.XENON_WELCOME_2x + " 2x, " + Image.XENON_WELCOME_1x + " 1x";
+
 		return (
 			<div className='content'>
 				<div className='announcement'>
@@ -23,7 +27,7 @@ export default class Home extends React.Component {
 					</div>
 				</div>
 				<a className='screenshot' href='/product/xenon'>
-					<img className='screenshot' src="/screenshots/welcome-tool.png" srcSet="/screenshots/welcome-tool@2x.png 2x, /screenshots/welcome-tool.png" alt="Xenon Welcome Tool"/>
+					<img className='screenshot' src={Image.XENON_WELCOME_2x} srcSet={imageSet} alt="Xenon Welcome Tool"/>
 				</a>
 			</div>
 		)

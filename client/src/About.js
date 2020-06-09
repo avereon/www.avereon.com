@@ -8,7 +8,7 @@ export default class About extends React.Component {
 			<div className='content product'>
 				<h1>About Us</h1>
 				<div className='product-bar'>
-					<img className="product-icon" alt="" src={Icon.AVEREON}/>
+					<img className="product-icon" alt="" src={Icon.AVEREON_LIGHT}/>
 					<div className='body'>
 						<div>
 							We are a small group of engineers, students, hobbyists and
@@ -21,7 +21,7 @@ export default class About extends React.Component {
 				<h2>Icons</h2>
 
 				<div className='product-bar'>
-					<img className="product-icon" alt="" src={Icon.AVEREON}/>
+					<img className="product-icon" alt="" src={Icon.AVEREON_LIGHT}/>
 					<div className='body'>
 						<div>
 							The Avereon wing icon is a stylized <a href='https://en.wikipedia.org/wiki/Flying_wing'>flying wing</a> with
@@ -36,7 +36,7 @@ export default class About extends React.Component {
 				</div>
 
 				<div className='product-bar'>
-					<img className="product-icon" alt="" src={Icon.XENON}/>
+					<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
 					<div className="body">
 						<div>
 							The Xenon X icon is a stylized <a href='https://en.wikipedia.org/wiki/Bipolar_nebula'>bipolar planetary nebula</a> surrounded

@@ -1,7 +1,7 @@
 /*
 206080
-Tints: 206080 36708d 4d8099 6390a6 79a0b3 90b0c0 a6bfcc bccfd9 d2dfe6 e9eff2 ffffff
-Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 000000
+Tints: #206080 #297aa3 #3194c6 #50a7d3 #73b9dc #96cbe5 #b9dced #dcedf6 #ffffff
+Shades: #206080 #1c5470 #184860 #143c50 #103040 #0c2430 #081820 #040c10 #000000
  */
 
 @font-face {
@@ -12,8 +12,8 @@ Shades: 206080 1d5673 1a4d66 16435a 133a4d 103040 0d2633 0a1d26 06131a 030a0d 00
 
 :root {
 	--primary-color: #206080;
-	--primary-tint: #427893;
-	--primary-shade: #1a4d66;
+	--primary-tint: #3194c6;
+	--primary-shade: #184860;
 
 	--primary-black: #505860;
 	--primary-gray: #b0b0b0;
@@ -223,11 +223,7 @@ pre {
 	margin: 0 0 0 -0.5rem;
 }
 
-a.screenshot {
-	width: 100%;
-}
-
-img.screenshot {
+.screenshot {
 	width: 100%;
 }
 

@@ -1,6 +1,6 @@
 package com.avereon.www.images;
 
-import com.avereon.rossa.icon.WingDiscLargeIcon;
+import com.avereon.rossa.icon.flat.WingDiscLargeIcon;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
@@ -18,17 +18,17 @@ public class BusinessCardH extends BusinessCard {
 		double aspectRatio = (double)LONG / (double)SHORT;
 		move( offset, 1.5 * offset );
 		zoom( scale, scale );
-		draw( new WingDiscLargeIcon() );
+		render( new WingDiscLargeIcon() );
 		reset();
 
 		setFont( FONT );
-		setFillPaint( getIconDrawColor() );
+		setFillPaint( Color.BLACK );
 		setTextAlign( TextAlignment.CENTER );
 		fillText( "Avereon", 0.5 * scale + offset, 0.85, 0.15 );
 
 		double fontHeight = 0.12;
 		double vAnchor = 2 * offset + fontHeight;
-		setFont( deriveFont( FONT, "Sans Serif" ) );
+		setFont( DEFAULT_FONT );
 		setTextAlign( TextAlignment.LEFT );
 		fillText( "Mark Soderquist", 0.7, vAnchor, fontHeight, (aspectRatio - 0.7 - offset) );
 		fillText( "mark@avereon.com", 0.7, vAnchor + 0.1, 0.08 );

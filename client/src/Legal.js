@@ -1,4 +1,5 @@
 import React from "react";
+import CopyrightText from "./CopyrightText";
 
 export default class Legal extends React.Component {
 
@@ -9,9 +10,7 @@ export default class Legal extends React.Component {
 
 				<div>
 					<h4>Copyright</h4>
-					<p>
-						Copyright &copy; 2019 Avereon
-					</p>
+					<p><CopyrightText/></p>
 
 					<h4>Attribution</h4>
 					<p>

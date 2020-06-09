@@ -97,7 +97,18 @@
 						</image>
 						<image>
 							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
+							<target>${images-folder}/avereon-dark.png</target>
+							<theme>web-dark.css</theme>
+						</image>
+						<image>
+							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
+							<target>${images-folder}/avereon-light.png</target>
+							<theme>proof-light.css</theme>
+						</image>
+						<image>
+							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-avatar.png</target>
+							<theme>web-light.css</theme>
 							<offsetX>64</offsetX>
 							<offsetY>64</offsetY>
 							<imageWidth>384</imageWidth>
@@ -106,6 +117,7 @@
 						<image>
 							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-avatar-circle.png</target>
+							<theme>web-light.css</theme>
 							<!-- center the icon in the image -->
 							<offsetX>64</offsetX>
 							<!-- just a little above center for circle avatars -->
