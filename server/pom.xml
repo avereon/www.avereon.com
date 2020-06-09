@@ -79,7 +79,7 @@
 			<plugin>
 				<groupId>com.avereon</groupId>
 				<artifactId>cameo</artifactId>
-				<version>2.5-SNAPSHOT</version>
+				<version>2.6-SNAPSHOT</version>
 				<executions>
 					<execution>
 						<id>render-images</id>
@@ -92,11 +92,11 @@
 				<configuration>
 					<images>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon.png</target>
 						</image>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-avatar.png</target>
 							<offsetX>64</offsetX>
 							<offsetY>64</offsetY>
@@ -104,7 +104,7 @@
 							<imageHeight>384</imageHeight>
 						</image>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.rossa.icon.flat.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-avatar-circle.png</target>
 							<!-- center the icon in the image -->
 							<offsetX>64</offsetX>
