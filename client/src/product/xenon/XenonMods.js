@@ -8,7 +8,7 @@ export default class XenonMods extends React.Component {
 			<div className='content'>
 
 				<div className='product-title'>
-					<img className="product-icon" alt="" src={Icon.XENON}/>
+					<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
 					<div className='product-name'>Xenon Mods</div>
 				</div>
 

@@ -11,7 +11,7 @@ export default class Products extends React.Component {
 					<h1 className='title'>Products</h1>
 
 					<div className='product-bar'>
-						<a href='/product/xenon'><img className="product-icon" alt="" src={Icon.XENON}/></a>
+						<a href='/product/xenon'><img className="product-icon" alt="" src={Icon.XENON_LIGHT}/></a>
 						<div className='body'>
 							<div>
 								<a href='/product/xenon'>Xenon</a> is a simple application framework that provides services common
@@ -33,7 +33,7 @@ export default class Products extends React.Component {
 					</div>
 
 					<div className='product-bar'>
-						<a href='https://github.com/avereon/seenc'><img className="product-icon" alt="" src={Icon.AVEREON}/></a>
+						<a href='https://github.com/avereon/seenc'><img className="product-icon" alt="" src={Icon.AVEREON_LIGHT}/></a>
 						<div className='body'>
 							<div><a href='https://github.com/avereon/seenc'>Seenc</a> is a configurable
 								command line tool to synchronized Git repositories with local clones.

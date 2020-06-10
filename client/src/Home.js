@@ -11,7 +11,7 @@ export default class Home extends React.Component {
 		return (
 			<div className='content'>
 				<div className='announcement'>
-					<img className="product-icon" alt="" src={Icon.XENON}/>
+					<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
 					<div className='body'>
 						<div className='title'>
 							Xenon 1.2 Released

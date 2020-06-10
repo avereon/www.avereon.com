@@ -7,7 +7,7 @@ export const AVEREON_DARK = iconRoot + "/stable/avereon/provider/icon?theme=dark
 export const AVEREON_LIGHT = iconRoot + "/stable/avereon/provider/icon?theme=light";
 
 export const ACORN= iconRoot + "/stable/acorn/product/icon";
-export const XENON= iconRoot + "/latest/xenon/product/icon";
+export const XENON_DARK= iconRoot + "/latest/xenon/product/icon?theme=dark";
 export const XENON_LIGHT= iconRoot + "/latest/xenon/product/icon?theme=light";
 export const ZENNA= iconRoot + "/latest/zenna/product/icon";
 

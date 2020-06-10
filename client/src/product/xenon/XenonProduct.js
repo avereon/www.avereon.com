@@ -117,7 +117,7 @@ export default class XenonProduct extends React.Component {
 				<div className='product'>
 
 					<div className='product-title'>
-						<img className="product-icon" alt="" src={Icon.XENON}/>
+						<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
 						<div className='product-name'>Xenon</div>
 					</div>
 

@@ -8,7 +8,7 @@ export default class Products extends React.Component {
 			<div className='content columns'>
 				<div className='column product-status'>
 					<h3>Products</h3>
-					<ProductStatus ident='xenon' icon={Icon.XENON} name='Xenon'/>
+					<ProductStatus ident='xenon' icon={Icon.XENON_LIGHT} name='Xenon'/>
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
 					<h3>Mods</h3>
 					{/*<ProductStatus ident='amazo' icon={Icon.AMAZO} name='Amazo'/>*/}

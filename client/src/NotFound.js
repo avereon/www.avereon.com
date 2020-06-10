@@ -18,9 +18,9 @@ export default class NotFound extends React.Component {
 							get you back on track:
 						</p>
 						<p>
-							<a href='/'><h3><img style={{height: '1em'}} alt="" src={Icon.AVEREON}/> Avereon Home Page</h3></a>
-							<a href='/product/xenon'><h3><img style={{height: '1em'}} alt="" src={Icon.XENON}/> Avereon Xenon</h3></a>
-							<a href='/products'><h3><img style={{height: '1em'}} alt="" src={Icon.AVEREON}/> Other Products</h3></a>
+							<a href='/'><h3><img style={{height: '1em'}} alt="" src={Icon.AVEREON_LIGHT}/> Avereon Home Page</h3></a>
+							<a href='/product/xenon'><h3><img style={{height: '1em'}} alt="" src={Icon.XENON_LIGHT}/> Avereon Xenon</h3></a>
+							<a href='/products'><h3><img style={{height: '1em'}} alt="" src={Icon.AVEREON_LIGHT}/> Other Products</h3></a>
 						</p>
 					</div>
 				</div>
