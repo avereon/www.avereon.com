@@ -32,7 +32,6 @@ public class SiteControllerTest {
 	@Test
 	public void getRoot() throws Exception {
 		log.warn( "Before the call..." );
-		//mvc.perform( MockMvcRequestBuilders.get( "/" ) );
 		mvc.perform( MockMvcRequestBuilders.get( "/" ) ).andExpect( status().isOk() );
 	}
 

@@ -23,7 +23,9 @@ public class V2Download {
 
 	private String version;
 
-	private String filename;
+	private String localFilename;
+
+	private String responseFilename;
 
 	private long size;
 
@@ -33,14 +35,16 @@ public class V2Download {
 
 	public V2Download( String asset, String format, Map<String, String> query ) {
 		this.key = key( "null", "null", asset, format, query );
-		this.filename = filename( null, null, asset, format, query );
+		this.localFilename = localFilename( null, null, asset, format, query );
+		this.responseFilename = responseFilename( null, null, asset, format, query );
 		this.asset = asset;
 		this.format = format;
 	}
 
 	public V2Download( String artifact, String platform, String asset, String format, Map<String, String> query ) {
 		this.key = key( artifact, platform, asset, format, query );
-		this.filename = filename( artifact, platform, asset, format, query );
+		this.localFilename = localFilename( artifact, platform, asset, format, query );
+		this.responseFilename = responseFilename( artifact, platform, asset, format, query );
 		this.artifact = artifact;
 		this.platform = platform;
 		this.asset = asset;
@@ -107,12 +111,20 @@ public class V2Download {
 		this.version = version;
 	}
 
-	public String getFilename() {
-		return filename;
+	public String getLocalFilename() {
+		return localFilename;
 	}
 
-	public void setFilename( String filename ) {
-		this.filename = filename;
+	public void setLocalFilename( String localFilename ) {
+		this.localFilename = localFilename;
+	}
+
+	public String getResponseFilename() {
+		return responseFilename;
+	}
+
+	public void setResponseFilename( String responseFilename ) {
+		this.responseFilename = responseFilename;
 	}
 
 	public long getSize() {
@@ -142,7 +154,18 @@ public class V2Download {
 		return builder.toString();
 	}
 
-	static String filename( String artifact, String platform, String asset, String format, Map<String, String> query ) {
+	static String localFilename( String artifact, String platform, String asset, String format, Map<String, String> query ) {
+		String theme = query.get( "theme" );
+		StringBuilder name = new StringBuilder();
+		if( asset != null ) {
+			name.append( asset );
+			if( theme != null ) name.append( "-" ).append( theme );
+		}
+		name.append( "." ).append( resolveFormat( format ) );
+		return name.toString();
+	}
+
+	static String responseFilename( String artifact, String platform, String asset, String format, Map<String, String> query ) {
 		String theme = query.get( "theme" );
 		StringBuilder name = new StringBuilder();
 		if( artifact != null ) name.append( artifact ).append( "-" );
@@ -151,7 +174,7 @@ public class V2Download {
 			if( theme != null ) name.append( "-" ).append( theme );
 		}
 		if( platform != null ) name.append( "-" ).append( platform );
-		name.append( "." ).append( format );
+		name.append( "." ).append( resolveFormat( format ) );
 		return name.toString();
 	}
 

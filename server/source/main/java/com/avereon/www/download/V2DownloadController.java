@@ -115,7 +115,7 @@ public class V2DownloadController {
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( "card" ) );
-		stream( response, download.getInputStream(), download.getFilename(), download.getSize() );
+		stream( response, download.getInputStream(), download.getResponseFilename(), download.getSize() );
 
 		return HttpStatus.OK;
 	}
@@ -156,7 +156,7 @@ public class V2DownloadController {
 		response.setContentType( V2Download.resolveContentType( format ) );
 		addHeaders( download, response );
 
-		if( method == RequestMethod.GET ) stream( response, download.getInputStream(), download.getFilename(), download.getSize() );
+		if( method == RequestMethod.GET ) stream( response, download.getInputStream(), download.getResponseFilename(), download.getSize() );
 
 		return HttpStatus.OK;
 	}

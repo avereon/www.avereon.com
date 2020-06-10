@@ -187,6 +187,28 @@ public class V2DownloadControllerTest {
 	}
 
 	@Test
+	@SuppressWarnings( "unchecked" )
+	public void testGetProductCardWithTheme() throws Exception {
+		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/mouse/product/card?theme=grey" ) ).andExpect( status().isOk() ).andReturn();
+		verify( factory, times( 1 ) ).getProviders();
+
+		assertThat( result.getResponse().getHeader( "group" ), is( "com.avereon" ) );
+		assertThat( result.getResponse().getHeader( "artifact" ), is( "mouse" ) );
+		assertThat( result.getResponse().getHeader( "platform" ), is( nullValue() ) );
+		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
+		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
+		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
+
+		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+		assertThat( result.getResponse().getContentLength(), is( 446 ) );
+
+		String content = result.getResponse().getContentAsString();
+		Map<String,String> map = content == null ? Map.of() : new ObjectMapper().readValue( content, Map.class ) ;
+		assertThat( map.get( "theme" ), is( "grey"));
+	}
+
+	@Test
 	public void testGetProduct() throws Exception {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( API + "/mouse/product/pack" ) ).andExpect( status().isOk() ).andReturn();
 		verify( factory, times( 1 ) ).getProviders();
