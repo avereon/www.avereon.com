@@ -85,7 +85,10 @@ jobs:
         run: scp -B server/target/avereon.jar travis@avereon.com:/opt/avn/store/latest/www.avereon.com/server.jar
 
       - name: Copy Provider Icon
-        run: scp -B server/target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
+        run:  |
+          scp -B server/target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
+          scp -B server/target/main/images/avereon-dark.png travis@avereon.com:/opt/avn/store/stable/avereon/provider-dark.png
+          scp -B server/target/main/images/avereon-light.png travis@avereon.com:/opt/avn/store/stable/avereon/provider-light.png
 
       - name: Update the Website
         run: ssh travis@avereon.com /home/ecco/bin/update-avereon-website
