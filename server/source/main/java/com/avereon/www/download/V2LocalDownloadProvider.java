@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,8 +29,8 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 	}
 
 	@Override
-	public V2Download getCatalog() throws IOException {
-		V2Download download = new V2Download( "catalog", "card" );
+	public V2Download getCatalog(Map<String,String> query) throws IOException {
+		V2Download download = new V2Download( "catalog", "card", query );
 		log.log( Log.INFO, "Get artifact: " + download.getKey() );
 
 		String products;
@@ -59,19 +60,19 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 	}
 
 	@Override
-	public V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException {
-		V2Download download = doGetDownload( artifact, platform, asset, format );
+	public V2Download getDownload( String artifact, String platform, String asset, String format, Map<String,String> query ) throws IOException {
+		V2Download download = doGetDownload( artifact, platform, asset, format, query );
 
 		// Fallbacks
-		if( download == null ) download = doGetDownload( artifact, null, asset, format );
-		if( download == null ) download = doGetDownload( artifact, platform, asset, null );
-		if( download == null ) download = doGetDownload( artifact, null, asset, null );
+		if( download == null ) download = doGetDownload( artifact, null, asset, format, query );
+		if( download == null ) download = doGetDownload( artifact, platform, asset, null, query );
+		if( download == null ) download = doGetDownload( artifact, null, asset, null, query );
 
 		return download;
 	}
 
-	private V2Download doGetDownload( String artifact, String platform, String asset, String format ) throws IOException {
-		V2Download download = new V2Download( artifact, platform, asset, format );
+	private V2Download doGetDownload( String artifact, String platform, String asset, String format, Map<String,String> query ) throws IOException {
+		V2Download download = new V2Download( artifact, platform, asset, format, query );
 		log.log( Log.INFO, "Get artifact: " + download.getKey() );
 
 		// TODO Opportunity to provide a cache here

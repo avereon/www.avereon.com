@@ -36,18 +36,18 @@ public class V2DownloadController {
 	}
 
 	@RequestMapping( method = RequestMethod.GET, path = "/catalog" )
-	public void getCatalog( HttpServletResponse response, @PathVariable( "channel" ) String channel ) throws IOException {
-		HttpStatus status = doGetCatalog( response, channel );
+	public void getCatalog( HttpServletResponse response, @PathVariable( "channel" ) String channel, @RequestParam Map<String,String> query ) throws IOException {
+		HttpStatus status = doGetCatalog( response, channel, query );
 		response.setStatus( status.value() );
 	}
 
 	@RequestMapping( method = RequestMethod.GET, path = "/cards/{artifact}" )
-	public Map<String, Object> getProductCards( @PathVariable String artifact ) {
+	public Map<String, Object> getProductCards( @PathVariable String artifact, @RequestParam Map<String,String> query ) {
 		Map<String, Object> cards = new HashMap<>();
 
 		for( String key : factory.getProviders().keySet() ) {
 			V2DownloadProvider provider = factory.getProviders().get( key );
-			cards.put( key, getProductCards( provider, artifact ) );
+			cards.put( key, getProductCards( provider, artifact, query ) );
 		}
 
 		return cards;
@@ -59,9 +59,10 @@ public class V2DownloadController {
 		@PathVariable( "channel" ) String channel,
 		@PathVariable( "artifact" ) String artifact,
 		@PathVariable( "asset" ) String asset,
-		@PathVariable( "format" ) String format
+		@PathVariable( "format" ) String format,
+		@RequestParam Map<String,String> query
 	) throws IOException {
-		getMetadata( response, channel, artifact, null, asset, format );
+		getMetadata( response, channel, artifact, null, asset, format, query );
 	}
 
 	@RequestMapping( method = RequestMethod.HEAD, path = "/{artifact}/{platform}/{asset}/{format}" )
@@ -71,9 +72,10 @@ public class V2DownloadController {
 		@PathVariable( "artifact" ) String artifact,
 		@PathVariable( "platform" ) String platform,
 		@PathVariable( "asset" ) String asset,
-		@PathVariable( "format" ) String format
+		@PathVariable( "format" ) String format,
+		@RequestParam Map<String,String> query
 	) throws IOException {
-		HttpStatus status = doGetArtifact( RequestMethod.HEAD, response, channel, artifact, platform, asset, format );
+		HttpStatus status = doGetArtifact( RequestMethod.HEAD, response, channel, artifact, platform, asset, format,query );
 		response.setStatus( status.value() );
 	}
 
@@ -83,9 +85,10 @@ public class V2DownloadController {
 		@PathVariable( "channel" ) String channel,
 		@PathVariable( "artifact" ) String artifact,
 		@PathVariable( "asset" ) String asset,
-		@PathVariable( "format" ) String format
+		@PathVariable( "format" ) String format,
+		@RequestParam Map<String, String> query
 	) throws IOException {
-		getArtifact( response, channel, artifact, null, asset, format );
+		getArtifact( response, channel, artifact, null, asset, format, query );
 	}
 
 	@GetMapping( path = "/{artifact}/{platform}/{asset}/{format}" )
@@ -95,18 +98,19 @@ public class V2DownloadController {
 		@PathVariable( "artifact" ) String artifact,
 		@PathVariable( "platform" ) String platform,
 		@PathVariable( "asset" ) String asset,
-		@PathVariable( "format" ) String format
+		@PathVariable( "format" ) String format,
+		@RequestParam Map<String, String> query
 	) throws IOException {
-		HttpStatus status = doGetArtifact( RequestMethod.GET, response, channel, artifact, platform, asset, format );
+		HttpStatus status = doGetArtifact( RequestMethod.GET, response, channel, artifact, platform, asset, format, query );
 		response.setStatus( status.value() );
 	}
 
-	private HttpStatus doGetCatalog( HttpServletResponse response, String channel ) throws IOException {
+	private HttpStatus doGetCatalog( HttpServletResponse response, String channel, Map<String,String> query ) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
 		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
-		V2Download download = provider.getCatalog();
+		V2Download download = provider.getCatalog(query);
 		if( download == null ) log.log( Log.WARN, "The catalog is null" );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
@@ -116,20 +120,20 @@ public class V2DownloadController {
 		return HttpStatus.OK;
 	}
 
-	private Map<String, Object> getProductCards( V2DownloadProvider provider, String artifact ) {
+	private Map<String, Object> getProductCards( V2DownloadProvider provider, String artifact, Map<String,String> query ) {
 		Map<String, Object> cards = new HashMap<>();
 
-		addCardToMap( cards, provider, artifact, "linux" );
-		addCardToMap( cards, provider, artifact, "macosx" );
-		addCardToMap( cards, provider, artifact, "windows" );
-		addCardToMap( cards, provider, artifact, null );
+		addCardToMap( cards, provider, artifact, "linux", query );
+		addCardToMap( cards, provider, artifact, "macosx", query );
+		addCardToMap( cards, provider, artifact, "windows", query );
+		addCardToMap( cards, provider, artifact, null, query );
 
 		return cards;
 	}
 
-	private void addCardToMap( Map<String, Object> map, V2DownloadProvider provider, String artifact, String platform ) {
+	private void addCardToMap( Map<String, Object> map, V2DownloadProvider provider, String artifact, String platform, Map<String,String> query ) {
 		try {
-			V2Download download = provider.getDownload( artifact, platform, "product", "card" );
+			V2Download download = provider.getDownload( artifact, platform, "product", "card", query );
 			if( platform == null ) platform = "card";
 			map.put( platform, download == null ? Map.of() : new ObjectMapper().readValue( download.getInputStream(), Map.class ) );
 		} catch( Throwable throwable ) {
@@ -139,13 +143,13 @@ public class V2DownloadController {
 	}
 
 	private HttpStatus doGetArtifact(
-		RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format
+		RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format, Map<String, String> query
 	) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
 		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
-		V2Download download = provider.getDownload( artifact, platform, asset, format );
+		V2Download download = provider.getDownload( artifact, platform, asset, format, query );
 		if( download == null ) log.log( Log.WARN, "The download is null: " + V2Download.key( artifact, platform, asset, format ) );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 

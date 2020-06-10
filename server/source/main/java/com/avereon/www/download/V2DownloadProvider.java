@@ -1,6 +1,7 @@
 package com.avereon.www.download;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * The V2DownloadProvider is an interface for retrieving an individual artifact.
@@ -13,7 +14,7 @@ public interface V2DownloadProvider {
 	 * @return
 	 * @throws IOException
 	 */
-	V2Download getCatalog() throws IOException;
+	V2Download getCatalog( Map<String,String> query ) throws IOException;
 
 	/**
 	 * Get a product artifact download.
@@ -34,6 +35,6 @@ public interface V2DownloadProvider {
 	 * @param format The artifact format
 	 * @return A specific version of the artifact or null if is does not exist
 	 */
-	V2Download getDownload( String artifact, String platform, String asset, String format ) throws IOException;
+	V2Download getDownload( String artifact, String platform, String asset, String format, Map<String,String> query ) throws IOException;
 
 }

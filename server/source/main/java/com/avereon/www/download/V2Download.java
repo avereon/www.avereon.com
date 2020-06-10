@@ -3,6 +3,7 @@ package com.avereon.www.download;
 import com.avereon.util.TextUtil;
 
 import java.io.InputStream;
+import java.util.Map;
 
 public class V2Download {
 
@@ -30,16 +31,16 @@ public class V2Download {
 
 	public V2Download() {}
 
-	public V2Download( String asset, String format ) {
+	public V2Download( String asset, String format, Map<String,String> query ) {
 		this.key = key( "null", "null", asset, format );
-		this.filename = filename( null, null, asset, format );
+		this.filename = filename( null, null, asset, format, query );
 		this.asset = asset;
 		this.format = format;
 	}
 
-	public V2Download( String artifact, String platform, String asset, String format ) {
+	public V2Download( String artifact, String platform, String asset, String format, Map<String,String> query ) {
 		this.key = key( artifact, platform, asset, format );
-		this.filename = filename( artifact, platform, asset, format );
+		this.filename = filename( artifact, platform, asset, format, query );
 		this.artifact = artifact;
 		this.platform = platform;
 		this.asset = asset;
@@ -131,6 +132,7 @@ public class V2Download {
 	}
 
 	static String key( String artifact, String platform, String asset, String format ) {
+		// TODO Might need the query parameters here also
 		StringBuilder builder = new StringBuilder();
 		builder.append( artifact );
 		if( !TextUtil.isEmpty( platform ) ) builder.append( "-" ).append( platform );
@@ -139,7 +141,9 @@ public class V2Download {
 		return builder.toString();
 	}
 
-	static String filename( String artifact, String platform, String asset, String format ) {
+	static String filename( String artifact, String platform, String asset, String format, Map<String,String> query ) {
+		// NEXT Use the query parameters to modify the file name
+		// TODO Query parameter "theme"
 		StringBuilder name = new StringBuilder();
 		if( artifact != null ) name.append( artifact ).append( "-" );
 		if( asset != null ) name.append( asset );
