@@ -31,14 +31,14 @@ public class V2Download {
 
 	public V2Download() {}
 
-	public V2Download( String asset, String format, Map<String,String> query ) {
+	public V2Download( String asset, String format, Map<String, String> query ) {
 		this.key = key( "null", "null", asset, format );
 		this.filename = filename( null, null, asset, format, query );
 		this.asset = asset;
 		this.format = format;
 	}
 
-	public V2Download( String artifact, String platform, String asset, String format, Map<String,String> query ) {
+	public V2Download( String artifact, String platform, String asset, String format, Map<String, String> query ) {
 		this.key = key( artifact, platform, asset, format );
 		this.filename = filename( artifact, platform, asset, format, query );
 		this.artifact = artifact;
@@ -141,12 +141,14 @@ public class V2Download {
 		return builder.toString();
 	}
 
-	static String filename( String artifact, String platform, String asset, String format, Map<String,String> query ) {
-		// NEXT Use the query parameters to modify the file name
-		// TODO Query parameter "theme"
+	static String filename( String artifact, String platform, String asset, String format, Map<String, String> query ) {
+		String theme = query.get( "theme" );
 		StringBuilder name = new StringBuilder();
 		if( artifact != null ) name.append( artifact ).append( "-" );
-		if( asset != null ) name.append( asset );
+		if( asset != null ) {
+			name.append( asset );
+			if( theme != null ) name.append( "-" ).append( theme );
+		}
 		if( platform != null ) name.append( "-" ).append( platform );
 		name.append( "." ).append( format );
 		return name.toString();
