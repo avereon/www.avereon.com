@@ -11,9 +11,11 @@ export const XENON_DARK= iconRoot + "/latest/xenon/product/icon?theme=dark";
 export const XENON_LIGHT= iconRoot + "/latest/xenon/product/icon?theme=light";
 export const ZENNA= iconRoot + "/latest/zenna/product/icon";
 
-export const ROSSA= iconRoot + "/stable/avereon/provider/icon";
-export const VENZA= iconRoot + "/stable/avereon/provider/icon";
-export const ZEVRA= iconRoot + "/stable/avereon/provider/icon";
+export const ROSSA= AVEREON_LIGHT;
+export const VENZA= AVEREON_LIGHT;
+export const ZEVRA= AVEREON_LIGHT;
+export const CAMEO= AVEREON_LIGHT;
+export const CUREX= AVEREON_LIGHT;
 
 export const AMAZO= iconRoot + "/latest/amazo/product/icon";
 export const ARENA= iconRoot + "/latest/arena/product/icon";
