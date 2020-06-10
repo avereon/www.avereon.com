@@ -150,7 +150,7 @@ public class V2DownloadController {
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getDownload( artifact, platform, asset, format, query );
-		if( download == null ) log.log( Log.WARN, "The download is null: " + V2Download.key( artifact, platform, asset, format ) );
+		if( download == null ) log.log( Log.WARN, "The download is null: " + V2Download.key( artifact, platform, asset, format, query ) );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( format ) );

@@ -32,14 +32,14 @@ public class V2Download {
 	public V2Download() {}
 
 	public V2Download( String asset, String format, Map<String, String> query ) {
-		this.key = key( "null", "null", asset, format );
+		this.key = key( "null", "null", asset, format, query );
 		this.filename = filename( null, null, asset, format, query );
 		this.asset = asset;
 		this.format = format;
 	}
 
 	public V2Download( String artifact, String platform, String asset, String format, Map<String, String> query ) {
-		this.key = key( artifact, platform, asset, format );
+		this.key = key( artifact, platform, asset, format, query );
 		this.filename = filename( artifact, platform, asset, format, query );
 		this.artifact = artifact;
 		this.platform = platform;
@@ -131,12 +131,13 @@ public class V2Download {
 		this.inputStream = inputStream;
 	}
 
-	static String key( String artifact, String platform, String asset, String format ) {
-		// TODO Might need the query parameters here also
+	static String key( String artifact, String platform, String asset, String format, Map<String, String> query ) {
+		String theme = query.get( "theme" );
 		StringBuilder builder = new StringBuilder();
 		builder.append( artifact );
 		if( !TextUtil.isEmpty( platform ) ) builder.append( "-" ).append( platform );
 		builder.append( "-" ).append( asset );
+		if( theme != null ) builder.append( "-" ).append( theme );
 		builder.append( "-" ).append( format );
 		return builder.toString();
 	}
