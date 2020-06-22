@@ -1,41 +1,32 @@
-export class Platform {
+export const LINUX = {
+	KEY: 'linux',
+	NAME: 'Linux',
+	ICON: 'linux',
+	INSTALLER_EXT: 'deb',
+};
 
-	static KEY = 'unknown';
+export const MACOS = {
+	KEY: 'macosx',
+	NAME: 'Mac OS',
+	ICON: 'apple',
+	INSTALLER_EXT: 'dmg',
+};
 
-	static NAME = 'Unknown';
-
-	static ICON = '';
-
-	static LINUX = {
-		KEY: 'linux',
-		NAME: 'Linux',
-		ICON: 'linux',
-	};
-
-	static MAC = {
-		KEY: 'macosx',
-		NAME: 'Mac OS',
-		ICON: 'apple',
-	};
-
-	static WINDOWS = {
-		KEY: 'windows',
-		NAME: 'Windows',
-		ICON: 'windows',
-	}
-
+export const WINDOWS = {
+	KEY: 'windows',
+	NAME: 'Windows',
+	ICON: 'windows',
+	INSTALLER_EXT: 'exe',
 }
 
-console.log(window.navigator);
-
+let current;
 let platform = window.navigator.platform.toLocaleLowerCase();
 if (platform.startsWith('linux')) {
-	Platform.KEY = Platform.LINUX.KEY;
-	Platform.NAME = Platform.LINUX.NAME;
+	current = LINUX;
 } else if (platform.startsWith('win')) {
-	Platform.KEY = Platform.WINDOWS.KEY;
-	Platform.NAME = Platform.WINDOWS.NAME;
+	current = WINDOWS;
 } else if (platform.startsWith('mac')) {
-	Platform.KEY = Platform.MAC.KEY;
-	Platform.NAME = Platform.MAC.NAME;
+	current = MACOS;
 }
+
+export const CURRENT = current;

@@ -1,18 +1,17 @@
 import React from 'react';
-import * as Icon from "../../Icon";
-import {Platform} from "../../Platform";
+import * as Config from '../../Config';
+import * as Icon from '../../Icon';
+import * as Platform from '../../Platform';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../../css/product.css';
 
-const ROOT_URL = "https://www.avereon.com/download";
-
 library.add(fas, fab);
 
 function productCards(product, success, failure) {
-	const url = ROOT_URL + "/product/cards/" + product;
+	const url = Config.DOWNLOAD_URL + "/product/cards/" + product;
 	return fetch(url)
 		.then((response) => response.status === 200 ? response.json() : {})
 		.then((card) => success(card))
@@ -36,44 +35,23 @@ export default class XenonProduct extends React.Component {
 
 	componentDidMount() {
 		productCards("xenon", (cards) => {
-			console.log("cards=" + JSON.stringify(cards));
 			this.setState(cards);
 		});
-		// productCard("stable", "linux", (card) => {
-		// 	console.log("card=" + JSON.stringify(card));
-		// 	this.setState({stable: {...this.state.stable, linux: {...card}}});
-		// });
-		// productCard("stable", "macosx", (card) => {
-		// 	console.log("card=" + JSON.stringify(card));
-		// 	this.setState({stable: {...this.state.stable, macosx: {...card}}});
-		// });
-		// productCard("stable", "windows", (card) => {
-		// 	console.log("card=" + JSON.stringify(card));
-		// 	this.setState({stable: {...this.state.stable, windows: {...card}}});
-		// });
-		// productCard("latest", "linux", (card) => {
-		// 	console.log("card=" + JSON.stringify(card));
-		// 	this.setState({latest: {...this.state.latest, linux: {...card}}});
-		// });
-		// productCard("latest", "macosx", (card) => {
-		// 	console.log("card=" + JSON.stringify(card));
-		// 	this.setState({latest: {...this.state.latest, macosx: {...card}}});
-		// });
-		// productCard("latest", "windows", (card) => {
-		// 	console.log("card=" + JSON.stringify(card));
-		// 	this.setState({latest: {...this.state.latest, windows: {...card}}});
-		// });
 	}
 
-	static createDownloadTile(type, category, product, platform, card) {
+	static createDownloadTile(type, category, product, store, platform) {
+		const card = store[platform.KEY];
+
 		const artifact = card.artifact;
 		const version = card.version;
+		// TODO Clean this up after the 1.3 release
+		const ext = version > '1.2' ? platform.INSTALLER_EXT : 'jar';
 
-		let style = "download " + type;
-		const platformSize = type === "primary" ? '3x' : '2x';
-		const platformIcon = type === "primary" ? 'download' : ['fab', platform.ICON];
+		let style = 'download ' + type;
+		const platformSize = type === 'primary' ? '3x' : '2x';
+		const platformIcon = type === 'primary' ? 'download' : ['fab', platform.ICON];
 		if (version === undefined) {
-			return <div className={style + " disabled"}>
+			return <div className={style + ' disabled'}>
 				<div className='download-layout'>
 					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
 					<div className='download-metadata'>
@@ -83,9 +61,9 @@ export default class XenonProduct extends React.Component {
 				</div>
 			</div>
 		} else {
-			return <a className={style + " " + category} href={'https://www.avereon.com/download/' + category + '/' + artifact + '/' + platform.KEY + '/install/jar'}>
+			return <a className={style + " " + category} href={Config.DOWNLOAD_URL + '/' + category + '/' + artifact + '/' + platform.KEY + '/install/' + ext}>
 				<div className='download-layout'>
-					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
+					<FontAwesomeIcon className='download-icon' icon={platformIcon} size={platformSize}/>
 					<div className='download-metadata'>
 						<div className='title'>{product} for {platform.NAME}</div>
 						<div>{version}</div>
@@ -97,19 +75,19 @@ export default class XenonProduct extends React.Component {
 
 	render() {
 		let stableDownload = <div className='download-row'>
-			{XenonProduct.createDownloadTile("primary", "stable", "Xenon", Platform, this.state.stable[Platform.KEY])}
+			{XenonProduct.createDownloadTile("primary", "stable", "Xenon", this.state.stable, Platform.CURRENT)}
 		</div>;
 
 		let stableDownloads = <div className='download-row'>
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", Platform.LINUX, this.state.stable[Platform.LINUX.KEY])}
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", Platform.MAC, this.state.stable[Platform.MAC.KEY])}
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", Platform.WINDOWS, this.state.stable[Platform.WINDOWS.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state.stable, Platform.LINUX)}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state.stable, Platform.MACOS)}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state.stable, Platform.WINDOWS)}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", Platform.LINUX, this.state.latest[Platform.LINUX.KEY])}
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", Platform.MAC, this.state.latest[Platform.MAC.KEY])}
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", Platform.WINDOWS, this.state.latest[Platform.WINDOWS.KEY])}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state.latest, Platform.LINUX)}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state.latest, Platform.MACOS)}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state.latest, Platform.WINDOWS)}
 		</div>;
 
 		return (
@@ -128,18 +106,18 @@ export default class XenonProduct extends React.Component {
 						discover and utilize the mods that best suit their needs.
 					</div>
 
-						{stableDownload}
+					{stableDownload}
 
 					<div className='resource-row'>
 						<div className='resource-tile'>
-							<div><a href="/product/xenon/docs/user-guide"><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a></div>
-							<div><a href="/product/xenon/mods"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
-							<div><a href={process.env.PUBLIC_URL + '/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a></div>
-							<div><a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
+							<div><a href='/product/xenon/docs/user-guide'><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a></div>
+							<div><a href='/product/xenon/mods'><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
 						</div>
 						<div className='resource-tile'>
-							<div><a href="/product/xenon/docs/mods-guide"><FontAwesomeIcon icon={['fas', 'file']}/> Building Mods</a></div>
-							<div><a href="/product/xenon/docs/tool-guide"><FontAwesomeIcon icon={['fas', 'file']}/> Building Tools</a></div>
+							<div><a href='/product/xenon/docs/mods-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Mods</a></div>
+							<div><a href='/product/xenon/docs/tool-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Tools</a></div>
+							<div><a href='/product/xenon/docs/api/index.html'><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a></div>
+							<div><a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
 						</div>
 					</div>
 
