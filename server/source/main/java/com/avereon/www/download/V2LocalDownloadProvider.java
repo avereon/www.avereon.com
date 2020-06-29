@@ -101,7 +101,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 
 		ProductCard card = new ProductCard();
 		try {
-			card.load( new FileInputStream( path.toFile() ), null );
+			card.fromJson( new FileInputStream( path.toFile() ), null );
 		} catch( IOException exception ) {
 			log.log( Log.ERROR, "Could not load product card: " + path, exception );
 			return null;
