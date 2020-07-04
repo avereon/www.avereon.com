@@ -14,14 +14,15 @@ export default class Home extends React.Component {
 					<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
 					<div className='body'>
 						<div className='title'>
-							Xenon 1.2 Released
+							Xenon 1.3 Released
 						</div>
 						<div>
 							<a href='/product/xenon'>Download now</a> to get the latest features:
 							<ul>
-								<li>Improved wallpaper settings</li>
-								<li>More themes</li>
-								<li>Dark themes</li>
+								<li>Java 14</li>
+								<li>Java FX 14</li>
+								<li>Material design flat icons</li>
+								<li>Platform specific installers</li>
 							</ul>
 						</div>
 					</div>
