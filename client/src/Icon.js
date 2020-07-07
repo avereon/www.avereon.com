@@ -20,5 +20,7 @@ export const CUREX= AVEREON_LIGHT;
 export const AMAZO= iconRoot + "/latest/amazo/product/icon";
 export const ARENA= iconRoot + "/latest/arena/product/icon";
 export const AVEON= iconRoot + "/latest/aveon/product/icon";
+export const CART2= iconRoot + "/latest/cart2/product/icon";
+export const CART3= iconRoot + "/latest/cart3/product/icon";
 export const MAZER= iconRoot + "/latest/mazer/product/icon";
 export const RECON= iconRoot + "/latest/recon/product/icon";

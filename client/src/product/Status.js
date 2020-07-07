@@ -10,13 +10,6 @@ export default class Products extends React.Component {
 					<h3>Products</h3>
 					<ProductStatus ident='xenon' icon={Icon.XENON_LIGHT} name='Xenon'/>
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
-					<h3>Mods</h3>
-					{/*<ProductStatus ident='amazo' icon={Icon.AMAZO} name='Amazo'/>*/}
-					<ProductStatus ident='aveon' icon={Icon.AVEON} name='Aveon'/>
-					<ProductStatus ident='mazer' icon={Icon.MAZER} name='Mazer'/>
-					<ProductStatus ident='recon' icon={Icon.RECON} name='Recon'/>
-				</div>
-				<div className='column product-status'>
 					<h3>Libraries</h3>
 					<ProductStatus ident='rossa' icon={Icon.ROSSA} name='Rossa'/>
 					<ProductStatus ident='venza' icon={Icon.VENZA} name='Venza'/>
@@ -24,6 +17,16 @@ export default class Products extends React.Component {
 					<h3>Maven Plugins</h3>
 					<ProductStatus ident='cameo' icon={Icon.CAMEO} name='Cameo'/>
 					<ProductStatus ident='curex' icon={Icon.CUREX} name='Curex'/>
+				</div>
+				<div className='column product-status'>
+					<h3>Mods</h3>
+					{/*<ProductStatus ident='amazo' icon={Icon.AMAZO} name='Amazo'/>*/}
+					{/*<ProductStatus ident='arena' icon={Icon.ARENA} name='Arena'/>*/}
+					<ProductStatus ident='aveon' icon={Icon.AVEON} name='Aveon'/>
+					<ProductStatus ident='cart2' icon={Icon.CART2} name='Cartesia 2D'/>
+					<ProductStatus ident='cart3' icon={Icon.CART3} name='Cartesia 3D'/>
+					<ProductStatus ident='mazer' icon={Icon.MAZER} name='Mazer'/>
+					<ProductStatus ident='recon' icon={Icon.RECON} name='Recon'/>
 				</div>
 			</div>
 		)
