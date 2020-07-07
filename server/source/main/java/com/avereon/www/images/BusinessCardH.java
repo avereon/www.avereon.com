@@ -1,6 +1,7 @@
 package com.avereon.www.images;
 
 import com.avereon.rossa.icon.WingDiscLargeIcon;
+import com.avereon.venza.image.Proof;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
@@ -35,7 +36,7 @@ public class BusinessCardH extends BusinessCard {
 	}
 
 	public static void main( String[] commands ) {
-		proof( new BusinessCardH(), Color.web( "#e0e0e0" ) );
+		Proof.proof( new BusinessCardH(), Color.web( "#e0e0e0" ) );
 	}
 
 }
