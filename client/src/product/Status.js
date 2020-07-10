@@ -23,8 +23,7 @@ export default class Products extends React.Component {
 					{/*<ProductStatus ident='amazo' icon={Icon.AMAZO} name='Amazo'/>*/}
 					{/*<ProductStatus ident='arena' icon={Icon.ARENA} name='Arena'/>*/}
 					<ProductStatus ident='aveon' icon={Icon.AVEON} name='Aveon'/>
-					<ProductStatus ident='cart2' icon={Icon.CART2} name='Cartesia 2D'/>
-					<ProductStatus ident='cart3' icon={Icon.CART3} name='Cartesia 3D'/>
+					<ProductStatus ident='carta' icon={Icon.CARTA} name='Cartesia'/>
 					<ProductStatus ident='mazer' icon={Icon.MAZER} name='Mazer'/>
 					<ProductStatus ident='recon' icon={Icon.RECON} name='Recon'/>
 				</div>
