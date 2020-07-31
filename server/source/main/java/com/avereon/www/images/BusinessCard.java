@@ -1,6 +1,6 @@
 package com.avereon.www.images;
 
-import com.avereon.venza.image.RenderedImage;
+import com.avereon.zerra.image.RenderedImage;
 import javafx.scene.text.Font;
 
 public abstract class BusinessCard extends RenderedImage {

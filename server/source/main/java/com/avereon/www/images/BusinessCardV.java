@@ -1,7 +1,7 @@
 package com.avereon.www.images;
 
-import com.avereon.rossa.icon.WingDiscLargeIcon;
-import com.avereon.venza.image.Proof;
+import com.avereon.zenna.icon.WingDiscLargeIcon;
+import com.avereon.zerra.image.Proof;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 
