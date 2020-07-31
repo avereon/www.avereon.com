@@ -9,11 +9,14 @@ export const AVEREON_LIGHT = iconRoot + "/stable/avereon/provider/icon?theme=lig
 export const ACORN= iconRoot + "/stable/acorn/product/icon";
 export const XENON_DARK= iconRoot + "/latest/xenon/product/icon?theme=dark";
 export const XENON_LIGHT= iconRoot + "/latest/xenon/product/icon?theme=light";
-export const ZENNA= iconRoot + "/latest/zenna/product/icon";
+export const WEAVE= iconRoot + "/latest/weave/product/icon";
 
-export const ROSSA= AVEREON_LIGHT;
-export const VENZA= AVEREON_LIGHT;
+export const ZARRA= AVEREON_LIGHT;
+export const ZAVRA= AVEREON_LIGHT;
+export const ZENNA= AVEREON_LIGHT;
+export const ZERRA= AVEREON_LIGHT;
 export const ZEVRA= AVEREON_LIGHT;
+
 export const CAMEO= AVEREON_LIGHT;
 export const CUREX= AVEREON_LIGHT;
 
