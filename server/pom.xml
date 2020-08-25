@@ -41,12 +41,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.avereon</groupId>
-			<artifactId>rossa</artifactId>
+			<artifactId>zenna</artifactId>
 			<version>[0.0,)</version>
 		</dependency>
 		<dependency>
 			<groupId>com.avereon</groupId>
-			<artifactId>venza</artifactId>
+			<artifactId>zerra</artifactId>
 			<version>[0.0,)</version>
 		</dependency>
 		<dependency>
@@ -91,22 +91,22 @@
 				<configuration>
 					<images>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.zenna.icon.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon.png</target>
 							<theme>dark</theme>
 						</image>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.zenna.icon.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-dark.png</target>
 							<theme>dark</theme>
 						</image>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.zenna.icon.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-light.png</target>
 							<theme>light</theme>
 						</image>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.zenna.icon.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-avatar.png</target>
 							<theme>light</theme>
 							<offsetX>64</offsetX>
@@ -115,7 +115,7 @@
 							<imageHeight>384</imageHeight>
 						</image>
 						<image>
-							<class>com.avereon.rossa.icon.WingDiscLargeIcon</class>
+							<class>com.avereon.zenna.icon.WingDiscLargeIcon</class>
 							<target>${images-folder}/avereon-avatar-circle.png</target>
 							<theme>light</theme>
 							<!-- center the icon in the image -->
