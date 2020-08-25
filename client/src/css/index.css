@@ -213,7 +213,7 @@ pre {
 	/* along the main axis */
 	justify-content: left;
 	/* along the cross axis */
-	align-items: center;
+	align-items: flex-start;
 }
 
 .announcement .body {
