@@ -5,7 +5,6 @@ import * as Image from "./Image";
 export default class Home extends React.Component {
 
 	render() {
-		// /screenshots/welcome-tool@2x.png 2x, /screenshots/welcome-tool.png
 		const imageSet = Image.XENON_WELCOME_2x + " 2x, " + Image.XENON_WELCOME_1x + " 1x";
 
 		return (
@@ -33,7 +32,7 @@ export default class Home extends React.Component {
 					</div>
 				</div>
 				<a className='screenshot' href='/product/xenon'>
-					<img className='screenshot' src={Image.XENON_WELCOME_2x} srcSet={imageSet} alt="Xenon Welcome Tool"/>
+					<img className='screenshot' src={Image.XENON_WELCOME_1x} srcSet={imageSet} alt="Xenon Welcome Tool"/>
 				</a>
 			</div>
 		)
