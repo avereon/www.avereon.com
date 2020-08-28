@@ -5,13 +5,17 @@ import * as Image from "./Image";
 export default class Home extends React.Component {
 
 	render() {
-		// /screenshots/welcome-tool@2x.png 2x, /screenshots/welcome-tool.png
 		const imageSet = Image.XENON_WELCOME_2x + " 2x, " + Image.XENON_WELCOME_1x + " 1x";
 
 		return (
 			<div className='content'>
 				<div className='announcement'>
-					<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
+					<div className='icon'>
+					<a href='/product/xenon'>
+						<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
+					</a>
+					</div>
+
 					<div className='body'>
 						<div className='title'>
 							Xenon 1.3 Released
@@ -28,7 +32,7 @@ export default class Home extends React.Component {
 					</div>
 				</div>
 				<a className='screenshot' href='/product/xenon'>
-					<img className='screenshot' src={Image.XENON_WELCOME_2x} srcSet={imageSet} alt="Xenon Welcome Tool"/>
+					<img className='screenshot' src={Image.XENON_WELCOME_1x} srcSet={imageSet} alt="Xenon Welcome Tool"/>
 				</a>
 			</div>
 		)
