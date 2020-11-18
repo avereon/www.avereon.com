@@ -10,25 +10,27 @@ export default class Products extends React.Component {
 					<h3>Products</h3>
 					<ProductStatus ident='xenon' icon={Icon.XENON_LIGHT} name='Xenon'/>
 					<ProductStatus ident='weave' icon={Icon.WEAVE} name='Weave'/>
-					<h3>Libraries</h3>
-					<ProductStatus ident='zarra' icon={Icon.ZARRA} name='Zarra'/>
-					{/*<ProductStatus ident='zavra' icon={Icon.ZAVRA} name='Zavra'/>*/}
-					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
-					<ProductStatus ident='zerra' icon={Icon.ZERRA} name='Zerra'/>
-					<ProductStatus ident='zevra' icon={Icon.ZEVRA} name='Zevra'/>
-					<h3>Maven Plugins</h3>
-					<ProductStatus ident='cameo' icon={Icon.CAMEO} name='Cameo'/>
-					<ProductStatus ident='curex' icon={Icon.CUREX} name='Curex'/>
+					<ProductStatus ident='acorn' icon={Icon.ACORN} name='Acorn'/>
 				</div>
 				<div className='column product-status'>
-					<h3>Mods</h3>
-					<ProductStatus ident='acorn' icon={Icon.ACORN} name='Acorn'/>
+					<h3>Xenon Mods</h3>
+					<ProductStatus ident='acornmod' icon={Icon.ACORN} name='Acorn'/>
 					{/*<ProductStatus ident='amazo' icon={Icon.AMAZO} name='Amazo'/>*/}
 					{/*<ProductStatus ident='arena' icon={Icon.ARENA} name='Arena'/>*/}
 					<ProductStatus ident='aveon' icon={Icon.AVEON} name='Aveon'/>
 					<ProductStatus ident='carta' icon={Icon.CARTA} name='Cartesia'/>
 					<ProductStatus ident='mazer' icon={Icon.MAZER} name='Mazer'/>
 					<ProductStatus ident='recon' icon={Icon.RECON} name='Recon'/>
+				</div>
+				<div className='column product-status'>
+					<h3>Libraries</h3>
+					<ProductStatus ident='zarra' icon={Icon.ZARRA} name='Zarra'/>
+					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
+					<ProductStatus ident='zerra' icon={Icon.ZERRA} name='Zerra'/>
+					<ProductStatus ident='zevra' icon={Icon.ZEVRA} name='Zevra'/>
+					<h3>Maven Plugins</h3>
+					<ProductStatus ident='cameo' icon={Icon.CAMEO} name='Cameo'/>
+					<ProductStatus ident='curex' icon={Icon.CUREX} name='Curex'/>
 				</div>
 			</div>
 		)

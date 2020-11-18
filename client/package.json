@@ -18,7 +18,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "rebuild": "rm client.zip && react-scripts build && cd build && zip -r ../client.zip * && cd -",
+    "rebuild": "rm -f client.zip && react-scripts build && cd build && zip -r ../client.zip * && cd -",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "ssh avereon.com 'sudo rm -rf /opt/avn/web/client/*;sudo chmod g+w /opt/avn/web/client';scp -r build/* avereon.com:/opt/avn/web/client",
