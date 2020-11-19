@@ -1,5 +1,4 @@
 import React from 'react';
-import * as Config from '../../Config';
 import * as Icon from '../../Icon';
 import * as Platform from '../../Platform';
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -7,6 +6,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../../css/product.css';
+import ProductPage from "../ProductPage";
 
 library.add(fas, fab);
 
@@ -33,69 +33,27 @@ export default class XenonProduct extends React.Component {
 		}
 	};
 
-	static productCards(product, success, failure) {
-		const url = Config.DOWNLOAD_URL + "/product/cards/" + product;
-		return fetch(url)
-			.then((response) => response.status === 200 ? response.json() : {})
-			.then((card) => success(card))
-			.catch(failure)
-	}
-
-	static createDownloadTile(type, category, product, store, platform, pack = 'install') {
-		const card = store[category][platform.KEY];
-
-		const artifact = card.artifact;
-		const version = card.version;
-		// TODO Clean this up after the 1.3 release
-		const ext = version > '1.2' ? platform.INSTALLER_EXT : 'jar';
-
-		let style = 'download ' + type;
-		const platformSize = type === 'primary' ? '3x' : '2x';
-		const platformIcon = type === 'primary' ? 'download' : ['fab', platform.ICON];
-		if (version === undefined) {
-			return <div className={style + ' disabled'}>
-				<div className='download-layout'>
-					<FontAwesomeIcon className="download-icon" icon={platformIcon} size={platformSize}/>
-					<div className='download-metadata'>
-						<div className='title'>{product} for {platform.NAME}</div>
-						<div>unavailable</div>
-					</div>
-				</div>
-			</div>
-		} else {
-			return <a className={style + " " + category} href={Config.DOWNLOAD_URL + '/' + category + '/' + artifact + '/' + platform.KEY + '/' + pack + '/' + ext}>
-				<div className='download-layout'>
-					<FontAwesomeIcon className='download-icon' icon={platformIcon} size={platformSize}/>
-					<div className='download-metadata'>
-						<div className='title'>{product} for {platform.NAME}</div>
-						<div>{version}</div>
-					</div>
-				</div>
-			</a>
-		}
-	}
-
 	componentDidMount() {
-		XenonProduct.productCards("xenon", (cards) => {
+		ProductPage.productCards("xenon", (cards) => {
 			this.setState(cards);
 		});
 	}
 
 	render() {
 		let stableDownload = <div className='download-row'>
-			{XenonProduct.createDownloadTile("primary", "stable", "Xenon", this.state, Platform.CURRENT)}
+			{ProductPage.createDownloadTile("primary", "stable", "Xenon", this.state, Platform.CURRENT)}
 		</div>;
 
 		let stableDownloads = <div className='download-row'>
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.LINUX)}
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.MACOS)}
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.WINDOWS)}
+			{ProductPage.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.LINUX)}
+			{ProductPage.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.MACOS)}
+			{ProductPage.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.WINDOWS)}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.LINUX)}
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.MACOS)}
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.WINDOWS)}
+			{ProductPage.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.LINUX)}
+			{ProductPage.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.MACOS)}
+			{ProductPage.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.WINDOWS)}
 		</div>;
 
 		return (

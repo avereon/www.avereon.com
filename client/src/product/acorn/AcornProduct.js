@@ -1,13 +1,11 @@
 import React from 'react';
-import * as Config from '../../Config';
 import * as Icon from '../../Icon';
 import * as Platform from '../../Platform';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import '../../css/product.css';
-import XenonProduct from "../xenon/XenonProduct";
+import ProductPage from "../ProductPage";
 
 library.add(fas, fab);
 
@@ -27,18 +25,18 @@ export default class AcornProduct extends React.Component {
     };
 
     componentDidMount() {
-        XenonProduct.productCards('acorn', (cards) => {
+        ProductPage.productCards('acorn', (cards) => {
             this.setState(cards);
         });
     }
 
     render() {
         let stableDownload = <div className='download-row'>
-            {XenonProduct.createDownloadTile('primary', 'stable', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'stable', 'Acorn', this.state, Platform.CURRENT, 'product')}
         </div>;
 
         let latestDownload = <div className='download-row'>
-            {XenonProduct.createDownloadTile('primary', 'latest', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'latest', 'Acorn', this.state, Platform.CURRENT, 'product')}
         </div>;
 
         return (
