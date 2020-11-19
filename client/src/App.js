@@ -18,6 +18,7 @@ import XenonMods from "./product/xenon/XenonMods";
 import XenonDocs from "./product/xenon/XenonDocs";
 import NotFound from "./NotFound";
 import Status from "./product/Status";
+import SeencProduct from "./product/seenc/SeencProduct";
 
 const reload = () => window.location.reload();
 
@@ -30,6 +31,8 @@ export default class App extends React.Component {
 				<Router>
 					<Switch>
 						{/* Supported routes */}
+						<Route exact path='/product/acorn' component={AcornProduct}/>
+						<Route exact path='/product/seenc' component={SeencProduct}/>
 						<Route exact path='/product/xenon/docs/user-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/docs/mods-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/docs/tool-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tools/content.html' outline={3}/>}/>
@@ -37,7 +40,6 @@ export default class App extends React.Component {
 						<Route exact path='/product/xenon/docs' component={XenonDocs}/>
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
 						<Route exact path='/product/xenon' component={XenonProduct}/>
-						<Route exact path='/product/acorn' component={AcornProduct}/>
 						<Route exact path='/products' component={Products}/>
 						<Route exact path='/status' component={Status}/>
 						<Route exact path='/license/mit' component={LicenseMit}/>
@@ -46,9 +48,11 @@ export default class App extends React.Component {
 						<Route exact path='/' component={Home}/>
 
 						{/* API documentation routes */}
-						<Route path='/product/zevra/docs/api' onEnter={reload}/>
-						<Route path='/product/zenna/docs/api' onEnter={reload}/>
+						<Route path='/product/acorn/docs/api' onEnter={reload}/>
+						<Route path='/product/seenc/docs/api' onEnter={reload}/>
 						<Route path='/product/xenon/docs/api' onEnter={reload}/>
+						<Route path='/product/zenna/docs/api' onEnter={reload}/>
+						<Route path='/product/zevra/docs/api' onEnter={reload}/>
 
 						{/* Deprecated routes */}
 						<Redirect exact path='/product/xenon/docs/manual' to={{ ...window.location, pathname: '/product/xenon/docs/user-guide' }}/>

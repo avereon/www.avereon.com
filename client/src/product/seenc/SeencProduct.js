@@ -10,7 +10,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 library.add(fas, fab);
 
-export default class AcornProduct extends React.Component {
+export default class SeencProduct extends React.Component {
 
     state = {
         stable: {
@@ -26,18 +26,18 @@ export default class AcornProduct extends React.Component {
     };
 
     componentDidMount() {
-        ProductPage.productCards('acorn', (cards) => {
+        ProductPage.productCards('seenc', (cards) => {
             this.setState(cards);
         });
     }
 
     render() {
         let stableDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'stable', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'stable', 'Seenc', this.state, Platform.CURRENT, 'product')}
         </div>;
 
         let latestDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'latest', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'latest', 'Seenc', this.state, Platform.CURRENT, 'product')}
         </div>;
 
         return (
@@ -45,12 +45,12 @@ export default class AcornProduct extends React.Component {
                 <div className='product'>
 
                     <div className='product-title'>
-                        <img className="product-icon" alt="" src={Icon.ACORN}/>
-                        <div className='product-name'>Acorn</div>
+                        <img className="product-icon" alt="" src={Icon.SEENC}/>
+                        <div className='product-name'>Seenc</div>
                     </div>
 
                     <div className='product-content'>
-                        Acorn is a simple system profiling tool. It will run
+                        Seenc is a simple system profiling tool. It will run
                         anywhere Java is supported. The tool is great for
                         getting a quick understanding how your system compares
                         with others.
@@ -60,10 +60,10 @@ export default class AcornProduct extends React.Component {
 
                     <div className='resource-row'>
                         <div className='resource-tile'>
-                            <div><a href='/product/acorn/docs/api/index.html'><FontAwesomeIcon icon={['fas', 'tools']}/> Acorn API</a></div>
+                            <div><a href='/product/seenc/docs/api/index.html'><FontAwesomeIcon icon={['fas', 'tools']}/> Seenc API</a></div>
                         </div>
                         <div className='resource-tile'>
-                            <div><a href='https://github.com/avereon/acorn' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
+                            <div><a href='https://github.com/avereon/seenc' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
                         </div>
                     </div>
 
