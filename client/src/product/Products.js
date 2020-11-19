@@ -22,18 +22,18 @@ export default class Products extends React.Component {
 					</div>
 
 					<div className='product-bar'>
-						<a href='https://github.com/avereon/zenna'><img className="product-icon" alt="" src={Icon.WEAVE}/></a>
+						<a href='https://github.com/avereon/weave'><img className="product-icon" alt="" src={Icon.WEAVE}/></a>
 						<div className='body'>
-							<div><a href='https://github.com/avereon/zenna'>Zenna</a> is a simple update
+							<div><a href='https://github.com/avereon/weave'>Weave</a> is a simple update
 								program that supports a simple command language to customize the
-								update process. Initially developed for Xenon, Zenna is a standalone
+								update process. Initially developed for Xenon, Weave is a standalone
 								program and can be used with any product.
 							</div>
 						</div>
 					</div>
 
 					<div className='product-bar'>
-						<a href='https://github.com/avereon/seenc'><img className="product-icon" alt="" src={Icon.AVEREON_LIGHT}/></a>
+						<a href='https://github.com/avereon/seenc'><img className="product-icon" alt="" src={Icon.SEENC}/></a>
 						<div className='body'>
 							<div><a href='https://github.com/avereon/seenc'>Seenc</a> is a configurable
 								command line tool to synchronized Git repositories with local clones.
