@@ -10,13 +10,13 @@ import '../../css/product.css';
 
 library.add(fas, fab);
 
-function productCards(product, success, failure) {
-	const url = Config.DOWNLOAD_URL + "/product/cards/" + product;
-	return fetch(url)
-		.then((response) => response.status === 200 ? response.json() : {})
-		.then((card) => success(card))
-		.catch(failure)
-}
+// function productCards(product, success, failure) {
+// 	const url = Config.DOWNLOAD_URL + "/product/cards/" + product;
+// 	return fetch(url)
+// 		.then((response) => response.status === 200 ? response.json() : {})
+// 		.then((card) => success(card))
+// 		.catch(failure)
+// }
 
 export default class XenonProduct extends React.Component {
 
@@ -33,14 +33,16 @@ export default class XenonProduct extends React.Component {
 		}
 	};
 
-	componentDidMount() {
-		productCards("xenon", (cards) => {
-			this.setState(cards);
-		});
+	static productCards(product, success, failure) {
+		const url = Config.DOWNLOAD_URL + "/product/cards/" + product;
+		return fetch(url)
+			.then((response) => response.status === 200 ? response.json() : {})
+			.then((card) => success(card))
+			.catch(failure)
 	}
 
-	static createDownloadTile(type, category, product, store, platform) {
-		const card = store[platform.KEY];
+	static createDownloadTile(type, category, product, store, platform, pack = 'install') {
+		const card = store[category][platform.KEY];
 
 		const artifact = card.artifact;
 		const version = card.version;
@@ -61,7 +63,7 @@ export default class XenonProduct extends React.Component {
 				</div>
 			</div>
 		} else {
-			return <a className={style + " " + category} href={Config.DOWNLOAD_URL + '/' + category + '/' + artifact + '/' + platform.KEY + '/install/' + ext}>
+			return <a className={style + " " + category} href={Config.DOWNLOAD_URL + '/' + category + '/' + artifact + '/' + platform.KEY + '/' + pack + '/' + ext}>
 				<div className='download-layout'>
 					<FontAwesomeIcon className='download-icon' icon={platformIcon} size={platformSize}/>
 					<div className='download-metadata'>
@@ -73,21 +75,27 @@ export default class XenonProduct extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+		XenonProduct.productCards("xenon", (cards) => {
+			this.setState(cards);
+		});
+	}
+
 	render() {
 		let stableDownload = <div className='download-row'>
-			{XenonProduct.createDownloadTile("primary", "stable", "Xenon", this.state.stable, Platform.CURRENT)}
+			{XenonProduct.createDownloadTile("primary", "stable", "Xenon", this.state, Platform.CURRENT)}
 		</div>;
 
 		let stableDownloads = <div className='download-row'>
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state.stable, Platform.LINUX)}
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state.stable, Platform.MACOS)}
-			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state.stable, Platform.WINDOWS)}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.LINUX)}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.MACOS)}
+			{XenonProduct.createDownloadTile("secondary", "stable", "Xenon", this.state, Platform.WINDOWS)}
 		</div>;
 
 		let latestDownloads = <div className='download-row'>
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state.latest, Platform.LINUX)}
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state.latest, Platform.MACOS)}
-			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state.latest, Platform.WINDOWS)}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.LINUX)}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.MACOS)}
+			{XenonProduct.createDownloadTile("secondary", "latest", "Xenon", this.state, Platform.WINDOWS)}
 		</div>;
 
 		return (

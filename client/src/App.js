@@ -12,9 +12,10 @@ import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
 import DocViewer from "./DocViewer";
+import AcornProduct from "./product/acorn/AcornProduct";
+import XenonProduct from "./product/xenon/XenonProduct";
 import XenonMods from "./product/xenon/XenonMods";
 import XenonDocs from "./product/xenon/XenonDocs";
-import XenonProduct from "./product/xenon/XenonProduct";
 import NotFound from "./NotFound";
 import Status from "./product/Status";
 
@@ -36,6 +37,7 @@ export default class App extends React.Component {
 						<Route exact path='/product/xenon/docs' component={XenonDocs}/>
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
 						<Route exact path='/product/xenon' component={XenonProduct}/>
+						<Route exact path='/product/acorn' component={AcornProduct}/>
 						<Route exact path='/products' component={Products}/>
 						<Route exact path='/status' component={Status}/>
 						<Route exact path='/license/mit' component={LicenseMit}/>
