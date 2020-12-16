@@ -25,6 +25,7 @@ export default class Products extends React.Component {
 				</div>
 				<div className='column product-status'>
 					<h3>Libraries</h3>
+					<ProductStatus ident='curve' icon={Icon.CURVE} name='Curve'/>
 					<ProductStatus ident='zarra' icon={Icon.ZARRA} name='Zarra'/>
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
 					<ProductStatus ident='zerra' icon={Icon.ZERRA} name='Zerra'/>

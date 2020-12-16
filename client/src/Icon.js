@@ -18,6 +18,7 @@ export const XENON_LIGHT= iconRoot + "/latest/xenon/product/icon?theme=light";
 export const XENON= XENON_LIGHT;
 
 // Libraries
+export const CURVE= AVEREON_LIGHT;
 export const ZARRA= AVEREON_LIGHT;
 export const ZAVRA= AVEREON_LIGHT;
 export const ZENNA= AVEREON_LIGHT;
