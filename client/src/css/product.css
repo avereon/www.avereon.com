@@ -23,6 +23,20 @@
 	align-items: stretch;
 }
 
+.product table {
+	display: table; border-collapse: separate; border-spacing: 2px; border-color: green;
+	background: var(--secondary-white);
+}
+
+.product tbody {
+	display: table-row-group; vertical-align: middle; border-color: inherit;
+}
+
+.product td {
+	display: table-cell; vertical-align: inherit; border-color: red;
+	background: var(--primary-white);
+}
+
 .product-title {
 	margin: 0.5rem;
 	display: flex;

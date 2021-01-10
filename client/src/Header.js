@@ -8,8 +8,8 @@ export default class Header extends React.Component {
 			<div className='header'>
 				<div className='menu'>
 					<a className='organization' href='/'><img className='logo' alt="" src={Icon.AVEREON_DARK}/>Avereon</a>
-					<a className='products' href='/products'>Products</a>
-					<a className='status' href='/status'>Status</a>
+					<a className='products' href='/products'>Software</a>
+					<a className='aviation' href='/aviation'>Aviation</a>
 				</div>
 
 				<div className='menu'>

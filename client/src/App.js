@@ -19,7 +19,7 @@ import XenonDocs from "./product/xenon/XenonDocs";
 import NotFound from "./NotFound";
 import Status from "./product/Status";
 import SeencProduct from "./product/seenc/SeencProduct";
-import RadioControl from "./rc/RadioControl";
+import Aviation from "./rc/Aviation";
 
 const reload = () => window.location.reload();
 
@@ -42,7 +42,7 @@ export default class App extends React.Component {
 						<Route exact path='/product/xenon/mods' component={XenonMods}/>
 						<Route exact path='/product/xenon' component={XenonProduct}/>
 						<Route exact path='/products' component={Products}/>
-						<Route exact path='/rc' component={RadioControl}/>
+						<Route exact path='/aviation' component={Aviation}/>
 						<Route exact path='/status' component={Status}/>
 						<Route exact path='/license/mit' component={LicenseMit}/>
 						<Route exact path='/legal' component={Legal}/>
@@ -59,6 +59,7 @@ export default class App extends React.Component {
 						{/* Deprecated routes */}
 						<Redirect exact path='/product/xenon/docs/manual' to={{ ...window.location, pathname: '/product/xenon/docs/user-guide' }}/>
 						<Redirect exact path='/product/xenon/docs/mods' to={{ ...window.location, pathname: '/product/xenon/docs/mods-guide' }}/>
+						<Redirect exact path='/rc' to={{ ...window.location, pathname: '/aviation' }}/>
 
 						{/* Default route */}
 						<Route component={NotFound}/>

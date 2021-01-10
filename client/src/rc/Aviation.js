@@ -1,13 +1,14 @@
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export default class RadioControl extends React.Component {
+export default class Aviation extends React.Component {
 
 	render() {
 		return (
 			<div className='content product'>
-				<h1>Radio Control</h1>
+				<h1>Aviation (Radio Control)</h1>
 
-				<h3>2021 Flying Season</h3>
+				<h3><FontAwesomeIcon icon={['fas', 'calendar']}/> 2021 Flying Season</h3>
 				<div className='product-bar'>
 					<div className='body'>
 						<div>
@@ -45,27 +46,27 @@ export default class RadioControl extends React.Component {
 									<td>Hot</td>
 									<td>Summer heat and thunderstorms.</td>
 								</tr>
+								<tr>
+									<td>September</td>
+									<td>Hot, Breezy</td>
+									<td>Summer heat and thunderstorms.</td>
+								</tr>
+								<tr>
+									<td>October</td>
+									<td>Cool, Breezy</td>
+									<td>Cooler temperatures and breezy conditions as fall starts.</td>
+								</tr>
+								<tr>
+									<td>November</td>
+									<td>Cold, Windy</td>
+									<td>Colder temperatures, changing wind conditions and possible early snow.</td>
+								</tr>
 							</table>
-							<tr>
-								<td>September</td>
-								<td>Hot, Breezy</td>
-								<td>Summer heat and thunderstorms.</td>
-							</tr>
-							<tr>
-								<td>October</td>
-								<td>Cool, Breezy</td>
-								<td>Cooler temperatures and breezy conditions as fall starts.</td>
-							</tr>
-							<tr>
-								<td>November</td>
-								<td>Cold, Windy</td>
-								<td>Colder temperatures, changing wind conditions and possible early snow.</td>
-							</tr>
 						</div>
 					</div>
 				</div>
 
-				<h3>Batteries</h3>
+				<h3><FontAwesomeIcon icon={['fas', 'battery-full']}/> Batteries</h3>
 				<div className='product-bar'>
 					<div className='body'>
 						<div>
@@ -127,7 +128,7 @@ export default class RadioControl extends React.Component {
 					</div>
 				</div>
 
-				<h3>About Us</h3>
+				<h3><FontAwesomeIcon icon={['fas', 'user']}/> About Us</h3>
 				<div className='product-bar'>
 					<div className='body'>
 						<div>
