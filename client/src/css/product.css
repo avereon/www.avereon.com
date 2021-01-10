@@ -37,6 +37,10 @@
 	background: var(--primary-white);
 }
 
+.span-width {
+	column-span: all;
+}
+
 .product-title {
 	margin: 0.5rem;
 	display: flex;

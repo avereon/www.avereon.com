@@ -21,7 +21,7 @@
     "rebuild": "rm -f client.zip && react-scripts build && cd build && zip -r ../client.zip * && cd -",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "ssh avereon.com 'sudo rm -rf /opt/avn/web/client/*;sudo chmod g+w /opt/avn/web/client';scp -r build/* avereon.com:/opt/avn/web/client;ssh avereon.com;sudo ln -s /opt/avn/web/screenshots /opt/avn/web/client/screenshots'",
+    "deploy": "ssh avereon.com 'sudo rm -rf /opt/avn/web/client/*;sudo chmod g+w /opt/avn/web/client' && scp -r build/* avereon.com:/opt/avn/web/client && ssh avereon.com 'sudo ln -s /opt/avn/web/screenshots /opt/avn/web/client/screenshots'",
     "redeploy": "npm run build && npm run deploy"
   },
   "eslintConfig": {

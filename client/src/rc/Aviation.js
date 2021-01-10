@@ -105,19 +105,19 @@ export default class Aviation extends React.Component {
 									<td>Yes</td>
 								</tr>
 								<tr>
-									<td>NiZN</td>
+									<td>NiZn</td>
 									<td>1.6</td>
 									<td>Yes</td>
 								</tr>
-								<tr colspan='3'>
+								<tr className='span-width'>
 									<td>* The Lithium chemistry is regulated to 1.5 volts</td>
 								</tr>
 							</table>
 						</div>
 						<div>
-							We have since tested with both the Lithium and NiZN chemistries
+							We have since tested with both the Lithium and NiZn chemistries
 							and found slightly improved range and will probably continue to
-							use the NiZN type for now.
+							use the NiZn type for now.
 						</div>
 						<div>
 							Note that there are other transmitter vendors that also support
