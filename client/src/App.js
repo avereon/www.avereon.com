@@ -19,7 +19,7 @@ import XenonDocs from "./product/xenon/XenonDocs";
 import NotFound from "./NotFound";
 import Status from "./product/Status";
 import SeencProduct from "./product/seenc/SeencProduct";
-import Aviation from "./rc/Aviation";
+import Aviation from "./aviation/Aviation";
 
 const reload = () => window.location.reload();
 

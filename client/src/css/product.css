@@ -24,7 +24,7 @@
 }
 
 .product table {
-	display: table; border-collapse: separate; border-spacing: 2px; border-color: green;
+	display: table; border-collapse: separate; border-spacing: 2px;
 	background: var(--secondary-white);
 }
 
@@ -33,12 +33,12 @@
 }
 
 .product td {
-	display: table-cell; vertical-align: inherit; border-color: red;
+	display: table-cell; vertical-align: inherit;
 	background: var(--primary-white);
 }
 
-.span-width {
-	column-span: all;
+.nowrap {
+	white-space: nowrap;
 }
 
 .product-title {
