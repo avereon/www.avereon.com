@@ -7,6 +7,7 @@ import {fab} from '@fortawesome/free-brands-svg-icons'
 import '../../css/product.css';
 import ProductPage from "../ProductPage";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import Config from "../../Config";
 
 library.add(fas, fab);
 
@@ -60,7 +61,7 @@ export default class Product extends React.Component {
 
                     <div className='resource-row'>
                         <div className='resource-tile'>
-                            <div><a href='/product/seenc/docs/api/index.html'><FontAwesomeIcon icon={['fas', 'tools']}/> Seenc API</a></div>
+                            <div><a href={Config.ROOT_URL + '/product/seenc/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Seenc API</a></div>
                         </div>
                         <div className='resource-tile'>
                             <div><a href='https://github.com/avereon/seenc' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>

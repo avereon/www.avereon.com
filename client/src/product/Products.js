@@ -33,7 +33,7 @@ export default class Products extends React.Component {
 					</div>
 
 					<div className='product-bar'>
-						<a href='https://github.com/avereon/weave'><img className="product-icon" alt="" src={Icon.WEAVE}/></a>
+						<a href='/product/weave'><img className="product-icon" alt="" src={Icon.WEAVE}/></a>
 						<div className='body'>
 							<div><a href='https://github.com/avereon/weave'>Weave</a> is a simple update
 								program that supports a simple command language to customize the

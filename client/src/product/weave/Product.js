@@ -27,18 +27,18 @@ export default class Product extends React.Component {
     };
 
     componentDidMount() {
-        ProductPage.productCards('acorn', (cards) => {
+        ProductPage.productCards('weave', (cards) => {
             this.setState(cards);
         });
     }
 
     render() {
         let stableDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'stable', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'stable', 'Weave', this.state, Platform.CURRENT, 'product')}
         </div>;
 
         let latestDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'latest', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'latest', 'Weave', this.state, Platform.CURRENT, 'product')}
         </div>;
 
         return (
@@ -46,25 +46,29 @@ export default class Product extends React.Component {
                 <div className='product'>
 
                     <div className='product-title'>
-                        <img className="product-icon" alt="" src={Icon.ACORN}/>
-                        <div className='product-name'>Acorn</div>
+                        <img className="product-icon" alt="" src={Icon.SEENC}/>
+                        <div className='product-name'>Weave</div>
                     </div>
 
                     <div className='product-content'>
-                        Acorn is a simple system profiling tool. It will run
-                        anywhere Java is supported. The tool is great for
-                        getting a quick understanding how your system compares
-                        with others.
+                        Weave is a simple update utility to apply updates. This
+                        program is commonly used with other programs to
+                        automate the update process. It has pre-defined tasks
+                        that can be specified via stdin or file. If any task
+                        requires elevated privileges the user is prompted for
+                        proper credentials. If specified, it has a simple UI
+                        that can be used to provide user feedback regarding the
+                        progress.
                     </div>
 
                     {stableDownload}
 
                     <div className='resource-row'>
                         <div className='resource-tile'>
-                            <div><a href={Config.ROOT_URL + '/product/acorn/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Acorn API</a></div>
+                            <div><a href={Config.ROOT_URL + '/product/weave/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Weave API</a></div>
                         </div>
                         <div className='resource-tile'>
-                            <div><a href='https://github.com/avereon/acorn' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
+                            <div><a href='https://github.com/avereon/weave' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
                         </div>
                     </div>
 

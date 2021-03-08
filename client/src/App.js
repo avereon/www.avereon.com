@@ -21,6 +21,7 @@ import XenonScreenshots from "./product/xenon/Screenshots";
 import NotFound from "./NotFound";
 import Status from "./product/Status";
 import SeencProduct from "./product/seenc/Product";
+import WeaveProduct from "./product/weave/Product";
 import Aviation from "./aviation/Aviation";
 
 const reload = () => window.location.reload();
@@ -35,6 +36,7 @@ export default class App extends React.Component {
 					<Switch>
 						{/* Supported routes */}
 						<Route exact path='/product/acorn' component={AcornProduct}/>
+						<Route exact path='/product/weave' component={WeaveProduct}/>
 						<Route exact path='/product/seenc' component={SeencProduct}/>
 						<Route exact path='/product/xenon/docs/user-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
 						<Route exact path='/product/xenon/docs/mods-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
