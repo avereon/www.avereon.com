@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icon from './Icon';
+import Icon from './Icon';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default class NotFound extends React.Component {

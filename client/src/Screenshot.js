@@ -1,4 +1,4 @@
-import * as Config from "./Config";
+import Config from "./Config";
 import React from "react";
 import {Link} from "react-router-dom";
 

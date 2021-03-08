@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Config from "../Config";
+import Config from "../Config";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default class ProductPage extends React.Component {

@@ -1,5 +1,5 @@
 import React from "react";
-import * as Icon from "../../Icon";
+import Icon from "../../Icon";
 import {ScreenshotTile} from "../../Screenshot";
 
 export default class Screenshots extends React.Component {

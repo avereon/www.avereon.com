@@ -1,5 +1,5 @@
 import React from "react";
-import * as Icon from "./Icon";
+import Icon from "./Icon";
 
 export default class About extends React.Component {
 

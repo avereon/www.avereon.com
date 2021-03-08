@@ -1,39 +1,41 @@
-import * as Config from "./Config";
+import Config from "./Config";
 
-const iconRoot = Config.ROOT_URL + "/download";
+export default class Icon {
+    static ICON_ROOT = Config.ROOT_URL + "/download";
 
-export const AVEREON_DARK = iconRoot + "/stable/avereon/provider/icon?theme=dark";
-export const AVEREON_LIGHT = iconRoot + "/stable/avereon/provider/icon?theme=light";
-export const AVEREON = AVEREON_LIGHT;
+    static AVEREON_DARK = this.ICON_ROOT + "/stable/avereon/provider/icon?theme=dark";
+    static AVEREON_LIGHT = this.ICON_ROOT + "/stable/avereon/provider/icon?theme=light";
+    static AVEREON = this.AVEREON_LIGHT;
 
-// Products
-export const ACORN= iconRoot + "/latest/acorn/product/icon";
+    // Products
+    static ACORN = this.ICON_ROOT + "/latest/acorn/product/icon";
 
-export const SEENC= AVEREON_LIGHT;
+    static SEENC = this.AVEREON_LIGHT;
 
-export const WEAVE= iconRoot + "/latest/weave/product/icon";
+    static WEAVE = this.ICON_ROOT + "/latest/weave/product/icon";
 
-export const XENON_DARK= iconRoot + "/latest/xenon/product/icon?theme=dark";
-export const XENON_LIGHT= iconRoot + "/latest/xenon/product/icon?theme=light";
-export const XENON= XENON_LIGHT;
+    static XENON_DARK = this.ICON_ROOT + "/latest/xenon/product/icon?theme=dark";
+    static XENON_LIGHT = this.ICON_ROOT + "/latest/xenon/product/icon?theme=light";
+    static XENON = this.XENON_LIGHT;
 
-// Libraries
-export const CURVE= AVEREON_LIGHT;
-export const ZARRA= AVEREON_LIGHT;
-export const ZAVRA= AVEREON_LIGHT;
-export const ZENNA= AVEREON_LIGHT;
-export const ZERRA= AVEREON_LIGHT;
-export const ZEVRA= AVEREON_LIGHT;
+    // Libraries
+    static CURVE = this.AVEREON_LIGHT;
+    static ZARRA = this.AVEREON_LIGHT;
+    static ZAVRA = this.AVEREON_LIGHT;
+    static ZENNA = this.AVEREON_LIGHT;
+    static ZERRA = this.AVEREON_LIGHT;
+    static ZEVRA = this.AVEREON_LIGHT;
 
-// Maven Plugins
-export const CAMEO= AVEREON_LIGHT;
-export const CUREX= AVEREON_LIGHT;
+    // Maven Plugins
+    static CAMEO = this.AVEREON_LIGHT;
+    static CUREX = this.AVEREON_LIGHT;
 
-// Xenon Mods
-//export const ACORN= iconRoot + "/latest/acorn/product/icon";
-export const AMAZO= iconRoot + "/latest/amazo/product/icon";
-export const ARENA= iconRoot + "/latest/arena/product/icon";
-export const AVEON= iconRoot + "/latest/aveon/product/icon";
-export const CARTA= iconRoot + "/latest/carta/product/icon";
-export const MAZER= iconRoot + "/latest/mazer/product/icon";
-export const RECON= iconRoot + "/latest/recon/product/icon";
+    // Xenon Mods
+    //static ACORN= iconRoot + "/latest/acorn/product/icon";
+    static AMAZO = this.ICON_ROOT + "/latest/amazo/product/icon";
+    static ARENA = this.ICON_ROOT + "/latest/arena/product/icon";
+    static AVEON = this.ICON_ROOT + "/latest/aveon/product/icon";
+    static CARTA = this.ICON_ROOT + "/latest/carta/product/icon";
+    static MAZER = this.ICON_ROOT + "/latest/mazer/product/icon";
+    static RECON = this.ICON_ROOT + "/latest/recon/product/icon";
+}

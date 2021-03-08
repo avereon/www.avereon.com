@@ -1,6 +1,6 @@
 import React from 'react';
-import * as Icon from '../../Icon';
-import * as Platform from '../../Platform';
+import Icon from '../../Icon';
+import Platform from '../../Platform';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
@@ -10,7 +10,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 library.add(fas, fab);
 
-export default class SeencProduct extends React.Component {
+export default class Product extends React.Component {
 
     state = {
         stable: {

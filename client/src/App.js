@@ -13,14 +13,14 @@ import About from "./About";
 import Products from "./product/Products";
 import Screenshot from "./Screenshot";
 import DocViewer from "./DocViewer";
-import AcornProduct from "./product/acorn/AcornProduct";
+import AcornProduct from "./product/acorn/Product";
 import XenonProduct from "./product/xenon/Product";
-import XenonMods from "./product/xenon/XenonMods";
+import XenonMods from "./product/xenon/Mods";
 import XenonDocs from "./product/xenon/XenonDocs";
 import XenonScreenshots from "./product/xenon/Screenshots";
 import NotFound from "./NotFound";
 import Status from "./product/Status";
-import SeencProduct from "./product/seenc/SeencProduct";
+import SeencProduct from "./product/seenc/Product";
 import Aviation from "./aviation/Aviation";
 
 const reload = () => window.location.reload();

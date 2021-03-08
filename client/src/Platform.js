@@ -1,32 +1,35 @@
-export const LINUX = {
-	KEY: 'linux',
-	NAME: 'Linux',
-	ICON: 'linux',
-	INSTALLER_EXT: 'deb',
-};
+export default class Platform {
+    static LINUX = {
+        KEY: 'linux',
+        NAME: 'Linux',
+        ICON: 'linux',
+        INSTALLER_EXT: 'deb',
+    };
 
-export const MACOS = {
-	KEY: 'macosx',
-	NAME: 'Mac OS',
-	ICON: 'apple',
-	INSTALLER_EXT: 'dmg',
-};
+    static MACOS = {
+        KEY: 'macosx',
+        NAME: 'Mac OS',
+        ICON: 'apple',
+        INSTALLER_EXT: 'dmg',
+    };
 
-export const WINDOWS = {
-	KEY: 'windows',
-	NAME: 'Windows',
-	ICON: 'windows',
-	INSTALLER_EXT: 'exe',
+    static WINDOWS = {
+        KEY: 'windows',
+        NAME: 'Windows',
+        ICON: 'windows',
+        INSTALLER_EXT: 'exe',
+    }
+
+    static CURRENT;
+
+    static staticInitializer = function () {
+        let platform = window.navigator.platform.toLocaleLowerCase();
+        if (platform.startsWith('lin')) {
+            Platform.CURRENT = Platform.LINUX;
+        } else if (platform.startsWith('mac')) {
+            Platform.CURRENT = Platform.MACOS;
+        } else if (platform.startsWith('win')) {
+            Platform.CURRENT = Platform.WINDOWS;
+        }
+    }()
 }
-
-let current;
-let platform = window.navigator.platform.toLocaleLowerCase();
-if (platform.startsWith('linux')) {
-	current = LINUX;
-} else if (platform.startsWith('win')) {
-	current = WINDOWS;
-} else if (platform.startsWith('mac')) {
-	current = MACOS;
-}
-
-export const CURRENT = current;

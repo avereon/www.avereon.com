@@ -1,4 +1,4 @@
-import * as Config from "./Config";
+import Config from "./Config";
 
 export const XENON_WELCOME_2x = Config.IMAGE_ROOT + "/screenshots/welcome-tool@2x.png";
 export const XENON_WELCOME_1x = Config.IMAGE_ROOT + "/screenshots/welcome-tool.png";

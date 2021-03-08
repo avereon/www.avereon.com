@@ -1,5 +1,5 @@
 import React from "react";
-import * as Icon from "./Icon";
+import Icon from "./Icon";
 import * as Image from "./Image";
 
 export default class Home extends React.Component {

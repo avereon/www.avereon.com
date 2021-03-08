@@ -1,7 +1,7 @@
 import React from "react";
-import * as Icon from "../../Icon";
+import Icon from "../../Icon";
 
-export default class XenonMods extends React.Component {
+export default class Mods extends React.Component {
 
 	render() {
 		return (

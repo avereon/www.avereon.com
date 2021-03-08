@@ -1,6 +1,7 @@
 import React from 'react';
-import * as Icon from '../../Icon';
-import * as Platform from '../../Platform';
+import Icon from '../../Icon';
+import Platform from '../../Platform';
+import Config from '../../Config';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
@@ -83,7 +84,7 @@ export default class Product extends React.Component {
 						<div className='resource-tile'>
 							<div><a href='/product/xenon/docs/mods-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Mods</a></div>
 							<div><a href='/product/xenon/docs/tool-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Tools</a></div>
-							<div><a href='/product/xenon/docs/api/index.html'><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a></div>
+							<div><a href={Config.ROOT_URL + '/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a></div>
 							<div><a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>
 						</div>
 					</div>
