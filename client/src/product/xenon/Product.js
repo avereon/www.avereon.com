@@ -18,7 +18,7 @@ library.add(fas, fab);
 // 		.catch(failure)
 // }
 
-export default class XenonProduct extends React.Component {
+export default class Product extends React.Component {
 
 	state = {
 		stable: {
@@ -78,6 +78,7 @@ export default class XenonProduct extends React.Component {
 						<div className='resource-tile'>
 							<div><a href='/product/xenon/docs/user-guide'><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a></div>
 							<div><a href='/product/xenon/mods'><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
+							<div><a href='/product/xenon/docs/screenshots'><FontAwesomeIcon icon={['fas', 'desktop']}/> Screenshots</a></div>
 						</div>
 						<div className='resource-tile'>
 							<div><a href='/product/xenon/docs/mods-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Mods</a></div>
