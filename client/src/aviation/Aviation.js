@@ -8,18 +8,25 @@ export default class Aviation extends React.Component {
             <div className='content product'>
                 <h1>Aviation (Radio Control)</h1>
 
-                <h3><FontAwesomeIcon icon={['fas', 'calendar']}/> 2021 Flying Season</h3>
+                <h3><FontAwesomeIcon icon={['fas', 'calendar']}/> Northern Utah Flying Season</h3>
                 <div className='product-bar'>
                     <div className='body'>
                         <div>
-                            The 2021 flying season is quickly approaching even though its
-                            still a few months away. Here is a monthly calendar with general
-                            weather conditions and challenges:
+                            Here is a monthly calendar with general weather conditions and challenges:
                             <table>
                                 <tr>
                                     <th>Month</th>
                                     <th className='nowrap'>Weather</th>
                                     <th>Explanation</th>
+                                </tr>
+                                <tr>
+                                    <td>March</td>
+                                    <td className='nowrap'>Cold, Windy, Wet</td>
+                                    <td>
+                                        Temperatures are still cold and strong wind conditions are still possible as
+                                        winter changes over to spring. There is a possibility of snow, rain and
+                                        wet flying fields.
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>April</td>
