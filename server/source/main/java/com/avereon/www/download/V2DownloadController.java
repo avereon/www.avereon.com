@@ -36,13 +36,13 @@ public class V2DownloadController {
 	}
 
 	@RequestMapping( method = RequestMethod.GET, path = "/catalog" )
-	public void getCatalog( HttpServletResponse response, @PathVariable( "channel" ) String channel, @RequestParam Map<String,String> query ) throws IOException {
+	public void getCatalog( HttpServletResponse response, @PathVariable( "channel" ) String channel, @RequestParam Map<String, String> query ) throws IOException {
 		HttpStatus status = doGetCatalog( response, channel, query );
 		response.setStatus( status.value() );
 	}
 
 	@RequestMapping( method = RequestMethod.GET, path = "/cards/{artifact}" )
-	public Map<String, Object> getProductCards( @PathVariable String artifact, @RequestParam Map<String,String> query ) {
+	public Map<String, Object> getProductCards( @PathVariable String artifact, @RequestParam Map<String, String> query ) {
 		Map<String, Object> cards = new HashMap<>();
 
 		for( String key : factory.getProviders().keySet() ) {
@@ -60,7 +60,7 @@ public class V2DownloadController {
 		@PathVariable( "artifact" ) String artifact,
 		@PathVariable( "asset" ) String asset,
 		@PathVariable( "format" ) String format,
-		@RequestParam Map<String,String> query
+		@RequestParam Map<String, String> query
 	) throws IOException {
 		getMetadata( response, channel, artifact, null, asset, format, query );
 	}
@@ -73,9 +73,9 @@ public class V2DownloadController {
 		@PathVariable( "platform" ) String platform,
 		@PathVariable( "asset" ) String asset,
 		@PathVariable( "format" ) String format,
-		@RequestParam Map<String,String> query
+		@RequestParam Map<String, String> query
 	) throws IOException {
-		HttpStatus status = doGetArtifact( RequestMethod.HEAD, response, channel, artifact, platform, asset, format,query );
+		HttpStatus status = doGetArtifact( RequestMethod.HEAD, response, channel, artifact, platform, asset, format, query );
 		response.setStatus( status.value() );
 	}
 
@@ -105,12 +105,12 @@ public class V2DownloadController {
 		response.setStatus( status.value() );
 	}
 
-	private HttpStatus doGetCatalog( HttpServletResponse response, String channel, Map<String,String> query ) throws IOException {
+	private HttpStatus doGetCatalog( HttpServletResponse response, String channel, Map<String, String> query ) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
 		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
-		V2Download download = provider.getCatalog(query);
+		V2Download download = provider.getCatalog( query );
 		if( download == null ) log.log( Log.WARN, "The catalog is null" );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
@@ -120,7 +120,7 @@ public class V2DownloadController {
 		return HttpStatus.OK;
 	}
 
-	private Map<String, Object> getProductCards( V2DownloadProvider provider, String artifact, Map<String,String> query ) {
+	private Map<String, Object> getProductCards( V2DownloadProvider provider, String artifact, Map<String, String> query ) {
 		Map<String, Object> cards = new HashMap<>();
 
 		addCardToMap( cards, provider, artifact, "linux", query );
@@ -131,7 +131,7 @@ public class V2DownloadController {
 		return cards;
 	}
 
-	private void addCardToMap( Map<String, Object> map, V2DownloadProvider provider, String artifact, String platform, Map<String,String> query ) {
+	private void addCardToMap( Map<String, Object> map, V2DownloadProvider provider, String artifact, String platform, Map<String, String> query ) {
 		try {
 			V2Download download = provider.getDownload( artifact, platform, "product", "card", query );
 			if( platform == null ) platform = "card";
@@ -162,13 +162,17 @@ public class V2DownloadController {
 	}
 
 	private void addHeaders( V2Download download, HttpServletResponse response ) {
-		response.addHeader( "group", download.getGroup() );
-		response.addHeader( "artifact", download.getArtifact() );
-		if( download.getPlatform() != null ) response.addHeader( "platform", download.getPlatform() );
-		response.addHeader( "asset", download.getAsset() );
-		response.addHeader( "format", download.getFormat() );
-		response.addHeader( "name", download.getName() );
-		response.addHeader( "version", download.getVersion() );
+		response.addHeader( "group", removeSpecial( download.getGroup() ) );
+		response.addHeader( "artifact", removeSpecial( download.getArtifact() ) );
+		if( download.getPlatform() != null ) response.addHeader( "platform", removeSpecial( download.getPlatform() ) );
+		response.addHeader( "asset", removeSpecial( download.getAsset() ) );
+		response.addHeader( "format", removeSpecial( download.getFormat() ) );
+		response.addHeader( "name", removeSpecial( download.getName() ) );
+		response.addHeader( "version", removeSpecial( download.getVersion() ) );
+	}
+
+	private String removeSpecial( String string ) {
+		return string.replaceAll( "[^a-zA-Z ]", "" );
 	}
 
 	/**
