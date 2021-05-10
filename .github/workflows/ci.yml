@@ -24,6 +24,10 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java', 'javascript' ]
     steps:
       - name: Fetch sources
         uses: actions/checkout@v1
@@ -60,7 +64,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
-          languages: [ 'java', 'javascript' ]
+          languages: ${{ matrix.language }}
 
       - name: NPM Repository Cache
         uses: actions/cache@v1
