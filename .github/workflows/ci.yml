@@ -1,6 +1,6 @@
 name: Avereon Website CI
 
-on: [push]
+on: [ push ]
 
 env:
   AVN_PRODUCT: "zevra"
@@ -57,6 +57,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: [ 'java', 'javascript' ]
+
       - name: NPM Repository Cache
         uses: actions/cache@v1
         with:
@@ -78,6 +83,9 @@ jobs:
           cd server
           mvn ${{env.MAVEN_PARMS}} package
 
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1
+
       - name: Copy Client ZIP
         run: scp -B client/client.zip travis@avereon.com:/opt/avn/store/latest/www.avereon.com/client.zip
 
@@ -85,7 +93,7 @@ jobs:
         run: scp -B server/target/avereon.jar travis@avereon.com:/opt/avn/store/latest/www.avereon.com/server.jar
 
       - name: Copy Provider Icon
-        run:  |
+        run: |
           scp -B server/target/main/images/avereon.png travis@avereon.com:/opt/avn/store/stable/avereon/provider.png
           scp -B server/target/main/images/avereon-dark.png travis@avereon.com:/opt/avn/store/stable/avereon/provider-dark.png
           scp -B server/target/main/images/avereon-light.png travis@avereon.com:/opt/avn/store/stable/avereon/provider-light.png
