@@ -1,7 +1,7 @@
 {
   "group": "com.avereon",
   "artifact": "mouse",
-  "version": "0.0u0",
+  "version": "0.0u0-g",
   "timestamp": "2019-05-02 18:01:36",
   "iconUri": "mouse",
   "name": "Mouse",

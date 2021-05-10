@@ -198,14 +198,15 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "asset" ), is( "product" ) );
 		assertThat( result.getResponse().getHeader( "format" ), is( "card" ) );
 		assertThat( result.getResponse().getHeader( "name" ), is( "Mouse" ) );
-		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0" ) );
-
-		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
-		assertThat( result.getResponse().getContentLength(), is( 446 ) );
+		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0-g" ) );
 
 		String content = result.getResponse().getContentAsString();
 		Map<String,String> map = content == null ? Map.of() : new ObjectMapper().readValue( content, Map.class ) ;
 		assertThat( map.get( "theme" ), is( "grey"));
+		assertThat( map.get( "version" ), is( "0.0u0-g"));
+
+		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
+		assertThat( result.getResponse().getContentLength(), is( 449 ) );
 	}
 
 	@Test

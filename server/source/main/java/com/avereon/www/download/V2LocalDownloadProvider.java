@@ -83,7 +83,7 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		if( !Files.exists( path ) ) log.log( Log.WARN, "Artifact path not found: " + path );
 		if( !Files.exists( path ) ) return null;
 
-		ProductCard card = getProductCard( path.getParent() );
+		ProductCard card = getProductCard( path.getParent(), query );
 		if( card != null ) {
 			download.setGroup( card.getGroup() );
 			download.setName( card.getName() );
@@ -95,8 +95,8 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 		return download;
 	}
 
-	private ProductCard getProductCard( Path root ) {
-		Path path = root.resolve( "product.card" );
+	private ProductCard getProductCard( Path root, Map<String,String> query ) {
+		Path path = root.resolve( V2Download.localFilename( null, null, "product", "card", query ) );
 		if( !Files.exists( path ) ) return null;
 
 		ProductCard card = new ProductCard();

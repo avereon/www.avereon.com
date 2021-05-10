@@ -172,7 +172,7 @@ public class V2DownloadController {
 	}
 
 	private String removeSpecial( String string ) {
-		return string.replaceAll( "[^a-zA-Z ]", "" );
+		return string.replaceAll( "[^a-zA-Z0-9-. ]", "" );
 	}
 
 	/**
