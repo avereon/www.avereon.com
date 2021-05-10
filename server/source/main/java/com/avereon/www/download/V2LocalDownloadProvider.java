@@ -77,9 +77,9 @@ public class V2LocalDownloadProvider implements V2DownloadProvider {
 
 		// TODO Opportunity to provide a cache here
 
-		Path path = root.resolve( artifact );
-		if( platform != null ) path = path.resolve( platform );
-		path = path.resolve( download.getLocalFilename() );
+		Path path = root.resolve( V2Download.removeSpecial(artifact) );
+		if( platform != null ) path = path.resolve( V2Download.removeSpecial(platform ));
+		path = path.resolve( V2Download.removeSpecial(download.getLocalFilename()) );
 		if( !Files.exists( path ) ) log.log( Log.WARN, "Artifact path not found: " + path );
 		if( !Files.exists( path ) ) return null;
 

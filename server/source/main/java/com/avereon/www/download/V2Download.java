@@ -202,4 +202,8 @@ public class V2Download {
 		return "application/octet-stream";
 	}
 
+	static String removeSpecial( String string ) {
+		return string.replaceAll( "[^a-zA-Z0-9-. ]", "" );
+	}
+
 }

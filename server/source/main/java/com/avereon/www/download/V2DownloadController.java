@@ -162,17 +162,13 @@ public class V2DownloadController {
 	}
 
 	private void addHeaders( V2Download download, HttpServletResponse response ) {
-		response.addHeader( "group", removeSpecial( download.getGroup() ) );
-		response.addHeader( "artifact", removeSpecial( download.getArtifact() ) );
-		if( download.getPlatform() != null ) response.addHeader( "platform", removeSpecial( download.getPlatform() ) );
-		response.addHeader( "asset", removeSpecial( download.getAsset() ) );
-		response.addHeader( "format", removeSpecial( download.getFormat() ) );
-		response.addHeader( "name", removeSpecial( download.getName() ) );
-		response.addHeader( "version", removeSpecial( download.getVersion() ) );
-	}
-
-	private String removeSpecial( String string ) {
-		return string.replaceAll( "[^a-zA-Z0-9-. ]", "" );
+		response.addHeader( "group", V2Download.removeSpecial( download.getGroup() ) );
+		response.addHeader( "artifact", V2Download.removeSpecial( download.getArtifact() ) );
+		if( download.getPlatform() != null ) response.addHeader( "platform", V2Download.removeSpecial( download.getPlatform() ) );
+		response.addHeader( "asset", V2Download.removeSpecial( download.getAsset() ) );
+		response.addHeader( "format", V2Download.removeSpecial( download.getFormat() ) );
+		response.addHeader( "name", V2Download.removeSpecial( download.getName() ) );
+		response.addHeader( "version", V2Download.removeSpecial( download.getVersion() ) );
 	}
 
 	/**
