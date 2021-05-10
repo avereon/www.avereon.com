@@ -155,7 +155,7 @@ public class V2Download {
 	}
 
 	static String localFilename( String artifact, String platform, String asset, String format, Map<String, String> query ) {
-		String theme = query.get( "theme" );
+		String theme = V2Download.removeSpecial( query.get( "theme" ) );
 		StringBuilder name = new StringBuilder();
 		if( asset != null ) {
 			name.append( asset );
@@ -203,6 +203,7 @@ public class V2Download {
 	}
 
 	static String removeSpecial( String string ) {
+		if( string == null ) return null;
 		return string.replaceAll( "[^a-zA-Z0-9-. ]", "" );
 	}
 
