@@ -178,7 +178,7 @@ public class V2DownloadController {
 	 * @throws IOException If an IO error occurs
 	 */
 	private void stream( HttpServletResponse response, InputStream input, String name, long size ) throws IOException {
-		response.setHeader( "Content-Disposition", "inline; filename=\"" + name + "\"" );
+		response.setHeader( "Content-Disposition", "inline; filename=\"" + V2Download.removeSpecial( name ) + "\"" );
 		response.setHeader( "Content-Length", String.valueOf( size ) );
 
 		// Stream the data
