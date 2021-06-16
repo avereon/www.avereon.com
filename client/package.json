@@ -11,7 +11,7 @@
     "csstools": "^0.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "run": "^1.4.0"
   },
