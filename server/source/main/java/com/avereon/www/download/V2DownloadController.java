@@ -1,7 +1,8 @@
 package com.avereon.www.download;
 
-import com.avereon.util.Log;
+import com.avereon.log.LazyEval;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.CustomLog;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,12 +23,11 @@ import java.util.Map;
  * <li>Handle requests for an artifact with general parameters and return the stream</li>
  * </ol>
  */
+@CustomLog
 @CrossOrigin
 @RestController
 @RequestMapping( value = { "/download/{channel}", "/download/{channel}/v2" } )
 public class V2DownloadController {
-
-	private static final System.Logger log = Log.get();
 
 	private V2DownloadProviderFactory factory;
 
@@ -107,11 +107,11 @@ public class V2DownloadController {
 
 	private HttpStatus doGetCatalog( HttpServletResponse response, String channel, Map<String, String> query ) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
-		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
+		if( provider == null ) log.atWarn().log( "The download provider is null: %s", channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getCatalog( query );
-		if( download == null ) log.log( Log.WARN, "The catalog is null" );
+		if( download == null ) log.atWarn().log( "The catalog is null" );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( "card" ) );
@@ -146,11 +146,11 @@ public class V2DownloadController {
 		RequestMethod method, HttpServletResponse response, String channel, String artifact, String platform, String asset, String format, Map<String, String> query
 	) throws IOException {
 		V2DownloadProvider provider = factory.getProviders().get( channel );
-		if( provider == null ) log.log( Log.WARN, "The download provider is null: " + channel );
+		if( provider == null ) log.atWarn().log( "The download provider is null: %s", channel );
 		if( provider == null ) return HttpStatus.NOT_FOUND;
 
 		V2Download download = provider.getDownload( artifact, platform, asset, format, query );
-		if( download == null ) log.log( Log.WARN, "The download is null: " + V2Download.key( artifact, platform, asset, format, query ) );
+		if( download == null ) log.atWarn().log( "The download is null: %s", LazyEval.of( () -> V2Download.key( artifact, platform, asset, format, query ) ) );
 		if( download == null ) return HttpStatus.NOT_FOUND;
 
 		response.setContentType( V2Download.resolveContentType( format ) );

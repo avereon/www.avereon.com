@@ -22,9 +22,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -87,16 +87,22 @@ public class V2DownloadControllerTest {
 	public void testGetProductCards() throws Exception {
 		MvcResult result = mvc.perform( MockMvcRequestBuilders.get( "/download/product/cards/xenon" ) ).andExpect( status().isOk() ).andReturn();
 
-		assertThat( result.getResponse().getContentType(), is( "application/json;charset=UTF-8" ) );
+		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
 		//assertThat( result.getResponse().getContentAsString(), is( "" ));
 
 		JsonNode json = new ObjectMapper().readValue( result.getResponse().getContentAsString(), JsonNode.class );
 		assertThat( StreamSupport.stream( ((Iterable<String>)json::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "stable", "latest" ) );
 
 		JsonNode stable = json.get( "stable" );
-		assertThat( StreamSupport.stream( ((Iterable<String>)stable::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "linux", "windows", "macosx", "card" ) );
+		assertThat(
+			StreamSupport.stream( ((Iterable<String>)stable::fieldNames).spliterator(), false ).collect( Collectors.toSet() ),
+			Matchers.containsInAnyOrder( "linux", "windows", "macosx", "card" )
+		);
 		JsonNode latest = json.get( "latest" );
-		assertThat( StreamSupport.stream( ((Iterable<String>)latest::fieldNames).spliterator(), false ).collect( Collectors.toSet() ), Matchers.containsInAnyOrder( "linux", "windows", "macosx", "card" ) );
+		assertThat(
+			StreamSupport.stream( ((Iterable<String>)latest::fieldNames).spliterator(), false ).collect( Collectors.toSet() ),
+			Matchers.containsInAnyOrder( "linux", "windows", "macosx", "card" )
+		);
 	}
 
 	@Test
@@ -201,9 +207,9 @@ public class V2DownloadControllerTest {
 		assertThat( result.getResponse().getHeader( "version" ), is( "0.0u0-g" ) );
 
 		String content = result.getResponse().getContentAsString();
-		Map<String,String> map = content == null ? Map.of() : new ObjectMapper().readValue( content, Map.class ) ;
-		assertThat( map.get( "theme" ), is( "grey"));
-		assertThat( map.get( "version" ), is( "0.0u0-g"));
+		Map<String, String> map = content == null ? Map.of() : new ObjectMapper().readValue( content, Map.class );
+		assertThat( map.get( "theme" ), is( "grey" ) );
+		assertThat( map.get( "version" ), is( "0.0u0-g" ) );
 
 		assertThat( result.getResponse().getContentType(), is( "application/json" ) );
 		assertThat( result.getResponse().getContentLength(), is( 449 ) );
