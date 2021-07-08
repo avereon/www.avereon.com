@@ -51,7 +51,7 @@ class ProductStatus extends React.Component {
 				<div className='body'>
 					<h6>{this.props.name}</h6>
 					<a href={'https://github.com/avereon/' + this.props.ident + '/actions'}>
-						<img alt={this.props.name + " Build Status"} src={"https://github.com/avereon/" + this.props.ident + "/workflows/Avereon%20" + this.props.name + "%20Continuous/badge.svg"}/>
+						<img alt={this.props.name + " Build Status"} src={"https://github.com/avereon/" + this.props.ident + "/workflows/CI/badge.svg"}/>
 					</a>
 				</div>
 			</div>
