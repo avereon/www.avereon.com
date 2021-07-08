@@ -10,12 +10,12 @@ export default class Products extends React.Component {
 					<h3>Products</h3>
 					<ProductStatus ident='xenon' icon={Icon.XENON_LIGHT} name='Xenon'/>
 					<ProductStatus ident='weave' icon={Icon.WEAVE} name='Weave'/>
-					<ProductStatus ident='acorn' icon={Icon.ACORN} name='Acorn'/>
+					<ProductStatus ident='acorn-cli' icon={Icon.ACORN} name='Acorn'/>
 					<ProductStatus ident='seenc' icon={Icon.SEENC} name='Seenc'/>
 				</div>
 				<div className='column product-status'>
 					<h3>Xenon Mods</h3>
-					<ProductStatus ident='acornmod' icon={Icon.ACORN} name='Acorn'/>
+					<ProductStatus ident='acorn' icon={Icon.ACORN} name='Acorn'/>
 					{/*<ProductStatus ident='amazo' icon={Icon.AMAZO} name='Amazo'/>*/}
 					{/*<ProductStatus ident='arena' icon={Icon.ARENA} name='Arena'/>*/}
 					<ProductStatus ident='aveon' icon={Icon.AVEON} name='Aveon'/>
