@@ -22,7 +22,6 @@ import NotFound from "./NotFound";
 import Status from "./product/Status";
 import SeencProduct from "./product/seenc/Product";
 import WeaveProduct from "./product/weave/Product";
-import Aviation from "./aviation/Aviation";
 
 const reload = () => window.location.reload();
 
@@ -48,7 +47,6 @@ export default class App extends React.Component {
 						<Route exact path='/product/xenon' component={XenonProduct}/>
 						<Route exact path='/product/screenshot' component={Screenshot}/>
 						<Route exact path='/products' component={Products}/>
-						<Route exact path='/aviation' component={Aviation}/>
 						<Route exact path='/status' component={Status}/>
 						<Route exact path='/license/mit' component={LicenseMit}/>
 						<Route exact path='/legal' component={Legal}/>
