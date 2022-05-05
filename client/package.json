@@ -7,7 +7,6 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
-    "async": "^2.6.4",
     "build": "^0.1.4",
     "csstools": "^0.1.5",
     "react": "^17.0.2",
