@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
+import React, {useEffect} from 'react';
+import {BrowserRouter as Router, Route, Routes, useNavigate, useParams} from 'react-router-dom'
 import './css/index.css';
 import './css/license.css';
 import './css/product.css';
@@ -25,53 +25,59 @@ import WeaveProduct from "./product/weave/Product";
 
 const reload = () => window.location.reload();
 
-export default class App extends React.Component {
+function Redirect({to}) {
+	let navigate = useNavigate();
+	useEffect(() => {
+		navigate(to);
+	});
+	return null;
+}
 
-	render() {
-		return (
-			<div className='app'>
-				<Header/>
-				<Router>
-					<Switch>
-						{/* Supported routes */}
-						<Route exact path='/product/acorn' component={AcornProduct}/>
-						<Route exact path='/product/weave' component={WeaveProduct}/>
-						<Route exact path='/product/seenc' component={SeencProduct}/>
-						<Route exact path='/product/xenon/docs/user-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
-						<Route exact path='/product/xenon/docs/mods-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
-						<Route exact path='/product/xenon/docs/tool-guide' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tools/content.html' outline={3}/>}/>
-						<Route exact path='/product/xenon/contribute' render={(props) => <DocViewer {...props} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/contribute/content.html' outline={3}/>}/>
-						<Route exact path='/product/xenon/docs/screenshots' component={XenonScreenshots}/>
-						<Route exact path='/product/xenon/docs' component={XenonDocs}/>
-						<Route exact path='/product/xenon/mods' component={XenonMods}/>
-						<Route exact path='/product/xenon' component={XenonProduct}/>
-						<Route exact path='/product/screenshot' component={Screenshot}/>
-						<Route exact path='/products' component={Products}/>
-						<Route exact path='/status' component={Status}/>
-						<Route exact path='/license/mit' component={LicenseMit}/>
-						<Route exact path='/legal' component={Legal}/>
-						<Route exact path='/about' component={About}/>
-						<Route exact path='/' component={Home}/>
+export default function App() {
 
-						{/* API documentation routes */}
-						<Route path='/product/acorn/docs/api' onEnter={reload}/>
-						<Route path='/product/seenc/docs/api' onEnter={reload}/>
-						<Route path='/product/xenon/docs/api' onEnter={reload}/>
-						<Route path='/product/zenna/docs/api' onEnter={reload}/>
-						<Route path='/product/zevra/docs/api' onEnter={reload}/>
+	return (
+		<div className='app'>
+			<Header/>
+			<Router>
+				<Routes>
+					{/* Supported routes */}
+					<Route exact path='/product/acorn' element={<AcornProduct/>}/>
+					<Route exact path='/product/weave' element={<WeaveProduct/>}/>
+					<Route exact path='/product/seenc' element={<SeencProduct/>}/>
+					<Route exact path='/product/xenon/docs/user-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
+					<Route exact path='/product/xenon/docs/mods-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
+					<Route exact path='/product/xenon/docs/tool-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tools/content.html' outline={3}/>}/>
+					<Route exact path='/product/xenon/contribute' render={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/contribute/content.html' outline={3}/>}/>
+					<Route exact path='/product/xenon/docs/screenshots' element={<XenonScreenshots/>}/>
+					<Route exact path='/product/xenon/docs' element={<XenonDocs/>}/>
+					<Route exact path='/product/xenon/mods' element={<XenonMods/>}/>
+					<Route exact path='/product/xenon' element={<XenonProduct/>}/>
+					<Route exact path='/product/screenshot' element={<Screenshot/>}/>
+					<Route exact path='/products' element={<Products/>}/>
+					<Route exact path='/status' element={<Status/>}/>
+					<Route exact path='/license/mit' element={<LicenseMit/>}/>
+					<Route exact path='/legal' element={<Legal/>}/>
+					<Route exact path='/about' element={<About/>}/>
+					<Route exact path='/' element={<Home/>}/>
 
-						{/* Deprecated routes */}
-						<Redirect exact path='/product/xenon/docs/manual' to={{ ...window.location, pathname: '/product/xenon/docs/user-guide' }}/>
-						<Redirect exact path='/product/xenon/docs/mods' to={{ ...window.location, pathname: '/product/xenon/docs/mods-guide' }}/>
-						<Redirect exact path='/rc' to={{ ...window.location, pathname: '/aviation' }}/>
+					{/* API documentation routes */}
+					<Route path='/product/acorn/docs/api' onEnter={reload}/>
+					<Route path='/product/seenc/docs/api' onEnter={reload}/>
+					<Route path='/product/xenon/docs/api' onEnter={reload}/>
+					<Route path='/product/zenna/docs/api' onEnter={reload}/>
+					<Route path='/product/zevra/docs/api' onEnter={reload}/>
 
-						{/* Default route */}
-						<Route component={NotFound}/>
-					</Switch>
-				</Router>
-				<Footer/>
-			</div>
-		);
-	}
+					{/* Deprecated routes */}
+					<Route path='/product/xenon/docs/manual' render={() => <Redirect to='/product/xenon/docs/user-guide'/>}/>
+					<Route path='/product/xenon/docs/mods' render={() => <Redirect to='/product/xenon/docs/mods-guide'/>}/>
+					<Route path='/rc' render={() => <Redirect to='/aviation'/>}/>
+
+					{/* Default route */}
+					<Route element={<NotFound/>}/>
+				</Routes>
+			</Router>
+			<Footer/>
+		</div>
+	);
 
 }
