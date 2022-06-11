@@ -1,4 +1,11 @@
 export default class Platform {
+    static ANY = {
+        KEY: 'linux',
+        NAME: 'Any Platform',
+        ICON: 'jar',
+        INSTALLER_EXT: 'jar',
+    };
+
     static LINUX = {
         KEY: 'linux',
         NAME: 'Linux',

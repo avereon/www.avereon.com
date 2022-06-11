@@ -15,11 +15,13 @@ export default class Product extends React.Component {
 
     state = {
         stable: {
+            any: {},
             linux: {},
             macosx: {},
             windows: {}
         },
         latest: {
+            any: {},
             linux: {},
             macosx: {},
             windows: {}
@@ -27,18 +29,18 @@ export default class Product extends React.Component {
     };
 
     componentDidMount() {
-        ProductPage.productCards('acorn', (cards) => {
+        ProductPage.productCards('acorn-cli', (cards) => {
             this.setState(cards);
         });
     }
 
     render() {
         let stableDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'stable', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'stable', 'Acorn', this.state, Platform.ANY, 'product')}
         </div>;
 
         let latestDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'latest', 'Acorn', this.state, Platform.CURRENT, 'product')}
+            {ProductPage.createDownloadTile('primary', 'latest', 'Acorn', this.state, Platform.ANY, 'product')}
         </div>;
 
         return (

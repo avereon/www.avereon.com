@@ -17,8 +17,7 @@ export default class ProductPage extends React.Component {
 
         const artifact = card.artifact;
         const version = card.version;
-        // TODO Clean this up after the 1.3 release
-        const ext = version > '1.2' ? platform.INSTALLER_EXT : 'jar';
+        const ext = platform.INSTALLER_EXT;
 
         let style = 'download ' + type;
         const platformSize = type === 'primary' ? '3x' : '2x';
