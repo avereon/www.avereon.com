@@ -1,14 +1,8 @@
 name: Avereon Website CI
 
-on: [ push ]
+on: [ push, pull_request ]
 
 env:
-  AVN_PRODUCT: "zevra"
-  # The default release, should be overridden in config.sh
-  AVN_RELEASE: "latest"
-  # The default platform, should be overridden in the platform binaries jobs below
-  #AVN_PLATFORM: "linux"
-
   AVN_GPG_PASSWORD: ${{ secrets.AVN_GPG_PASSWORD }}
   AVN_KEYSTORE_PASSWORD: ${{ secrets.AVN_KEYSTORE_PASSWORD }}
   AVN_REPO_USERNAME: ${{ secrets.AVN_REPO_USERNAME }}
