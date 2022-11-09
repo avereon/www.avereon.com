@@ -30,7 +30,7 @@ jobs:
         language: [ 'java', 'javascript' ]
     steps:
       - name: Fetch sources
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Fetch CI/CD resources
         uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
 
@@ -88,7 +88,7 @@ jobs:
           mvn ${{env.MAVEN_PARMS}} package
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+        uses: github/codeql-action/analyze@v2
 
       - name: Copy Client ZIP
         run: scp -B client/client.zip travis@avereon.com:/opt/avn/store/latest/www.avereon.com/client.zip
