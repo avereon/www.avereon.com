@@ -1,6 +1,6 @@
 name: Avereon Website CI
 
-on: [ push ]
+on: [ push, pull_request ]
 
 env:
   AVN_PRODUCT: "zevra"
