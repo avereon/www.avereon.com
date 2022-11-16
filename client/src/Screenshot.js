@@ -32,8 +32,8 @@ export default function Screenshot(props) {
 
 export function ScreenshotTile(props) {
 
-	let width = 80 * 2
-	let height = 50 * 2
+	let width = 80 * 3
+	let height = 50 * 3
 	let title = props.title
 	let path = props.path
 	let returnLink = window.location.pathname
