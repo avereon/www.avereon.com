@@ -10,7 +10,7 @@ function X2(name) {
 	return Config.IMAGE_ROOT + "/screenshots/" + name + "@2x.png";
 }
 
-export default function Screenshot(props) {
+export default function Screenshot() {
 	/* The original screenshots are 800x500 */
 	let width = 80 * 10
 	let height = 50 * 10
