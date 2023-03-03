@@ -1,6 +1,6 @@
 name: Avereon Website CI
 
-on: [ push, pull_request ]
+on: [ pull_request, push ]
 
 env:
   AVN_GPG_PASSWORD: ${{ secrets.AVN_GPG_PASSWORD }}
