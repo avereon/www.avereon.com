@@ -32,6 +32,8 @@ export default class Products extends React.Component {
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
 					<ProductStatus ident='zerra' icon={Icon.ZERRA} name='Zerra'/>
 					<ProductStatus ident='zevra' icon={Icon.ZEVRA} name='Zevra'/>
+				</div>
+				<div className='column product-status'>
 					<h3>Maven Plugins</h3>
 					<ProductStatus ident='cameo' icon={Icon.CAMEO} name='Cameo'/>
 					<ProductStatus ident='curex' icon={Icon.CUREX} name='Curex'/>
