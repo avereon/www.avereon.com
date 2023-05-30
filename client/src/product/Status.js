@@ -27,7 +27,6 @@ export default class Products extends React.Component {
 					<h3>Libraries</h3>
 					<ProductStatus ident='marea' icon={Icon.CURVE} name='Marea'/>
 					<ProductStatus ident='curve' icon={Icon.CURVE} name='Curve'/>
-					<ProductStatus ident='xenon-junit5' icon={Icon.CURVE} name='Xenon JUnit5'/>
 					<ProductStatus ident='zarra' icon={Icon.ZARRA} name='Zarra'/>
 					<ProductStatus ident='zenna' icon={Icon.ZENNA} name='Zenna'/>
 					<ProductStatus ident='zerra' icon={Icon.ZERRA} name='Zerra'/>
