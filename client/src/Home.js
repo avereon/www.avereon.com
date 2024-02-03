@@ -18,12 +18,14 @@ export default class Home extends React.Component {
 
 					<div className='body'>
 						<div className='title'>
-							Xenon 1.6
+							Xenon 1.7
 						</div>
 						<div>
 							<a href='/product/xenon'>Download now</a> to get the latest features:
 							<ul>
-								<li>Java 17</li>
+								<li>Index service for search</li>
+								<li>Updated user interface</li>
+								<li>Resource type settings</li>
 								<li>Updated mods</li>
 								<li>Bug fixes</li>
 							</ul>
