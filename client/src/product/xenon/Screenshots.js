@@ -20,8 +20,8 @@ export default class Screenshots extends React.Component {
                     </div>
                     <div className='column'>
                         <ScreenshotTile title='Default Workarea' path='default-workarea'/>
-                        <ScreenshotTile title='Product Markets' path='product-tool-sources'/>
-                        <ScreenshotTile title='Installed Products' path='product-tool-installed'/>
+                        <ScreenshotTile title='Installed Modules' path='settings/settings-tool-modules'/>
+                        <ScreenshotTile title='Module Markets' path='settings/settings-tool-modules-sources'/>
                     </div>
                 </div>
             </div>
