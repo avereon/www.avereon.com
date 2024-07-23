@@ -1,0 +1,12 @@
+server:
+  port: 5050
+
+logging:
+  file:
+    name: avereon.log
+    max-size: 100MB
+    max-history: 10
+  level:
+    com:
+      avereon:
+        www: INFO
