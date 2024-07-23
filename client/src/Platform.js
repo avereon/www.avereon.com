@@ -24,7 +24,7 @@ export default class Platform {
         KEY: 'windows',
         NAME: 'Windows',
         ICON: 'windows',
-        INSTALLER_EXT: 'exe',
+        INSTALLER_EXT: 'msi',
     }
 
     static CURRENT;
