@@ -41,7 +41,7 @@ export default class Mods extends React.Component {
 					<div className='product-bar'>
 						<a href='https://github.com/avereon/carta'><img className="product-icon" alt="" src={Icon.CARTA}/></a>
 						<div className='body'>
-							<div><a href='https://github.com/avereon/carta'>Cartisia</a> provides
+							<div><a href='https://github.com/avereon/carta'>Cartesia</a> provides
 								basic 2D and 3D computer aided design tools. Generally
 								designed for hobbyists and crafters to have simple and
 								inexpensive computer aided design tools available.
