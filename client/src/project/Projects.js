@@ -1,5 +1,4 @@
 import React from "react";
-import Icon from "../Icon";
 
 export default class Products extends React.Component {
 

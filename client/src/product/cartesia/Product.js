@@ -1,6 +1,5 @@
 import React from 'react';
 import Icon from '../../Icon';
-import Platform from '../../Platform';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
@@ -26,13 +25,13 @@ export default class Product extends React.Component {
     }
 
     render() {
-        let stableDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'stable', 'Weave', this.state, Platform.CURRENT, 'product')}
-        </div>;
-
-        let latestDownload = <div className='download-row'>
-            {ProductPage.createDownloadTile('primary', 'latest', 'Weave', this.state, Platform.CURRENT, 'product')}
-        </div>;
+        // let stableDownload = <div className='download-row'>
+        //     {ProductPage.createDownloadTile('primary', 'stable', 'Weave', this.state, Platform.CURRENT, 'product')}
+        // </div>;
+        //
+        // let latestDownload = <div className='download-row'>
+        //     {ProductPage.createDownloadTile('primary', 'latest', 'Weave', this.state, Platform.CURRENT, 'product')}
+        // </div>;
 
         return (<div className='content'>
             <div className='product'>

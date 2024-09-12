@@ -11,7 +11,6 @@ import Footer from "./Footer";
 import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
-import Projects from "./project/Projects";
 import Screenshot from "./Screenshot";
 import DocViewer from "./DocViewer";
 import AcornProduct from "./product/acorn/Product";
