@@ -8,10 +8,10 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.2",
     "postcss": "^8.4.33",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0"
+    "react": "^18",
+    "react-dom": "^18",
+    "react-router": "^6.3",
+    "react-router-dom": "^6.3"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1",
