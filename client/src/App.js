@@ -11,6 +11,7 @@ import Footer from "./Footer";
 import Legal from "./Legal";
 import About from "./About";
 import Products from "./product/Products";
+import Projects from "./project/Projects";
 import Screenshot from "./Screenshot";
 import DocViewer from "./DocViewer";
 import AcornProduct from "./product/acorn/Product";
@@ -22,6 +23,7 @@ import NotFound from "./NotFound";
 import Status from "./product/Status";
 import SeencProduct from "./product/seenc/Product";
 import WeaveProduct from "./product/weave/Product";
+import CartesiaProduct from "./product/cartesia/Product";
 
 const reload = () => window.location.reload();
 
@@ -42,8 +44,12 @@ export default function App() {
 				<Routes>
 					{/* Supported routes */}
 					<Route exact path='/product/acorn' element={<AcornProduct/>}/>
-					<Route exact path='/product/weave' element={<WeaveProduct/>}/>
 					<Route exact path='/product/seenc' element={<SeencProduct/>}/>
+					<Route exact path='/product/weave' element={<WeaveProduct/>}/>
+
+					<Route exact path='/product/cartesia' element={<CartesiaProduct/>}/>
+					<Route exact path='/product/cartesia/docs/user-guide'  element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/carta/main/source/main/docs/manual/content.html' outline={3}/>}/>
+
 					<Route exact path='/product/xenon/docs/user-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
 					<Route exact path='/product/xenon/docs/mods-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
 					<Route exact path='/product/xenon/docs/tool-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tools/content.html' outline={3}/>}/>
@@ -54,6 +60,7 @@ export default function App() {
 					<Route exact path='/product/xenon' element={<XenonProduct/>}/>
 					<Route exact path='/product/screenshot' element={<Screenshot/>}/>
 					<Route exact path='/products' element={<Products/>}/>
+					<Route exact path='/projects' element={<Status/>}/>
 					<Route exact path='/status' element={<Status/>}/>
 					<Route exact path='/license/mit' element={<LicenseMit/>}/>
 					<Route exact path='/legal' element={<Legal/>}/>
