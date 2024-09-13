@@ -45,7 +45,7 @@ export default class Product extends React.Component {
                     Cartesia is a computer aided design (CAD) mod for <a href='../xenon'>Xenon</a>.
                     Designed with simplicity and user experience in mind, Cartesia offers a large set of simple commands
                     to construct your design. Cartesia provides common geometry, snaps,
-                    modifiers and transforms as well as unlimited layers.
+                    modifiers and transforms as well as unlimited layers. Bring your vision to life with Cartesia.
                 </div>
 
                 <div className='product-content'>
