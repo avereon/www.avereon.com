@@ -4,39 +4,86 @@ import * as Image from "./Image";
 
 export default class Home extends React.Component {
 
-	render() {
-		const imageSet = Image.XENON_WELCOME_2x + " 2x, " + Image.XENON_WELCOME_1x + " 1x";
+    render() {
+        const scale = 4.5;
+        const imageSrc = Image.XENON_WELCOME_1x;
+        const imageSet = Image.XENON_WELCOME_2x + " 2x, " + imageSrc + " 1x";
+        const cartaImageSrc = Image.CARTESIA_JET_SAMPLE_1x;
+        const cartaImageSet = Image.CARTESIA_JET_SAMPLE_2x + " 2x, " + cartaImageSrc + " 1x";
 
-		return (
-			<div className='content'>
-				<div className='announcement'>
-					<div className='icon'>
-					<a href='/product/xenon'>
-						<img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
-					</a>
-					</div>
+        return (
+            <div className='content'>
 
-					<div className='body'>
-						<div className='title'>
-							Xenon 1.7
-						</div>
-						<div>
-							<a href='/product/xenon'>Download now</a> to get the latest features:
-							<ul>
-								<li>Index service for search</li>
-								<li>Updated user interface</li>
-								<li>Resource type settings</li>
-								<li>Updated mods</li>
-								<li>Bug fixes</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<a className='screenshot' href='/product/xenon'>
-					<img className='screenshot' src={Image.XENON_WELCOME_1x} srcSet={imageSet} alt="Xenon Welcome Tool"/>
-				</a>
-			</div>
-		)
-	}
+                <div className='announcement'>
+                    <div className='icon'>
+                        <a href='/product/xenon'>
+                            <img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
+                        </a>
+                    </div>
+
+                    <div className='body'>
+                        <div className='title'>
+                            Xenon 1.7
+                        </div>
+                        <div>
+                            <a href='/product/xenon'>Download now</a> to get the latest features:
+                            <ul>
+                                <li>Index service for search</li>
+                                <li>Updated user interface</li>
+                                <li>Resource type settings</li>
+                                <li>Updated mods</li>
+                                <li>Bug fixes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className='body'>
+                        <a className='screenshot' href='/product/xenon'>
+                            <img
+                                src={imageSrc} srcSet={imageSet}
+                                alt="Xenon Welcome Tool"
+                                width={80 * scale} height={50 * scale}
+                            />
+                        </a>
+                    </div>
+                </div>
+
+                <div className='announcement'>
+                    <div className='icon'>
+                        <a href='/product/cartesia'>
+                            <img className="product-icon" alt="" src={Icon.CARTA}/>
+                        </a>
+                    </div>
+                    <div className='body'>
+                        <div className='title'>
+                            Cartesia 1.2
+                        </div>
+                        <div>
+                            <a href='/product/cartesia'>Install now</a> to get the latest features:
+                            <ul>
+                                <li>Layers - Unlimited layers</li>
+                                <li>Geometry - Box, line, circle, ellipse, arc, curve, path and text</li>
+                                <li>Snaps - Grid, nearest, midpoint, center</li>
+                                <li>Modifiers - Trim, extend, break</li>
+                                <li>Transforms - Move, copy, flip, mirror, rotate, scale, stretch</li>
+                                <li>Bug fixes</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className='body'>
+                        <a className='screenshot' href='/product/cartesia'>
+                            <img
+                                src={cartaImageSrc} srcSet={cartaImageSet}
+                                alt="Cartesia Design Tool"
+                                width={80 * scale} height={50 * scale}
+                            />
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        )
+    }
 
 }
