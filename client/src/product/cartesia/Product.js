@@ -5,6 +5,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 import '../../css/product.css';
 import ProductPage from "../ProductPage";
+import {ScreenshotTile} from "../../Screenshot";
 
 library.add(fas, fab);
 
@@ -59,6 +60,12 @@ export default class Product extends React.Component {
                     The <a href='/product/cartesia/docs/user-guide'>Cartesia User Guide</a> is available online and
                     provides all the necessary information needed to get started. Documentation for Cartesia commands
                     is also available in the Xenon application with the Cartesia mod installed.
+                </div>
+
+                <div className='columns'>
+                    <div className='column'>
+                        <ScreenshotTile title='Sample' path='mod/carta/cartesia-demo'/>
+                    </div>
                 </div>
 
             </div>
