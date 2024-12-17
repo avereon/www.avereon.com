@@ -64,7 +64,7 @@ export default class Product extends React.Component {
 
                 <div className='columns'>
                     <div className='column'>
-                        <ScreenshotTile title='Sample' path='mod/carta/cartesia-demo'/>
+                        <ScreenshotTile title='Sample' path='mod/carta/sample-jet'/>
                     </div>
                 </div>
 
