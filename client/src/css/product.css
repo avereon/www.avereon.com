@@ -54,7 +54,6 @@
 .product-icon {
 	width: 4rem;
 	height: 4rem;
-	flex-shrink: 0;
 }
 
 .product-name {

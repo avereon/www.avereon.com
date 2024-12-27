@@ -211,34 +211,46 @@ pre {
 /*	width: 50rem;*/
 /*}*/
 
-.announcement {
-	margin: 2rem 0;
-
-	display: flex;
-	flex-flow: row nowrap;
-	/* along the main axis */
-	justify-content: left;
-	/* along the cross axis */
-	align-items: flex-start;
+.announcement-table {
+	display: table;
 }
 
-.announcement .body {
-	display: flex;
-	flex-flow: column nowrap;
-	margin: 0 0 0 1rem;
+.announcement-row {
+	display: table-row;
 }
 
-.announcement .title {
+.announcement-cell {
+	display: table-cell;
+	vertical-align: top;
+	padding: 0.5rem;
+}
+
+.announcement-title {
 	font-size: 2.5em;
-	margin: 0 0 0 -0.5rem;
+}
+
+.announcement-body {
+	margin: 0 0 0 0.5rem;
+}
+
+.screenshot-home {
+	width: 20rem;
+	height: 12.5rem;
+	border: 1px transparent solid;
+}
+
+.screenshot-home:hover{
+	border: 1px solid;
 }
 
 .screenshot-tile {
 	cursor: pointer;
+	border: 1px transparent solid;
 }
 
-.screenshot {
-	width: 100%;
+.screenshot-tile:hover {
+	cursor: pointer;
+	border: 1px solid;
 }
 
 .footer {

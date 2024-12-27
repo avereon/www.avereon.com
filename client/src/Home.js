@@ -5,7 +5,6 @@ import * as Image from "./Image";
 export default class Home extends React.Component {
 
     render() {
-        const scale = 4.5;
         const imageSrc = Image.XENON_WELCOME_1x;
         const imageSet = Image.XENON_WELCOME_2x + " 2x, " + imageSrc + " 1x";
         const cartaImageSrc = Image.CARTESIA_JET_SAMPLE_1x;
@@ -13,75 +12,76 @@ export default class Home extends React.Component {
 
         return (
             <div className='content'>
+                <div className='announcement-table'>
 
-                <div className='announcement'>
-                    <div className='icon'>
-                        <a href='/product/xenon'>
-                            <img className="product-icon" alt="" src={Icon.XENON_LIGHT}/>
-                        </a>
-                    </div>
+                    <div className='announcement-row'>
 
-                    <div className='body'>
-                        <div className='title'>
-                            Xenon 1.7
+                        <div className='announcement-cell'>
+                            <a href='/product/xenon'>
+                                <img className="product-icon" src={Icon.XENON_LIGHT} alt="Product Icon"/>
+                            </a>
                         </div>
-                        <div>
-                            <a href='/product/xenon'>Download now</a> to get the latest features:
-                            <ul>
-                                <li>Index service for search</li>
-                                <li>Updated user interface</li>
-                                <li>Resource type settings</li>
-                                <li>Updated mods</li>
-                                <li>Bug fixes</li>
-                            </ul>
+
+                        <div className='announcement-cell'>
+                            <div className='announcement-title'>
+                                Xenon 1.7
+                            </div>
+                            <div className='announcement-body'>
+                                <a href='/product/xenon'>Download now</a> to get the latest features:
+                                <ul>
+                                    <li>Index service for search</li>
+                                    <li>Updated user interface</li>
+                                    <li>Resource type settings</li>
+                                    <li>Updated mods</li>
+                                    <li>Bug fixes</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className='announcement-cell'>
+                            <a href='/product/xenon'>
+                                <img className='screenshot-home'
+                                     src={imageSrc} srcSet={imageSet}
+                                     alt="Xenon Welcome Tool"
+                                />
+                            </a>
                         </div>
                     </div>
 
-                    <div className='body'>
-                        <a className='screenshot' href='/product/xenon'>
-                            <img
-                                src={imageSrc} srcSet={imageSet}
-                                alt="Xenon Welcome Tool"
-                                width={80 * scale} height={50 * scale}
-                            />
-                        </a>
+                    <div className='announcement-row'>
+                        <div className='announcement-cell'>
+                            <a href='/product/cartesia'>
+                                <img className="product-icon" src={Icon.CARTA} alt="Product Icon"/>
+                            </a>
+                        </div>
+                        <div className='announcement-cell'>
+                            <div className='announcement-title'>
+                                Cartesia 1.2
+                            </div>
+                            <div className='announcement-body'>
+                                <a href='/product/cartesia'>Install now</a> to get the latest features:
+                                <ul>
+                                    <li>Layers - Unlimited layers</li>
+                                    <li>Geometry - Box, line, circle, ellipse, arc, curve, path and text</li>
+                                    <li>Snaps - Grid, nearest, midpoint, center</li>
+                                    <li>Modifiers - Trim, extend, break</li>
+                                    <li>Transforms - Move, copy, flip, mirror, rotate, scale, stretch</li>
+                                    <li>Bug fixes</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className='announcement-cell'>
+                            <a href='/product/cartesia'>
+                                <img className='screenshot-home'
+                                    src={cartaImageSrc} srcSet={cartaImageSet}
+                                    alt="Cartesia Design Tool"
+                                />
+                            </a>
+                        </div>
                     </div>
+
                 </div>
-
-                <div className='announcement'>
-                    <div className='icon'>
-                        <a href='/product/cartesia'>
-                            <img className="product-icon" alt="" src={Icon.CARTA}/>
-                        </a>
-                    </div>
-                    <div className='body'>
-                        <div className='title'>
-                            Cartesia 1.2
-                        </div>
-                        <div>
-                            <a href='/product/cartesia'>Install now</a> to get the latest features:
-                            <ul>
-                                <li>Layers - Unlimited layers</li>
-                                <li>Geometry - Box, line, circle, ellipse, arc, curve, path and text</li>
-                                <li>Snaps - Grid, nearest, midpoint, center</li>
-                                <li>Modifiers - Trim, extend, break</li>
-                                <li>Transforms - Move, copy, flip, mirror, rotate, scale, stretch</li>
-                                <li>Bug fixes</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className='body'>
-                        <a className='screenshot' href='/product/cartesia'>
-                            <img
-                                src={cartaImageSrc} srcSet={cartaImageSet}
-                                alt="Cartesia Design Tool"
-                                width={80 * scale} height={50 * scale}
-                            />
-                        </a>
-                    </div>
-                </div>
-
             </div>
         )
     }
