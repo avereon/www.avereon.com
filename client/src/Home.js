@@ -24,14 +24,13 @@ export default class Home extends React.Component {
 
                         <div className='announcement-cell'>
                             <div className='announcement-title'>
-                                Xenon 1.7
+                                Xenon 1.8
                             </div>
                             <div className='announcement-body'>
                                 <a href='/product/xenon'>Download now</a> to get the latest features:
                                 <ul>
-                                    <li>Index service for search</li>
-                                    <li>Updated user interface</li>
-                                    <li>Resource type settings</li>
+                                    <li>User interface improvements</li>
+                                    <li>Improved settings shortcuts</li>
                                     <li>Updated mods</li>
                                     <li>Bug fixes</li>
                                 </ul>
@@ -56,7 +55,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className='announcement-cell'>
                             <div className='announcement-title'>
-                                Cartesia 1.2
+                                Cartesia 1.3
                             </div>
                             <div className='announcement-body'>
                                 <a href='/product/cartesia'>Install now</a> to get the latest features:
