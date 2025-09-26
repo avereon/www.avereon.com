@@ -24,13 +24,14 @@ export default class Home extends React.Component {
 
                         <div className='announcement-cell'>
                             <div className='announcement-title'>
-                                Xenon 1.8
+                                Xenon 1.9
                             </div>
                             <div className='announcement-body'>
                                 <a href='/product/xenon'>Download now</a> to get the latest features:
                                 <ul>
                                     <li>User interface improvements</li>
-                                    <li>Improved settings shortcuts</li>
+                                    <li>Performance improvements</li>
+                                    <li>JDK 24 code enhancements</li>
                                     <li>Updated mods</li>
                                     <li>Bug fixes</li>
                                 </ul>
