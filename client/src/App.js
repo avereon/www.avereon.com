@@ -56,6 +56,7 @@ export default function App() {
 					<Route exact path='/product/xenon/docs/screenshots' element={<XenonScreenshots/>}/>
 					<Route exact path='/product/xenon/docs' element={<XenonDocs/>}/>
 					<Route exact path='/product/xenon/mods' element={<XenonMods/>}/>
+					<Route exact path='/product/xenon/modules' element={<XenonMods/>}/>
 					<Route exact path='/product/xenon' element={<XenonProduct/>}/>
 					<Route exact path='/product/screenshot' element={<Screenshot/>}/>
 					<Route exact path='/products' element={<Products/>}/>

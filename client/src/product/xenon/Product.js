@@ -78,7 +78,7 @@ export default class Product extends React.Component {
 					<div className='resource-row'>
 						<div className='resource-tile'>
 							<div><a href='/product/xenon/docs/user-guide'><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a></div>
-							<div><a href='/product/xenon/mods'><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
+							<div><a href='/product/xenon/modules'><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
 							<div><a href='/product/xenon/docs/screenshots'><FontAwesomeIcon icon={['fas', 'desktop']}/> Screenshots</a></div>
 						</div>
 						<div className='resource-tile'>
