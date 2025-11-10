@@ -30,7 +30,7 @@ export default function Screenshot() {
 	)
 }
 
-export function ScreenshotTile(props,content) {
+export function ScreenshotTile(props) {
 
 	let width = 80 * 3
 	let height = 50 * 3
@@ -44,7 +44,7 @@ export function ScreenshotTile(props,content) {
 			<Link className='screenshot-tile' to='/product/screenshot' state={{title, path, returnLink}}>
 				<img width={width} height={height} srcSet={X2(path) + " 2x, " + X1(path) + " 1x"} src={X1(path)} alt={title}/>
 			</Link>
-			{content}
+			{props.children}
 		</div>
 	)
 
