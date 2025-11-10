@@ -14,7 +14,11 @@ export default class Screenshots extends React.Component {
 
                 <div className='columns'>
                     <div className='column'>
-                        <ScreenshotTile title='Welcome Tool' path='welcome-tool'/>
+                        <ScreenshotTile title='Welcome Tool' path='welcome-tool'>
+                            The first time the program is started the Welcome
+                            tool is shown. The welcome tool give quick access
+                            to some general program resources.
+                        </ScreenshotTile>
                         <ScreenshotTile title='About Tool' path='about-tool'/>
                         <ScreenshotTile title='Settings Tool' path='settings/settings-tool-general'/>
                     </div>
