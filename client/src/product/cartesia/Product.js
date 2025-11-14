@@ -43,7 +43,7 @@ export default class Product extends React.Component {
                 </div>
 
                 <div className='product-content'>
-                    Cartesia is a computer aided design (CAD) mod for <a href='../xenon'>Xenon</a>.
+                    Cartesia is a computer aided design (CAD) module for <a href='../xenon'>Xenon</a>.
                     Designed with simplicity and user experience in mind, Cartesia offers a large set of simple commands
                     to construct your design. Cartesia provides common geometry, snaps,
                     modifiers and transforms as well as unlimited layers. Bring your vision to life with Cartesia.
@@ -52,14 +52,14 @@ export default class Product extends React.Component {
                 <div className='product-content'>
                     To install Cartesia, download and install the latest version
                     of <a href='/product/xenon'>Xenon</a>. Once Xenon is installed, start Xenon and
-                    open the Settings tool, navigate to Mods and install the Cartesia mod. The
-                    Cartesia mod will be enabled after installing.
+                    open the Settings tool, navigate to Mods and install the Cartesia module. The
+                    Cartesia module will be enabled after installing.
                 </div>
 
                 <div className='product-content'>
                     The <a href='/product/cartesia/docs/user-guide'>Cartesia User Guide</a> is available online and
                     provides all the necessary information needed to get started. Documentation for Cartesia commands
-                    is also available in the Xenon application with the Cartesia mod installed.
+                    is also available in the Xenon application with the Cartesia module installed.
                 </div>
 
                 <div className='columns'>

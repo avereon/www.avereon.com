@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../../Icon";
 
-export default class Mods extends React.Component {
+export default class Modules extends React.Component {
 
 	render() {
 		return (
@@ -20,8 +20,8 @@ export default class Mods extends React.Component {
 								<a href='/product/xenon'>Xenon</a> is an application framework
 								that provides common services for modern desktop applications.
 								Specific functionality is implemented with downloadable packages
-								called mods. Users are encouraged to discover and utilize the
-								mods that best suit their needs.
+								called modules. Users are encouraged to discover and utilize the
+								modules that best suit their needs.
 							</div>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ export default class Mods extends React.Component {
 					{/*		<div>*/}
 					{/*			<a href='/product/xenon'>Xenon</a> is a simple application framework that provides services common*/}
 					{/*			to modern desktop applications. Specific functionality is implemented*/}
-					{/*			with downloadable mod packages.*/}
+					{/*			with downloadable module packages.*/}
 					{/*		</div>*/}
 					{/*	</div>*/}
 					{/*</div>*/}

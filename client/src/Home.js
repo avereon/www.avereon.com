@@ -32,7 +32,7 @@ export default class Home extends React.Component {
                                     <li>User interface improvements</li>
                                     <li>Performance improvements</li>
                                     <li>JDK 24 code enhancements</li>
-                                    <li>Updated mods</li>
+                                    <li>Updated modules</li>
                                     <li>Bug fixes</li>
                                 </ul>
                             </div>

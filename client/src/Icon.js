@@ -30,7 +30,7 @@ export default class Icon {
     static CAMEO = this.AVEREON_LIGHT;
     static CUREX = this.AVEREON_LIGHT;
 
-    // Xenon Mods
+    // Xenon Modules
     //static ACORN= iconRoot + "/latest/acorn/product/icon";
     static AMAZO = this.ICON_ROOT + "/latest/amazo/product/icon";
     static ARENA = this.ICON_ROOT + "/latest/arena/product/icon";

@@ -15,7 +15,7 @@ import Screenshot from "./Screenshot";
 import DocViewer from "./DocViewer";
 import AcornProduct from "./product/acorn/Product";
 import XenonProduct from "./product/xenon/Product";
-import XenonMods from "./product/xenon/Mods";
+import XenonMods from "./product/xenon/Modules";
 import XenonDocs from "./product/xenon/XenonDocs";
 import XenonScreenshots from "./product/xenon/Screenshots";
 import NotFound from "./NotFound";
@@ -50,7 +50,7 @@ export default function App() {
 					<Route exact path='/product/cartesia/docs/user-guide'  element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/carta/main/source/main/docs/manual/content.html' outline={3}/>}/>
 
 					<Route exact path='/product/xenon/docs/user-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/manual/content.html' outline={3}/>}/>
-					<Route exact path='/product/xenon/docs/mods-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/mods/content.html' outline={3}/>}/>
+					<Route exact path='/product/xenon/docs/module-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/modules/content.html' outline={3}/>}/>
 					<Route exact path='/product/xenon/docs/tool-guide' element={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/tools/content.html' outline={3}/>}/>
 					<Route exact path='/product/xenon/contribute' render={<DocViewer {...useParams()} doc='https://raw.githubusercontent.com/avereon/xenon/master/source/main/docs/contribute/content.html' outline={3}/>}/>
 					<Route exact path='/product/xenon/docs/screenshots' element={<XenonScreenshots/>}/>
@@ -76,7 +76,7 @@ export default function App() {
 
 					{/* Deprecated routes */}
 					<Route path='/product/xenon/docs/manual' render={() => <Redirect to='/product/xenon/docs/user-guide'/>}/>
-					<Route path='/product/xenon/docs/mods' render={() => <Redirect to='/product/xenon/docs/mods-guide'/>}/>
+					<Route path='/product/xenon/docs/modules' render={() => <Redirect to='/product/xenon/docs/module-guide'/>}/>
 					<Route path='/rc' render={() => <Redirect to='/aviation'/>}/>
 
 					{/* Default route */}

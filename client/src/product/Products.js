@@ -17,7 +17,7 @@ export default class Products extends React.Component {
                                 <a href='/product/xenon'>Xenon</a> is a simple application framework that provides
                                 services common
                                 to modern desktop applications. Specific functionality is implemented
-                                with downloadable mod packages.
+                                with downloadable module packages.
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@ export default class Products extends React.Component {
                         <a href='/product/cartesia'><img className="product-icon" alt="" src={Icon.CARTA}/></a>
                         <div className='body'>
                             <div>
-                                <a href='/product/cartesia'>Cartesia</a> is a computer aided design (CAD) mod for
+                                <a href='/product/cartesia'>Cartesia</a> is a computer aided design (CAD) module for
                                 Xenon. Designed with simplicity and user experience in mind, Cartesia offers a large set
                                 of simple commands to construct your design. Cartesia provides common geometry, snaps,
                                 modifiers and transforms as well as unlimited layers. Bring your vision to life with
