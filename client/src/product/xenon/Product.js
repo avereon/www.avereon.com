@@ -78,11 +78,11 @@ export default class Product extends React.Component {
 					<div className='resource-row'>
 						<div className='resource-tile'>
 							<div><a href='/product/xenon/docs/user-guide'><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a></div>
-							<div><a href='/product/xenon/modules'><FontAwesomeIcon icon={['fas', 'cubes']}/> Mods</a></div>
+							<div><a href='/product/xenon/modules'><FontAwesomeIcon icon={['fas', 'cubes']}/> Modules</a></div>
 							<div><a href='/product/xenon/docs/screenshots'><FontAwesomeIcon icon={['fas', 'desktop']}/> Screenshots</a></div>
 						</div>
 						<div className='resource-tile'>
-							<div><a href='/product/xenon/docs/mods-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Mods</a></div>
+							<div><a href='/product/xenon/docs/module-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Modules</a></div>
 							<div><a href='/product/xenon/docs/tool-guide'><FontAwesomeIcon icon={['fas', 'file']}/> Building Tools</a></div>
 							<div><a href={Config.ROOT_URL + '/product/xenon/docs/api/index.html'}><FontAwesomeIcon icon={['fas', 'tools']}/> Xenon API</a></div>
 							<div><a href='https://github.com/avereon/xenon' target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']}/> Source Code</a></div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "../../Icon";
 
-export default class Mods extends React.Component {
+export default class Modules extends React.Component {
 
 	render() {
 		return (

@@ -14,7 +14,7 @@ export default class XenonDocs extends React.Component {
 				</div>
 
 				<a href="/product/xenon/docs/user-guide"><FontAwesomeIcon icon={['fas', 'user']}/> User Guide</a>
-				<a href="/product/xenon/docs/mods-guide"><FontAwesomeIcon icon={['fas', 'cubes']}/> Mod Developers Guide</a>
+				<a href="/product/xenon/docs/module-guide"><FontAwesomeIcon icon={['fas', 'cubes']}/> Module Developers Guide</a>
 
 			</div>
 		)
