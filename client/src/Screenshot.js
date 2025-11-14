@@ -19,6 +19,7 @@ export default function Screenshot() {
 	let title = location.state.title
 	let path = location.state.path
 	let link = location.state.returnLink
+	let children = location.state.children
 
 	return (
 		<div className='content'>
@@ -26,6 +27,7 @@ export default function Screenshot() {
 			<Link className='screenshot-tile' to={link}>
 				<img width={width} height={height} srcSet={X2(path) + " 2x, " + X1(path) + " 1x"} src={X1(path)} alt={title}/>
 			</Link>
+			{children}
 		</div>
 	)
 }
@@ -37,11 +39,12 @@ export function ScreenshotTile(props) {
 	let title = props.title
 	let path = props.path
 	let returnLink = window.location.pathname
+	let children = props.children
 
 	return (
-		<div className='content'>
+		<div className='screenshot-tile content'>
 			<h6>{title}</h6>
-			<Link className='screenshot-tile' to='/product/screenshot' state={{title, path, returnLink}}>
+			<Link className='screenshot-tile' to='/product/screenshot' state={{title, path, returnLink, children}}>
 				<img width={width} height={height} srcSet={X2(path) + " 2x, " + X1(path) + " 1x"} src={X1(path)} alt={title}/>
 			</Link>
 			{props.children}

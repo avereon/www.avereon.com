@@ -243,12 +243,16 @@ pre {
 	border: 1px solid;
 }
 
-.screenshot-tile {
+div.screenshot-tile {
+	width: 20rem;
+}
+
+link.screenshot-tile {
 	cursor: pointer;
 	border: 1px transparent solid;
 }
 
-.screenshot-tile:hover {
+link.screenshot-tile:hover {
 	cursor: pointer;
 	border: 1px solid;
 }
