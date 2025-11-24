@@ -28,10 +28,10 @@ jobs:
         language: [ 'java', 'javascript' ]
     steps:
       - name: Fetch sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Fetch CI/CD resources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: avereon/canoe
           path: .github
