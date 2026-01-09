@@ -10,8 +10,8 @@
     "postcss": "^8.4.33",
     "react": "^18",
     "react-dom": "^18",
-    "react-router": "^6.3",
-    "react-router-dom": "^6.3"
+    "react-router": "^6.30",
+    "react-router-dom": "^6.30"
   },
   "devDependencies": {
     "react-scripts": "^5.0.1",
